@@ -2,3 +2,4 @@
 *.lock
 vendor/
 .vagrant/
+bower_components/
