@@ -1,0 +1,6 @@
+AddType application/x-httpd-php56 .php
+#AddHandler application/x-httpd-php53 .php
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]

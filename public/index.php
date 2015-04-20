@@ -1,6 +1,5 @@
 <?php
-
-include $_SERVER['DOCUMENT_ROOT'] . '/../config.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
