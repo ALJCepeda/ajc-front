@@ -1,0 +1,12 @@
+{
+	"name": "ALJCepeda/ALJCepeda",
+	"description": "Landing platform for web services",
+	"require": {
+		"firebase/php-jwt": "dev-master",
+		"swiftmailer/swiftmailer": "6.0.*@dev",
+		"twbs/bootstrap": "3.3.*@dev",
+		"components/jquery": "dev-master",
+		"symfony/routing": "3.0.*@dev",
+		"symfony/http-foundation": "3.0.*@dev"
+	}
+}
