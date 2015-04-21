@@ -9,7 +9,7 @@ use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route;
 
 $routes = new RouteCollection();
-$routes->add('mainpage', new Route('/', ['script' => 'views/mainpage.php']));
+$routes->add('mainpage', new Route('/', ['script' => 'views/mainpage.html']));
 $routes->add('routetest', new Route('/user/{action}/{foo}', ['test' => 'what?']));
 
 $context = new RequestContext();
@@ -19,13 +19,13 @@ $matcher = new UrlMatcher($routes, $context);
 
 $parameters = $matcher->match($context->getPathInfo());
 
-if(isset($parameters['test'])){
-	echo "Routing successful!";
-	die;
-}
+include 'views/header.html';
 
-if(isset($parameters['script'])){
+if(isset($parameters['test'])){
+	echo "Routing successful! You want to create a username: " . $parameters['foo'];
+} else if(isset($parameters['script'])){
 	include $parameters['script'];	
 }
 
+include 'views/footer.html';
 ?>
