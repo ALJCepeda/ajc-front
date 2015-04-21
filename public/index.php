@@ -1,6 +1,7 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+include ROOT . '/resources/security/managesession.php';
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
@@ -12,6 +13,7 @@ $routes = new RouteCollection();
 $routes->add('mainpage', new Route('/', ['script' => 'views/mainpage.html']));
 $routes->add('createUser', new Route('/user/create', ['script' => 'views/user/create.html']));
 $routes->add('404error', new Route('/error/404', ['script' => 'views/error/404.html']));
+$routes->add('invalidSession', new Route('/error/invalid', ['script' => 'views/error/invalidsession.php', 'header' => '']));
 
 $context = new RequestContext();
 $context->fromRequest(Request::createFromGlobals());
