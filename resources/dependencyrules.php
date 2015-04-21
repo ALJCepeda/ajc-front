@@ -1,12 +1,12 @@
 <?php
 $container = container();
 
-$container->identifyScript("../vendor/aljcepeda/ORM/services/entitymanager.php");
-$container->identifyScript("../vendor/aljcepeda/ORM/services/pdoagent.php");
-$container->identifyScript("../vendor/aljcepeda/ORM/services/ormservice.php");
+$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/ORM/services/entitymanager.php');
+$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/ORM/services/pdoagent.php');
+$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/ORM/services/ormservice.php');
 
-$container->identifyScript("../vendor/aljcepeda/paramhelper/pageparser.php");
-$container->identifyScript("../vendor/aljcepeda/paramhelper/defaults/delegates.php");
+$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/paramhelper/pageparser.php');
+$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/paramhelper/defaults/delegates.php');
 
 $container->addRule('autoresolve')
 	->resolveForIdentifiers('iParamDelegate')
@@ -33,6 +33,6 @@ $container->addRule('autoresolve')
 	});
 
 $container->identifyObject('PageParser', 'PageParser');
-//$container->identifyObject('UsersManager', 'EntityManager');
-//$container->identifyObject('TempManager', 'EntityManager');
+$container->identifyObject('UsersManager', 'EntityManager');
+$container->identifyObject('TempManager', 'EntityManager');
 ?>
