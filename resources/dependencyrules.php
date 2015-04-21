@@ -33,7 +33,6 @@ $container->addRule('autoresolve')
 	});
 
 $container->identifyObject('PageParser', 'PageParser');
-$container->identifyObject('UsersManager', 'EntityManager');
-$container->identifyObject('TempManager', 'EntityManager');
-
+//$container->identifyObject('UsersManager', 'EntityManager');
+//$container->identifyObject('TempManager', 'EntityManager');
 ?>
