@@ -14,11 +14,14 @@ include ROOT . '/resources/security/updatesession.php';
 include ROOT . '/resources/routerequest.php';
 
 
-include ROOT . '/vendor/aljcepeda/dependencycontainer/dependencycontainer.php';
+if(!isset($parameters['error'])){
+	//If user was redirected to an error page then there's no reason to set up dependencies
+	include ROOT . '/vendor/aljcepeda/dependencycontainer/dependencycontainer.php';
 
-new ALJCepeda\DependencyContainer\DependencyContainer();
+	new ALJCepeda\DependencyContainer\DependencyContainer();
 
-include ROOT . '/resources/dependencyrules.php';
+	include ROOT . '/resources/dependencyrules.php';
+}
 
 
 //Visible clientside header

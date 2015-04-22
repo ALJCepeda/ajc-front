@@ -52,7 +52,7 @@ class TokenManager {
 		return TRUE;
 	}
 
-	function validateJWT($token, $sessionID){
+	function validateJWT($token){
 		try {
 			$payload = (array)JWT::decode($token, $this->secretKey, array('HS256'));
 

@@ -1,4 +1,4 @@
-suPHP_ConfigPath /home/ajrelic
+#suPHP_ConfigPath /home/ajrelic
 #AddType application/x-httpd-php56 .php
 
 RewriteEngine on
