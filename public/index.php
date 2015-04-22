@@ -6,6 +6,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 //Initializes and configures $jwtmanager
 include ROOT . '/resources/security/validatesession.php';
 
+//Does final updates to JWT and resets cookie
+include ROOT . '/resources/security/updatesession.php';
+
 //Attempts to resolve request path or redirects to 404
 //Provides $parameters for page
 include ROOT . '/resources/routerequest.php';
@@ -29,6 +32,5 @@ include $parameters['script'];
 echo "\n\n<!-- End main html -->\n\n";
 include 'views/footer.html';
 
-//Does final updates to JWT and resets cookie
-include ROOT . '/resources/security/updatesession.php';
+
 ?>
