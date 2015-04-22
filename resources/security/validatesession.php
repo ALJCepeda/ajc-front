@@ -12,34 +12,23 @@ $token = isset($_COOKIE['X-Auth-Token']) ? $_COOKIE['X-Auth-Token'] : '';
 $hasSession = !empty($sessionID);
 $hasToken = !empty($token);
 
-if($hasSession && !$hasToken) {
-	//Improperly configured session encoutered
-	//All valid php sessions should have a valid JWT as well
-	trigger_error('USR: Invalid Session - SessionID provided but missing JWT');
-	trigger_error('SERVER: ' . print_r($_SERVER, true));
 
-	invalidateSession('/error/invalid');
-}
-
-else if(!$hasSession && $hasToken) {
-	trigger_error('USR: Invalid Session - JWT provided by missing session');
-	trigger_error('SERVER: ' . print_r($_SERVER, true));
-
-	invalidateSession('/error/invalid');
+if( ($hasSession && !$hasToken) || (!$hasSession && $hasToken) ){
+	destroySession();
 }
 
 session_start();
 $jwtmanager = new TokenManager(JWTKEY);
 
-if(!$hasSession && !$hasToken) {
-	$jwtmanager->createPayload();
-	$valid = TRUE;
+if(!$hasSession || !$hasToken) {
+	$tokenID = $jwtmanager->createPayload($sessionID);
 } else {
-	$valid = $jwtmanager->validateJWT($token);
+	$tokenID = $jwtmanager->validateJWT($token, $sessionID);
 }
 
-if(!$valid) {
-	trigger_error('SVR: Invalid JWT - Wan unable to obtain payload.');
+
+if(!$tokenID) {
+	trigger_error('SVR: Invalid JWT - Wasnt able to obtain payload.');
 	trigger_error('JWT: ' . print_r($token, true));
 	trigger_error('SERVER: ' . print_r($_SERVER, true));
 
@@ -47,7 +36,9 @@ if(!$valid) {
 }
 
 
-//All post actions should be accompanied by a nonce
+
+
+//Check to see if a nonce was created and validate it
 $nonced = $jwtmanager->validateNonce();
 if(!$nonced) {
 	trigger_error('SVR: Invalid Nonce - Was expected nonce did not match the request nonce');
@@ -56,12 +47,6 @@ if(!$nonced) {
 
 	invalidateSession('/error/invalid');
 }
-
-$sessionExp = time() + (60 * 60); //Session expires in 1 hour
-$jwtmanager->updateExpiration($sessionExp);
-
-$token = $jwtmanager->encodePayload();
-setcookie('X-Auth-Token', $token, $sessionExp, '/');
 
 
 /*********************************

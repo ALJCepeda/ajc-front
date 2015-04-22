@@ -9,29 +9,28 @@ class TokenManager {
 		$this->secretKey = $secretKey;
 	}
 
+	function createPayload() {
+		$tokenID = md5(uniqid(rand(), true));
+
+		$payload = [
+		    'iss' => DOMAIN,
+		    'aud' => DOMAIN,
+		    'sub' => $tokenID,
+		    'usr' => 'guest',
+		    'iat' => time(),
+		    'exp' => time()
+		];
+
+		$this->payload = $payload;
+		return $tokenID;
+	}
+
 	function getPayload(){
 		if(empty($this->payload) || !is_array($this->payload)){
 			return FALSE;
 		}
 
 		return $this->payload;
-	}
-
-	function validateNonce(){
-		if(empty($this->payload)){
-			trigger_error('Payload needs to be set before validating nonce');
-			return FALSE;
-		}
-
-		if(!isset($_SESSION['nonce'])){
-			return TRUE;
-		}
-
-		if(!isset($payload['nonce']) || $_SESSION['nonce'] != $payload['nonce']) {
-			return FALSE;
-		}
-
-		return TRUE;
 	}
           
 	function encodePayload() {
@@ -53,22 +52,13 @@ class TokenManager {
 		return TRUE;
 	}
 
-	function createPayload() {
-		$payload = [
-		    'iss' => DOMAIN,
-		    'aud' => DOMAIN,
-		    'sub' => 'guest',
-		    'iat' => time(),
-		    'exp' => time()
-		];
-
-		$this->payload = $payload;
-		return $this->payload;
-	}
-
-	function validateJWT($token){
+	function validateJWT($token, $sessionID){
 		try {
 			$payload = (array)JWT::decode($token, $this->secretKey, array('HS256'));
+
+			if(!isset($payload['sub'])){
+				return FALSE;
+			}
 
 			if($payload['exp'] > time()){
 				if(FALSE) {
@@ -78,12 +68,30 @@ class TokenManager {
 			}
 
 			$this->payload = $payload;
-			return $payload;
+
+			return $payload['sub'];
 		} catch (Exception $e){
 			return FALSE;
 		}
 	}
 
+
+	function validateNonce(){
+		if(empty($this->payload)){
+			trigger_error('Payload needs to be set before validating nonce');
+			return FALSE;
+		}
+
+		if(!isset($_SESSION['nonce'])){
+			return TRUE;
+		}
+
+		if(!isset($payload['nonce']) || $_SESSION['nonce'] != $payload['nonce']) {
+			return FALSE;
+		}
+
+		return TRUE;
+	}
 }
 
 ?>
