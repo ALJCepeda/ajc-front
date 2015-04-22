@@ -10,6 +10,14 @@ include ROOT . '/resources/security/validatesession.php';
 //Provides $parameters for page
 include ROOT . '/resources/routerequest.php';
 
+
+include ROOT . '/vendor/aljcepeda/dependencycontainer/dependencycontainer.php';
+
+new ALJCepeda\DependencyContainer\DependencyContainer();
+
+include ROOT . '/resources/dependencyrules.php';
+
+
 //Visible clientside header
 include 'views/header.html';
 echo "\n\n <!-- Begin main html --> \n\n";
