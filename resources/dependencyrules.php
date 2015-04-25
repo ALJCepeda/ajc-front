@@ -1,12 +1,12 @@
 <?php
 $container = container();
 
-$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/ORM/services/entitymanager.php');
-$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/ORM/services/pdoagent.php');
-$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/ORM/services/ormservice.php');
+$container->identifyScript(VENDOR . '/aljcepeda/ORM/services/entitymanager.php');
+$container->identifyScript(VENDOR . '/aljcepeda/ORM/services/pdoagent.php');
+$container->identifyScript(VENDOR . '/aljcepeda/ORM/services/ormservice.php');
 
-$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/paramhelper/pageparser.php');
-$container->identifyScript(__DIR__ . '/../vendor/aljcepeda/paramhelper/defaults/delegates.php');
+$container->identifyScript(VENDOR . '/aljcepeda/paramhelper/pageparser.php');
+$container->identifyScript(VENDOR . '/aljcepeda/paramhelper/defaults/delegates.php');
 
 $container->addRule('autoresolve')
 	->resolveForIdentifiers('iParamDelegate')

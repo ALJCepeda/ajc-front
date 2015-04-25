@@ -1,5 +1,5 @@
 <?php
-include ROOT . '/vendor/firebase/php-jwt/Authentication/JWT.php';
+include VENDOR . '/firebase/php-jwt/Authentication/JWT.php';
 
 class TokenManager {
 	private $secretKey = '';

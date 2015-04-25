@@ -16,7 +16,7 @@ include ROOT . '/resources/routerequest.php';
 
 if(!isset($parameters['error'])){
 	//If user was redirected to an error page then there's no reason to set up dependencies
-	include ROOT . '/vendor/aljcepeda/dependencycontainer/dependencycontainer.php';
+	include VENDOR . '/aljcepeda/dependencycontainer/dependencycontainer.php';
 
 	new ALJCepeda\DependencyContainer\DependencyContainer();
 
@@ -25,7 +25,7 @@ if(!isset($parameters['error'])){
 
 
 //Visible clientside header
-include 'views/header.html';
+include 'views/header.php';
 echo "\n\n <!-- Begin main html --> \n\n";
 
 //Main content

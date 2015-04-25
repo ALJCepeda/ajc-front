@@ -11,13 +11,13 @@
 	<title>Main Page</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href= <?= CONTENT_PROVIDER . "/bootstrap/dist/css/bootstrap.min.css" ?> rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="/assets/css/bootstrap/cover.css" rel="stylesheet">
+	<link href= <?= CONTENT_PROVIDER . "/bootstrap/dist/css/cover.css" ?> rel="stylesheet">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src= <?= CONTENT_PROVIDER . "/jquery/dist/jquery.min.js" ?> ></script>
+	<script src= <?= CONTENT_PROVIDER . "/bootstrap/dist/js/bootstrap.min.js" ?> ></script>
 
 	<script>
 	    $(document).ready(function() {
