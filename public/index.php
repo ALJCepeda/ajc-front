@@ -1,39 +1,47 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-
-//Will redirect user to security fault page and kill script if error is encountered
-//Initializes and configures $jwtmanager
-include ROOT . '/resources/security/validatesession.php';
-
-//Does final updates to JWT and resets cookie
-include ROOT . '/resources/security/updatesession.php';
-
-//Attempts to resolve request path or redirects to 404
-//Provides $parameters for page
-include ROOT . '/resources/routerequest.php';
-
-
-if(!isset($parameters['error'])){
-	//If user was redirected to an error page then there's no reason to set up dependencies
-	include VENDOR . '/aljcepeda/dependencycontainer/dependencycontainer.php';
-
-	new ALJCepeda\DependencyContainer\DependencyContainer();
-
-	include ROOT . '/resources/dependencyrules.php';
-}
-
-
-//Visible clientside header
-include 'views/header.php';
-echo "\n\n <!-- Begin main html --> \n\n";
-
-//Main content
-include $parameters['script'];	
-
-//Visible clientside footer
-echo "\n\n<!-- End main html -->\n\n";
-include 'views/footer.html';
-
+//Does all preprocessing such  as routing request, providing dependencies and setting up variables
+//Most importantly, it provides the parameters for the requested page $parameters
+include '../resources/security/processrequest.php';
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/assets/images/icons/favicon.ico">
+
+	<title>Main Page</title>
+
+	<link href= <?= CONTENT_PROVIDER . "/bootstrap/dist/css/bootstrap.min.css" ?> rel="stylesheet">
+	<link href= <?= CONTENT_PROVIDER . "/bootstrap/dist/css/cover.css" ?> rel="stylesheet">
+
+	<script src= <?= CONTENT_PROVIDER . "/jquery/dist/jquery.min.js" ?> ></script>
+	<script src= <?= CONTENT_PROVIDER . "/bootstrap/dist/js/bootstrap.min.js" ?> ></script>
+</head>
+
+<body>
+    <div class="site-wrapper">
+      	<div class="site-wrapper-inner">
+        	<div class="cover-container">
+      		<?php
+      			echo "\n\n\n\n<!-- Navbar Start -->\n\n";
+      			include 'views/navbar.html';
+      			echo "\n\n<!-- Navbar End -->\n\n";
+
+      			echo "\n\n<!-- Main Start -->\n\n";
+      			include $parameters['script'];
+      			echo "\n\n<!-- Main End -->\n\n\n\n";
+      		 ?>
+ 			</div>
+    	</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<?php
+
+if(ISLOCAL){
+  $blog = "#";
+} else {
+  $blog = "http://blog.aljcepeda.com";
+}
+
+?>
+
+<script>
+      $(document).ready(function() {
+          $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+      });
+</script>
+
+<div class="masthead clearfix">
+	<div class="inner">
+  		<h3 class="masthead-brand">ALJCepeda</h3>
+      	<nav>
+        	<ul class="nav masthead-nav">
+          		<li><a href="/">Home</a></li>
+          		<li><a href="/user/create">Register</a></li>
+          		<li><a href= <?=$blog?> >Blog</a></li>
+        	</ul>
+      	</nav>
+	</div>
+</div>
