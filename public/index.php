@@ -19,11 +19,11 @@ include '../resources/security/processrequest.php';
 
 	<title>Main Page</title>
 
-	<link href= <?= CONTENT_PROVIDER . "/bootstrap/dist/css/bootstrap.min.css" ?> rel="stylesheet">
+	<link href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 	<link href= <?= CONTENT_PROVIDER . "/bootstrap/dist/css/cover.css" ?> rel="stylesheet">
 
-	<script src= <?= CONTENT_PROVIDER . "/jquery/dist/jquery.min.js" ?> ></script>
-	<script src= <?= CONTENT_PROVIDER . "/bootstrap/dist/js/bootstrap.min.js" ?> ></script>
+	<script src= "https://code.jquery.com/jquery-2.1.4.min.js" ></script>
+	<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
 </head>
 
 <body>
