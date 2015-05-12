@@ -23,23 +23,6 @@ Vagrant.configure(2) do |config|
   	wget "https://gist.githubusercontent.com/ALJCepeda/d90844bf63e23a06d3d3/raw/0e913197c7772a16381854712666dbb1eb38ce38/gistfile1.sh" -O ~/bash/git-prompt.sh >/dev/null 2>&1
   	wget "https://gist.githubusercontent.com/ALJCepeda/dc006ba37c7befec4f42/raw/3e5ef3b3bb2c1bb27088b1cfe5c7e4b012a83555/gistfile1.sh" -O ~/.bash_profile >/dev/null 2>&1
   	wget "https://gist.githubusercontent.com/ALJCepeda/20b55b2bbb7671764933/raw/fcfafabd4e7a56a856f8a35ab7f0640a13009787/gistfile1.txt" -O ~/.gitconfig >/dev/null 2>&1
-  	wget "https://gist.githubusercontent.com/ALJCepeda/131fc76eb2683f496ebc/raw/c658ebaf58005ff220df4ddd4992f15a9e96edb1/gistfile1.txt" -O ~/composer.json >/dev/null 2>&1
-
-  	echo Installing Dependencies ...
-  	sudo mkdir /var/www/content
-    cd /var/www/content
-    
-  	#Bower asks to send anonymous stats when first used
-  	echo y | bower install jquery >/dev/null 2>&1
-  	bower install bootstrap >/dev/null 2>&1
-  	
-  	cd ~/
-  	composer.phar install >/dev/null 2>&1
-    cd vendor
-    git clone https://github.com/ALJCepeda/phppackage.git aljcepeda >/dev/null 2>&1
-    cd aljcepeda
-    echo yes | git submodule update --init --recursive >/dev/null 2>&1
-    git submodule foreach git pull origin master >/dev/null 2>&1
 
     echo Final Server Configurations
     sudo a2enmod rewrite >/dev/null 2>&1
@@ -57,7 +40,7 @@ SCRIPT
   config.vm.provision "shell", inline: $final, privileged: false
 
   config.vm.synced_folder "~/Sites/aljcepeda", "/var/www/html"
-
+  config.vm.synced_folder "~/vendor", "/home/vagrant/vendor"
 end
 
 #
