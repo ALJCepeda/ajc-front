@@ -30,7 +30,6 @@ Vagrant.configure(2) do |config|
     sudo service apache2 restart >/dev/null 2>&1
 
   	echo "Welcome to ALJCepeda\'s Dev Environment!"
-  	echo "Technologies: LAMP, GIT, Composer, Bower and more"
 SCRIPT
 
   config.vm.provision "shell", inline: "(grep -q -E '^mesg n$' /root/.profile && sed -i 's/^mesg n$/tty -s \\&\\& mesg n/g' /root/.profile && echo 'stdin: is not a tty; Error has been fixed') || exit 0;"

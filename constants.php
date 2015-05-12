@@ -3,7 +3,7 @@
 	define('HOSTNAME', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME']);
 	define('DOMAIN', isset($_SERVER['HTTPS']) ? 'https://' : 'http://' . HOSTNAME);
 
-	define('ISLOCAL', strpos(HOSTNAME, 'aljcepeda.local') !== FALSE);
+	define('ISLOCAL', strpos(HOSTNAME, 'aljcepeda.com') === FALSE);
 
 	if(ISLOCAL){
 		define('HOME', '/home/vagrant');
