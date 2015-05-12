@@ -1,10 +1,9 @@
 <?php
 $container = container();
 
-$container->identifyScript(VENDOR . '/aljcepeda/ORM/services/entitymanager.php');
-$container->identifyScript(VENDOR . '/aljcepeda/ORM/services/pdoagent.php');
-$container->identifyScript(VENDOR . '/aljcepeda/ORM/services/ormservice.php');
-
+$container->identifyScript(VENDOR . '/aljcepeda/orm/services/entitymanager.php');
+$container->identifyScript(VENDOR . '/aljcepeda/orm/services/pdoagent.php');
+$container->identifyScript(VENDOR . '/aljcepeda/orm/services/ormservice.php');
 $container->identifyScript(VENDOR . '/aljcepeda/paramhelper/pageparser.php');
 $container->identifyScript(VENDOR . '/aljcepeda/paramhelper/defaults/delegates.php');
 
