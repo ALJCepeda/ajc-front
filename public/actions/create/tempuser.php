@@ -42,7 +42,7 @@
 	$replace = array_merge($replace, [ $expiresOn, $confirmationLink ]);
 	$static = str_replace($search, $replace, $static);
 	
-	include ROOT . 'tmp/supportmailer.php';
+	include ROOT . '/tmp/supportmailer.php';
 
 	$message->From = 'support@aljcepeda.com';
 	$message->FromName = 'Support';
@@ -61,7 +61,7 @@
 					'authKey' => $authKey,
 					'expiresOn' => $expiresOn ];
 
-		$temp->insert('Users', $insert);
+		//$temp->insert('Users', $insert);
 
 		$success = [ 'status' => 'success', 'message' => "Successfully reserved username($username) and sent confirmation email to $email" ];
 		echo json_encode($success);
