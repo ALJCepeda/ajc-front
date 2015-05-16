@@ -7,7 +7,6 @@
 
 	if(ISLOCAL){
 		define('HOME', '/home/vagrant');
-		//define('CONTENT_PROVIDER', '../content/bower_components');
 		define('JWTKEY', '4zJhXxRwPGpQ0t3sB3AW96ZAUsSIOl2l');
 
 		define('DS_USERNAME', 'root');
@@ -26,7 +25,7 @@
 	define('USERSDB', SQLSERVER . 'dbname=ajrelic_Users');
 	define('TEMPDB', SQLSERVER . 'dbname=ajrelic_Temp');
 
-	define('EMAILTEMPLATES', ROOT . '/templates/emails');
+	define('EMAILTEMPLATES', ROOT . '/resources/templates/emails');
 	define('TIMEZONE', 'America/Los_Angeles');
 	$TIMEZONE = new DateTimeZone('America/Los_Angeles');
 ?>

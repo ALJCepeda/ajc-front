@@ -17,7 +17,7 @@ $container->addRule('autoresolve')
 
 $container->addRule('autoresolve') 
 	->resolveForIdentifiers('PDO')
-	->restrictToObjects('UsersManager')
+	->restrictToObjects('UsersDB')
 	->withSolution(
 		function($identifier, $objectname) { 
 			return new PDO(USERSDB, DS_USERNAME, DS_PASSWORD); 
@@ -25,13 +25,22 @@ $container->addRule('autoresolve')
 
 $container->addRule('autoresolve') 
 	->resolveForIdentifiers('PDO')
-	->restrictToObjects('TempManager')
+	->restrictToObjects('TempDB')
 	->withSolution(
 		function($identifier, $objectname) { 
 			return new PDO(TEMPDB, DS_USERNAME, DS_PASSWORD); 
 	});
 
+$container->addRule('autoresolve') 
+	->resolveForIdentifiers('PDO')
+	->restrictToObjects('MainDB')
+	->withSolution(
+		function($identifier, $objectname) { 
+			return new PDO(MAINDB, DS_USERNAME, DS_PASSWORD); 
+	});
+
 $container->identifyObject('PageParser', 'PageParser');
-$container->identifyObject('UsersManager', 'EntityManager');
-$container->identifyObject('TempManager', 'EntityManager');
+$container->identifyObject('UsersDB', 'EntityManager');
+$container->identifyObject('TempDB', 'EntityManager');
+$container->identifyObject('MainDB', 'EntityManager');
 ?>

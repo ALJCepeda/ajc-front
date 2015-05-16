@@ -13,8 +13,11 @@ Vagrant.configure(2) do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
-
   config.vm.network :private_network, ip: "192.168.2.21"
+
+  config.ssh.private_key_path = [ '~/.vagrant.d/insecure_private_key', '~/.ssh/id_rsa' ]
+  config.ssh.forward_agent = true
+
   $final = <<SCRIPT
   	#Download personal settings
   	mkdir ~/bash
@@ -34,8 +37,6 @@ SCRIPT
 
   config.vm.provision "shell", inline: "(grep -q -E '^mesg n$' /root/.profile && sed -i 's/^mesg n$/tty -s \\&\\& mesg n/g' /root/.profile && echo 'stdin: is not a tty; Error has been fixed') || exit 0;"
   config.vm.provision "shell", path: "https://gist.githubusercontent.com/ALJCepeda/b5ba70bfa367d04b95c7/raw/047b0ca12cb1d2ee12f90f5f9e191e8b5afd48b4/gistfile1.sh"
-  config.vm.provision "file", source: "~/.ssh/id_rsa", destination: "/home/vagrant/.ssh/id_rsa"
-  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "/home/vagrant/.ssh/id_rsa.pub"
   config.vm.provision "shell", inline: $final, privileged: false
 
   config.vm.synced_folder "./", "/var/www/html"

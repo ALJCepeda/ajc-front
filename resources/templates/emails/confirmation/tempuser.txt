@@ -1,0 +1,19 @@
+Hello,
+
+This is a example confirmation email from aljcepeda.com for registering username: {{username}}. 
+This confirmation email will expire on: {{expiresOn}}.
+
+The body of this email is stored statically and populated with the appropriate details before it is sent to the registering user (you).
+
+Emails are a convenient way to confirm that the person registering {{username}} is an actual person. We put trust in server daemons to maintain valid emails, so just by successfully sending this email we've satisfied the first part of our requirements.
+
+The next part helps to determine your human just by making you click on the following link:
+{{confirmationLink}}
+
+Contained in the above link is a random set of 32 characters called a key. There are only 2 places where this key is both known and associated with the username ({{username}}), within this email and stored on the server you registered on.
+
+By  clicking the link, you let our servers know that you confirm that you intentionally signed up for our services and wish to continue with the registration process. You will also need to input a password for your account, failure to do so will leave the confirmation incomplete and will subject the account to the expiration date state above.
+
+Thank you,
+Support
+https://ALJCepeda.com

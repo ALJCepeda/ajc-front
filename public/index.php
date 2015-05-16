@@ -2,7 +2,11 @@
 
 //Does all preprocessing such  as routing request, providing dependencies and setting up variables
 //Most importantly, it provides the parameters for the requested page $parameters
-include '../resources/security/processrequest.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/startsession.php';
+
+//Attempts to resolve request path or redirects to 404
+//Provides $parameters for page
+include ROOT . '/resources/routerequest.php';
 
 ?>
 

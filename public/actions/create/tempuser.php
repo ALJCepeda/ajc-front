@@ -1,76 +1,76 @@
 <?php
-	header('Location: /', true, 301);
-	die;
+	include $_SERVER['DOCUMENT_ROOT'] . '/startsession.php';
+	$response = [ 'status' => 'success', 'request' => $_REQUEST ];
 	
-	require($_SERVER['DOCUMENT_ROOT'] . '/config.php');
-	require($_SERVER['DOCUMENT_ROOT'] . '/classes/TemplateEmailer.php');
-
-	include $_SERVER['DOCUMENT_ROOT'] . '/vendor/swiftmailer/swiftmailer/lib/swift_required.php';
-
 	$pageParser = GRAB('PageParser');
 
 	$pageParser->setRequiredAtIndex('username', USERNAME);
 	$pageParser->setRequiredAtIndex('email', EMAIL);
-	$pageParser->parseRequest();
+	$pageParser->parseRequest(); 
 
-	$users = GRAB('UsersManager');
-	$temp = GRAB('TempManager');
+	$users = GRAB('UsersDB');
+	$temp = GRAB('TempDB');
 
 	if($users->exists('Users', "username = $username") || $temp->exists('Users', "username = $username")){
-		echo "The username($username) has already been taken";
+		http_response_code(409);
+		$response['status'] = 'failed';
+		$response['error'] = [ 'type' => 'duplicate', 'message' => "The username($username) has already been reserved" ];
+		echo json_encode($response);
 		die;
 	}
 
 	if($users->exists('Emails', "local = $email") || $temp->exists('Users', "email = $email")) {
-		echo "The email($email) has already been used to register an account";
+		http_response_code(409);
+		$response['status'] = 'failed';
+		$response['error'] = [ 'type' => 'duplicate', 'message' => "The email($email) has already been reserver" ];
+		echo json_encode($response);
 		die;
 	}
 
-	$authKey = md5(uniqid(rand(), true));
-	$expDays = GET_CONSTANT("TEMP_USER_EXP_DAYS"); 
+	$authKey = md5(uniqid());
+	$expDays = GET_CONSTANT('TEMP_USER_EXP_DAYS'); 
 	$expiresOn= Date('Y/m/d', strtotime("+ $expDays days"));
 
-	$insert = [ 'username' => $username,
-				'email' => $email,
-				'authKey' => $authKey,
-				'expiresOn' => $expiresOn ];
-
-	var_dump($inset);
-	die;
-	$temp->insert('Users', $insert);
-
 	//Generate confirmation link
-	$confirmationLink = DOMAIN . "/action/confirm/users.php?username={{username}}&authKey={{authKey}}";
+	$confirmationLink = DOMAIN . '/action/confirm/users.php?username={{username}}&authKey={{authKey}}';
 	$search = [ '{{username}}', '{{authKey}}' ];
 	$replace = [ $username, $authKey ];
 	$confirmationLink = str_replace($search, $replace, $confirmationLink);
 
-	//Send email
-	$emailer = new TemplateEmailer($email, 'support', EMAILTEMPLATES . "/confirmation/user.txt");
-	$emailer->replace = [ 'username' => $username, 'confirmationLink' => $confirmationLink, 'expiresOn' => $expDate ];
-	$emailer->generateEmail();
-	$emailer->sendEmail();
+	$static = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser.txt');
+	$search = array_merge($search, [ '{{expiresOn}}', '{{confirmationLink}}']);
+	$replace = array_merge($replace, [ $expiresOn, $confirmationLink ]);
+	$static = str_replace($search, $replace, $static);
 
-/*
-	echo "Succesfully reserved username: " . $username . " and sent confirmation email to " . $email;
+	include VENDOR . '/phpmailer/phpmailer/PHPMailerAutoload.php';
+	$message = new PHPMailer;
+	$message->isSMTP();
+	$message->Host = SMTPHOST;
+	$message->Port = SMTPPORT;
+	$message->Username = SUPPORTEMAIL;
+	$message->Password = SUPPORTPWD;
+	$message->SMTPAuth = true;
+	$message->SMTPSecure = 'ssl';
+	
+	$message->From = 'support@aljcepeda.com';
+	$message->FromName = 'Support';
+	$message->addAddress($email);
+	$message->Subject = 'Thank you for registering to ALJCepeda.com!';
+	$message->Body = $static;
 
-	function onEmailError($e){
-		global $username, $email, $pdo;
+	if(!$message->send()) {
+		http_response_code(503);
+		$error = [ 'status' => 'failed', 'error' => [ 'type' => 'internal', 'message' => "We were unable to send a confirmation email for: $email. Please try again later.", 'details' => $message->ErrorInfo ]];
+		echo json_encode($error);
+	} else {
+		$insert = [ 'username' => $username,
+					'email' => $email,
+					'authKey' => $authKey,
+					'expiresOn' => $expiresOn ];
 
-		$sqlString = "
-						DELETE FROM Users
-						WHERE 
-							username = ?
-							AND email = ?
-					";
-		$statement = $pdo->prepare($sqlString);
+		$temp->insert('Users', $insert);
 
-		$statement->bindValue(1, $username, PDO::PARAM_STR);
-		$statement->bindValue(2, $email, PDO::PARAM_STR);
-		$statement->execute();
-
-		echo "Sorry we were unable to send a confirmation email for: " . $email . "</br>";
-		echo "Please try again later";
-		die;
-	}*/
+		$success = [ 'status' => 'success', 'message' => "Successfully reserved username($username) and sent confirmation email to $email" ];
+		echo json_encode($success);
+	}
 ?>
