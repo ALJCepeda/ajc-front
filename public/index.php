@@ -1,7 +1,6 @@
 <?php
 
-//Does all preprocessing such  as routing request, providing dependencies and setting up variables
-//Most importantly, it provides the parameters for the requested page $parameters
+//Does all preprocessing such as providing dependencies, constants and refreshes session
 include $_SERVER['DOCUMENT_ROOT'] . '/startsession.php';
 
 //Attempts to resolve request path or redirects to 404
@@ -43,7 +42,7 @@ include ROOT . '/resources/routerequest.php';
       			include $parameters['script'];
       			echo "\n\n<!-- Main End -->\n\n\n\n";
       		 ?>
- 			</div>
+ 		</div>
     	</div>
     </div>
 </body>
