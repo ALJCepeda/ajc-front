@@ -28,6 +28,15 @@ include ROOT . '/resources/routerequest.php';
 
 	<script src= "https://code.jquery.com/jquery-2.1.4.min.js" ></script>
 	<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
+
+  <?php 
+      //Location dependant javascript files
+      if(isset($parameters['js'])){
+          foreach ($parameters['js'] as $script) {
+              echo "<script src='$script'></script>";
+          } 
+      }
+  ?>
 </head>
 
 <body>

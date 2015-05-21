@@ -1,19 +1,15 @@
 Hello,
 
-This is a example confirmation email from aljcepeda.com for registering username: {{username}}. 
-This confirmation email will expire on: {{expiresOn}}.
+Thank you for registering to ALJCepeda.com. This is a confirmation email for registering username: {{username}}. Successfully completing this registration process will also subscribe this email ({{email}}) to our mailing list which will keep you informed of major releases. Don't worry, we won't email you unless it's super duper important :).
 
-The body of this email is stored statically and populated with the appropriate details before it is sent to the registering user (you).
 
-Emails are a convenient way to confirm that the person registering {{username}} is an actual person. We put trust in server daemons to maintain valid emails, so just by successfully sending this email we've satisfied the first part of our requirements.
+Here is the typical confirmation email which will complete your registration: {{confirmationLink}}. Please keep in mind you'll be asked to provide a password to secure your login, it needs to atleast 8 characters long, contain 1 uppercase letter, 1 number and 1 special character.
 
-The next part helps to determine your human just by making you click on the following link:
-{{confirmationLink}}
+Also keep in mind that link will expire on {{expiresOn}}. If you haven't clicked it on it by {{expiresOn}} you'll have to fill out my rediculously long sign up sheet all over again :(. 
 
-Contained in the above link is a random set of 32 characters called a key. There are only 2 places where this key is both known and associated with the username ({{username}}), within this email and stored on the server you registered on.
 
-By  clicking the link, you let our servers know that you confirm that you intentionally signed up for our services and wish to continue with the registration process. You will also need to input a password for your account, failure to do so will leave the confirmation incomplete and will subject the account to the expiration date state above.
+Stand by for my awesome new app 'Echo'. All I'm going to say is it's a location based messaging system and if you have a phone with GPS, you're going to love it.
 
-Thank you,
-Support
+Thank you you for your support!
+Alfred Jeremy Cepeda
 https://ALJCepeda.com

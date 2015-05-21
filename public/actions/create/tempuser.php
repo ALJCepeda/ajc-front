@@ -22,7 +22,7 @@
 	if($users->exists('Emails', "local = $email") || $temp->exists('Users', "email = $email")) {
 		http_response_code(409);
 		$response['status'] = 'failed';
-		$response['error'] = [ 'type' => 'duplicate', 'message' => "The email($email) has already been reserver" ];
+		$response['error'] = [ 'type' => 'duplicate', 'message' => "The email($email) has already been reserved" ];
 		echo json_encode($response);
 		die;
 	}
@@ -38,8 +38,8 @@
 	$confirmationLink = str_replace($search, $replace, $confirmationLink);
 
 	$static = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser.txt');
-	$search = array_merge($search, [ '{{expiresOn}}', '{{confirmationLink}}']);
-	$replace = array_merge($replace, [ $expiresOn, $confirmationLink ]);
+	$search = array_merge($search, [ '{{expiresOn}}', '{{confirmationLink}}', '{{email}}']);
+	$replace = array_merge($replace, [ $expiresOn, $confirmationLink, $email ]);
 	$static = str_replace($search, $replace, $static);
 	
 	include ROOT . '/tmp/supportmailer.php';
