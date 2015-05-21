@@ -36,7 +36,7 @@
 
 	if($users->exists('Users', "username = $username") || $temp->exists('Users', "username = $username")){
 		$response['status'] = 'failed';
-		$response['error'] = [ 'type' => 'duplicate', 'message' => "$username has already been reserved, please choose a different username" ];
+		$response['error'] = [ 'type' => 'duplicate', 'message' => "`$username` has already been reserved, please choose a different username" ];
 		$encode = base64_encode(json_encode($response));
 
 		http_response_code(409);
@@ -46,7 +46,7 @@
 
 	if($users->exists('Emails', "local = $email") || $temp->exists('Users', "email = $email")) {
 		$response['status'] = 'failed';
-		$response['error'] = [ 'type' => 'duplicate', 'message' => "$email is already in use, please choose a different email or contact support if this is an error" ];
+		$response['error'] = [ 'type' => 'duplicate', 'message' => "`$email` is already in use, please choose a different email or contact support if this is an error" ];
 		$encode = base64_encode(json_encode($response));
 
 		http_response_code(409);
@@ -78,7 +78,7 @@
 	$message->Body = $static;
 
 	if(!$message->send()) {
-		$error = [ 'status' => 'failed', 'error' => [ 'type' => 'internal', 'message' => "We were unable to send a confirmation email to $email. Please try again later", 'details' => $message->ErrorInfo ]];
+		$error = [ 'status' => 'failed', 'error' => [ 'type' => 'internal', 'message' => "We were unable to send a confirmation email to `$email`. Please try again later", 'details' => $message->ErrorInfo ]];
 		$encode = base64_encode(json_encode($response));
 
 		http_response_code(503);
@@ -92,7 +92,7 @@
 
 		$temp->insert('Users', $insert);
 
-		$response = ['message' => "Successfully reserved $username and sent confirmation email to $email" ];
+		$response = ['message' => "Successfully reserved $username and sent confirmation email to `$email`" ];
 		$encode = base64_encode(json_encode($response));
 
 		http_response_code(200);
