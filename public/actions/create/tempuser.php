@@ -92,7 +92,7 @@
 
 		$temp->insert('Users', $insert);
 
-		$response = ['message' => "Successfully reserved $username and sent confirmation email to `$email`" ];
+		$response = ['message' => "Successfully reserved `$username` and sent confirmation email to `$email`" ];
 		$encode = base64_encode(json_encode($response));
 
 		http_response_code(200);
