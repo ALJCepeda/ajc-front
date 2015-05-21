@@ -1,13 +1,37 @@
 <?php
 	include $_SERVER['DOCUMENT_ROOT'] . '/startsession.php';
-	$response = [ 'status' => 'success', 'request' => $_REQUEST ];
-	
+	$response = [ 'status' => 'success', 'error' => '', 'uri' => DOMAIN . $_SERVER['REQUEST_URI'] ];
+
 	$pageParser = GRAB('PageParser');
 
+	$pageParser->parseGet = false;
 	$pageParser->setRequiredAtIndex('username', USERNAME);
 	$pageParser->setRequiredAtIndex('email', EMAIL);
+	$pageParser->setRequiredAtIndex('g-recaptcha-response', ALLCHARACTERS);
 	$pageParser->parseRequest(); 
 
+	$url = RECAPTCHAURL;
+	$data = [ 'secret' => RECAPTCHASCRT, 'response' => $grecaptcharesponse, 'remoteip' => $_SERVER['REMOTE_ADDR'] ];
+	$options = 	[ 'http' => [
+						'header' => 'Content-type: application/x-www-form-urlencoded\r\n',
+						'method' => 'POST',
+						'content' => http_build_query($data)
+					]
+				];
+	$context = stream_context_create($options);
+	$result = json_decode(file_get_contents($url, false, $context), true);
+
+	if(!$result['success']) {
+		$response['status'] = 'failed';
+		$response['error'] = [ 'type' => 'recaptcha', 'message' => 'Whoops looks like you got recaptcha wrong, please try again'];
+		$encode = base64_encode(json_encode($response));
+
+		http_response_code(409);
+		header("Location:/user/create?redirect=$encode");
+		die;
+	}
+
+	die;
 	$users = GRAB('UsersDB');
 	$temp = GRAB('TempDB');
 
