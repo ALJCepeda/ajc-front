@@ -23,7 +23,7 @@
 
 	if(!$result['success']) {
 		$response['status'] = 'failed';
-		$response['error'] = [ 'type' => 'recaptcha', 'message' => 'Whoops looks like you got recaptcha wrong, please try again'];
+		$response['error'] = [ 'type' => 'recaptcha', 'message' => 'Whoops looks like you got the recaptcha wrong, please try again'];
 		$encode = base64_encode(json_encode($response));
 
 		http_response_code(409);
@@ -31,23 +31,26 @@
 		die;
 	}
 
-	die;
 	$users = GRAB('UsersDB');
 	$temp = GRAB('TempDB');
 
 	if($users->exists('Users', "username = $username") || $temp->exists('Users', "username = $username")){
-		http_response_code(409);
 		$response['status'] = 'failed';
-		$response['error'] = [ 'type' => 'duplicate', 'message' => "The username($username) has already been reserved" ];
-		echo json_encode($response);
+		$response['error'] = [ 'type' => 'duplicate', 'message' => "$username has already been reserved, please choose a different username" ];
+		$encode = base64_encode(json_encode($response));
+
+		http_response_code(409);
+		header("Location:/user/create?redirect=$encode");
 		die;
 	}
 
 	if($users->exists('Emails', "local = $email") || $temp->exists('Users', "email = $email")) {
-		http_response_code(409);
 		$response['status'] = 'failed';
-		$response['error'] = [ 'type' => 'duplicate', 'message' => "The email($email) has already been reserved" ];
-		echo json_encode($response);
+		$response['error'] = [ 'type' => 'duplicate', 'message' => "$email is already in use, please choose a different email or contact support if this is an error" ];
+		$encode = base64_encode(json_encode($response));
+
+		http_response_code(409);
+		header("Location:/user/create?redirect=$encode");
 		die;
 	}
 
@@ -75,9 +78,11 @@
 	$message->Body = $static;
 
 	if(!$message->send()) {
+		$error = [ 'status' => 'failed', 'error' => [ 'type' => 'internal', 'message' => "We were unable to send a confirmation email to $email. Please try again later", 'details' => $message->ErrorInfo ]];
+		$encode = base64_encode(json_encode($response));
+
 		http_response_code(503);
-		$error = [ 'status' => 'failed', 'error' => [ 'type' => 'internal', 'message' => "We were unable to send a confirmation email for: $email. Please try again later.", 'details' => $message->ErrorInfo ]];
-		echo json_encode($error);
+		header("Location:/user/create?redirect=$encode");
 		die;
 	} else {
 		$insert = [ 'username' => $username,
@@ -85,10 +90,13 @@
 					'authKey' => $authKey,
 					'expiresOn' => $expiresOn ];
 
-		//$temp->insert('Users', $insert);
+		$temp->insert('Users', $insert);
 
-		$success = [ 'status' => 'success', 'message' => "Successfully reserved username($username) and sent confirmation email to $email" ];
-		echo json_encode($success);
+		$response = ['message' => "Successfully reserved $username and sent confirmation email to $email" ];
+		$encode = base64_encode(json_encode($response));
+
+		http_response_code(200);
+		header("Location:/?redirect=$encode");
 		die;
 	}
 ?>

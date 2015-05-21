@@ -3,13 +3,13 @@ Hello,
 Thank you for registering to ALJCepeda.com. This is a confirmation email for username: {{username}}. Successfully completing this registration process will also subscribe this email ({{email}}) to our mailing list which will keep you informed of major releases. Don't worry, we won't email you unless it's super duper important :).
 
 
-Here's the typical confirmation link which will complete your registration: {{confirmationLink}}. You'll be asked to provide a password to secure your login, it needs to atleast 8 characters long, contain 1 uppercase letter, 1 number and 1 special character.
+Here's the typical confirmation link which will complete your registration: {{confirmationLink}}. You'll be asked to provide a password to secure your login, it needs to be atleast 8 characters long, contain 1 uppercase letter, 1 number and 1 special character.
 
-Also keep in mind that link will expire on {{expiresOn}}. If you haven't clicked it on it by {{expiresOn}} you'll have to fill out my rediculously long sign up sheet all over again :(. 
+Also keep in mind that the confirmation link will expire on {{expiresOn}}. If you haven't clicked it on it by {{expiresOn}} you'll have to fill out my rediculously long sign up sheet again :(. 
 
 
 Stand by for my awesome new app 'Echo'. All I'm going to say is it's a location based messaging system and if you have a phone with GPS, you're going to love it.
 
-Thank you you for your support!
-Alfred Jeremy Cepeda
+Thank you for your support!
+Alfred J Cepeda
 https://ALJCepeda.com

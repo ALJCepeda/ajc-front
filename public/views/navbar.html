@@ -1,28 +1,53 @@
 <?php
 
 if(ISLOCAL){
-  $blog = "#";
+	$blog = "#";
 } else {
-  $blog = "http://blog.aljcepeda.com";
+	$blog = "http://blog.aljcepeda.com";
 }
 
 ?>
 
 <script>
-      $(document).ready(function() {
-          $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
-      });
+	$(document).ready(function() {
+		$('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+	});
 </script>
 
+<?php
+	$notification = '';
+	if(isset($_GET['redirect'])) {
+		$json = json_decode(base64_decode($_GET['redirect']), true);
+		if(isset($json['error'])) {
+			//Errors should always have a user friendly message
+			$message = $json['error']['message'];
+			$status = 'Error:';
+			$type = 'alert-danger';
+		} else if(isset($json['message'])) {
+			//Check to see if there's a message to display to the user anyways
+			$message = $json['message'];
+			$status = 'Success:';
+			$type = 'alert-success';
+		}
+
+		$notification = "<div class='alert $type' role='alert'>" .
+							"<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" .
+							"<span class='sr-only'>$status</span>" .
+							$message .
+						"</div>";
+	}
+?>
+	
 <div class="masthead clearfix">
+	<?=$notification?>
 	<div class="inner">
-  		<h3 class="masthead-brand">ALJCepeda</h3>
-      	<nav>
-        	<ul class="nav masthead-nav">
-          		<li><a href="/">Home</a></li>
-          		<li><a href="/user/create">Register</a></li>
-          		<li><a href= <?=$blog?> >Blog</a></li>
-        	</ul>
-      	</nav>
+		<h3 class="masthead-brand">ALJCepeda</h3>
+		<nav>
+			<ul class="nav masthead-nav">
+				<li><a href="/">Home</a></li>
+				<li><a href="/user/create">Register</a></li>
+				<li><a href= <?=$blog?> >Blog</a></li>
+			</ul>
+		</nav>
 	</div>
 </div>

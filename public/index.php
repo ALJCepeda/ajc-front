@@ -28,32 +28,32 @@ include ROOT . '/resources/routerequest.php';
 	<script src= "https://code.jquery.com/jquery-2.1.4.min.js" ></script>
 	<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
 
-  <?php 
-      //Location dependant javascript files
-      if(isset($parameters['js'])){
-          foreach ($parameters['js'] as $script) {
-              echo "<script src='$script'></script>";
-          } 
-      }
-  ?>
+	<?php 
+			//Location dependant javascript files
+			if(isset($parameters['js'])){
+					foreach ($parameters['js'] as $script) {
+							echo "<script src='$script'></script>";
+					} 
+			}
+	?>
 </head>
 
 <body>
-    <div class="site-wrapper">
-      	<div class="site-wrapper-inner">
-        	<div class="cover-container">
-      		<?php
-      			echo "\n\n\n\n<!-- Navbar Start -->\n\n";
-      			include 'views/navbar.html';
-      			echo "\n\n<!-- Navbar End -->\n\n";
+	<div class="site-wrapper">
+		<div class="site-wrapper-inner">
+			<div class="cover-container">
+				<?php
+					echo "\n\n\n\n<!-- Navbar Start -->\n\n";
+					include 'views/navbar.html';
+					echo "\n\n<!-- Navbar End -->\n\n";
 
-      			echo "\n\n<!-- Main Start -->\n\n";
-      			include $parameters['script'];
-      			echo "\n\n<!-- Main End -->\n\n\n\n";
-      		 ?>
- 		</div>
-    	</div>
-    </div>
+					echo "\n\n<!-- Main Start -->\n\n";
+					include $parameters['script'];
+					echo "\n\n<!-- Main End -->\n\n\n\n";
+				?>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
