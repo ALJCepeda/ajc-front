@@ -56,7 +56,7 @@
 
 	$authKey = md5(uniqid());
 	$expDays = GET_CONSTANT('TEMP_USER_EXP_DAYS'); 
-	$expiresOn= Date('Y/m/d', strtotime("+ $expDays days"));
+	$expiresOn= Date('Y-m-d H:i:s', strtotime("+ $expDays days"));
 
 	//Generate confirmation link
 	$confirmationLink = DOMAIN . '/action/confirm/users.php?username={{username}}&authKey={{authKey}}';
