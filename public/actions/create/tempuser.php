@@ -10,7 +10,7 @@
 		Validate request
 	*/
 	validateRequest(['username', 'email', 'g-recaptcha-response']);
-	//validateRecaptcha($grecaptcharesponse);
+	validateRecaptcha($grecaptcharesponse);
 
 	/*
 		Validate parameters
