@@ -56,13 +56,17 @@
 	$payload = [ 'username' => $username, 'authKey' => $authKey, 'email' => $email ];
 	$encode = base64_encode(json_encode($payload));
 	$confirmationLink = DOMAIN . "/action/confirm/users.php?p=$encode";
+	$confirmationView = DOMAIN . "/user/confirm?p=$encode";
 
 	//Grab email template and replace parameters with values
-	$static = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser.txt');
-	$search = ['{{expiresOn}}', '{{confirmationLink}}', '{{username}}', '{{email}}'];
-	$replace = [$expiresOn, $confirmationLink, $username, $email];
+	$static = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser');
+	$staticHtml = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser_html');
+
+	$search = ['{{expiresOn}}', '{{confirmationLink}}', '{{confirmationView}}', '{{username}}', '{{email}}'];
+	$replace = [$expiresOn, $confirmationLink, $confirmationView, $username, $email];
 
 	$static = str_replace($search, $replace, $static);
+	$staticHtml = str_replace($search, $replace, $staticHtml);
 	
 	//Send email off to registering user
 	include ROOT . '/tmp/supportmailer.php';
@@ -71,7 +75,8 @@
 	$message->FromName = 'Support';
 	$message->addAddress($email);
 	$message->Subject = 'Thank you for registering to ALJCepeda.com!';
-	$message->Body = $static;
+	$message->Body = $staticHtml;
+	$message->AltBody = $static;
 
 	//Message failed for some reason
 	if(!$message->send()) {
