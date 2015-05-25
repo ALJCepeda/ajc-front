@@ -1,4 +1,15 @@
 <?php
+
+
+return [
+	'TempPDO' => DI\factory(function($c) { return new PDO(TEMPDB, DS_USERNAME, DS_PASSWORD); }),
+	'ServerPDO' => DI\factory(function($c) { return new PDO(SERVERDB, DS_USERNAME, DS_PASSWORD); }),
+	'AccountsPDO' => DI\factory(function($c) { return new PDO(ACCOUNTSDB, DS_USERNAME, DS_PASSWORD); }),
+	'TempDB' => DI\object('NotORM')->constructor(DI\link('TempPDO')),
+	'ServerDB' => DI\object('NotORM')->constructor(DI\link('ServerPDO')),
+	'AccountsDB' => DI\object('NotORM')->constructor(DI\link('AccountsPDO'))
+];
+/*
 $container = container();
 
 $container->identifyScript(VENDOR . '/aljcepeda/orm/services/entitymanager.php');
@@ -43,4 +54,5 @@ $container->identifyObject('PageParser', 'PageParser');
 $container->identifyObject('UsersDB', 'EntityManager');
 $container->identifyObject('TempDB', 'EntityManager');
 $container->identifyObject('MainDB', 'EntityManager');
+*/
 ?>

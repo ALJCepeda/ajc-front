@@ -20,9 +20,9 @@
 	define('VENDOR', HOME . '/vendor');
 	define('SQLSERVER', 'mysql:host=localhost;');
 
-	define('MAINDB', SQLSERVER . 'dbname=ajrelic_Main');
+	define('SERVERDB', SQLSERVER . 'dbname=ajrelic_Server');
 	define('SESSIONSDB', SQLSERVER . 'dbname=ajrelic_Sessions');
-	define('USERSDB', SQLSERVER . 'dbname=ajrelic_Users');
+	define('ACCOUNTSDB', SQLSERVER . 'dbname=ajrelic_Accounts');
 	define('TEMPDB', SQLSERVER . 'dbname=ajrelic_Temp');
 
 	define('EMAILTEMPLATES', ROOT . '/resources/templates/emails');

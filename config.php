@@ -1,11 +1,11 @@
 <?php
 error_reporting(-1);
 
-include 'constants.php';
-include VENDOR . '/aljcepeda/misc/misc.php';
-include 'resources/queryconsts.php';
-include VENDOR . '/autoload.php';
 include 'aljcepeda.php';
+include 'constants.php';
+include VENDOR . '/autoload.php';
+include VENDOR . '/aljcepeda/misc/misc.php';
+include ROOT . '/misc.php';
 
 set_error_handler(
 	function($errorNum, $errorDetails) {

@@ -9,10 +9,9 @@ include ROOT . '/resources/security/validatesession.php';
 //Does final updates to JWT and resets cookie
 include ROOT . '/resources/security/updatesession.php';
 
-//If user was redirected to an error page then there's no reason to set up dependencies
-include VENDOR . '/aljcepeda/dependencycontainer/dependencycontainer.php';
-
-new ALJCepeda\DependencyContainer\DependencyContainer();
+$builder = new DI\ContainerBuilder();
+$builder->addDefinitions(ROOT . '/resources/dependencyrules.php');
+$container = $builder->build();
 
 include ROOT . '/resources/dependencyrules.php';
 

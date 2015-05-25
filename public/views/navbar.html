@@ -1,31 +1,22 @@
 <?php
 
-if(ISLOCAL){
-	$blog = "#";
-} else {
-	$blog = "http://blog.aljcepeda.com";
-}
+	if(ISLOCAL){
+		$blog = "#";
+	} else {
+		$blog = "http://blog.aljcepeda.com";
+	}
 
-?>
-
-<script>
-	$(document).ready(function() {
-		$('a[href="' + this.location.pathname + '"]').parent().addClass('active');
-	});
-</script>
-
-<?php
 	$notification = '';
-	if(isset($_GET['redirect'])) {
-		$json = json_decode(base64_decode($_GET['redirect']), true);
-		if(isset($json['error'])) {
+	if(isset($_SESSION['redirect'])) {
+		$redirect = $_SESSION['redirect'];
+		if(!empty($redirect['error'])) {
 			//Errors should always have a user friendly message
-			$message = $json['error']['message'];
+			$message = $redirect['error']['message'];
 			$status = 'Error:';
 			$type = 'alert-danger';
-		} else if(isset($json['message'])) {
+		} else if(!empty($redirect['message'])) {
 			//Check to see if there's a message to display to the user anyways
-			$message = $json['message'];
+			$message = $redirect['message'];
 			$status = 'Success:';
 			$type = 'alert-success';
 		}
@@ -35,8 +26,16 @@ if(ISLOCAL){
 							"<span class='sr-only'>$status</span>" .
 							$message .
 						"</div>";
+
+		$_SESSION['redirect'] = NULL;
 	}
 ?>
+
+<script>
+	$(document).ready(function() {
+		$('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+	});
+</script>
 	
 <div class="masthead clearfix">
 	<?=$notification?>
