@@ -80,12 +80,10 @@
 	}
 
 	//Email succeeded, save registration information temporarily
-	$insert = [ 'username' => $username,
-				'email' => $email,
-				'authKey' => $authKey,
-				'expiresOn' => $expiresOn ];
-
-	$tempUsers->insert($insert);
+	$tempUsers->insert(['username' => $username,
+						'email' => $email,
+						'authKey' => $authKey,
+						'expiresOn' => $expiresOn]);
 
 	respond_success("Successfully reserved `$username` and sent confirmation email to `$email`");
 	die;
