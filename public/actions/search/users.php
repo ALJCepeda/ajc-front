@@ -1,6 +1,6 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'] . '/config.php');
+require filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/config.php';
 
 //If user was redirected to an error page then there's no reason to set up dependencies
 include VENDOR . '/aljcepeda/dependencycontainer/dependencycontainer.php';

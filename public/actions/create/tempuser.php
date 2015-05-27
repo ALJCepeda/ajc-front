@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT'] . '/startsession.php';
+	include filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/startsession.php';
 	include ROOT . '/resources/modules/notorm.php';
 	use Respect\Validation\Validator;
 	use Egulias\EmailValidator\EmailValidator;
@@ -20,9 +20,9 @@
 	if(!Validator::alnum('_')->noWhitespace()->length($min, $max)->validate($username)){
 		response_error(400, 'invalid', "Username is invalid, please try again");
 		die;
-	};
-	
-	if(!(new EmailValidator)->isValid($email)) {
+	}
+
+        if(!(new EmailValidator)->isValid($email)) {
     	response_error(400, 'invalid', "Email is invalid, please try again");
    		die;
 	}
@@ -59,14 +59,14 @@
 	$confirmationView = DOMAIN . "/user/confirm?p=$encode";
 
 	//Grab email template and replace parameters with values
-	$static = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser');
-	$staticHtml = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser_html');
+	$staticContent = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser');
+	$staticHtmlContent = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser_html');
 
 	$search = ['{{expiresOn}}', '{{confirmationLink}}', '{{confirmationView}}', '{{username}}', '{{email}}'];
 	$replace = [$expiresOn, $confirmationLink, $confirmationView, $username, $email];
 
-	$static = str_replace($search, $replace, $static);
-	$staticHtml = str_replace($search, $replace, $staticHtml);
+	$staticBody = str_replace($search, $replace, $staticContent);
+	$staticHtmlBody = str_replace($search, $replace, $staticHtmlContent);
 	
 	//Send email off to registering user
 	include ROOT . '/tmp/supportmailer.php';
@@ -75,8 +75,9 @@
 	$message->FromName = 'Support';
 	$message->addAddress($email);
 	$message->Subject = 'Thank you for registering to ALJCepeda.com!';
-	$message->Body = $staticHtml;
-	$message->AltBody = $static;
+	$message->Body = $staticBody;
+	//$message->Body = $staticHtmlBody;
+	//$message->AltBody = $static;
 
 	//Message failed for some reason
 	if(!$message->send()) {

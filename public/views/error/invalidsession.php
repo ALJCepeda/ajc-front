@@ -1,5 +1,5 @@
 <?php
-	header($_SERVER['SERVER_PROTOCOL'] . ' Unable to complete request', true, 400);
+	header(filter_input(INPUT_SERVER, 'SERVER_PROTOCOL') . ' Unable to complete request', true, 400);
 ?>
 
 <div class="inner cover">

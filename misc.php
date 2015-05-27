@@ -1,15 +1,16 @@
 <?php
 
 function validateRequest($required) {
-	$missing = array_diff($required, array_keys($_POST));
-	if($missing) {
-		//We don't redirect here because this isn't an error a user should encounter
-		redirect_error(400, '', 'request', 'Invalid request, missing required parameters: ' . implode(', ', $missing));
-		die;
-	} else {
-		//Valid request, initalize required parameters
-		initGlobalVariables($_POST, $required);
-	}
+    $post = filter_input_array(INPUT_POST);
+    $missing = array_diff($required, array_keys($post));
+    if($missing) {
+        //We don't redirect here because this isn't an error a user should encounter
+        redirect_error(400, '', 'request', 'Invalid request, missing required parameters: ' . implode(', ', $missing));
+        die;
+    } else {
+        //Valid request, initalize required parameters
+        initGlobalVariables($post, $required);
+    }
 }
 
 /*
@@ -18,7 +19,7 @@ function validateRequest($required) {
 */
 function validateRecaptcha($grecaptcharesponse) {
 	$url = RECAPTCHAURL;
-	$data = [ 'secret' => RECAPTCHASCRT, 'response' => $grecaptcharesponse, 'remoteip' => $_SERVER['REMOTE_ADDR'] ];
+	$data = [ 'secret' => RECAPTCHASCRT, 'response' => $grecaptcharesponse, 'remoteip' => filter_input(INPUT_SERVER, 'REMOVE_ADDR') ];
 	$options = 	[ 'http' => [
 						'header' => 'Content-type: application/x-www-form-urlencoded\r\n',
 						'method' => 'POST',
@@ -71,13 +72,13 @@ function respond($code, $response, $location = '/') {
 }
 
 function defaultResponse() {
-	return [ 'status' => 'success', 'error' => '', 'uri' => DOMAIN . $_SERVER['REQUEST_URI'] ];
+	return [ 'status' => 'success', 'error' => '', 'uri' => DOMAIN . filter_input(INPUT_SERVER, 'REQUEST_URI') ];
 }
 
 function GET_CONSTANT($name){
 	global $container;
-	if(isset($_GLOBAL['CONSTANTS'][$name])){
-		return $_GLOBAL['CONSTANTS'][$name];
+	if(isset($GLOBALS['CONSTANTS'][$name])){
+		return $GLOBALS['CONSTANTS'][$name];
 	}
 
 	$main = $container->get('ServerDB');
@@ -96,7 +97,7 @@ function GET_CONSTANT($name){
 		$value = intval($value);
 	}
 
-	$_GLOBAL['CONSTANTS'][$name] = $value;
+	$GLOBALS['CONSTANTS'][$name] = $value;
 
 	return $value;
 }
