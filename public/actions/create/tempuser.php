@@ -64,7 +64,7 @@
 	//Generate confirmation link
 	$payload = [ 'username' => $username, 'confirmationKey' => $confirmationKey, 'email' => $email ];
 	$encode = base64_encode(json_encode($payload));
-	$confirmationLink = DOMAIN . "/user/confirm/$encode";
+	$confirmationLink = DOMAIN . "/user/confirm?p=$encode";
 
 	//Grab email template and replace parameters with values
 	$staticContent = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser');
