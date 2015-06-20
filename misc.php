@@ -1,6 +1,6 @@
 <?php
 
-function validateInput($required, $input, $onMissing = '') {
+function requireInput($required, $input, $onMissing = '') {
 	if(!is_array($input)) {
 		$input = phpInput($input);
 	}

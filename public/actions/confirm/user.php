@@ -8,7 +8,7 @@
 		Validate request
 		p stands for payload and is a single letter identifier for encoded data
 	*/
-	validateRequest(['p']);
+	requireInput(['p']);
 	
 	/* Validate payload */
 	$payload = base64_decode($p);

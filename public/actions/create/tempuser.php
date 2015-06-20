@@ -10,7 +10,7 @@
 		Validate request
 	*/
 	$required = ['username','email','g-recaptcha-response'];
-	$post = validateInput($required, 'post');
+	$post = requireInput($required, 'post');
     initGlobalVariables($post, $required);
     
 	if(!validRecaptcha($grecaptcharesponse)) {
