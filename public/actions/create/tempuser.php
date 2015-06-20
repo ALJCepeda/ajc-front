@@ -10,13 +10,7 @@
 		Validate request
 	*/
 	$required = ['username','email','g-recaptcha-response'];
-	$post = validateRequest($required ,
-		function /*onMissing*/ ($missing) {
-			respond_error(400, 'request', 'Invalid request, missing required parameters');
-			die;
-	});
-
-    //Convert into global variables
+	$post = validateRequest($required);
     initGlobalVariables($post, $required);
     
 	if(!validRecaptcha($grecaptcharesponse)) {

@@ -1,11 +1,16 @@
 <?php
 
-function validateRequest($required, $onMissing) {
+function validateRequest($required, $onMissing = '') {
 	$post = array_filter(filter_input_array(INPUT_POST));
     $missing = array_diff($required, array_keys($post));
 
 	if(count($missing)){
-		$onMissing($missing);
+		if(is_callable($onMissing)) {
+			$onMissing($missing);
+		} else {
+			respond_error(400, 'request', 'Invalid request, missing required parameters');
+			die;
+		}
 	}
 
 	return array_extract_keys($post, $required);
