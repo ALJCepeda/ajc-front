@@ -1,8 +1,12 @@
 <?php
 
-function validateRequest($required, $onMissing = '') {
-	$post = array_filter(filter_input_array(INPUT_POST));
-    $missing = array_diff($required, array_keys($post));
+function validateInput($required, $input, $onMissing = '') {
+	if(!is_array($input)) {
+		$input = phpInput($input);
+	}
+
+	$input = array_filter($input);
+    $missing = array_diff($required, array_keys($input));
 
 	if(count($missing)){
 		if(is_callable($onMissing)) {
@@ -13,7 +17,21 @@ function validateRequest($required, $onMissing = '') {
 		}
 	}
 
-	return array_extract_keys($post, $required);
+	return array_extract_keys($input, $required);
+}
+
+function phpInput($input) {
+	switch($input) {
+		case 'post':
+			return filter_input_array(INPUT_POST);
+		break;
+
+		case 'get':
+			return filter_input_array(INPUT_GET);
+		break;
+	}
+
+	return [];
 }
 
 /*

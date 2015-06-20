@@ -10,7 +10,7 @@
 		Validate request
 	*/
 	$required = ['username','email','g-recaptcha-response'];
-	$post = validateRequest($required);
+	$post = validateInput($required, 'post');
     initGlobalVariables($post, $required);
     
 	if(!validRecaptcha($grecaptcharesponse)) {
@@ -82,7 +82,7 @@
 	$message->addAddress($email);
 	$message->Subject = 'Thank you for registering to ALJCepeda.com!';
 	$message->Body = $staticBody;
-
+die;
 	
 	if(!$message->send()) {
 		redirect_error(503, '/user/create', 'internal', "We were unable to send a confirmation email to `$email`. Please try again later", [ $message->ErrorInfo ]);

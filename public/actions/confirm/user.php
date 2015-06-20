@@ -1,8 +1,6 @@
 <?php
 	include filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/startsession.php';
 	include ROOT . '/resources/modules/notorm.php';
-	use Respect\Validation\Validator;
-	use Egulias\EmailValidator\EmailValidator;
 
 	$response = defaultResponse();
 
@@ -14,6 +12,7 @@
 	
 	/* Validate payload */
 	$payload = base64_decode($p);
+	
 	$missing = array_diff(['username', 'email', 'authKey'], array_keys($payload));
 
 	$required = ['username','email','g-recaptcha-response'];
