@@ -7,22 +7,20 @@ include VENDOR . '/autoload.php';
 include VENDOR . '/aljcepeda/misc/misc.php';
 include ROOT . '/misc.php';
 
-set_error_handler(
-	function($errorNum, $errorDetails) {
-		echo "</br><pre><code>";
-		echo "Error " . $errorNum . ": " . $errorDetails;
-		echo "</pre></code>";
-	}
-);
+set_error_handler('generalErrorHandler');
+set_exception_handler('generalErrorHandler');
 
-set_exception_handler(
-	function($e){
+function generalErrorHandler($e, $detail = '') {
+	if(ISLOCAL) {
 		echo "</br><pre><code>";
-		echo $e;
+		echo "Error: $e - $detail";
 		echo "</pre></code></br>";
+	} else {
+		header("Location:/error/invalid'");
 	}
-);
 
+	die;
+}
 date_default_timezone_set(TIMEZONE);
 
 function scriptRespondsTo($functionName){

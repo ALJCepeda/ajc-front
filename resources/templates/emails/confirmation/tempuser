@@ -1,9 +1,12 @@
 Hello,
 
-Thank you for registering to ALJCepeda.com. This is a confirmation email for username: {{username}}. Successfully completing this registration process will also subscribe this email ({{email}}) to our mailing list which will keep you informed of major releases. Don't worry, we won't email you unless it's super duper important :).
+Thank you for registering to ALJCepeda.com. This is a confirmation email for username: {{username}}. Successfully completing this registration process will also subscribe this email ({{email}}) to my mailing list which will keep you informed of major releases. Don't worry, we won't email you unless it's super duper important and you can opt out at anytime :)
 
 
-Here's the typical confirmation link which will complete your registration: {{confirmationLink}}. You'll be asked to provide a password to secure your login, it needs to be atleast 8 characters long, contain 1 uppercase letter, 1 number and 1 special character.
+Here's the typical confirmation link which will complete your registration: 
+{{confirmationLink}}. 
+
+You'll be asked to provide a password to secure your login, it needs to be atleast 8 characters long, contain 1 uppercase letter, 1 number and 1 special character. 
 
 Also keep in mind that the confirmation link will expire on {{expiresOn}}. If you haven't clicked it on it by {{expiresOn}} you'll have to fill out my rediculously long sign up sheet again :(. 
 

@@ -1,23 +1,26 @@
 <?php
 
-function validateRequest($required) {
-    $post = filter_input_array(INPUT_POST);
+function validateRequest($required, $onMissing) {
+	$post = array_filter(filter_input_array(INPUT_POST));
     $missing = array_diff($required, array_keys($post));
-    if($missing) {
-        //We don't redirect here because this isn't an error a user should encounter
-        redirect_error(400, '', 'request', 'Invalid request, missing required parameters: ' . implode(', ', $missing));
-        die;
-    } else {
-        //Valid request, initalize required parameters
-        initGlobalVariables($post, $required);
-    }
+
+	if(count($missing)){
+		$onMissing($missing);
+	}
+
+	return array_extract_keys($post, $required);
 }
 
 /*
 	Recaptcha validation 
 	Send POST request along with recaptcha details to determine if it was answered correctly
 */
-function validateRecaptcha($grecaptcharesponse) {
+function validRecaptcha($grecaptcharesponse) {
+	if(ISLOCAL){
+		//Always assume a valid captcha when local
+		return true;
+	}
+	
 	$url = RECAPTCHAURL;
 	$data = [ 'secret' => RECAPTCHASCRT, 'response' => $grecaptcharesponse, 'remoteip' => filter_input(INPUT_SERVER, 'REMOVE_ADDR') ];
 	$options = 	[ 'http' => [
@@ -31,9 +34,12 @@ function validateRecaptcha($grecaptcharesponse) {
 
 	if(!$result['success']) {
 		//Looks like we have an invalid recaptcha
-		redirect_error(409, '/user/create', 'recaptcha', 'Whoops looks like you got the recaptcha wrong, please try again' );
+		trigger_error('Recaptcha responded with an error' + dump_var($result));
 		die;
+		return false;
 	}
+
+	return true;
 }
 
 function respond_error($code, $type, $message, $location = '/') {

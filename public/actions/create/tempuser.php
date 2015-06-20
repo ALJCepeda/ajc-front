@@ -1,4 +1,4 @@
-<?php
+ <?php
 	include filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/startsession.php';
 	include ROOT . '/resources/modules/notorm.php';
 	use Respect\Validation\Validator;
@@ -9,21 +9,34 @@
 	/*
 		Validate request
 	*/
-	validateRequest(['username', 'email', 'g-recaptcha-response']);
-	validateRecaptcha($grecaptcharesponse);
+	$required = ['username','email','g-recaptcha-response'];
+	$post = validateRequest($required ,
+		function /*onMissing*/ ($missing) {
+			respond_error(400, 'request', 'Invalid request, missing required parameters');
+			die;
+	});
+
+    //Convert into global variables
+    initGlobalVariables($post, $required);
+    
+	if(!validRecaptcha($grecaptcharesponse)) {
+		respond_error(409, 'recaptcha', 'Whoops looks like you got the recaptcha wrong, please try again', '/user/create' );
+		die;
+	};
 
 	/*
 		Validate parameters
 	*/
 	$min = GET_CONSTANT('USERNAME_LENGTH_MIN'); 
 	$max = GET_CONSTANT('USERNAME_LENGTH_MAX'); 
+
 	if(!Validator::alnum('_')->noWhitespace()->length($min, $max)->validate($username)){
-		response_error(400, 'invalid', "Username is invalid, please try again");
+		respond_error(400, 'invalid', "Username is invalid, please try again");
 		die;
 	}
 
-        if(!(new EmailValidator)->isValid($email)) {
-    	response_error(400, 'invalid', "Email is invalid, please try again");
+    if(!(new EmailValidator)->isValid($email)) {
+    	respond_error(400, 'invalid', "Email is invalid, please try again");
    		die;
 	}
 
@@ -35,39 +48,38 @@
 	$emails = $accounts->Emails();
 
 	$temp = $container->get('TempDB');
-	$tempUsers = $temp->Users();
+	$tempUsers = $temp->UserConfirmation();
 
-	if(exists($users,['username' => $username]) || exists($tempUsers, ['username' => $username])){
-		respond_error(409, 'duplicate', "`$username` has already been reserved, please choose a different username", '/user/create');
+	if(exists($accounts, 'Users', ['username' => $username]) || exists($temp, 'UserConfirmation', ['username' => $username])){
+		respond_error(409, 'duplicate', "`$username` is already in use, please choose a different username", '/user/create');
 		die;
 	}
 
-	if(exists($emails,['email' => $email]) || exists($tempUsers, ['email' => $email])) {
-		respond_error(409, 'duplicate', "`$email` is already in use, please choose a different email or contact support if this is an error", '/user/create');
+	if(exists($accounts, 'Emails', ['email' => $email]) || exists($temp, 'EmailConfirmation', ['email' => $email])) {
+		respond_error(409, 'duplicate', "`$email` is already in use, please choose a different email", '/user/create');
 		die;
 	}
 
 	//Generate the rest of the data for registration
-	$authKey = md5(uniqid());
+	$confirmationKey = md5(uniqid());
 	$expDays = GET_CONSTANT('TEMP_USER_EXP_DAYS'); 
-	$expiresOn= Date('Y-m-d H:i:s', strtotime("+ $expDays days"));
+	$date = strtotime("+ $expDays days");
+	$expiresOn = Date('Y-m-d H:i:s', $date);
+	$expiresOn_US = Date('d F Y H:i:s', $date);
 
 	//Generate confirmation link
-	$payload = [ 'username' => $username, 'authKey' => $authKey, 'email' => $email ];
+	$payload = [ 'username' => $username, 'confirmationKey' => $confirmationKey, 'email' => $email ];
 	$encode = base64_encode(json_encode($payload));
-	$confirmationLink = DOMAIN . "/action/confirm/users.php?p=$encode";
-	$confirmationView = DOMAIN . "/user/confirm?p=$encode";
+	$confirmationLink = DOMAIN . "/user/confirm/$encode";
 
 	//Grab email template and replace parameters with values
 	$staticContent = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser');
-	$staticHtmlContent = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser_html');
 
-	$search = ['{{expiresOn}}', '{{confirmationLink}}', '{{confirmationView}}', '{{username}}', '{{email}}'];
-	$replace = [$expiresOn, $confirmationLink, $confirmationView, $username, $email];
+	$search = ['{{expiresOn}}', '{{confirmationLink}}', '{{username}}', '{{email}}'];
+	$replace = [$expiresOn_US, $confirmationLink, $username, $email];
 
 	$staticBody = str_replace($search, $replace, $staticContent);
-	$staticHtmlBody = str_replace($search, $replace, $staticHtmlContent);
-	
+
 	//Send email off to registering user
 	include ROOT . '/tmp/supportmailer.php';
 
@@ -76,21 +88,34 @@
 	$message->addAddress($email);
 	$message->Subject = 'Thank you for registering to ALJCepeda.com!';
 	$message->Body = $staticBody;
-	//$message->Body = $staticHtmlBody;
-	//$message->AltBody = $static;
 
-	//Message failed for some reason
-	if(!$message->send()) {
+	
+	/*if(!$message->send()) {
 		redirect_error(503, '/user/create', 'internal', "We were unable to send a confirmation email to `$email`. Please try again later", [ $message->ErrorInfo ]);
 		die;
-	}
+	}*/
 
 	//Email succeeded, save registration information temporarily
-	$tempUsers->insert(['username' => $username,
-						'email' => $email,
-						'authKey' => $authKey,
+	$userRow = $temp->UserConfirmation()
+				->insert(['username' => $username,
+						'confirmationKey' => $confirmationKey,
 						'expiresOn' => $expiresOn]);
 
-	respond_success("Successfully reserved `$username` and sent confirmation email to `$email`");
+	if(!$userRow) {
+		$pdo = $container->get('TempPDO');
+		throw new Exception('Error during INSERT UserConfirmation: ' . print_r($pdo->errorCode()));
+	}
+
+	$emailRow = $temp->EmailConfirmation()
+				->insert([  'email' => $email,
+							'usersID' => 0 ]);
+
+	if(!$emailRow) {
+		$pdo = $container->get('TempPDO');
+		$userRow->delete();
+		throw new Exception('Error during INSERT EmailConfirmation: ' . print_r($pdo->errorCode()));
+	}
+
+	respond_success("Successfully reserved `$username` and sent confirmation email to `$email`. Thank you!");
 	die;
 ?>
