@@ -90,10 +90,10 @@
 	$message->Body = $staticBody;
 
 	
-	/*if(!$message->send()) {
+	if(!$message->send()) {
 		redirect_error(503, '/user/create', 'internal', "We were unable to send a confirmation email to `$email`. Please try again later", [ $message->ErrorInfo ]);
 		die;
-	}*/
+	}
 
 	//Email succeeded, save registration information temporarily
 	$userRow = $temp->UserConfirmation()
