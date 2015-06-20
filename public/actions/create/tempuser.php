@@ -55,16 +55,39 @@
 	}
 
 	//Generate the rest of the data for registration
-	$confirmationKey = md5(uniqid());
+	$userConfirmation = md5(uniqid());
+	$emailConfirmation = md5(uniqid());
 	$expDays = GET_CONSTANT('TEMP_USER_EXP_DAYS'); 
 	$date = strtotime("+ $expDays days");
 	$expiresOn = Date('Y-m-d H:i:s', $date);
 	$expiresOn_US = Date('d F Y H:i:s', $date);
 
 	//Generate confirmation link
-	$payload = [ 'username' => $username, 'confirmationKey' => $confirmationKey, 'email' => $email ];
+	$payload = [ 'username' => $username, 'userConfirmation' => $userConfirmation, 'email' => $email, 'emailConfirmation' => $emailConfirmation ];
 	$encode = base64_encode(json_encode($payload));
-	$confirmationLink = DOMAIN . "/user/confirm?p=$encode";
+	$confirmationLink = DOMAIN . "/actions/confirm/user.php?$encode";
+
+	//Email succeeded, save registration information temporarily
+	$userRow = $temp->UserConfirmation()
+				->insert([	'username' => $username,
+							'confirmationKey' => $userConfirmation,
+							'expiresOn' => $expiresOn ]);
+
+	if(!$userRow) {
+		$pdo = $container->get('TempPDO');
+		throw new Exception('Error during INSERT UserConfirmation: ' . print_r($pdo->errorCode()));
+	}
+
+	$emailRow = $temp->EmailConfirmation()
+				->insert([  'email' => $email,
+							'confirmationKey' => $emailConfirmation,
+							'usersID' => 0 ]);
+
+	if(!$emailRow) {
+		$pdo = $container->get('TempPDO');
+		$userRow->delete();
+		throw new Exception('Error during INSERT EmailConfirmation: ' . print_r($pdo->errorCode()));
+	}
 
 	//Grab email template and replace parameters with values
 	$staticContent = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser');
@@ -77,39 +100,21 @@
 	//Send email off to registering user
 	include ROOT . '/tmp/supportmailer.php';
 
+	//Build email
 	$message->From = 'support@aljcepeda.com';
 	$message->FromName = 'Support';
 	$message->addAddress($email);
 	$message->Subject = 'Thank you for registering to ALJCepeda.com!';
 	$message->Body = $staticBody;
-die;
 	
 	if(!$message->send()) {
+		//Couldn't send message, delete rows and redirect
+		$userRow->delete();
+		$emailRow->delete();
 		redirect_error(503, '/user/create', 'internal', "We were unable to send a confirmation email to `$email`. Please try again later", [ $message->ErrorInfo ]);
 		die;
 	}
-
-	//Email succeeded, save registration information temporarily
-	$userRow = $temp->UserConfirmation()
-				->insert(['username' => $username,
-						'confirmationKey' => $confirmationKey,
-						'expiresOn' => $expiresOn]);
-
-	if(!$userRow) {
-		$pdo = $container->get('TempPDO');
-		throw new Exception('Error during INSERT UserConfirmation: ' . print_r($pdo->errorCode()));
-	}
-
-	$emailRow = $temp->EmailConfirmation()
-				->insert([  'email' => $email,
-							'usersID' => 0 ]);
-
-	if(!$emailRow) {
-		$pdo = $container->get('TempPDO');
-		$userRow->delete();
-		throw new Exception('Error during INSERT EmailConfirmation: ' . print_r($pdo->errorCode()));
-	}
-
+	
 	respond_success("Successfully reserved `$username` and sent confirmation email to `$email`. Thank you!");
 	die;
 ?>

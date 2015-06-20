@@ -8,22 +8,19 @@
 		Validate request
 		p stands for payload and is a single letter identifier for encoded data
 	*/
-	requireInput(['p']);
+	$get = requireInput(['p'], 'get');
 	
 	/* Validate payload */
-	$payload = base64_decode($p);
-	
-	$missing = array_diff(['username', 'email', 'authKey'], array_keys($payload));
+	$p = json_decode(base64_decode($get['p']), true);
+	$required = ['username', 'confirmationKey', 'email'];
 
-	$required = ['username','email','g-recaptcha-response'];
-    if(count(array_diff($required, array_keys($payload)))) {
-    	//We don't redirect here because this isn't an error a user should encounter
-        redirect_error(400, '', 'request', 'Invalid request, malformed \'p\' parameter');
-        die;
-    }
-
+	$payload = requireInput($required, $p,
+		function /*onMissing*/($missing) {
+        	respond_error(400, 'request', 'Invalid request, malformed \'p\' parameter');
+        	die;
+	});
+	initGlobalVariables($payload, $required);
     $temp = $container->get('TempDB');
-	$tempUsers = $temp->Users();
 
 	$row = $temp->select('ID')->where([
 								'username' => $payload['username'],
