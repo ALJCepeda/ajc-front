@@ -29,6 +29,10 @@ function phpInput($input) {
 		case 'get':
 			return filter_input_array(INPUT_GET);
 		break;
+
+		case 'server':
+			return filter_input_array(INPUT_SERVER);
+		break;
 	}
 
 	return [];
@@ -89,14 +93,14 @@ function respond_success($message, $location = '/') {
 	respond(200, $response, $location);
 }
 
-function respond($code, $response, $location = '/') {
+function respond($code, $notification, $location = '/') {
 	http_response_code($code);
 
 	if(session_status() == PHP_SESSION_ACTIVE) {
-		$_SESSION['redirect'] = $response;
+		$_SESSION['notification'] = $notification;
 		header("Location:$location");
 	} else {
-		echo json_encode($response);
+		echo json_encode($notification);
 	}
 }
 

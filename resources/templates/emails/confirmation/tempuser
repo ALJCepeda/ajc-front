@@ -8,7 +8,7 @@ Here's the typical confirmation link which will complete your registration:
 
 You'll be asked to provide a password to secure your login, it needs to be at least 8 characters long, contain 1 uppercase letter, 1 number and 1 special character. 
 
-Keep in mind that confirmation link will expire on {{expiresOn}}. If you haven't completed your registration by {{expiresOn}} you'll have to fill out my ridiculously long sign up sheet again :(. 
+Keep in mind that confirmation link will expire on {{expiresOn}}. If you haven't completed your registration by then you'll have to fill out my ridiculously long sign up sheet again :(. 
 
 
 Stand by for my awesome new app 'Echo'. All I'm going to say is it's a location based messaging system and if you have a phone with GPS, you're going to love it.

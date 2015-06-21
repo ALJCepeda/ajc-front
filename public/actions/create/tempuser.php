@@ -5,7 +5,6 @@
 	use Egulias\EmailValidator\EmailValidator;
 
 	$response = defaultResponse();
-
 	/*
 		Validate request
 	*/
@@ -65,7 +64,7 @@
 	//Generate confirmation link
 	$payload = [ 'username' => $username, 'userConfirmation' => $userConfirmation, 'email' => $email, 'emailConfirmation' => $emailConfirmation ];
 	$encode = base64_encode(json_encode($payload));
-	$confirmationLink = DOMAIN . "/actions/confirm/user.php?$encode";
+	$confirmationLink = DOMAIN . "/actions/confirm/user.php?p=$encode";
 
 	//Email succeeded, save registration information temporarily
 	$userRow = $temp->UserConfirmation()
@@ -106,7 +105,7 @@
 	$message->addAddress($email);
 	$message->Subject = 'Thank you for registering to ALJCepeda.com!';
 	$message->Body = $staticBody;
-	
+		
 	if(!$message->send()) {
 		//Couldn't send message, delete rows and redirect
 		$userRow->delete();
@@ -114,7 +113,7 @@
 		redirect_error(503, '/user/create', 'internal', "We were unable to send a confirmation email to `$email`. Please try again later", [ $message->ErrorInfo ]);
 		die;
 	}
-	
+
 	respond_success("Successfully reserved `$username` and sent confirmation email to `$email`. Thank you!");
 	die;
 ?>

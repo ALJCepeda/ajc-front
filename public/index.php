@@ -44,7 +44,7 @@ $_SESSION['previousuri'] = DOMAIN . filter_input(INPUT_SERVER, 'REQUEST_URI');
 	<div class="site-wrapper">
 		<div class="site-wrapper-inner">
 			<div class="cover-container">
-				<?php
+				<?php 
 					echo "\n\n\n\n<!-- Navbar Start -->\n\n";
 					include 'views/navbar.php';
 					echo "\n\n<!-- Navbar End -->\n\n";

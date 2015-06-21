@@ -20,8 +20,9 @@
         	die;
 	});
 	initGlobalVariables($payload, $required);
-    $temp = $container->get('TempDB');
 
+    $temp = $container->get('TempDB');
+    
 	$row = $temp->select('ID')->where([
 								'username' => $payload['username'],
 								'email' => $payload['email'],
