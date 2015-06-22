@@ -12,23 +12,43 @@
 	
 	/* Validate payload */
 	$p = json_decode(base64_decode($get['p']), true);
-	$required = ['username', 'confirmationKey', 'email'];
+	$required = ['username', 'userConfirmation', 'email', 'emailConfirmation'];
 
 	$payload = requireInput($required, $p,
-		function /*onMissing*/($missing) {
+		function /*onMissing*/($missing) use ($p) {
         	respond_error(400, 'request', 'Invalid request, malformed \'p\' parameter');
         	die;
 	});
 	initGlobalVariables($payload, $required);
 
     $temp = $container->get('TempDB');
-    
-	$row = $temp->select('ID')->where([
-								'username' => $payload['username'],
-								'email' => $payload['email'],
-								'authKey' => $payload['authKey']
-								]);
 
-	dump_var($row);
+    $now = Date('Y-m-d H:i:s', time());
+	$userRow = $temp->UserConfirmation()
+					->where([ 'username' => $username,
+							  'confirmationKey' => $userConfirmation] )
+					->where('expiresOn > ?', $now)
+					->select('*');
 
+	$emailRow = $temp->EmailConfirmation()
+					 ->where([	'email' => $email, 
+								'confirmationKey' => $emailConfirmation] )
+					 ->where('expiresOn > ?', $now)
+					 ->select('*');
+	
+	if(!$userRow || !$emailRow) {
+		respond_error(400, 'invalid', "Credentials were invalid, please start the registration process over");
+		die;
+	}
+
+	$password = randomString(12);
+	echo $password;
+	die;
+
+	$accounts = $container->get('AccountDB');
+	$userAccount = $accounts->Users()
+			 				->insert([	'username' => $username
+			 						]);
+	echo "We have a valid user and email confirmation record";
+	die;
 ?>

@@ -56,21 +56,28 @@
 	//Generate the rest of the data for registration
 	$userConfirmation = md5(uniqid());
 	$emailConfirmation = md5(uniqid());
+	$password = randomString(12);
 	$expDays = GET_CONSTANT('TEMP_USER_EXP_DAYS'); 
 	$date = strtotime("+ $expDays days");
 	$expiresOn = Date('Y-m-d H:i:s', $date);
 	$expiresOn_US = Date('d F Y H:i:s', $date);
 
 	//Generate confirmation link
-	$payload = [ 'username' => $username, 'userConfirmation' => $userConfirmation, 'email' => $email, 'emailConfirmation' => $emailConfirmation ];
+	$payload = [ 'username' => $username, 
+				 'password' => $password,
+				 'userConfirmation' => $userConfirmation, 
+				 'email' => $email, 
+				 'emailConfirmation' => $emailConfirmation ];
 	$encode = base64_encode(json_encode($payload));
 	$confirmationLink = DOMAIN . "/actions/confirm/user.php?p=$encode";
 
 	//Email succeeded, save registration information temporarily
+	
 	$userRow = $temp->UserConfirmation()
-				->insert([	'username' => $username,
-							'confirmationKey' => $userConfirmation,
-							'expiresOn' => $expiresOn ]);
+					->insert([	'username' => $username,
+								'password' => $password,
+								'confirmationKey' => $userConfirmation,
+								'expiresOn' => $expiresOn ]);
 
 	if(!$userRow) {
 		$pdo = $container->get('TempPDO');
@@ -90,10 +97,8 @@
 
 	//Grab email template and replace parameters with values
 	$staticContent = file_get_contents(EMAILTEMPLATES . '/confirmation/tempuser');
-
-	$search = ['{{expiresOn}}', '{{confirmationLink}}', '{{username}}', '{{email}}'];
-	$replace = [$expiresOn_US, $confirmationLink, $username, $email];
-
+	$search = ['{{expiresOn}}', '{{confirmationLink}}', '{{username}}', '{{password}}', '{{email}}'];
+	$replace = [$expiresOn_US, $confirmationLink, $username, $password, $email];
 	$staticBody = str_replace($search, $replace, $staticContent);
 
 	//Send email off to registering user

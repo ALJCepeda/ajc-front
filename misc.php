@@ -135,4 +135,15 @@ function GET_CONSTANT($name){
 	return $value;
 }
 
+function randomString($length, $shuffles = 2) {
+	$password = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+
+	$i = 0;
+	do {
+		$password = str_shuffle($password);
+	} while(++$i <= $shuffles);
+
+	return substr($password, 0, $length);
+}
+
 ?>
