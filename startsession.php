@@ -15,5 +15,24 @@ $container = $builder->build();
 
 include ROOT . '/resources/dependencyrules.php';
 
+recordRequest();
+function recordRequest( $max = 0 ) {
+	if(!isset($_SESSION['history'])) {
+		$_SESSION['history'] = [];
+	}
 
+	$history = $_SESSION['history'];
+	$requestURI = filter_input(INPUT_SERVER, 'REQUEST_URI');
+
+	if(count($history) && $history[count($history) - 1] == $requestURI) {
+		return;
+	}
+
+	if($max != 0 && count($history) >= $max) {
+	 	array_shift($history);
+	}
+
+	$history[] = $requestURI;
+	$_SESSION['history'] = $history;
+}
 ?>

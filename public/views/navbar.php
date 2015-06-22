@@ -1,5 +1,4 @@
 <?php
-
 	if(ISLOCAL){
 		$blog = "#";
 	} else {

@@ -7,7 +7,7 @@ include VENDOR . '/autoload.php';
 include VENDOR . '/aljcepeda/misc/misc.php';
 include ROOT . '/misc.php';
 
-set_error_handler('generalErrorHandler');
+//set_error_handler('generalErrorHandler');
 set_exception_handler('generalErrorHandler');
 
 function generalErrorHandler($e, $detail = '') {
@@ -16,7 +16,12 @@ function generalErrorHandler($e, $detail = '') {
 		echo "Error: $e - $detail";
 		echo "</pre></code></br>";
 	} else {
-		header("Location:/error/invalid'");
+		if(filter_input(INPUT_SERVER, 'REQUEST_URI') == '/error/invalid') {
+			//Break out of redirect loop and log
+			echo "I blew up in a horrible way. It's been logged and will be dealt with";
+		} else {
+			header("Location:/error/invalid");
+		}
 	}
 
 	die;

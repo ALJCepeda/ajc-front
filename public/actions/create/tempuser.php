@@ -85,9 +85,10 @@
 	}
 
 	$emailRow = $temp->EmailConfirmation()
-				->insert([  'email' => $email,
+				->insert([  'usersID' => 0,
+							'email' => $email,
 							'confirmationKey' => $emailConfirmation,
-							'usersID' => 0 ]);
+							'expiresOn' => $expiresOn ]);
 
 	if(!$emailRow) {
 		$pdo = $container->get('TempPDO');

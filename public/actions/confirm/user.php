@@ -12,7 +12,7 @@
 	
 	/* Validate payload */
 	$p = json_decode(base64_decode($get['p']), true);
-	$required = ['username', 'userConfirmation', 'email', 'emailConfirmation'];
+	$required = ['username', 'password', 'userConfirmation', 'email', 'emailConfirmation'];
 
 	$payload = requireInput($required, $p,
 		function /*onMissing*/($missing) use ($p) {
@@ -25,30 +25,41 @@
 
     $now = Date('Y-m-d H:i:s', time());
 	$userRow = $temp->UserConfirmation()
-					->where([ 'username' => $username,
-							  'confirmationKey' => $userConfirmation] )
+					->select('*')
+					->where([ 	'username' => $username,
+								'password' => $password,
+							  	'confirmationKey' => $userConfirmation] )
 					->where('expiresOn > ?', $now)
-					->select('*');
+					->fetch();
 
 	$emailRow = $temp->EmailConfirmation()
+					 ->select('*')
 					 ->where([	'email' => $email, 
 								'confirmationKey' => $emailConfirmation] )
 					 ->where('expiresOn > ?', $now)
-					 ->select('*');
-	
+					 ->fetch();
+
 	if(!$userRow || !$emailRow) {
 		respond_error(400, 'invalid', "Credentials were invalid, please start the registration process over");
 		die;
 	}
 
-	$password = randomString(12);
-	echo $password;
-	die;
-
-	$accounts = $container->get('AccountDB');
+	$accounts = $container->get('AccountsDB');
 	$userAccount = $accounts->Users()
-			 				->insert([	'username' => $username
-			 						]);
+			 				->insert([	'username' => $username,
+			 							'password' => $password ]);
+
+	if(!$userAccount) {
+		'Hello';
+	}
+	$primaryEmail = $accounts->Emails()
+							 ->insert([ 'usersID' => $userAccount['id'],
+							 			'email' => $email,
+							 			'isPrimary' => true 	]);
+
+	$userRow->delete();
+	$emailRow->delete();
+
 	echo "We have a valid user and email confirmation record";
 	die;
 ?>

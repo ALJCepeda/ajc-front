@@ -15,8 +15,6 @@ if(isset($parameters['js'])){
 	} 
 }
 
-$_SESSION['previousuri'] = DOMAIN . filter_input(INPUT_SERVER, 'REQUEST_URI');
-
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +44,11 @@ $_SESSION['previousuri'] = DOMAIN . filter_input(INPUT_SERVER, 'REQUEST_URI');
 			<div class="cover-container">
 				<?php 
 					echo "\n\n\n\n<!-- Navbar Start -->\n\n";
-					include 'views/navbar.php';
+					require 'views/navbar.php';
 					echo "\n\n<!-- Navbar End -->\n\n";
 
 					echo "\n\n<!-- Main Start -->\n\n";
-					include $parameters['script'];
+					require $parameters['script'];
 					echo "\n\n<!-- Main End -->\n\n\n\n";
 				?>
 			</div>
