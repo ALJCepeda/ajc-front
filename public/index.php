@@ -15,6 +15,8 @@ if(isset($parameters['js'])){
 	} 
 }
 
+$coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
+
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +32,7 @@ if(isset($parameters['js'])){
 	<title>Main Page</title>
 
 	<link href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-	<link href= <?= CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css' ?> rel='stylesheet'>
+	<link href= <?=$coverSheet?> rel='stylesheet'>
 
 	<script src= "https://code.jquery.com/jquery-2.1.4.min.js" ></script>
 	<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
@@ -46,7 +48,7 @@ if(isset($parameters['js'])){
 					echo "\n\n\n\n<!-- Navbar Start -->\n\n";
 					require 'views/navbar.php';
 					echo "\n\n<!-- Navbar End -->\n\n";
-					
+
 					echo "\n\n<!-- Main Start -->\n\n";
 					require $parameters['script'];
 					echo "\n\n<!-- Main End -->\n\n\n\n";
