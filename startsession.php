@@ -16,6 +16,7 @@ $container = $builder->build();
 include ROOT . '/resources/dependencyrules.php';
 
 recordRequest();
+
 function recordRequest( $max = 0 ) {
 	if(!isset($_SESSION['history'])) {
 		$_SESSION['history'] = [];
@@ -35,4 +36,3 @@ function recordRequest( $max = 0 ) {
 	$history[] = $requestURI;
 	$_SESSION['history'] = $history;
 }
-?>

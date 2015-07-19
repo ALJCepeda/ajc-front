@@ -3,15 +3,15 @@
 	define('HOSTNAME', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME']);
 	define('ISLOCAL', strpos(HOSTNAME, 'aljcepeda.com') === FALSE);
 
+	define('DOMAIN', isset($_SERVER['HTTPS']) ? 'https://' : 'http://' . HOSTNAME);
 	if(ISLOCAL){
-		define('DOMAIN', HOSTNAME);
 		define('HOME', '/home/vagrant');
 		define('JWTKEY', '4zJhXxRwPGpQ0t3sB3AW96ZAUsSIOl2l');
 
 		define('DS_USERNAME', 'root');
 		define('DS_PASSWORD', 'password');
 	} else {
-		define('DOMAIN', isset($_SERVER['HTTPS']) ? 'https://' : 'http://' . HOSTNAME);
+		
 		define('HOME', '/home/ajrelic');
 		
 	}

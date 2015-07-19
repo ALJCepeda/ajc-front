@@ -116,7 +116,7 @@ function GET_CONSTANT($name){
 
 	$main = $container->get('ServerDB');
 
-	$result = $main->Constants()->select('value', 'datatype')->where('name', $name);
+	$result = $main->exec('SELECT value, datatype FROM Constants WHERE name = ?', $name);
 
 	if(!count($result)){
 		trigger_error("No constant exists by the name($name)");

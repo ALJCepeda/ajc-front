@@ -46,7 +46,7 @@ if(isset($parameters['js'])){
 					echo "\n\n\n\n<!-- Navbar Start -->\n\n";
 					require 'views/navbar.php';
 					echo "\n\n<!-- Navbar End -->\n\n";
-
+					
 					echo "\n\n<!-- Main Start -->\n\n";
 					require $parameters['script'];
 					echo "\n\n<!-- Main End -->\n\n\n\n";

@@ -1,6 +1,7 @@
 <?php
 
 function exists($db, $tablename, $wheres) {
+	$db->exec("COUNT(1) FROM $tablename WHERE ")
 	$count = $db->$tablename()->where($wheres)->count('1');
 	return $count > 0;
 }

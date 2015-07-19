@@ -20,9 +20,11 @@
 	/*
 		Validate parameters
 	*/
+	$accounts = $container->get('AccountsDB');
+	
 	$min = GET_CONSTANT('USERNAME_LENGTH_MIN'); 
 	$max = GET_CONSTANT('USERNAME_LENGTH_MAX'); 
-
+    
 	if(!Validator::alnum('_')->noWhitespace()->length($min, $max)->validate($username)){
 		respond_error(400, 'invalid', "Username is invalid, please try again");
 		die;
