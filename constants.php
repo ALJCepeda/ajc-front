@@ -6,7 +6,6 @@
 	define('DOMAIN', isset($_SERVER['HTTPS']) ? 'https://' : 'http://' . HOSTNAME);
 	if(ISLOCAL){
 		define('HOME', '/home/vagrant');
-		define('JWTKEY', '4zJhXxRwPGpQ0t3sB3AW96ZAUsSIOl2l');
 
 		define('DS_USERNAME', 'root');
 		define('DS_PASSWORD', 'password');

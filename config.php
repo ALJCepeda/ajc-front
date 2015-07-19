@@ -3,9 +3,10 @@ error_reporting(-1);
 
 include 'aljcepeda.php';
 include 'constants.php';
+include 'misc.php';
+include 'resources/security/errorhandler.php';
 include VENDOR . '/autoload.php';
 include VENDOR . '/aljcepeda/misc/misc.php';
-include ROOT . '/misc.php';
 
 date_default_timezone_set(TIMEZONE);
 

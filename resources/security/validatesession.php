@@ -61,6 +61,5 @@ function destroySession(){
 
 	unset($_COOKIE['X-Auth-Token']);
 	setcookie('X-Auth-Token', NULL, -1, '/');
-	
 }
 ?>
