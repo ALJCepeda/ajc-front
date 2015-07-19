@@ -1,10 +1,15 @@
 <?php
-	if(ISLOCAL){
-		$blog = "#";
-	} else {
-		$blog = "http://blog.aljcepeda.com";
-	}
+	$menu = [
+				'Home' => '/',
+			 	'Register' => '/user/create',
+			 	'Chat' => 'http://chat.aljcepeda.com',
+			 	'Blog' => 'http://blog.aljcepeda.com'
+			];
 
+	if(ISLOCAL){
+		$menu['Blog'] = '#';
+		$menu['Chat'] = DOMAIN . ':3000';
+	}
 
 	$notify = '';
 	$notifications = [];
@@ -53,9 +58,9 @@
 		<h3 class="masthead-brand">ALJCepeda</h3>
 		<nav>
 			<ul class="nav masthead-nav">
-				<li><a href="/">Home</a></li>
-				<li><a href="/user/create">Register</a></li>
-				<li><a href="<?=DOMAIN . ':3000'?>">Chat</a></li>
+				<?php foreach($menu as $label => $url) { ?>
+					<li><a href="<?=$url?>"><?=$label?></a></li>
+				<?php } ?>
 			</ul>
 		</nav>
 	</div>
