@@ -1,7 +1,7 @@
 <?php
 
 //Does all preprocessing such as providing dependencies, constants and refreshes session
-include filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/startsession.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/startsession.php';
 
 //Attempts to resolve request path or redirects to 404
 //Provides $parameters for page
