@@ -1,0 +1,6 @@
+suPHP_ConfigPath /home/ajrelic
+AddType application/x-httpd-php56 .php
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
