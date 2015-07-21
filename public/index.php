@@ -49,6 +49,7 @@ if(isset($parameters['js'])){
 		.outer-container {
 			height: 100%;
 			width: 100%;
+			overflow-y: auto;
   			margin-left: auto;
   			margin-right: auto;
 
@@ -57,6 +58,13 @@ if(isset($parameters['js'])){
 			align-items: center;
   			justify-content: center;
 		}
+
+		.content-container {
+			width: 50%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
 	</style>
 </head>
 
@@ -65,7 +73,9 @@ if(isset($parameters['js'])){
 </header>
 <body>
 	<div class="outer-container">
-		<?php require $parameters['script']; ?>
+		<div class="content-container">
+			<?php require $parameters['script']; ?>
+		</div>
 	</div>
 </body>
 
