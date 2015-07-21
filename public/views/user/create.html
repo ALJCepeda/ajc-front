@@ -26,32 +26,49 @@ input:required:valid {
 	background-repeat: no-repeat;
 }
 
+form {
+	height:100%;
+}
+.form-wrapper {
+	height: 50%;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	overflow-y:auto;
+
+	display: flex;
+	flex-flow: row wrap;
+	align-content: space-around;
+	justify-content: center;
+}
+
+.form-wrapper > h1,label,input {
+	flex: 1 100%;
+	align-self:center;
+}
+
+.form-wrapper > label {
+	flex: 1 20%;
+}
+
+.form-wrapper > input {
+	flex: 1 80%;
+}
+
 </style>
 
-<form id="registration" class="form-horizontal" action="/" method="POST" role="form">
-	<h1 class="cover-heading col-sm-offset-2 col-sm-10">Sign up</h1>
-
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="username">Username:</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" name="username" placeholder="6-32 Alphanumeric characters" required pattern="\w{6,32}">
-		</div>
-	</div>
+<form id="registration" action="/" method="POST" role="form">
+	<div class="form-wrapper">
+		<h1>Sign up</h1>
 		
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="email">Email:</label>
-		<div class="col-sm-10"> 
-			<input type="email" class="form-control" name="email" placeholder="Confirmation email will be sent" required>
-		</div>
+		<label class="aside" for="username">Username:</label>
+		<input class="aside" type="text" name="username" placeholder="6-32 Alphanumeric characters" required pattern="\w{6,32}">
+
+		<label class="aside" for="email">Email:</label>
+		<input class="aside" type="email" name="email" placeholder="Confirmation email will be sent" required>
+
+		<div class="g-recaptcha" data-sitekey="6LfnLgcTAAAAAAcAl1syoGOcnGxTU7UyR-N0CbQF"></div>
 	</div>
 
-	<div class="form-group"> 
-		<div class="g-recaptcha col-sm-offset-4 col-sm-8" data-sitekey="6LfnLgcTAAAAAAcAl1syoGOcnGxTU7UyR-N0CbQF"></div>
-	</div>
-		
-	<div class="form-group"> 
-		<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Submit</button>
-		</div>
-	</div>
+	<button type="submit" class="btn btn-default">Submit</button>
 </form>
