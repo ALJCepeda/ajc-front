@@ -251,6 +251,11 @@ p#start {
 		<p class="center"><a href="http://www.sitepoint.com/css3-starwars-scrolling-text/">Source courtesy of: <br />Craig Buckler</a></p>
 	</div>
 </div>
-
-<audio style="display:none" src="/assets/sounds/starwars.mp3"
-onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 4000)">
+<audio id="audioPlayer" style="display:none" src="/assets/sounds/starwars.mp3">
+<script type="text/javascript">
+	$(function() {
+		setTimeout(function() {
+			$('#audioPlayer')[0].play();
+		}, 4000);
+	});
+</script>
