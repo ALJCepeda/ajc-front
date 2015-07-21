@@ -48,21 +48,14 @@ if(isset($parameters['js'])){
 		}
 		.outer-container {
 			height: 100%;
-			width: 50%;
+			width: 100%;
   			margin-left: auto;
   			margin-right: auto;
-  			overflow-y:auto;
 
 			display: flex;
 			flex-direction:column;
 			align-items: center;
   			justify-content: center;
-		}
-
-		.inner-container {
-			width: 50%;
-			height: 100%;
-			overflow-y: auto; 
 		}
 	</style>
 </head>
