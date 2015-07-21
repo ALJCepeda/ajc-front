@@ -3,6 +3,7 @@
 				'Home' => '/',
 			 	'Register' => '/user/create',
 			 	'Chat' => '/chat',
+			 	'Repair' => '/repair',
 			 	'Blog' => 'http://blog.aljcepeda.com'
 			];
 

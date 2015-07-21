@@ -12,6 +12,7 @@ $routes->add('redirect', new Route('/redirect', ['script' => 'views/redirect.php
 $routes->add('404error', new Route('/error/404', ['script' => 'views/error/404.html', 'error' => '404']));
 $routes->add('invalidSession', new Route('/error/invalid', ['script' => 'views/error/invalidsession.php', 'error' => 'badsession']));
 
+$routes->add('repair', new Route('/repair', ['script' => 'views/repair.html']));
 $routes->add('chat', new Route('/chat', ['script' => 'views/chat.php',
 										 'notification' => [ 'status' => 'Under development',
 										 					 'type' => 'alert-warning',

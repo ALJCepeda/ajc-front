@@ -14,9 +14,6 @@ if(isset($parameters['js'])){
 		$javascripts .= "<script src='$script'></script>\n";
 	} 
 }
-
-$coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
-
 ?>
 
 <!DOCTYPE html>
@@ -32,16 +29,14 @@ $coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
 	<title>Main Page</title>
 
 	<link href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-
 	<script src= "https://code.jquery.com/jquery-2.1.4.min.js" ></script>
-	<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
 
 	<?=$javascripts?>
 
 	<style type="text/css">
 		html, body {
 			color: #fff;
-			height: 100%;
+			height: 90%;
 		}
 
 		body {
@@ -51,15 +46,21 @@ $coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
 			background-size: cover;
 		}
 		.outer-container {
-			width: 100%;
 			height: 100%;
+			width: 50%;
+  			margin-left: auto;
+  			margin-right: auto;
+
 			display: flex;
+			flex-direction:column;
 			align-items: center;
   			justify-content: center;
 		}
 
 		.inner-container {
 			width: 50%;
+			height: 100%;
+			overflow-y: auto; 
 		}
 	</style>
 </head>
@@ -69,13 +70,7 @@ $coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
 </header>
 <body>
 	<div class="outer-container">
-		<div class="inner-container">
-			<?php
-				echo "\n\n<!-- Main Start -->\n\n";
-				require $parameters['script'];
-				echo "\n\n<!-- Main End -->\n\n\n\n";
-			?>
-		</div>
+		<?php require $parameters['script']; ?>
 	</div>
 </body>
 
