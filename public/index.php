@@ -40,17 +40,16 @@ $coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
 	<?=$javascripts?>
 
 	<style type="text/css">
-		#outer-container {
+		.outer-container {
 			width: 100%;
 			height: 100%;
 			display: flex;
-			flex-flow: column nowrap;
 			align-items: center;
   			justify-content: center;
 		}
-		#site-container {
-			display: flex;
-			flex-flow: column nowrap;
+
+		.inner-container {
+			width: 50%;
 		}
 	</style>
 </head>
@@ -58,8 +57,8 @@ $coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
 	<?php require 'views/navbar.php'; ?>
 </header>
 <body>
-	<div id="outer-container">
-		<div id="site-container">
+	<div class="outer-container">
+		<div class="inner-container">
 			<?php
 				echo "\n\n<!-- Main Start -->\n\n";
 				require $parameters['script'];
