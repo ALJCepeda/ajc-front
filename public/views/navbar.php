@@ -2,13 +2,13 @@
 	$menu = [
 				'Home' => '/',
 			 	'Register' => '/user/create',
-			 	'Chat' => 'http://chat.aljcepeda.com',
+			 	'Chat' => '/chat',
 			 	'Blog' => 'http://blog.aljcepeda.com'
 			];
 
 	if(ISLOCAL){
 		$menu['Blog'] = '#';
-		$menu['Chat'] = DOMAIN . ':3000';
+		//$menu['Chat'] = DOMAIN . ':3000';
 	}
 
 	$notify = '';
@@ -37,8 +37,7 @@
 			}
 			
 			$notify .= "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" .
-							"<span class='sr-only'>$status</span>" .
-							$message .
+							"<span>$status - </span> $message" .
 						"</div>";
 		}
 	}
@@ -53,15 +52,16 @@
 </script>
 	
 <div class="masthead clearfix">
-	<?=$notify?>
-	<div class="inner">
-		<h3 class="masthead-brand">ALJCepeda</h3>
-		<nav>
+	<nav class="navbar navbar-fixed-top">
+		<div class="container">
+			<h3 class="masthead-brand">ALJCepeda</h3>
 			<ul class="nav masthead-nav">
 				<?php foreach($menu as $label => $url) { ?>
 					<li><a href="<?=$url?>"><?=$label?></a></li>
 				<?php } ?>
 			</ul>
-		</nav>
-	</div>
+		</div>
+	</nav>
 </div>
+
+<?=$notify?>
