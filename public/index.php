@@ -36,7 +36,7 @@ if(isset($parameters['js'])){
 	<style type="text/css">
 		html, body {
 			color: #fff;
-			height: 90%;
+			height: 96%;
 		}
 
 		body {
@@ -50,6 +50,7 @@ if(isset($parameters['js'])){
 			width: 50%;
   			margin-left: auto;
   			margin-right: auto;
+  			overflow-y:auto;
 
 			display: flex;
 			flex-direction:column;
