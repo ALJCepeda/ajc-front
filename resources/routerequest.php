@@ -16,7 +16,7 @@ $routes->add('chat', new Route('/chat', ['script' => 'views/chat.php',
 										 'notification' => [ 'status' => 'Under development',
 										 					 'type' => 'alert-warning',
 										 					 'dismissable' => true,
-										 					 'message' => 'Chat app will under development over the next few weeks']]));
+										 					 'message' => 'Chat app will be under development over the next few weeks']]));
 $routes->add('createUser', new Route('/user/create', ['script' => 'views/user/create.html', 
 													  'js' => [ 'https://www.google.com/recaptcha/api.js' ], 
 													  'notification' => ['status' => 'Registration Unavailable', 
