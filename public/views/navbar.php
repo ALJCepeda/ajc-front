@@ -4,6 +4,7 @@
 			 	'Register' => '/user/create',
 			 	'Chat' => '/chat',
 			 	'Repair' => '/repair',
+			 	'About Me' => '/aboutme',
 			 	'Blog' => 'http://blog.aljcepeda.com'
 			];
 
