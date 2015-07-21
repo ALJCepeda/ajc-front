@@ -45,23 +45,63 @@
 
 ?>
 
+<style type="text/css">
+	#site-navbar {
+		width: 100%;
+		display: flex;
+		flex-flow: row nowrap;
+	}
+
+/*
+	#nav-header {
+		align-self: flex-start;
+	}
+	#nav-menu {
+		align-self: flex-end;
+	}*/
+	.navigation {
+	  display: flex;
+	  flex-flow: row;
+	  /* This aligns items to the end line on main-axis */
+	  justify-content: space-around;
+	  align-items: center;
+	}
+
+	.navigation > li {
+    	list-style-type: none;
+	}
+
+	/* Small screens */
+	@media all and (max-width: 500px) {
+	  .navigation {
+	    /* On small screens, we are no longer using row direction but column */
+	    flex-direction: column;
+	  }
+	}
+</style>
+
 <script>
 	$(document).ready(function() {
 		$('a[href="' + this.location.pathname + '"]').parent().addClass('active');
 	});
 </script>
+
+<ul class="navigation">
+	<a id="nav-header" class="navbar-brand">ALJCepeda</a>
+	<?php foreach($menu as $label => $url) { ?>
+		<li><a href="<?=$url?>"><?=$label?></a></li>
+	<?php } ?>
+</ul>
+<!--
+<div id="site-navbar">
 	
-<div class="masthead clearfix">
-	<nav class="navbar navbar-fixed-top">
-		<div class="container">
-			<h3 class="masthead-brand">ALJCepeda</h3>
-			<ul class="nav masthead-nav">
-				<?php foreach($menu as $label => $url) { ?>
-					<li><a href="<?=$url?>"><?=$label?></a></li>
-				<?php } ?>
-			</ul>
-		</div>
-	</nav>
-</div>
+	
+	<div id="nav-menu">
+		<?php foreach($menu as $label => $url) { ?>
+			<a href="<?=$url?>"><?=$label?></a>
+		<?php } ?>
+	</ul>
+</div>-->
+
 
 <?=$notify?>

@@ -38,22 +38,33 @@ $coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
 	<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
 
 	<?=$javascripts?>
+
+	<style type="text/css">
+		#outer-container {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-flow: column nowrap;
+			align-items: center;
+  			justify-content: center;
+		}
+		#site-container {
+			display: flex;
+			flex-flow: column nowrap;
+		}
+	</style>
 </head>
-
+<header>
+	<?php require 'views/navbar.php'; ?>
+</header>
 <body>
-	<div class="site-wrapper">
-		<div class="site-wrapper-inner">
-			<div class="cover-container">
-				<?php 
-					echo "\n\n\n\n<!-- Navbar Start -->\n\n";
-					require 'views/navbar.php';
-					echo "\n\n<!-- Navbar End -->\n\n";
-
-					echo "\n\n<!-- Main Start -->\n\n";
-					require $parameters['script'];
-					echo "\n\n<!-- Main End -->\n\n\n\n";
-				?>
-			</div>
+	<div id="outer-container">
+		<div id="site-container">
+			<?php
+				echo "\n\n<!-- Main Start -->\n\n";
+				require $parameters['script'];
+				echo "\n\n<!-- Main End -->\n\n\n\n";
+			?>
 		</div>
 	</div>
 </body>
