@@ -1,5 +1,5 @@
 <?php
-	$menu = [
+	$menuList = [
 				'Home' => '/',
 			 	'Register' => '/user/create',
 			 	'Chat' => '/chat',
@@ -7,7 +7,7 @@
 			];
 
 	if(ISLOCAL){
-		$menu['Blog'] = '#';
+		$menuList['Blog'] = '#';
 		//$menu['Chat'] = DOMAIN . ':3000';
 	}
 
@@ -42,7 +42,12 @@
 		}
 	}
 
-
+	$menu = '';
+	if(count($menuList)) {
+		foreach($menuList as $label => $url) {
+			$menu .= "<li><a href='$url'>$label</a></li>";
+		}
+	}
 ?>
 
 <style type="text/css">
@@ -52,13 +57,6 @@
 		flex-flow: row nowrap;
 	}
 
-/*
-	#nav-header {
-		align-self: flex-start;
-	}
-	#nav-menu {
-		align-self: flex-end;
-	}*/
 	.navigation {
 	  display: flex;
 	  flex-flow: row;
@@ -69,7 +67,19 @@
 
 	.navigation > li {
     	list-style-type: none;
-	}
+    	padding:5px;
+    	margin:2px;
+   	}
+
+   	.navigation > li > a {
+   		color: white;
+   		text-decoration: none;
+   	}
+
+   	.navigation > li.active {
+   		border-bottom:1px solid #fff;
+    	
+   	}
 
 	/* Small screens */
 	@media all and (max-width: 500px) {
@@ -87,10 +97,8 @@
 </script>
 
 <ul class="navigation">
-	<a id="nav-header" class="navbar-brand">ALJCepeda</a>
-	<?php foreach($menu as $label => $url) { ?>
-		<li><a href="<?=$url?>"><?=$label?></a></li>
-	<?php } ?>
+	<h4>ALJCepeda</h4>
+	<?=$menu?>
 </ul>
 
 <?=$notify?>

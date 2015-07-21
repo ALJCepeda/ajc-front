@@ -32,7 +32,6 @@ $coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
 	<title>Main Page</title>
 
 	<link href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-	<link href= <?=$coverSheet?> rel='stylesheet'>
 
 	<script src= "https://code.jquery.com/jquery-2.1.4.min.js" ></script>
 	<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
@@ -40,6 +39,17 @@ $coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
 	<?=$javascripts?>
 
 	<style type="text/css">
+		html, body {
+			color: #fff;
+			height: 100%;
+		}
+
+		body {
+  			text-align: center;
+  			text-shadow: 0 1px 3px rgba(0,0,0,.5);
+			background: url(/assets/images/stars.jpg) no-repeat center center fixed;
+			background-size: cover;
+		}
 		.outer-container {
 			width: 100%;
 			height: 100%;
@@ -53,6 +63,7 @@ $coverSheet = CONTENT_PROVIDER . '/bootstrap/dist/css/cover.css';
 		}
 	</style>
 </head>
+
 <header>
 	<?php require 'views/navbar.php'; ?>
 </header>
