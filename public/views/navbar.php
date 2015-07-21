@@ -36,7 +36,7 @@
 				$notify .= "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>";
 			}
 			
-			$notify .= "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" .
+			$notify .= 		"<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" .
 							"<span>$status - </span> $message" .
 						"</div>";
 		}
@@ -92,16 +92,7 @@
 		<li><a href="<?=$url?>"><?=$label?></a></li>
 	<?php } ?>
 </ul>
-<!--
-<div id="site-navbar">
-	
-	
-	<div id="nav-menu">
-		<?php foreach($menu as $label => $url) { ?>
-			<a href="<?=$url?>"><?=$label?></a>
-		<?php } ?>
-	</ul>
-</div>-->
-
 
 <?=$notify?>
+
+
