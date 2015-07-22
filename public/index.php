@@ -61,8 +61,6 @@ if(isset($parameters['js'])){
 
 		.content-container {
 			width: 50%;
-			margin-left: auto;
-			margin-right: auto;
 		}
 
 	</style>
