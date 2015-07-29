@@ -7,6 +7,14 @@ if(ISLOCAL){
 
 ?>
 
+<style type="text/css">
+	.content-container {
+		text-align: center;
+	}
+</style>
+
+<title>Chat.IO</title>
+
 <h1>Live Chat</h1>
 
 <object type="text/html" data="<?=$chatURL?>" width="400" height="450">

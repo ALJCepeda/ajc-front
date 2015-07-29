@@ -26,8 +26,6 @@ if(isset($parameters['js'])){
 	<meta name="author" content="">
 	<link rel="icon" href="/assets/images/icons/favicon.ico">
 
-	<title>Main Page</title>
-
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js" ></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -41,7 +39,6 @@ if(isset($parameters['js'])){
 		}
 
 		body {
-  			text-align: center;
   			text-shadow: 0 1px 3px rgba(0,0,0,.5);
 			background: url(/assets/images/stars.jpg) no-repeat center center fixed;
 			background-size: cover;
@@ -60,7 +57,7 @@ if(isset($parameters['js'])){
 		}
 
 		.content-container {
-			width: 50%;
+			width:50%;
 		}
 
 	</style>
