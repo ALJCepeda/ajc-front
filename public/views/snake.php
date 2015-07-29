@@ -22,6 +22,7 @@ if(ISLOCAL){
 		order:1;
 	}
 	.game {
+		text-align: center;
 		max-width:75%;
 		flex: 2 auto;
 		order: 2;
@@ -32,14 +33,8 @@ if(ISLOCAL){
 		order:3;
 	}
 </style>
-
-
-
 <div class="left">
-	<h1>Snake.IO</h1>
-	<br />
-	<br />
-
+	<h1>About</h1>
 	<p>Welcome to my 'MMO' version of the old school atari game, Snake</p>
 
 	<br />
@@ -55,11 +50,12 @@ if(ISLOCAL){
 </div>
 
 <div class="game">
+	<h1>Snake.IO</h1>
 	<iframe type="text/html" id="game" src="<?=$snakeURL?>" frameBorder="0"> </iframe>
 </div>
 
 <div class="right">
-	<h1>To Do:</h1>
+	<h1>To Do</h1>
 	<ul>
 		<li>Random spawn points</li>
 		<li>Add food(s)</li>
