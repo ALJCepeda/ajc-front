@@ -1,8 +1,8 @@
 <?php
 	$menuList = [
 				'Home' => '/',
-			 	'Register' => '/user/create',
-			 	'Chat' => '/chat',
+				'Chat' => '/chat',
+				'Snake' => '/snake',
 			 	'Repair' => '/repair',
 			 	'About Me' => '/aboutme',
 			 	'Blog' => 'http://blog.aljcepeda.com'

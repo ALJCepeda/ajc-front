@@ -14,11 +14,17 @@ $routes->add('invalidSession', new Route('/error/invalid', ['script' => 'views/e
 
 $routes->add('aboutme', new Route('/aboutme', ['script' => 'views/aboutme.html']));
 $routes->add('repair', new Route('/repair', ['script' => 'views/repair.html']));
+$routes->add('snake', new Route('/snake', [ 'script' => 'views/snake.php',
+											'js' => ['https://code.jquery.com/jquery-2.1.4.min.js'],
+											'notification' => [ 'status' => 'Under development',
+										 					 'type' => 'alert-warning',
+										 					 'dismissable' => true,
+										 					 'message' => 'Snake game will be undergoing recurring update']]));
 $routes->add('chat', new Route('/chat', ['script' => 'views/chat.php',
 										 'notification' => [ 'status' => 'Under development',
 										 					 'type' => 'alert-warning',
 										 					 'dismissable' => true,
-										 					 'message' => 'Chat app will be under development over the next few weeks']]));
+										 					 'message' => 'Chap app will be undergoing recurring updates']]));
 $routes->add('createUser', new Route('/user/create', ['script' => 'views/user/create.html', 
 													  'js' => [ 'https://www.google.com/recaptcha/api.js' ], 
 													  'notification' => ['status' => 'Registration Unavailable', 
