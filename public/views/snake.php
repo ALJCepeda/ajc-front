@@ -8,6 +8,9 @@ if(ISLOCAL){
 ?>
 
 <style type="text/css">
+	.content-container {
+		height: 100%;
+	}
 	.outer-container {
 		overflow-y: hidden;
 	}
@@ -24,6 +27,9 @@ $(document).ready(function() {
 	}).done(function(data) {
 		$("#game")[0].setAttribute("width", data['htmlWidth'] + 20);
 		$("#game")[0].setAttribute("height", data['htmlWidth'] + 20);
+	}).fail(function() {
+		$("#game")[0].setAttribute("width", 520);
+		$("#game")[0].setAttribute("height", 520);
 	});
 });
 </script>   
