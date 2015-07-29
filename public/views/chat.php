@@ -2,7 +2,7 @@
 
 $chatURL = "http://chat.aljcepeda.com";
 if(ISLOCAL){
-	$chatURL = DOMAIN . ':3000';
+	$chatURL = SERVERNAME . ':8002';
 }
 
 ?>
@@ -21,5 +21,5 @@ if(ISLOCAL){
 </object>
 
 <p>
-A simple lightweight application written with NodeJS and Socket.io. It implements CSS3 flexbox which will make it fully reactive to small UIs. This client will eventually be adopted into a taskbar application similar to facebook's messenger.
+A simple lightweight application written with NodeJS and Socket.io. This client will eventually be adopted into a taskbar application similar to facebook's messenger.
 </p>

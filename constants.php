@@ -1,18 +1,17 @@
 <?php
 	define('ROOT', $_SERVER['DOCUMENT_ROOT']);
-	define('HOSTNAME', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME']);
-	define('ISLOCAL', strpos(HOSTNAME, 'aljcepeda.com') === FALSE);
+	define('PROTOCOL', isset($_SERVER['HTTPS']) ? 'https://' : 'http://' );
 
-	define('DOMAIN', isset($_SERVER['HTTPS']) ? 'https://' : 'http://' . HOSTNAME);
+	define('SERVERNAME', PROTOCOL . $_SERVER['SERVER_NAME']);
+	define('HOSTNAME', PROTOCOL . $_SERVER['HTTP_HOST']);
+	define('ISLOCAL', strpos(HOSTNAME, 'aljcepeda.com') === FALSE);
 	if(ISLOCAL){
 		define('HOME', '/home/vagrant');
 
 		define('DS_USERNAME', 'root');
 		define('DS_PASSWORD', 'password');
 	} else {
-		
-		define('HOME', '/home/ajrelic');
-		
+		define('HOME', '/home/ajrelic');	
 	}
 
 	define('CONTENT_PROVIDER', 'http://content.aljcepeda.com/bower_components');

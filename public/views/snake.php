@@ -1,10 +1,8 @@
 <?php
-
 $snakeURL = "http://snake.aljcepeda.com";
 if(ISLOCAL){
-	$snakeURL = DOMAIN . ':3000';
+	$snakeURL = SERVERNAME . ':8001';
 }
-
 ?>
 
 <title>Snake.IO</title>
@@ -57,6 +55,8 @@ if(ISLOCAL){
 <div class="right">
 	<h1>To Do</h1>
 	<ul>
+		<li>Fix bug with consecutive connections</li>
+		<li>Multiplayer collisions</li>
 		<li>Random spawn points</li>
 		<li>Add food(s)</li>
 		<li>Spawn food randomly and in quantity</li>
@@ -70,6 +70,9 @@ if(ISLOCAL){
 		<li>Custom skins</li>
 		<li>World domination</li>
 	</ul>
+
+	<br />
+	<p>Written in Node.JS, Express.JS and Socket.IO</p>
 </div>
 
 <script type="text/javascript">
