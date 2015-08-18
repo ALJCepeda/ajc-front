@@ -1,18 +1,4 @@
 <?php
-	$menuList = [
-				'Home' => '/',
-				'Chat' => '/chat',
-				'Snake' => '/snake',
-			 	'Repair' => '/repair',
-			 	'About Me' => '/aboutme',
-			 	'Blog' => 'http://blog.aljcepeda.com'
-			];
-
-	if(ISLOCAL){
-		$menuList['Blog'] = '#';
-		//$menu['Chat'] = DOMAIN . ':3000';
-	}
-
 	$notify = '';
 	$notifications = [];
 	if(isset($_SESSION['notification'])) {
