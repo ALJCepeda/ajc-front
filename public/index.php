@@ -8,7 +8,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/startsession.php';
 require ROOT . '/resources/router/router.php';
 
 //Takes $parameters and autloads page data
-require ROOT . '/resources/router/autoloadRoute.php';
+require ROOT . '/resources/router/loadroute.php';
 ?>
 
 <!DOCTYPE html>

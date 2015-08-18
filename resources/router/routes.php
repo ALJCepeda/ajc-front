@@ -22,6 +22,7 @@ $routes->add('aboutme', new Route('/aboutme', [ 'title' => 'About Me' ]));
 $routes->add('snake', new Route('/snake', 
 									[
 										'title' => 'Snake.IO',
+										'css' => [ 'buttons', 'colors' ],
 										'notification' => 
 											[ 
 												'status' => 'Active Development',

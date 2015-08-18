@@ -1,7 +1,6 @@
 <?php
 $route = $parameters['_route'];
 
-
 //Location dependant information
 $title = isset($parameters['title']) ? $parameters['title'] : 'ALJCepeda';
 
@@ -30,7 +29,11 @@ if(!file_exists(ROOT . "/public/$stylesheetURL")) $stylesheet = '';
 $javascripts = '';
 if(isset($parameters['js'])) {
 	foreach ($parameters['js'] as $script) {
-		$javascripts .= "<script src='$script'></script>\n";
+		if(file_exists("assets/js/$script.js")) {
+			$javascripts .= "<script src='$script'></script>\n";
+		} else {
+			throw new Exception("No javascript found for: $script");
+		}
 	} 
 }
 
@@ -38,7 +41,11 @@ if(isset($parameters['js'])) {
 $stylesheets = '';
 if(isset($parameters['css'])) {
 	foreach ($parameters['css'] as $sheet) {
-		$stylesheets .= "<link rel='stylesheet' type='text/css' href='assets/css/$sheet'>\n";
+		if(file_exists("assets/css/$sheet.css")) {
+			$stylesheets .= "<link rel='stylesheet' type='text/css' href='assets/css/$sheet.css'>\n";
+		} else {
+			throw new Exception("No stylesheet found for: $sheet");
+		}
 	}
 }
 
@@ -49,6 +56,9 @@ if(isset($parameters['require'])) {
 		switch ($name) {
 			case 'recaptcha':
 				$externals .= "<script src='https://www.google.com/recaptcha/api.js'></script>\n";
+			break;
+			default:
+				throw new Exception("No externally linked dependency for: $name");
 			break;
 		}
 	}

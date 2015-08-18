@@ -6,7 +6,7 @@
   	flex-flow: row wrap;
 }
 
-.content-container > * {
+.header, .footer {
   	flex: 1 100%;
 }
 

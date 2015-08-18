@@ -4,6 +4,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 
+//Predefined routes for router
 include ROOT . '/resources/router/routes.php';
 
 $request = Request::createFromGlobals();

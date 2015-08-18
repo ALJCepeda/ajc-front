@@ -22,9 +22,6 @@ if(ISLOCAL){
 
 	<br />
 	<p>Currently you spawn with 200 units. This is just for testing purposes and will change as the game is updated</p>
-
-	<br />
-	<p>If the game isn't displaying correctly, it can also be played by going to <a href="http://snake.aljcepeda.com">snake.aljcepeda.com</a></p>
 </div>
 
 <div class="aside right">
