@@ -47,14 +47,6 @@ $externals = '';
 if(isset($parameters['require'])) {
 	foreach ($parameters['require'] as $name) {
 		switch ($name) {
-			case 'jQuery':
-				$externals .= "<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>\n";
-			break;
-			
-			case 'bootstrap':
-				$externals .= "<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>\n";
-			break;
-
 			case 'recaptcha':
 				$externals .= "<script src='https://www.google.com/recaptcha/api.js'></script>\n";
 			break;

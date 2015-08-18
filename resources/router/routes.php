@@ -8,17 +8,11 @@ $routes->add('redirect', new Route('/redirect'));
 $routes->add('404', new Route('/error/404', ['title' => '404 Error']));
 $routes->add('repair', new Route('/repair', ['title' => 'Repair']));
 $routes->add('invalidsession', new Route('/error/invalid', ['title' => 'Invalid Request', 'error' => 'badsession']));
-$routes->add('aboutme', new Route('/aboutme', 	
-									[ 	
-										'title' => 'About Me', 
-										'require' => ['bootstrap']
-									]
-								));
+$routes->add('aboutme', new Route('/aboutme', [ 'title' => 'About Me' ]));
 
 $routes->add('snake', new Route('/snake', 
 									[
 										'title' => 'Snake.IO',
-										'require' => ['jQuery'], 
 										'notification' => 
 											[ 
 												'status' => 'Active Development',

@@ -22,6 +22,9 @@ require ROOT . '/resources/router/autoloadRoute.php';
 	<link rel='icon' href='/assets/images/icons/favicon.ico'>
 	<title><?=$title?></title>
 
+	<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+	<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+	
 	<?=$stylesheet?>
 	<?=$externals?>
 	<?=$stylesheets?>
