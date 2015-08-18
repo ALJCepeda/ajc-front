@@ -1,0 +1,26 @@
+html, body {
+	color: #fff;
+	height: 96%;
+}
+
+body {
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+	background: url(/assets/images/stars.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
+.outer-container {
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+	margin-left: auto;
+	margin-right: auto;
+
+	display: flex;
+	flex-direction:column;
+	align-items: center;
+	justify-content: center;
+}
+
+.content-container {
+	width:50%;
+}

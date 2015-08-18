@@ -6,32 +6,12 @@ if(ISLOCAL){
 ?>
 
 <title>Snake.IO</title>
-<style type="text/css">
-	.content-container {
-		height:100%;
-		width:100%;
 
-		display: flex;
-		flex-flow:column space-around;
-	}
-	.left {
-		max-width: 25%;
-		flex: 1 auto;
-		order:1;
-	}
-	.game {
-		text-align: center;
-		max-width:75%;
-		flex: 2 auto;
-		order: 2;
-	}
-	.right {
-		max-width: 25%;
-		flex: 1 auto;
-		order:3;
-	}
-</style>
-<div class="left">
+<div class="header">
+	<h1>Snake.IO</h1>
+</div>
+
+<div class="aside left">
 	<h1>About</h1>
 	<p>Welcome to my 'MMO' version of the old school atari game, Snake</p>
 
@@ -47,16 +27,9 @@ if(ISLOCAL){
 	<p>If the game isn't displaying correctly, it can also be played by going to <a href="http://snake.aljcepeda.com">snake.aljcepeda.com</a></p>
 </div>
 
-<div class="game">
-	<h1>Snake.IO</h1>
-	<iframe type="text/html" id="game" src="<?=$snakeURL?>" frameBorder="0"> </iframe>
-</div>
-
-<div class="right">
+<div class="aside right">
 	<h1>To Do</h1>
 	<ul>
-		<li>Fix bug with consecutive connections</li>
-		<li>Multiplayer collisions</li>
 		<li>Random spawn points</li>
 		<li>Add food(s)</li>
 		<li>Spawn food randomly and in quantity</li>
@@ -70,21 +43,13 @@ if(ISLOCAL){
 		<li>Custom skins</li>
 		<li>World domination</li>
 	</ul>
-
-	<br />
-	<p>Written in Node.JS, Express.JS and Socket.IO</p>
 </div>
 
-<script type="text/javascript">
-$(document).ready(function() {
-	$.ajax({
-		url:"<?=$snakeURL?>/info"
-	}).done(function(data) {
-		$("#game")[0].setAttribute("width", data['htmlWidth'] + 20);
-		$("#game")[0].setAttribute("height", data['htmlWidth'] + 20);
-	}).fail(function() {
-		$("#game")[0].setAttribute("width", 520);
-		$("#game")[0].setAttribute("height", 520);
-	});
-});
-</script>   
+<div class="footer">
+	<form action= <?=$snakeURL?> >
+	    <input type="submit" value="Play Now!">
+	</form>
+
+	<p>Version 0.1.0 </p>
+	<p>Written in Node.JS, Express.JS and Socket.IO</p>
+</div>

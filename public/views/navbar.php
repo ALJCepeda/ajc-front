@@ -47,56 +47,12 @@
 	$menu = '';
 	if(count($menuList)) {
 		foreach($menuList as $label => $url) {
-			$menu .= "<li><a href='$url'>$label</a></li>";
+			$active = ($url === $context->getPathInfo()) ? "class='active'" : '';
+
+			$menu .= "<li $active><a href='$url'>$label</a></li>";
 		}
 	}
 ?>
-
-<style type="text/css">
-	#site-navbar {
-		width: 100%;
-		display: flex;
-		flex-flow: row nowrap;
-	}
-
-	.navigation {
-	  display: flex;
-	  flex-flow: row;
-	  /* This aligns items to the end line on main-axis */
-	  justify-content: space-around;
-	  align-items: center;
-	}
-
-	.navigation > li {
-    	list-style-type: none;
-    	padding:5px;
-    	margin:2px;
-   	}
-
-   	.navigation > li > a {
-   		color: white;
-   		text-decoration: none;
-   	}
-
-   	.navigation > li.active {
-   		border-bottom:1px solid #fff;
-    	
-   	}
-
-	/* Small screens */
-	@media all and (max-width: 500px) {
-	  .navigation {
-	    /* On small screens, we are no longer using row direction but column */
-	    flex-direction: column;
-	  }
-	}
-</style>
-
-<script>
-	$(document).ready(function() {
-		$('a[href="' + this.location.pathname + '"]').parent().addClass('active');
-	});
-</script>
 
 <ul class="navigation">
 	<h4>ALJCepeda</h4>
@@ -104,5 +60,3 @@
 </ul>
 
 <?=$notify?>
-
-
