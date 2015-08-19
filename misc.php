@@ -146,4 +146,11 @@ function randomString($length, $shuffles = 2) {
 	return substr($password, 0, $length);
 }
 
+function scriptRespondsTo($functionName){
+	$functions = get_defined_functions();
+	$udf = $functions['user'];
+
+	return in_array(strtolower($functionName), $udf);
+}
+
 ?>

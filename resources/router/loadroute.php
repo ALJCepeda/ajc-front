@@ -1,9 +1,6 @@
 <?php
 $route = $parameters['_route'];
 
-//Location dependant information
-$title = isset($parameters['title']) ? $parameters['title'] : 'ALJCepeda';
-
 //Load Location
 if(isset($parameters['script'])) {
 	//Script location provided by route
@@ -15,11 +12,12 @@ if(isset($parameters['script'])) {
 	else if(file_exists("views/$route.php"))
 		$script = "views/$route.php";
 	else {
-		//Could not identify route. 404 error will be displayed
-		header('HTTP/2.0 404 Not Found');
-		$parameters = $matcher->match('/error/404');
+		throw new Exception("Could not find route for: $route");
 	}
 }
+
+//Location dependant information
+$title = isset($parameters['title']) ? $parameters['title'] : 'ALJCepeda';
 
 $stylesheetURL = "assets/css/pages/$route.css";
 $stylesheet = "<link rel='stylesheet' type='text/css' href='$stylesheetURL'>\n";

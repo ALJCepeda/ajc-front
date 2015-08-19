@@ -15,9 +15,9 @@ $menuList = [
 $routes = new RouteCollection();
 $routes->add('mainpage', new Route('/'));
 $routes->add('redirect', new Route('/redirect'));
-$routes->add('404', new Route('/error/404', ['title' => '404 Error']));
+$routes->add('404', new Route('/error/404', ['title' => '404 Error', 'script' => 'views/error/404.html']));
+$routes->add('invalidsession', new Route('/error/invalid', ['title' => 'Invalid Request', 'script' => 'views/error/invalidsession.html', 'error' => 'badsession']));
 $routes->add('repair', new Route('/repair', ['title' => 'Repair']));
-$routes->add('invalidsession', new Route('/error/invalid', ['title' => 'Invalid Request', 'error' => 'badsession']));
 $routes->add('aboutme', new Route('/aboutme', [ 'title' => 'About Me' ]));
 $routes->add('snake', new Route('/snake', 
 									[
