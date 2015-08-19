@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 
 .content-container {
+	width:50%;
 	font-family: "Droid Sans", arial, verdana, sans-serif;
 	font-weight: 700;
 	color: #ff6;
