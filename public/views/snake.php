@@ -16,35 +16,32 @@ if(ISLOCAL){
 	<p>Welcome to my 'MMO' version of the old school atari game, Snake</p>
 
 	<br />
-	<p>It's laggy. The game is being hosted on a shared directory so the performance is poor</p>
-	<br />
-	<p>Even so a few people should be able to join and experience the multiplayer without issues</p>
+	<p>It's laggy. The game is being hosted on a shared directory so the performance is poor<br />
+	Even so a few people should be able to join and experience the multiplayer without issues</p>
 
 	<br />
-	<p>Currently you spawn with 200 units. This is just for testing purposes and will change as the game is updated</p>
+	<p>The objective of the game is to eat as much food as you can while trying to take out your opponents<br />
+	The more food you eat, the larger you get, the higher your score!</p>
 </div>
 
 <div class="aside right">
-	<h1>To Do</h1>
-	<ul>
-		<li>Random spawn points</li>
-		<li>Add food(s)</li>
-		<li>Spawn food randomly and in quantity</li>
-		<li>Track and display score</li>
-		<li>Add UI</li>
-		<li>Implement different resolutions for grid</li>
-		<li>Create view ports and zoom for larger grid</li>
-		<li>Increase size to compensate for at least 20 clients</li>
-		<li>Authenticate with Facebook/Google+/Other</li>
-		<li>Implement leaderboards</li>
-		<li>Custom skins</li>
-		<li>World domination</li>
-	</ul>
+	<div>
+		<h1>To Do</h1>
+		<ul>
+			<li>Random spawn points</li>
+			<li>Implement leaderboards</li>
+			<li>Create view ports and zoom for larger grid</li>
+			<li>Increase size to compensate for at least 20 clients</li>
+			<li>Authenticate with Facebook/Google+/Other</li>
+			<li>Custom skins</li>
+			<li>World domination</li>
+		</ul>
+	</div>
 </div>
 
 <div class="footer">
 	<form action= <?=$snakeURL?> >
-	    <input type="submit" value="Play Now!">
+	    <input class="orange button" type="submit" value="Play Now!">
 	</form>
 
 	<p>Version 0.1.0 </p>

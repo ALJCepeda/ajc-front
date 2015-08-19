@@ -6,15 +6,23 @@
   	flex-flow: row wrap;
 }
 
-.header, .footer {
-  	flex: 1 100%;
+.header, .footer{
+  	flex: 1 auto;
+  	width: 100%;
 }
 
 .header, .footer {
 	text-align: center;
 }
 
-.aside { flex: 1 auto; }
+.aside { 
+	flex: 1 0 50%;
+}
+
+.right > div {
+	float:right;
+	clear:both;
+}
 
 .header { order: 1; }
 .left { order: 2; }

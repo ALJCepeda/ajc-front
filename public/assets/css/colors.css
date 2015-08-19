@@ -21,7 +21,7 @@
 
 
 
-.orange {
+.blue {
 	color: #d9eef7;
 	border: solid 1px #0076a3;
 	background: ##0095cd;
@@ -29,13 +29,13 @@
 	background: -moz-linear-gradient(top,  #00adee,  #0078a$);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a$');
 }
-.orange:hover {
+.blue:hover {
 	background: #f47c20;
 	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
 	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
 }
-.orange:active {
+.blue:active {
 	color: #fcd3a5;
 	background: -webkit-gradient(linear, left top, left bottom, from(#0078a$), to(#00adee));
 	background: -moz-linear-gradient(top,  #0078a$,  #00adee);
