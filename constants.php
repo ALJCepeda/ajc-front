@@ -5,17 +5,8 @@
 	define('SERVERNAME', PROTOCOL . $_SERVER['SERVER_NAME']);
 	define('HOSTNAME', PROTOCOL . $_SERVER['HTTP_HOST']);
 	define('ISLOCAL', strpos(HOSTNAME, 'aljcepeda.com') === FALSE);
-	if(ISLOCAL){
-		define('HOME', '/home/vagrant');
-
-		define('DS_USERNAME', 'root');
-		define('DS_PASSWORD', 'password');
-	} else {
-		define('HOME', '/home/ajrelic');	
-	}
 
 	define('CONTENT_PROVIDER', 'http://content.aljcepeda.com/bower_components');
-	define('VENDOR', HOME . '/vendor');
 	define('SQLSERVER', 'mysql:host=localhost;');
 
 	define('SERVERDB', SQLSERVER . 'dbname=ajrelic_Server');
