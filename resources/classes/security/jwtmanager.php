@@ -11,10 +11,10 @@ class TokenManager {
 
 	function createPayload() {
 		$tokenID = md5(uniqid(rand(), true));
-
+		
 		$payload = [
-		    'iss' => DOMAIN,
-		    'aud' => DOMAIN,
+		    'iss' => HOSTNAME,
+		    'aud' => HOSTNAME,
 		    'sub' => $tokenID,
 		    'usr' => 'guest',
 		    'iat' => time(),
