@@ -6,9 +6,10 @@
 	define('HOSTNAME', PROTOCOL . $_SERVER['HTTP_HOST']);
 	define('ISLOCAL', strpos(HOSTNAME, 'aljcepeda.com') === FALSE);
 
-	define('CONTENT_PROVIDER', 'http://content.aljcepeda.com/bower_components');
-	define('SQLSERVER', 'mysql:host=localhost;');
+	define('ASSETS', ROOT . 'public/assets');
+	define('BOWER', ROOT . 'public/bower_components');
 
+	define('SQLSERVER', 'mysql:host=localhost;');
 	define('SERVERDB', SQLSERVER . 'dbname=ajrelic_Server');
 	define('SESSIONSDB', SQLSERVER . 'dbname=ajrelic_Sessions');
 	define('ACCOUNTSDB', SQLSERVER . 'dbname=ajrelic_Accounts');

@@ -22,16 +22,16 @@ require ROOT . '/resources/router/loadroute.php';
 	<link rel='icon' href='/assets/images/icons/favicon.ico'>
 	<title><?=$title?></title>
 
-	<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
-	<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+	<script src= '/bower/jquery/dist/jquery.min.js'></script>
+	<link rel='stylesheet' type='text/css' href='/bower/bootstrap/dist/css/bootstrap.min.css'>
 	
 	<?=$stylesheet?>
 	<?=$externals?>
 	<?=$stylesheets?>
 	<?=$javascripts?>
 
-	<link rel='stylesheet' type='text/css' href= <?=HOSTNAME."/assets/css/pages/index.css"?> >
-	<link rel='stylesheet' type='text/css' href= <?=HOSTNAME."/assets/css/pages/navbar.css"?> >
+	<link rel='stylesheet' type='text/css' href='/assets/css/pages/index.css'>
+	<link rel='stylesheet' type='text/css' href='/assets/css/pages/navbar.css'>
 </head>
 
 <header>
