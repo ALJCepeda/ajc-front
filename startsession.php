@@ -6,14 +6,9 @@ require 'config.php';
 //Initializes and configures $jwtmanager
 require ROOT . '/resources/security/validatesession.php';
 
-//Does final updates to JWT and resets cookie
-require ROOT . '/resources/security/updatesession.php';
-
 $builder = new DI\ContainerBuilder();
 $builder->addDefinitions(ROOT . '/resources/dependencyrules.php');
 $container = $builder->build();
-
-require ROOT . '/resources/dependencyrules.php';
 
 recordRequest();
 

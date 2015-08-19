@@ -153,4 +153,22 @@ function scriptRespondsTo($functionName){
 	return in_array(strtolower($functionName), $udf);
 }
 
-?>
+function invalidateSession($redirect = ''){
+	destroySession();
+
+	if(!empty($redirect)){
+		header("Location: $redirect", true, 301);
+	}
+}
+
+function destroySession(){
+	if(session_status() == PHP_SESSION_ACTIVE) {
+		session_start();
+	}
+	
+	session_unset();
+	session_destroy();
+
+	unset($_COOKIE['X-Auth-Token']);
+	setcookie('X-Auth-Token', NULL, -1, '/');
+}

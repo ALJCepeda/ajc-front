@@ -8,4 +8,3 @@ require VENDOR . '/aljcepeda/misc/misc.php';
 require 'resources/security/errorhandler.php';
 
 date_default_timezone_set(TIMEZONE);
-?>

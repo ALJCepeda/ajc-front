@@ -11,7 +11,6 @@ function log_error( $num, $str, $file, $line, $context = null ) {
 * Uncaught exception handler.
 */
 function log_exception( $e ) {
-    echo get_current_user() . "</br></br>";
     if(!ISLOCAL) {
         print "<div style='text-align: center;'>";
         print "<h2 style='color: rgb(190, 50, 50);'>Exception Occured:</h2>";

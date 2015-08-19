@@ -30,8 +30,8 @@ require ROOT . '/resources/router/loadroute.php';
 	<?=$stylesheets?>
 	<?=$javascripts?>
 
-	<link rel='stylesheet' type='text/css' href='assets/css/pages/index.css'>
-	<link rel='stylesheet' type='text/css' href='assets/css/pages/navbar.css'>
+	<link rel='stylesheet' type='text/css' href= <?=HOSTNAME."/assets/css/pages/index.css"?> >
+	<link rel='stylesheet' type='text/css' href= <?=HOSTNAME."/assets/css/pages/navbar.css"?> >
 </head>
 
 <header>

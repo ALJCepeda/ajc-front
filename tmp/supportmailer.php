@@ -9,5 +9,3 @@ $message->Username = SUPPORTEMAIL;
 $message->Password = SUPPORTPWD;
 $message->SMTPAuth = true;
 $message->SMTPSecure = 'ssl';
-
-?>

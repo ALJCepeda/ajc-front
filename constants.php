@@ -19,4 +19,3 @@
 	$TIMEZONE = new DateTimeZone('America/Los_Angeles');
 
 	define('RECAPTCHAURL', 'https://www.google.com/recaptcha/api/siteverify');
-?>

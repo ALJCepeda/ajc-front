@@ -23,6 +23,7 @@ if(empty($token)) {
 		trigger_error('SERVER: ' . print_r($_SERVER, true));
 
 		invalidateSession('/error/invalid');
+		die;
 	}
 
 	//Check to see if a nonce was created and validate it
@@ -33,33 +34,9 @@ if(empty($token)) {
 		trigger_error('RQST_NONCE: ' . $nonce);
 
 		invalidateSession('/error/invalid');
-	}
-}
-
-/*********************************
- *
- * Page functions
- *
- *********************************/
-
-function invalidateSession($redirect = ''){
-	destroySession();
-
-	if(!empty($redirect)){
-		header("Location: $redirect", true, 301);
 		die;
 	}
 }
 
-function destroySession(){
-	if(session_status() == PHP_SESSION_ACTIVE) {
-		session_start();
-	}
-	
-	session_unset();
-	session_destroy();
-
-	unset($_COOKIE['X-Auth-Token']);
-	setcookie('X-Auth-Token', NULL, -1, '/');
-}
-?>
+//Does final updates to JWT and resets cookie
+require ROOT . '/resources/security/updatesession.php';

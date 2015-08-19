@@ -11,7 +11,7 @@ class TokenManager {
 
 	function createPayload() {
 		$tokenID = md5(uniqid(rand(), true));
-		
+
 		$payload = [
 		    'iss' => HOSTNAME,
 		    'aud' => HOSTNAME,
@@ -93,5 +93,3 @@ class TokenManager {
 		return TRUE;
 	}
 }
-
-?>

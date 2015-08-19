@@ -20,6 +20,3 @@ function insert($db, $tablename, $data) {
 					'value' => json_encode($data)
 				]);
 }
-
-
-?>
