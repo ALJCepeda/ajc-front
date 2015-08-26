@@ -22,11 +22,13 @@ require ROOT . '/resources/router/loadroute.php';
 	<link rel='icon' href='/assets/images/icons/favicon.ico'>
 	<title><?=$title?></title>
 
-	<script src='/bower/jquery/jquery.min.js'></script>
+	<script src='/bower/jquery/dist/jquery.min.js'></script>
+	<script src='/bower/bootstrap/dist/js/bootstrap.min.js'></script>\n
+	
 	<link rel='stylesheet' type='text/css' href='/bower/bootstrap/dist/css/bootstrap.min.css'>
 	
 	<?=$stylesheet?>
-	<?=$externals?>
+	<?=$requires?>
 	<?=$stylesheets?>
 	<?=$javascripts?>
 

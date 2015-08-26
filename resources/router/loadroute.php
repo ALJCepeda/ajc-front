@@ -48,13 +48,21 @@ if(isset($parameters['css'])) {
 }
 
 //Location dependant external dependencies
-$externals = '';
+$requires = '';
 if(isset($parameters['require'])) {
 	foreach ($parameters['require'] as $name) {
 		switch ($name) {
 			case 'recaptcha':
-				$externals .= "<script src='https://www.google.com/recaptcha/api.js'></script>\n";
+				$requires .= "<script src='https://www.google.com/recaptcha/api.js'></script>\n";
 			break;
+			case 'codemirror':
+				$requires .= "<script src='/bower/codemirror/lib/codemirror.js'></script>\n";
+				$requires .= "<link rel='stylesheet' type='text/css' href='/bower/codemirror/lib/codemirror.css'>\n";
+			break;
+			case 'knockout':
+				$requires .= "<script src='/bower/knockout/dist/knockout.js'></script>\n";
+			break;
+
 			default:
 				throw new Exception("No externally linked dependency for: $name");
 			break;
