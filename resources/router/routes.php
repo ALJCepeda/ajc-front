@@ -8,6 +8,9 @@ $menuList = [
 				'Home' => '/',
 				'Snake' => '/snake',
 			 	'Repair' => '/repair',
+			 	'Tools' => [
+			 		'Radomizer' => '/radomizer'
+			 	],
 			 	'About Me' => '/aboutme',
 			 	'Blog' => (!ISLOCAL) ? 'http://blog.aljcepeda.com' : '#'
 			];

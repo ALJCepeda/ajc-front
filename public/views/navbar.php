@@ -30,14 +30,9 @@
 		}
 	}
 
-	$menu = '';
-	if(count($menuList)) {
-		foreach($menuList as $label => $url) {
-			$active = ($url === $context->getPathInfo()) ? "class='active'" : '';
-
-			$menu .= "<li $active><a href='$url'>$label</a></li>";
-		}
-	}
+	$menu = arrayTo_HTMLList($menuList, function($label, $value) use ($context) {
+		return ($value === $context->getPathInfo()) ? "class='active'" : "";
+	});
 ?>
 
 <ul class="navigation">

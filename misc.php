@@ -1,5 +1,36 @@
 <?php
 
+function arrayTo_HTMLList($array, $attributesForItem) {
+	$html = '';
+
+	if(!is_callable($attributesForItem)) {
+		$attributesForItem = function() { return ''; };
+	}
+
+	if(count($array)) {
+		foreach($array as $label => $value) {
+			$attributes = $attributesForItem($label, $value);
+
+			$html .= "<li $attributes>";
+			if(is_string($value)) {
+				//If we're given a string, assume it's a valid URL
+				$html .= "<a href='$value'>$label</a>";
+			}
+			
+			else if(is_array($value)) {
+				//We have a list of items, recursively generate HTML
+				$html .= "$label";
+				$html .= "<ul>";
+					$html .= arrayTo_HTMLList($value, $attributesForItem);
+				$html .= "</ul>";
+			}
+			$html .= "</li>";
+		}
+	}
+
+	return $html;
+}
+
 function requireInput($required, $input, $onMissing = '') {
 	if(!is_array($input)) {
 		$input = phpInput($input);
@@ -171,4 +202,115 @@ function destroySession(){
 
 	unset($_COOKIE['X-Auth-Token']);
 	setcookie('X-Auth-Token', NULL, -1, '/');
+}
+/*
+	This file contains lone utility functions that don't belong anywhere else
+*/
+function bindValues($statement, $bindings){
+	foreach($bindings as $bind => $value){
+		$statement = str_replace($bind, $value, $statement);
+	}
+	
+	return $statement;
+}
+/*
+	Splits string into array based on capital letters
+*/
+function strSplitCaps($input){
+	$result = [];
+	$startIndex = 0;
+	$length = strlen($input);
+	for($i = 0 ; $i < $length; $i = $i + 1){
+		if(ctype_upper($input[$i])){
+			array_push($result, substr($input, $startIndex, $i - $startIndex));
+			$startIndex = $i;
+		}
+	}
+	if($startIndex < $length){
+		array_push($result, substr($input, $startIndex, $length - $startIndex));
+	}
+	return $result;
+}
+/*
+	Initializes variables with the name and value of the associative array
+*/
+function keysToVariables($array){
+	foreach($array as $key => $value){
+		echo $key . "</br>";
+		$statement = "global $".$key."; $".$key."= \$value;";
+		eval($statement);
+		echo $methodcode . "</br>";
+	}
+}
+/*
+	Slightly prettier variable dump than var_dump()
+*/
+function dump_var($var){
+	echo "<pre><code>";
+	echo print_r($var);
+	echo "</pre></code></br>";
+}
+/*
+	Fills in NULL with consecutive numbers
+*/
+function fillIn($array){
+	$counter = 0;
+	foreach($array as $key => $value){
+		$array[$key] = $counter;
+		$counter++;
+	}
+	return $array;
+}
+function objectToJSON($obj){
+	$jsonString = '{';
+	foreach($obj as $key => $value){
+		$jsonString .= '"' . strtolower($key) . '"';
+	}
+}
+/*
+	Returns type of variable as a string
+*/
+function implicitType($input){
+	if(is_string($input)){
+		return 'string';
+	}
+	if(is_long($input)){
+		return 'long';
+	}
+	if(is_integer($input)){
+		return 'integer';
+	}
+	if(is_double($input)){
+		return 'double'; 
+	}
+	if(is_array($input)){
+		return 'array';
+	}
+	if(is_scalar($input)){
+		return 'scalar';
+	}
+	if(is_object($input)){
+		return get_class($input);
+	}
+	return 'mixed';
+}
+function initGlobal($field, $value){
+	eval("global $" . $field . "; $" . $field . " = \$value;");
+}
+function castValue($value, $type){
+	if($type == "date"){
+		return date($value);
+	}
+	if($type == "datetime"){
+		$timezone = isset($_SERVER["TIMEZONE"]) ? $_SERVER["TIMEZONE"] : new DateTimeZone('America/Los_Angeles');
+		$datetime = DateTime::createFromFormat("!m/d/Y",  $value, $timezone);
+		return $datetime; 
+	}
+}
+function copyKeys($array){
+	$result = [];
+	foreach($array AS $key => $value){
+		$result[$key] = "";
+	}
+	return $result;
 }

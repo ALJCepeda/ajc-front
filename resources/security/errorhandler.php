@@ -11,7 +11,7 @@ function log_error( $num, $str, $file, $line, $context = null ) {
 * Uncaught exception handler.
 */
 function log_exception( $e ) {
-    if(!ISLOCAL) {
+    if(ISLOCAL) {
         print "<div style='text-align: center;'>";
         print "<h2 style='color: rgb(190, 50, 50);'>Exception Occured:</h2>";
         print "<table style='width: 800px; display: inline-block;'>";
