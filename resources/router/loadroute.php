@@ -57,6 +57,7 @@ if(isset($parameters['require'])) {
 			break;
 			case 'codemirror':
 				$requires .= "<script src='/bower/codemirror/lib/codemirror.js'></script>\n";
+				$requires .= "<script src='/bower/codemirror/mode/javascript/javascript.js'></script>\n";
 				$requires .= "<link rel='stylesheet' type='text/css' href='/bower/codemirror/lib/codemirror.css'>\n";
 			break;
 			case 'knockout':

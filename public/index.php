@@ -1,5 +1,4 @@
 <?php
-
 //Does all preprocessing such as providing dependencies, constants and refreshes session
 require $_SERVER['DOCUMENT_ROOT'] . '/startsession.php';
 
@@ -7,7 +6,8 @@ require $_SERVER['DOCUMENT_ROOT'] . '/startsession.php';
 //Provides $parameters for page
 require ROOT . '/resources/router/router.php';
 
-//Takes $parameters and autloads page data
+//Takes $parameters and autoloads page data
+//Provides $title,stylesheet,requires,stylesheets,javascripts and script
 require ROOT . '/resources/router/loadroute.php';
 ?>
 
@@ -23,7 +23,7 @@ require ROOT . '/resources/router/loadroute.php';
 	<title><?=$title?></title>
 
 	<script src='/bower/jquery/dist/jquery.min.js'></script>
-	<script src='/bower/bootstrap/dist/js/bootstrap.min.js'></script>\n
+	<script src='/bower/bootstrap/dist/js/bootstrap.min.js'></script>
 	
 	<link rel='stylesheet' type='text/css' href='/bower/bootstrap/dist/css/bootstrap.min.css'>
 	
