@@ -6,11 +6,10 @@ use Symfony\Component\Routing\Route;
 //Determines what's displayed in navbar.php
 $menuList = [
 				'Home' => '/',
-				'Code Pad' => '/codepad',
+				'Eval' => '/eval',
 				'Snake' => '/snake',
 			 	'Repair' => '/repair',
-			 	'About Me' => '/aboutme',
-			 	'Blog' => (!ISLOCAL) ? 'http://blog.aljcepeda.com' : '#'
+			 	'About Me' => '/aboutme'
 			];
 
 $routes = new RouteCollection();
@@ -20,12 +19,7 @@ $routes->add('404', new Route('/error/404', ['title' => '404 Error', 'script' =>
 $routes->add('invalidsession', new Route('/error/invalid', ['title' => 'Invalid Request', 'script' => 'views/error/invalidsession.php', 'error' => 'badsession']));
 $routes->add('repair', new Route('/repair', ['title' => 'Repair']));
 $routes->add('aboutme', new Route('/aboutme', [ 'title' => 'About Me' ]));
-$routes->add('codepad', new Route('/codepad', 
-									[ 
-										'title' => 'Code Pad',
-										'require' => ['codemirror']
-									]
-								));
+$routes->add('eval', new Route('/eval', [ 'title' => 'Eval' ]));
 $routes->add('snake', new Route('/snake', 
 									[
 										'title' => 'Snake.IO',
