@@ -4,7 +4,7 @@
 
 	define('SERVERNAME', PROTOCOL . $_SERVER['SERVER_NAME']);
 	define('HOSTNAME', PROTOCOL . $_SERVER['HTTP_HOST']);
-	define('ISLOCAL', strpos(HOSTNAME, 'aljcepeda.com') === FALSE);
+	define('ISLOCAL', strpos(HOSTNAME, 'aljcepeda.local') !== FALSE);
 
 	define('ASSETS', ROOT . 'public/assets');
 	define('BOWER', ROOT . 'public/bower_components');
@@ -20,3 +20,5 @@
 	$TIMEZONE = new DateTimeZone('America/Los_Angeles');
 
 	define('RECAPTCHAURL', 'https://www.google.com/recaptcha/api/siteverify');
+
+	require "aljcepeda.php";

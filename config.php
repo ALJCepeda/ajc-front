@@ -1,6 +1,5 @@
 <?php
 require 'constants.php';
-require 'aljcepeda.php';
 
 require 'misc.php';
 require VENDOR . '/autoload.php';
