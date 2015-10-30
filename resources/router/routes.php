@@ -19,7 +19,12 @@ $routes->add('404', new Route('/error/404', ['title' => '404 Error', 'script' =>
 $routes->add('invalidsession', new Route('/error/invalid', ['title' => 'Invalid Request', 'script' => 'views/error/invalidsession.php', 'error' => 'badsession']));
 $routes->add('repair', new Route('/repair', ['title' => 'Repair']));
 $routes->add('aboutme', new Route('/aboutme', [ 'title' => 'About Me' ]));
-$routes->add('eval', new Route('/eval', [ 'title' => 'Eval' ]));
+$routes->add('eval', new Route('/eval', 
+									[ 
+										'title' => 'Eval', 
+										'css' => [ 'buttons', 'colors' ]
+									]
+								));
 $routes->add('snake', new Route('/snake', 
 									[
 										'title' => 'Snake.IO',
