@@ -41,7 +41,7 @@ if(ISLOCAL){
 
 <div class="footer">
 	<form action= <?=$snakeURL?> >
-	    <input class="orange button" type="submit" value="Play Now!">
+	    <input class="orange button btn btn-default" type="submit" value="Play Now!" disabled="true">
 	</form>
 
 	<p>Version 0.1.0 </p>

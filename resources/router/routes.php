@@ -28,7 +28,13 @@ $routes->add('eval', new Route('/eval',
 $routes->add('snake', new Route('/snake', 
 									[
 										'title' => 'Snake.IO',
-										'css' => [ 'buttons', 'colors' ]
+										'css' => [ 'buttons', 'colors' ],
+										'notification' => [
+											'status' => 'Down',
+											'type' => 'alert-danger',
+											'dismissable' => true,
+											'message' => 'Snake.IO has been taken down until I can afford a better web host'
+										]
 									]
 								));
 $routes->add('createUser', new Route('/user/create', 
