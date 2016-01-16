@@ -1,7 +1,5 @@
-.DS_STORE
-*.lock
+.*
 vendor/
-.vagrant/
 bower_components/
 aljcepeda.php
 /nbproject
