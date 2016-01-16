@@ -4,9 +4,6 @@ if(ISLOCAL){
 	$snakeURL = SERVERNAME . ':8001';
 }
 ?>
-
-<title>Snake.IO</title>
-
 <div class="header">
 	<h1>Snake.IO</h1>
 </div>

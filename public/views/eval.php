@@ -2,9 +2,6 @@
 $evalURL = ISLOCAL ? "http://eval.aljcepeda.local" : "http://eval.aljcepeda.com";
 $flexURL = "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes";
 ?>
-
-<title>Eval</title>
-
 <div class="header">
 	<h1>Eval</h1>
 </div>
