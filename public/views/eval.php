@@ -1,6 +1,5 @@
 <?php
-$evalURL = ISLOCAL ? "http://eval.aljcepeda.local" : "http://eval.aljcepeda.com";
-$flexURL = "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes";
+$version = exec("cd ". PARENTDIR . "/eval; git describe --tags --abbrev=0");
 ?>
 
 <div class="content-container">
@@ -24,7 +23,7 @@ $flexURL = "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_La
 				<li><a href="https://ace.c9.io/#nav=about">Ace-builds</a> - Code Editor</li>
 				<li><a href="http://knockoutjs.com">Knockoutjs</a> - Two-way Bind/Observable</li>
 				<li><a href="https://www.docker.com">Docker</a> - Virtualization</li>
-				<li><a href="<?= $flexURL ?>">Flexbox</a> - Layout</li>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Flexbox</a> - Layout</li>
 			</ul>
 		</div>
 	</div>
@@ -46,10 +45,10 @@ $flexURL = "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_La
 	</div>
 
 	<div class="footer">
-		<a href="<?=$evalURL?>">
+		<a href="<?= EVALURL ?>">
 	   		<input class="orange button" type="button" value="Code Now!" />
 		</a>
 
-		<p>Version 0.1.0 </p>
+		<p>Version: <?= $version ?> </p>
 	</div>
 </div>

@@ -1,13 +1,10 @@
 <?php
-$snakeURL = "http://snake.aljcepeda.com";
-if(ISLOCAL){
-	$snakeURL = SERVERNAME . ':8001';
-}
+$version = exec("cd ". PARENTDIR . "/snake; git describe --tags --abbrev=0");
 ?>
 
 <div class="content-container">
 	<div class="header">
-		<h1>Snake.IO</h1>
+		<h1>Snakxwe.IO</h1>
 	</div>
 
 	<div class="aside left" style="width:30%;padding-left:30px;">
@@ -39,11 +36,11 @@ if(ISLOCAL){
 	</div>
 
 	<div class="footer">
-		<form action= <?=$snakeURL?> >
+		<form action= <?= SNAKEURL ?> >
 		    <input class="orange button btn btn-default" type="submit" value="Play Now!" disabled="true">
 		</form>
 
-		<p>Version 0.1.0 </p>
+		<p>Version: <?= $version ?> </p>
 		<p>Written in Node.JS, Express.JS and Socket.IO</p>
 	</div>
 </div>
