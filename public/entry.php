@@ -5,6 +5,7 @@ $navbarModel =[
 		"Eval" => "/eval",
 		"Snake" => "/snake",
 	 	"Repair" => "/repair",
+	 	"Portfolio" => "/portfolio",
 	 	"About Me" => "/aboutme"
 	],
 	"path" => $path
