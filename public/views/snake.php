@@ -4,7 +4,7 @@ $version = exec("cd ". PARENTDIR . "/snake; git describe --tags --abbrev=0");
 
 <div class="content-container">
 	<div class="header">
-		<h1>Snakxwe.IO</h1>
+		<h1>Snake.IO</h1>
 	</div>
 
 	<div class="aside left" style="width:30%;padding-left:30px;">
