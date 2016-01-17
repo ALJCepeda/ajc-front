@@ -27,7 +27,12 @@ $routes->add("snake", new Route("/snake",
 										]
 									]
 								));
-$routes->add("portfolio", new Route("/portfolio", [ "title" => "Portfolio" ]));
+$routes->add("portfolio", new Route("/portfolio", 
+									[ 
+										"title" => "Portfolio",
+										"css" => [ "colors" ]
+									]
+								));
 $routes->add("createUser", new Route("/user/create", 
 									[
 										"title" => "Create User",
