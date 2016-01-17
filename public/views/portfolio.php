@@ -2,4 +2,4 @@
 	<h1>Snake.IO</h1>
 </div>
 
-<?php render("portfolio_entry", [ "name" => "Alfred Cepeda" ]); ?>
+<?php render_template("portfolio_entry", [ "name" => "Alfred" ]); ?>

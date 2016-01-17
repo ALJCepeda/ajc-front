@@ -7,7 +7,7 @@
         align-items: center;
         justify-content: center;
     }
-    
+
 	.content-container {
 		height: 100%;
 		width:50%;
@@ -31,7 +31,7 @@
 
 	<p> Finally we have the repaired product, looking clean, slick and plugged in waiting to be tested. The original digitizer is still intact, functional and can be used to as a spare part in the future. </p>
 
-	<img src="<?=$repairURL?>ipad-finished.jpg" width="75%" height="auto" />
+	<img src="<?=$repairURL?>ipad-finished.jpg" width="75r%" height="auto" />
 
 	<p> Hurray! Working and ready for the best game available on the iOS marketplace, Faster Than Light: FTL. Get it now and fulfill your childhood dreams of being a two dimensional space captain, you'll thank me later :D</p>
 </div>

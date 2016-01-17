@@ -1,11 +1,19 @@
 <?php
 
-function render($template, $model) {
-	$url = ROOT . "/resources/templates/" . $template . ".php";
+function render_template($template, $model) {
+	$url = ROOT . "/resources/templates/" . $template;
+	render($url, $model);
+}
 
+function render_view($view, $model) {
+	$url = ROOT . "/public/views/" . $view;
+	render($url, $model);
+}
+
+function render($url, $model) {
 	if($model !== null) { extract($model); }
 
-	require($url);
+	require $url . ".php";
 }
 
 function arrayTo_HTMLList($array, $attributesForItem) {

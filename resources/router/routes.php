@@ -2,17 +2,6 @@
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route;
 
-//This is being initialized here just for convenience.
-//Determines what"s displayed in navbar.php
-$menuList = [
-				"Home" => "/",
-				"Eval" => "/eval",
-				"Snake" => "/snake",
-			 	"Repair" => "/repair",
-			 	"Portfolio" => "/portfolio",
-			 	"About Me" => "/aboutme"
-			];
-
 $routes = new RouteCollection();
 $routes->add("mainpage", new Route("/"));
 $routes->add("redirect", new Route("/redirect"));

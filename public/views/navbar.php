@@ -30,14 +30,14 @@
 		}
 	}
 
-	$menu = arrayTo_HTMLList($menuList, function($label, $value) use ($context) {
-		return ($value === $context->getPathInfo()) ? "class='active'" : "";
+	$menuHTML = arrayTo_HTMLList($menu, function($label, $value) use ($path) {
+		return ($value === $path) ? "class='active'" : "";
 	});
 ?>
 
 <ul class="navigation">
 	<h4>ALJCepeda</h4>
-	<?=$menu?>
+	<?=$menuHTML?>
 </ul>
 
 <?=$notify?>
