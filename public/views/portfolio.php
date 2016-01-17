@@ -1,5 +1,8 @@
-<div class="header">
-	<h1>Snake.IO</h1>
-</div>
+<div class="content_container">
+	<div class="header">
+		<h1>Portfolio</h1>
+	</div>
 
-<?php render_template("portfolio_entry", [ "name" => "Alfred" ]); ?>
+	<?php render_template("portfolio_entry", [ "name" => "Alfred" ]); ?>
+	<?php render_template("portfolio_entry", [ "name" => "Shawn" ]); ?>
+</div>
