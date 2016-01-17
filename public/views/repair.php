@@ -1,4 +1,4 @@
-<?php $repairURL = STATICSERVER . "/images/repair/"; ?>
+<?php $repairURL = STATICURL . "/images/repair/"; ?>
 
 <style type="text/css">
 	.outer-container {
