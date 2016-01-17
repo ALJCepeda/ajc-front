@@ -5,7 +5,7 @@ function render($template, $model) {
 
 	if($model !== null) { extract($model); }
 
-	include($url);
+	require($url);
 }
 
 function arrayTo_HTMLList($array, $attributesForItem) {
