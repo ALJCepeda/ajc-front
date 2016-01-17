@@ -1,5 +1,13 @@
 <?php
 
+function render($template, $model) {
+	$url = ROOT . "/resources/templates/" . $template . ".php";
+
+	if($model !== null) { extract($model); }
+
+	include($url);
+}
+
 function arrayTo_HTMLList($array, $attributesForItem) {
 	$html = '';
 
