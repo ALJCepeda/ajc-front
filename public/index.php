@@ -41,9 +41,7 @@ require ROOT . "/resources/router/loadroute.php";
 </header>
 <body>
 	<div class="outer-container">
-		<div class="content-container">
-			<?php require $script; ?>
-		</div>
+		<?php require $script; ?>
 	</div>
 </body>
 
