@@ -1,2 +1,1 @@
-DirectoryIndex index.php
-FallbackResource /public/index.php
+FallbackResource /index.php

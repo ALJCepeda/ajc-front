@@ -2,7 +2,7 @@
 	define("PROTOCOL", isset($_SERVER["HTTPS"]) ? "https://" : "http://" );
 	define("SERVERNAME", PROTOCOL . $_SERVER["SERVER_NAME"]);
 	define("HOSTNAME", PROTOCOL . $_SERVER["HTTP_HOST"]);
-	define("ISLOCAL", strpos(HOSTNAME, "aljcepeda.local") !== FALSE);
+	define("ISLOCAL", strpos(HOSTNAME, "aljcepeda.com") === FALSE);
 	define("ISDEV", strpos(HOSTNAME, "dev.aljcepeda") !== FALSE);
 
 	if(ISLOCAL === true) {

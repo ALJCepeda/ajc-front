@@ -4,12 +4,18 @@ require 'config.php';
 
 //Will redirect user to security fault page and kill script if error is encountered
 //Initializes and configures $jwtmanager
-require ROOT . '/resources/security/validatesession.php';
+if(strpos($_SERVER["REQUEST_URI"], "error")) {
+	//No need to validate the session if the user has encountered an error
+	return;
+}
+
+session_start();
 
 $builder = new DI\ContainerBuilder();
 $builder->addDefinitions(ROOT . '/resources/dependencyrules.php');
 $container = $builder->build();
 
+var_dump($_SESSION);
 recordRequest();
 
 function recordRequest( $max = 0 ) {

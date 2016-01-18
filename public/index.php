@@ -1,11 +1,12 @@
 <?php
 //Does all preprocessing such as providing dependencies, constants and refreshes session
-require $_SERVER["DOCUMENT_ROOT"] . "/startsession.php";
+require $_SERVER["DOCUMENT_ROOT"] . "/../startsession.php";
 
 
 //Attempts to resolve request path or redirects to 404
 //Provides $parameters for page
 require ROOT . "/resources/router/router.php";
+
 
 //Takes $parameters and autoloads page data
 //Provides $title,stylesheet,requires,stylesheets,javascripts and script
