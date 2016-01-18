@@ -15,7 +15,6 @@ $builder = new DI\ContainerBuilder();
 $builder->addDefinitions(ROOT . '/resources/dependencyrules.php');
 $container = $builder->build();
 
-var_dump($_SESSION);
 recordRequest();
 
 function recordRequest( $max = 0 ) {

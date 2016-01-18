@@ -1,9 +1,7 @@
 <?php
-var_dump($_SESSION);
-
 if(!isset($_SESSION['portfolio'])) {
 	$_SESSION['portfolio'] = [
-		"image" => "chart",
+		"image" => "Bar",
 		"question" => 1
 	];
 }
@@ -13,12 +11,16 @@ $entry = [
 	"selectedImage" => $_SESSION['portfolio']['image'],
 	"selectedQuestion" => $_SESSION['portfolio']['question'],
 	"images" => [
-		"chart" => "projections/chart.png",
-		"grouped" => "projections/grouped.png"
+		"Bar" => "projections/bar.png",
+		"Chart" => "projections/chart.png",
+		"Grouped" => "projections/grouped.png",
+		"Expanded" => "projections/expanded.png",
+		"Both" => "projections/expanded_grouped.png"
 	],
 	"questions" => [
 		[ "Q" => "Is Pluto a planet?", "A" => "Yes it is not a planet" ],
-		[ "Q" => "Where's Waldo?", "A" => "In space!" ]
+		[ "Q" => "Where's Waldo?", "A" => "In space!" ],
+		[ "Q" => "Is this another question?", "A" => "Yes it is" ]
 	]
 ];
 
@@ -36,6 +38,25 @@ $entry = [
 		height: 100%;
 		width:80%;
 		text-align: center;
+	}
+
+	.header, .footer{
+	  	flex: 1 auto;
+	  	width: 100%;
+	}
+	.aside { 
+		flex: 1 0 auto;
+	}
+	.left {
+		width:65%;
+	}
+	.right {
+		width:35%;
+	}
+	.portfolio_entry {
+		display: flex;
+	  	flex-flow: row wrap;
+	  	justify-content:space-around;
 	}
 </style>
 

@@ -70,17 +70,17 @@
 }
 
 .x-scroll {
-	overflow-x:scroll;
+	overflow-x:auto;
 	overflow-y:hidden;
 }
 
 .y-scroll {
 	overflow-x:hidden;
-	overflow-y:scroll;
+	overflow-y:auto;
 }
 
 .f-aside {
-	flex:1 auto;
+	flex:1 1;
 }
 .f-big { 
 	flex:2 1;
