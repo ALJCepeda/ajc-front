@@ -1,4 +1,6 @@
 <?php
+require ROOT . "/resources/models/portfolio/entries.php";
+
 if(!isset($_SESSION['portfolio'])) {
 	$_SESSION['portfolio'] = [
 		"image" => "Bar",
@@ -6,70 +8,8 @@ if(!isset($_SESSION['portfolio'])) {
 	];
 }
 
-$entry = [
-	"title" => "Financial Projections",
-	"selectedImage" => $_SESSION['portfolio']['image'],
-	"selectedQuestion" => intval($_SESSION['portfolio']['question']),
-	"images" => [
-		"Bar" => "projections/bar.png",
-		"Chart" => "projections/chart.png",
-		"Grouped" => "projections/grouped.png",
-		"Expanded" => "projections/expanded.png",
-		"Both" => "projections/expanded_grouped.png"
-	],
-	"questions" => [
-		[ "Q" => "Is Pluto a planet?", "A" => "Yes it is not a planet" ],
-		[ "Q" => "Where's Waldo?", "A" => "In space!" ],
-		[ "Q" => "Is this another question?", "A" => "Yes it is" ]
-	]
-];
-
+$entries = generate_entries();
 ?>
-
-<style type="text/css">
-	.outer-container {
-        display: flex;
-        flex-direction:column;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-	.content-container {
-		height: 100%;
-		width:80%;
-		text-align: center;
-	}
-	.active {
-		border-bottom:1px solid #fff
-	}
-	.header, .footer{
-	  	flex: 1 auto;
-	  	width: 100%;
-	}
-	.aside { 
-		flex: 1 0 auto;
-	}
-	.left {
-		width:65%;
-	}
-	.right {
-		width:35%;
-	}
-	.portfolio_entry {
-		display: flex;
-	  	flex-flow: row wrap;
-	  	justify-content:space-around;
-	}
-
-	.transparent {
-		background-color: Transparent;
-	    background-repeat:no-repeat;
-	    border: none;
-	    cursor:pointer;
-	    overflow: hidden;
-	    outline:none;
-	}
-</style>
 
 <div class="content-container">
 	<div class="header">
@@ -77,6 +17,9 @@ $entry = [
 	</div>
 
 	<div class="col-nw c-center m-center">
-		<?php render_template("portfolio_entry", $entry); ?>
+		<?php 	
+			foreach ($entries as $key => $entry) {
+				render_template("portfolio/entry", [ "model" => $entry ]);
+			}	?>
 	</div>
 </div>
