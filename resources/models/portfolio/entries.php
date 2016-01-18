@@ -1,6 +1,4 @@
 <?php
-require ROOT . "/resources/models/portfolio/entry.php";
-
 function generate_entries() {
 	$projections = new Model\Portfolio\Entry("Financial Projections");
 
