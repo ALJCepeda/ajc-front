@@ -19,6 +19,10 @@ class Parametizer {
  		return isset($this->parameters['title']) ? $this->parameters['title'] : 'ALJCepeda';
  	}
 
+ 	public function notifications() {
+ 		return isset($this->parameters['notifications']) ? $this->parameters['notifications'] : [];
+ 	}
+
  	public function javascripts() {
  		$result = [];
 

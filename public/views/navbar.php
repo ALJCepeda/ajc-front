@@ -1,17 +1,11 @@
 <?php
-	$notify = '';
-	$notifications = [];
 	if(isset($_SESSION['notification'])) {
 		//A notification was set from the previous page
 		$notifications[] = $_SESSION['notification'];
 		$_SESSION['notification'] = NULL;
 	}
 
-	if(isset($parameters['notification'])) {
-		//Notification was provided by the router
-		$notifications[] = $parameters['notification'];
-	}
-
+	$notify = '';
 	if(count($notifications)) {
 		foreach($notifications as $index => $notification) {
 			$status = isset($notification['status']) ? $notification['status'] : '';

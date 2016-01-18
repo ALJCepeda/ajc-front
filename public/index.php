@@ -18,6 +18,7 @@ $params = new Parametizer($parameters, require_map());
 render("entry", [ 
 	"title" => $params->title(),
 	"script" => $params->script(),
+	"notifications" => $params->notifications(),
 	"javascripts" => $params->javascripts(),
 	"stylesheets" => $params->stylesheets(),
 	"requires" => $params->requires(),

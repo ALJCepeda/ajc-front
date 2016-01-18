@@ -1,4 +1,5 @@
 <?php
+
 $navbarModel =[
 	"menu" => [
 		"Home" => "/",
@@ -8,6 +9,7 @@ $navbarModel =[
 	 	"Portfolio" => "/portfolio",
 	 	"About Me" => "/aboutme"
 	],
+	"notifications" => $notifications,
 	"path" => $path
 ];
 
