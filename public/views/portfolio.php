@@ -1,9 +1,17 @@
 <?php
+var_dump($_SESSION);
+
+if(!isset($_SESSION['portfolio'])) {
+	$_SESSION['portfolio'] = [
+		"image" => "chart",
+		"question" => 1
+	];
+}
 
 $entry = [
 	"title" => "Financial Projections",
-	"selectedImage" => "chart",
-	"selectedQuestion" => 1,
+	"selectedImage" => $_SESSION['portfolio']['image'],
+	"selectedQuestion" => $_SESSION['portfolio']['question'],
 	"images" => [
 		"chart" => "projections/chart.png",
 		"grouped" => "projections/grouped.png"
@@ -26,17 +34,17 @@ $entry = [
 
 	.content-container {
 		height: 100%;
-		width:50%;
+		width:80%;
 		text-align: center;
 	}
 </style>
 
-<div class="content_container">
+<div class="content-container">
 	<div class="header">
 		<h1>Portfolio</h1>
 	</div>
 
-	<div style="width:75%">
+	<div class="col-nw c-center m-center">
 		<?php render_template("portfolio_entry", $entry); ?>
 	</div>
 </div>

@@ -28,6 +28,7 @@ $navbarModel =[
 	<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="/bower/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/flex.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/pages/index.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/pages/navbar.css">
 
