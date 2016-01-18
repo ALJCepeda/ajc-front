@@ -9,7 +9,7 @@ if(!isset($_SESSION['portfolio'])) {
 $entry = [
 	"title" => "Financial Projections",
 	"selectedImage" => $_SESSION['portfolio']['image'],
-	"selectedQuestion" => $_SESSION['portfolio']['question'],
+	"selectedQuestion" => intval($_SESSION['portfolio']['question']),
 	"images" => [
 		"Bar" => "projections/bar.png",
 		"Chart" => "projections/chart.png",

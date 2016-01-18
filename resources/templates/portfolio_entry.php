@@ -9,20 +9,34 @@
 	</div>
 
 	<div class="left col-nw m-between">
-		<form class="row-nw m-around c-center" style="width:100%;" action=<?= "/actions/portfolio/select.php" ?> method="POST">
-			<?php foreach ($images as $name => $image) { ?>
-				<input class="f-aside orange button" type="submit" name="image" value="<?= $name ?>">
-			<?php } ?>
+		<form action="/actions/portfolio/select.php" method="POST">
+			<div class="row-nw m-around c-center">
+				<?php foreach ($images as $name => $image) { ?>
+					<button class="f-aside orange button" type="submit" name="image" value="<?= $name ?>">
+						<?= $name ?>
+					</button>
+				<?php } ?>
+			</div>
 		</form>
 
 		<img src="<?= $selectedURL ?>" style="width:100%; height:auto; margin-bottom:10px;" />
 	</div>
-
+    
 	<div class="right col-nw m-start c-center y-scroll">
-		<?php foreach ($questions as $index => $entry) { ?>
-			<div class="blue row-nw m-center c-center" style="width:100%; height:50px;">
-				<label><?= $entry["Q"] ?></label>
-			</div>
-		<?php } ?>
+		<form action="/actions/portfolio/select.php" method="POST" style="width:100%">
+			<?php foreach ($questions as $index => $entry) { ?>
+				<button class="blue button" style="width:100%" type="submit" name="question" value="<?= $index ?>">
+					<?= $entry["Q"] ?>
+				</button>
+
+				<?php if($selectedQuestion === $index) { ?>
+					<div>
+						<p>
+							<?= $entry["A"] ?>
+						</p>
+					</div>
+				<?php } ?>
+			<?php } ?>
+		</form>
 	</div>
 </div>
