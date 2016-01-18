@@ -39,7 +39,9 @@ $entry = [
 		width:80%;
 		text-align: center;
 	}
-
+	.active {
+		border-bottom:1px solid #fff
+	}
 	.header, .footer{
 	  	flex: 1 auto;
 	  	width: 100%;
@@ -57,6 +59,15 @@ $entry = [
 		display: flex;
 	  	flex-flow: row wrap;
 	  	justify-content:space-around;
+	}
+
+	.transparent {
+		background-color: Transparent;
+	    background-repeat:no-repeat;
+	    border: none;
+	    cursor:pointer;
+	    overflow: hidden;
+	    outline:none;
 	}
 </style>
 

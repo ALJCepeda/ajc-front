@@ -9,17 +9,19 @@
 	</div>
 
 	<div class="left col-nw m-between">
-		<form action="/actions/portfolio/select.php" method="POST">
+		<form action="/actions/portfolio/select.php" method="POST" style="margin-bottom:10px;">
 			<div class="row-nw m-around c-center">
-				<?php foreach ($images as $name => $image) { ?>
-					<button class="f-aside orange button" type="submit" name="image" value="<?= $name ?>">
-						<?= $name ?>
+		<?php 	foreach ($images as $name => $image) { 	?>
+					<button class="f-aside button transparent" type="submit" name="image" value="<?= $name ?>">
+						<font class="<?= $selectedImage === $name ? 'active' : '' ?>">
+							<?= $name ?>
+						</font>
 					</button>
-				<?php } ?>
+		<?php 	}	?>
 			</div>
 		</form>
 
-		<img src="<?= $selectedURL ?>" style="width:100%; height:auto; margin-bottom:10px;" />
+		<img src="<?= $selectedURL ?>" style="width:100%; height:auto;" />
 	</div>
     
 	<div class="right col-nw m-start c-center y-scroll">
