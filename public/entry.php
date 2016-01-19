@@ -1,18 +1,19 @@
 <?php
 
-$navbarModel =[
-	"menu" => [
-		"Home" => "/",
-		"Eval" => "/eval",
-		"Snake" => "/snake",
-	 	"Repair" => "/repair",
-	 	"Portfolio" => "/portfolio",
-	 	"About Me" => "/aboutme"
-	],
-	"notifications" => $notifications,
-	"path" => $path
+$menuList = [ 
+	new Model\Menu\Item([ "name"=>"Home", "path"=>"/", "loc"=>$path ]),
+	new Model\Menu\Item([ "name"=>"Eval", "path"=>"/eval", "loc"=>$path ]),
+	new Model\Menu\Item([ "name"=>"Snake", "path"=>"/snake", "loc"=>$path ]),
+	new Model\Menu\Item([ "name"=>"Repair", "path"=>"/repair", "loc"=>$path ]),
+	new Model\Menu\Item([ "name"=>"Portfolio", "path"=>"/portfolio", "loc"=>$path ]),
+	new Model\Menu\Item([ "name"=>"About Me", "path"=>"/aboutme", "loc"=>$path ])
 ];
 
+if(isset($_SESSION['notification'])) {
+	//A notification was set from the previous page
+	$notifications[] = new Model\Other\Notification($_SESSION['notification']);
+	unset($_SESSION['notification']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +41,19 @@ $navbarModel =[
 </head>
 
 <header>
-	<?php render_view("navbar", $navbarModel); ?>
+	<ul class="navigation">
+		<h4>ALJCepeda</h4>
+		<?php render_template("menu", [ "menuList"=>$menuList ]); ?>
+	</ul>	
+
+	<?php foreach ($notifications as $key => $notification) {
+		render_template("notification", [ "m"=>$notification ]);
+	}	?>
 </header>
 
 <body>
 	<div class="outer-container">
-		<?php render_view($script, null) ?>
+		<?php render_view($script, null); ?>
 	</div>
 </body>
 

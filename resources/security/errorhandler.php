@@ -41,5 +41,3 @@ function check_for_fatal() {
 register_shutdown_function( "check_for_fatal" );
 set_error_handler( "log_error" );
 set_exception_handler( "log_exception" );
-ini_set( "display_errors", "off" );
-error_reporting( E_ALL );

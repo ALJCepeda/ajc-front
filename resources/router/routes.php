@@ -20,12 +20,12 @@ $routes->add("snake", new Route("/snake",
 										"title" => "Snake.IO",
 										"css" => [ "buttons", "colors" ],
 										"notifications" => [
-											[
+											new Model\Other\Notification([
 												"status" => "Down",
 												"type" => "alert-danger",
 												"dismissable" => true,
 												"message" => "Snake.IO has been taken down until I can afford a better web host"
-											]
+											])
 										]
 									]
 								));
@@ -34,12 +34,12 @@ $routes->add("portfolio", new Route("/portfolio",
 										"title" => "Portfolio",
 										"css" => [ "colors" ],
 										"notifications" => [
-											[
+											new Model\Other\Notification([
 												"status" => "Under Construction",
 												"type" => "alert-warning",
 												"dismissable" => true,
 												"message" => "Currently under active development and will undergo regular updates througout the week... check back!"
-											]
+											])
 										]
 									]
 								));
