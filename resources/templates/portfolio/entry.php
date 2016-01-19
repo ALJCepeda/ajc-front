@@ -22,7 +22,9 @@
 			</div>
 		</form>
 
-		<img src="<?= $selectedURL ?>" style="width:100%; height:auto;" />
+		<a href="<?= $selectedURL ?>" target="_blank">
+			<img src="<?= $selectedURL ?>" style="width:100%; height:auto;" />
+		</a>
 	</div>
     
 	<div class="right col-nw m-start c-center y-scroll">
