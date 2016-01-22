@@ -1,13 +1,6 @@
 <?php
 require ROOT . "/resources/models/portfolio/entries.php";
 
-if(!isset($_SESSION['portfolio'])) {
-	$_SESSION['portfolio'] = [
-		"image" => "Bar",
-		"question" => 1
-	];
-}
-
 $entries = generate_entries();
 ?>
 
@@ -19,7 +12,7 @@ $entries = generate_entries();
 	<div class="col-nw c-center m-center">
 		<?php 	
 			foreach ($entries as $key => $entry) {
-				render_template("portfolio/entry", [ "model" => $entry ]);
+				render_template("portfolio/entry", [ "key"=>$key, "m" => $entry ]);
 			}	?>
 	</div>
 </div>

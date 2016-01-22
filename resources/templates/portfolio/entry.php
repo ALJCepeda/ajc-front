@@ -1,20 +1,20 @@
 <?php
-	//var_dump($model->images);
+	//var_dump($m->images);
 	$imageURL = STATICURL . "/images/portfolio";
-	$selectedURL = "$imageURL/".$model->image();
+	$selectedURL = "$imageURL/".$m->image();
 ?>
 
 <div class="row-w m-between">
 	<div class="header">
-		<h3><?= $model->title ?></h3>
+		<h3><?= $m->title ?></h3>
 	</div>
 
 	<div class="left col-nw m-between">
-		<form action="/actions/portfolio/select.php" method="POST" style="margin-bottom:10px;">
+		<form action="/actions/portfolio/select.php?section=<?= $key ?>" method="POST" style="margin-bottom:10px;">
 			<div class="row-nw m-around c-center">
-		<?php 	foreach ($model->images as $name => $image) { 	?>
+		<?php 	foreach ($m->images as $name => $image) { 	?>
 					<button class="f-aside button transparent" type="submit" name="image" value="<?= $name ?>">
-						<font class="<?= $model->selImage === $name ? 'active' : '' ?>">
+						<font class="<?= $m->selImage === $name ? 'active' : '' ?>">
 							<?= $name ?>
 						</font>
 					</button>
@@ -28,13 +28,13 @@
 	</div>
     
 	<div class="right col-nw m-start c-center y-scroll">
-		<form action="/actions/portfolio/select.php" method="POST" style="width:100%">
-			<?php foreach ($model->questions as $index => $entry) { ?>
+		<form action="/actions/portfolio/select.php?section=<?= $key ?>" method="POST" style="width:100%">
+			<?php foreach ($m->questions as $index => $entry) { ?>
 				<button class="blue button" style="width:100%" type="submit" name="question" value="<?= $index ?>">
 					<?= $entry["Q"] ?>
 				</button>
 
-				<?php if($model->selQuestion === $index) { ?>
+				<?php if($m->selQuestion === $index) { ?>
 					<div>
 						<p>
 							<?= $entry["A"] ?>

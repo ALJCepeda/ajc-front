@@ -1,5 +1,20 @@
 <?php
 function generate_entries() {
+	if(!isset($_SESSION["portfolio"])) {
+		$_SESSION["portfolio"] = [
+			"projections" => [
+				"image" => "Bar",
+				"question" => 1
+			],
+			"repair" => [
+				"image" => "Broken",
+				"question" => 1
+			]
+		];
+	}
+
+	$model = $_SESSION["portfolio"];
+
 	$projections = new Model\Portfolio\Entry("Financial Projections");
 
 	$projections->addImage("Bar", "projections/bar.png");
@@ -13,22 +28,23 @@ function generate_entries() {
 	$projections->addQuestion("What technologies were used?", "DevExpress was used for the bar and area graphs. KnockoutJS for UI two-way binding and responsiveness. Bootstrap for layout and CSS styling. Behind the scenes I was forced to make clever use of the Adapter and Delegate design patterns in order to handle some poor decisions made by my senior developer");
 	$projections->addQuestion("How would you improve it?", "Currently the back-end makes use of a blob object with unintuitive keys and poorly thought out ecapsulation. Rather than client-side make use of an adapter to transform the data, server-side should just structure the data correctly. A better structure would improve server-side's workflow as well");
 
-	$projections->selectImage($_SESSION['portfolio']['image']);
-	$projections->selectQuestion($_SESSION['portfolio']['question']);
+	$projections->selectImage($model["projections"]["image"]);
+	$projections->selectQuestion($model["projections"]["question"]);
 
 	$repair = new Model\Portfolio\entry("Electronic Repair");
 
 	$repair->addImage("Broken", "ipad/broken.jpg");
-	$repair->addImage("Finished", "ipad/finished.jpg");
 	$repair->addImage("Opened", "ipad/opened.jpg");
 	$repair->addImage("Repaired", "ipad/repaired.jpg");
+	$repair->addImage("Finished", "ipad/finished.jpg");
+	
 
 	$repair->addQuestion("How long did it take?", "The entire process from start to finish took less than 30 minutes");
 	$repair->addQuestion("How much did it cost?", "In order to buy all the toys and necessary parts to perform the repair cost a total of $140...which was sitll $70 less than the $200 pricetag the Apple store gave me");
 	$repair->addQuestion("Will you repair my device?", "Sure, but better yet I'll point you to the resources so you can do it yourself. Its really easy, will save you a ton of money and boost your confidence for repairing other electronics");
 
-	$repair->selectImage("Broken");
-	$repair->selectQuestion(0);
+	$repair->selectImage($model["repair"]["image"]);
+	$repair->selectQuestion($model["repair"]["question"]);
 
-	return [ $projections, $repair ];
+	return [ "projections"=>$projections, "repair"=>$repair ];
 }
