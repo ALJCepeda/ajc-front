@@ -4,7 +4,6 @@ $menuList = [
 	new Model\Menu\Item([ "name"=>"Home", "path"=>"/", "loc"=>$path ]),
 	new Model\Menu\Item([ "name"=>"Eval", "path"=>"/eval", "loc"=>$path ]),
 	new Model\Menu\Item([ "name"=>"Snake", "path"=>"/snake", "loc"=>$path ]),
-	new Model\Menu\Item([ "name"=>"Repair", "path"=>"/repair", "loc"=>$path ]),
 	new Model\Menu\Item([ "name"=>"Portfolio", "path"=>"/portfolio", "loc"=>$path ]),
 	new Model\Menu\Item([ "name"=>"About Me", "path"=>"/aboutme", "loc"=>$path ])
 ];
