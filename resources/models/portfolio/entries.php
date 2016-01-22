@@ -16,5 +16,19 @@ function generate_entries() {
 	$projections->selectImage($_SESSION['portfolio']['image']);
 	$projections->selectQuestion($_SESSION['portfolio']['question']);
 
-	return [ $projections ];
+	$repair = new Model\Portfolio\entry("Electronic Repair");
+
+	$repair->addImage("Broken", "ipad/broken.jpg");
+	$repair->addImage("Finished", "ipad/finished.jpg");
+	$repair->addImage("Opened", "ipad/opened.jpg");
+	$repair->addImage("Repaired", "ipad/repaired.jpg");
+
+	$repair->addQuestion("How long did it take?", "The entire process from start to finish took less than 30 minutes");
+	$repair->addQuestion("How much did it cost?", "In order to buy all the toys and necessary parts to perform the repair cost a total of $140...which was sitll $70 less than the $200 pricetag the Apple store gave me");
+	$repair->addQuestion("Will you repair my device?", "Sure, but better yet I'll point you to the resources so you can do it yourself. Its really easy, will save you a ton of money and boost your confidence for repairing other electronics");
+
+	$repair->selectImage("Broken");
+	$repair->selectQuestion(0);
+
+	return [ $projections, $repair ];
 }

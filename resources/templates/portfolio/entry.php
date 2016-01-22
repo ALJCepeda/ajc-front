@@ -23,7 +23,7 @@
 		</form>
 
 		<a href="<?= $selectedURL ?>" target="_blank">
-			<img src="<?= $selectedURL ?>" style="width:100%; height:auto;" />
+			<img src="<?= $selectedURL ?>" style="width:100%; height:auto; max-height:350px;" />
 		</a>
 	</div>
     
