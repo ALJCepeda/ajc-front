@@ -1,0 +1,91 @@
+.q1-w {width:25%;}
+.q2-w {width:50%;}
+.q3-w {width:75%;}
+.q4-w {width:100%;}
+.q1-h {height:25%;}
+.q2-h {height:50%;}
+.q3-h {height:75%;}
+.q4-h {height:100%;}
+.q1 {width:25%;height:25%;}
+.q2 {width:50%;height:50%;}
+.q3 {width:75%;height:75%;}
+.q4 {width:100%;height:100%;}
+
+.wide {width:100%;}
+.tall {height:100%;}
+.fill {width:100%;height:100%;}
+.row { height:20%; width: 100%; }
+
+.table { width:95%; height:95%; }
+.table input { width:75%; }
+
+.thumbnail { height:100px; width:100px; }
+.float-r { float:right; }
+.float-l { float:left; }
+
+.indent { padding:20px; }
+.indent-u { padding-bottom:20px;}
+.indent-r { padding-left:20px; }
+.indent-d { padding-up:20px; }
+.indent-l { padding-right:20px; }
+
+.poke { padding:20px; }
+.poke-u { padding-bottom:20px;}
+.poke-r { padding-left:20px; }
+.poke-d { padding-up:20px; }
+.poke-l { padding-right:20px; }
+
+.press { padding:40px; }
+.press-u { padding-bottom:40px;}
+.press-r { padding-left:40px; }
+.press-d { padding-up:40px; }
+.press-l { padding-right:40px; }
+
+.push { padding:60px; }
+.push-u { padding-bottom:60px;}
+.push-r { padding-left:60px; }
+.push-d { padding-up:60px; }
+.push-l { padding-right:60px; }
+
+.shove { padding:80px; }
+.shove-u { padding-bottom:80px;}
+.shove-r { padding-left:80px; }
+.shove-d { padding-up:80px; }
+.shove-l { padding-right:80px; }
+
+.kick { padding:100px; }
+.kick-u { padding-bottom:100px;}
+.kick-r { padding-left:100px; }
+.kick-d { padding-up:100px; }
+.kick-l { padding-right:100px; }
+
+.shift { margin:20px; }
+.shift-u { margin-bottom:20px; }
+.shift-r { margin-left:20px; }
+.shift-d { margin-up:20px; }
+.shift-l { margin-right:20px; }
+
+.step { margin:40px; }
+.step-u { margin-bottom:40px; }
+.step-r { margin-left:40px; }
+.step-d { margin-up:40px; }
+.step-l { margin-right:40px; }
+
+.skip { margin:60px; }
+.skip-u { margin-bottom:60px; }
+.skip-r { margin-left:60px; }
+.skip-d { margin-up:60px; }
+.skip-l { margin-right:60px; }
+
+.jump { margin:80px; }
+.jump-u { margin-bottom:80px; }
+.jump-r { margin-left:80px; }
+.jump-d { margin-up:80px; }
+.jump-l { margin-right:80px; }
+
+.leap { margin:100px; }
+.leap-u { margin-bottom:100px; }
+.leap-r { margin-right:100px; }
+.leap-d { margin-top:100px; }
+.leap-l { margin-right:100px; }
+

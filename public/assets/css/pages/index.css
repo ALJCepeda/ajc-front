@@ -23,6 +23,10 @@ body {
   	width: 100%;
 }
 
+.text-center {
+	text-align: center;
+}
+
 .header, .footer {
 	text-align: center;
 }
@@ -36,7 +40,9 @@ body {
 	clear:both;
 }
 
-.header { order: 1; }
-.left { order: 2; }
-.right { order: 3; }
-.footer  { order: 4; }
+.header { order:1; }
+.intro { order:2; }
+.main { order:3; }
+.left { order:4; }
+.right { order:5; }
+.footer  { order:6; }

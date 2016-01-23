@@ -1,11 +1,12 @@
 <?php
 
 $menuList = [ 
-	new Model\Menu\Item([ "name"=>"Home", "path"=>"/", "loc"=>$path ]),
-	new Model\Menu\Item([ "name"=>"Eval", "path"=>"/eval", "loc"=>$path ]),
-	new Model\Menu\Item([ "name"=>"Snake", "path"=>"/snake", "loc"=>$path ]),
-	new Model\Menu\Item([ "name"=>"Portfolio", "path"=>"/portfolio", "loc"=>$path ]),
-	new Model\Menu\Item([ "name"=>"About Me", "path"=>"/aboutme", "loc"=>$path ])
+	new Model\Menu\Item([ "name"=>"Home", "path"=>"/"]),
+	new Model\Menu\Item([ "name"=>"Eval", "path"=>"/eval"]),
+	new Model\Menu\Item([ "name"=>"Snake", "path"=>"/snake"]),
+	new Model\Menu\Item([ "name"=>"GTK", "path"=>"/goodtoknow"]),
+	new Model\Menu\Item([ "name"=>"Portfolio", "path"=>"/portfolio"]),
+	new Model\Menu\Item([ "name"=>"About Me", "path"=>"/aboutme"])
 ];
 
 if(isset($_SESSION['notification'])) {
@@ -31,6 +32,7 @@ if(isset($_SESSION['notification'])) {
 	
 	<link rel="stylesheet" type="text/css" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/flex.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/display.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/pages/index.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/pages/navbar.css">
 
@@ -42,7 +44,7 @@ if(isset($_SESSION['notification'])) {
 <header>
 	<ul class="navigation">
 		<h4>ALJCepeda</h4>
-		<?php render_template("menu", [ "menuList"=>$menuList ]); ?>
+		<?php render_template("menu", [ "menuList"=>$menuList, "path"=>$path ]); ?>
 	</ul>	
 
 	<?php foreach ($notifications as $key => $notification) {

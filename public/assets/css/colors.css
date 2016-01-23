@@ -42,3 +42,9 @@
 	background: -moz-linear-gradient(top,  #0078a4,  #00adee);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a4', endColorstr='#00adee');
 }
+
+.cyan { background-color: #4DD0E1; }
+.cyan-300 { background-color: #4DD0E1; }
+
+.purple { background-color: #ea80fc; }
+.purple-A100 { background-color: #ea80fc; }

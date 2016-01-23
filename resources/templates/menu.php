@@ -1,6 +1,6 @@
 <?php 
 		foreach($menuList as $index => $m) {
-			if($m->isActive() === TRUE) {	?>
+			if($m->getPath() === $path) {	?>
 				<li class="active">
 <?php 		} else {	?>
 				<li>

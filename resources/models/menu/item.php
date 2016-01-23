@@ -6,13 +6,10 @@ class Item {
 	private $name = "";
 	private $path = "";
 	private $menu = [];
-	private $active = FALSE;
 
 	function __construct($options) {
 		$this->setName($options["name"]);
 		$this->setPath($options["path"]);
-
-		$this->active = $options["path"] === $options["loc"];
 	}
 
 	public function setName($name) {
@@ -34,10 +31,6 @@ class Item {
 	}
 	public function addMenu(Item $menu) {
 		$this->menu[] = $menu;
-	}
-
-	public function isActive() {
-		return $this->active;
 	}
 
 	public function hasMenu() {
