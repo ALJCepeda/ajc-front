@@ -2,8 +2,13 @@
 	define("PROTOCOL", isset($_SERVER["HTTPS"]) ? "https://" : "http://" );
 	define("SERVERNAME", PROTOCOL . $_SERVER["SERVER_NAME"]);
 	define("HOSTNAME", PROTOCOL . $_SERVER["HTTP_HOST"]);
-	define("ISLOCAL", strpos(HOSTNAME, "aljcepeda.com") === FALSE);
 	define("ISDEV", strpos(HOSTNAME, "dev.aljcepeda") !== FALSE);
+
+	if(strpos(HOSTNAME, "aljcepeda.local") !== FALSE || strpos(HOSTNAME, "192.168.2.21") !== FALSE) {
+		define("ISLOCAL", TRUE);
+	} else {
+		define("ISLOCAL", FALSE);
+	}
 
 	if(ISLOCAL === true) {
 		define("PARENTDIR", "/shared");
