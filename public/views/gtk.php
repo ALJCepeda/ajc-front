@@ -1,19 +1,28 @@
 <?php
-	class TidBit {
-		public $description = "";
-		public $command = "";
-
-		function __construct($command, $description) {
-			$this->description = $description;
-			$this->command = $command;
-		}
-	}
-
 	$tidbits = [
-		new TidBit( "find . -type d ! -perm 755 -exec chmod -v 755 {} \; && </br> find . -type f ! -perm 644 -exec chmod -v 644 {} \;",
-					"Changes permissions of all files to 644 and all folders to 755 in (and including) the current directory"),
-		new TidBit( "sudo lsof -i :80",
-					"Returns the pids of processes bound to port 80")
+		new \Model\Other\TidBit("find . -type d ! -perm 755 -exec chmod -v 755 {} \; && </br> find . -type f ! -perm 644 -exec chmod -v 644 {} \;",
+								"Changes permissions of all files to 644 and all folders to 755 in (and including) the current directory"),
+		new \Model\Other\TidBit("sudo lsof -i :80",
+								"Returns the pids of processes bound to port 80"),
+		new \Model\Other\TidBit("docker build -t {repository}/{package}:{version} {dir}",
+								"Builds a Dockerfile with a name such as aljcepeda/php:7.0"),
+		new \Model\Other\TidBit("scp /path/to/file username@a:/path/to/destination",
+								"Copies a file over SSH, destination can be switched"),
+		new \Model\Other\TidBit("find . -type f -name \"._*\" -delete",
+								"Recusively deletes the wildcard for the current directory"),
+		new \Model\Other\TidBit("\$data = ['a', 'b', 'c', 17, 'e'];</br>
+								 header('Content-Type: text/csv');</br>
+								 header('Content-Disposition: attachment; filename=\"foo.csv\"'); </br>
+								 fputcsv(fopen(\"php://output\", \"w+\"), \$data);",
+								 "Easy way to output data in CSV format minus the fluff"),
+		new \Model\Other\TidBit("hdiutil makehybrid -iso -joliet -o MyRip.iso MyRip.cdr",
+								"Converts ISO -> CDR format on Mac OS X"),
+		new \Model\Other\TidBit("pbcopy < ~/.ssh/id_rsa.pub",
+								"Copy public key on Mac OS X"),
+		new \Model\Other\TidBit("git submodule update --init --recursive",
+								"Recursively initializes all submodules in a git project"),
+		new \Model\Other\TidBit("git submodule foreach --recursive 'command'",
+								"Recursively apply command to the directories of each submodule. Command doesn't have to be git like 'echo \$path'")
 	];
 ?>
 
