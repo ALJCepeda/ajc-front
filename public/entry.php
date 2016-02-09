@@ -1,15 +1,15 @@
 <?php
+$projects = new Model\Menu\Item([ "name"=>"Projects", "path"=>"#" ]);
+$projects->addMenu(new Model\Menu\Item([ "name"=>"Eval", "path"=>"/eval" ]));
+$projects->addMenu(new Model\Menu\Item([ "name"=>"Snake", "path"=>"/snake" ]));
 
-$test = new Model\Menu\Item([ "name"=>"Test", "path"=>"/test" ]);
-$test->addMenu(new Model\Menu\Item(["name"=>"Foo", "path"=>"/Bar"]));
+$aboutme = new Model\Menu\Item([ "name"=>"About Me", "path"=>"#" ]);
+$aboutme->addMenu(new Model\Menu\Item(["name"=>"Portfolio", "path"=>"/portfolio"]));
+$aboutme->addMenu(new Model\Menu\Item(["name"=>"Mission", "path"=>"/aboutme"]));
 $menuList = [ 
-	new Model\Menu\Item([ "name"=>"Home", "path"=>"/"]),
-	new Model\Menu\Item([ "name"=>"Eval", "path"=>"/eval"]),
-	new Model\Menu\Item([ "name"=>"Snake", "path"=>"/snake"]),
 	new Model\Menu\Item([ "name"=>"GTK", "path"=>"/goodtoknow"]),
-	new Model\Menu\Item([ "name"=>"Portfolio", "path"=>"/portfolio"]),
-	new Model\Menu\Item([ "name"=>"About Me", "path"=>"/aboutme"]),
-	$test
+	$projects,
+	$aboutme
 ];
 
 if(isset($_SESSION['notification'])) {
@@ -46,7 +46,9 @@ if(isset($_SESSION['notification'])) {
 
 <header>
 	<ul class="navigation">
-		<h4>ALJCepeda</h4>
+		<a href="/">
+			<h4 class="default-font">ALJCepeda</h4>
+		</a>
 		<?php render_template("menu", [ "menuList"=>$menuList, "path"=>$path ]); ?>
 	</ul>	
 </header>

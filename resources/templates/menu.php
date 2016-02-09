@@ -13,11 +13,9 @@
 					</a>
 
 					<ul class="dropdown-menu dropdown-menu-right">
-					  	<li><a tabindex="-1" href="#">Action</a></li>
-					  	<li><a tabindex="-1" href="#">Another action</a></li>
-					  	<li><a tabindex="-1" href="#">Something else here</a></li>
-					  	<li class="divider"></li>
-					  	<li><a tabindex="-1" href="#">Separated link</a></li>
+						<?php foreach ($m->getMenu() as $i => $subM) { ?>
+							<li><a href="<?= $subM->getPath() ?>"><?= $subM->getName() ?></a></li>
+						<?php }	?>
 					</ul>
 				</div>
 <?php 		} else  {	?>
