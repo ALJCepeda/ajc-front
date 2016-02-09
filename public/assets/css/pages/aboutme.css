@@ -13,13 +13,14 @@ p#start {
 	position: absolute;
 	width: 100%;
 	top:40%;
-	text-align: justify;
+	text-align: center;
 	overflow: hidden;
 	font-size: 200%;
 	font-weight: 400;
 	color: #4ee;
 	opacity: 0;
 	z-index: 1;
+
 	-webkit-animation: intro 4s ease-out;
 	-moz-animation: intro 4s ease-out;
 	-ms-animation: intro 4s ease-out;
@@ -65,14 +66,11 @@ p#start {
 
 .starwarsHeader {
 	position: absolute;
-	width: 18em;
-	left: 50%;
+	width: 100%;
 	top: 30%;
 	font-size: 10em;
 	text-align: center;
 	overflow: hidden;
-	margin-left: -9em;
-	letter-spacing: -0.05em;
 	color: #000;
 	text-shadow: -2px -2px 0 #ff6, 2px -2px 0 #ff6, -2px 2px 0 #ff6, 2px 2px 0 #ff6;
 	opacity: 0;

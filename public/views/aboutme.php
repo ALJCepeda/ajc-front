@@ -1,4 +1,5 @@
-	
+<div class="content-container">
+
 <p id="start"> In the middle of nowhere using a dirty Macbook Pro...</p>
 
 <h1 class="starwarsHeader">Alfred Cepeda<sub>Nerd Extraordinaire</sub></h1>
@@ -34,8 +35,10 @@
 		<br />
 		<br />
 		<br />
-		<p class="center"><a href="http://www.sitepoint.com/css3-starwars-scrolling-text/">CSS courtesy of: <br />Craig Buckler</a></p>
+		<p class="center"><a href="http://www.sitepoint.com/css3-starwars-scrolling-text/">CSS based on: <br />Craig Buckler</a></p>
 	</div>
+</div>
+
 </div>
 <audio id="audioPlayer" style="display:none" src="/assets/sounds/starwars.mp3">
 <script type="text/javascript">

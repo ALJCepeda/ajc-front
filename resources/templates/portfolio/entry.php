@@ -4,7 +4,7 @@
 	$selectedURL = "$imageURL/".$m->image();
 ?>
 
-<div class="row-w m-between">
+<div class="row-w m-between portfolio_entry">
 	<div class="header">
 		<h3><?= $m->title ?></h3>
 	</div>
