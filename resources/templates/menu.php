@@ -1,4 +1,5 @@
 <?php 
+		$last = count($menuList) - 1;
 		foreach($menuList as $index => $m) {
 			if($m->getPath() === $path) {	?>
 				<li class="active">
@@ -12,7 +13,7 @@
 						<b class="caret"></b>
 					</a>
 
-					<ul class="dropdown-menu dropdown-menu-right" style="background-color:silver">
+					<ul class="dropdown-menu <?= $index === $last ? 'dropdown-menu-right' : '' ?>" style="background-color:silver">
 						<?php foreach ($m->getMenu() as $i => $subM) { ?>
 							<li>
 								<a href="<?= $subM->getPath() ?>">

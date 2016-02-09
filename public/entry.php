@@ -12,20 +12,15 @@ $notes = new Model\Menu\Item([ "name"=>"Notes", "submenu" => [
 
 $aboutme = new Model\Menu\Item([ "name"=>"About Me", "submenu" => [
 		"Portfolio"=>"/portfolio",
+		"GitHub"=>"https://github.com/ALJCepeda",
 		"Mission"=>"/aboutme"
-	]
-]);
-
-$other = new Model\Menu\Item([ "name"=>"Other", "submenu"=>[
-		"GitHub"=>"https://github.com/ALJCepeda"
 	]
 ]);
 
 $menuList = [ 
 	$projects,
 	$notes,
-	$aboutme,
-	$other
+	$aboutme
 ];
 
 if(isset($_SESSION['notification'])) {
