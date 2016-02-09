@@ -1,15 +1,31 @@
 <?php
-$projects = new Model\Menu\Item([ "name"=>"Projects", "path"=>"#" ]);
-$projects->addMenu(new Model\Menu\Item([ "name"=>"Eval", "path"=>"/eval" ]));
-$projects->addMenu(new Model\Menu\Item([ "name"=>"Snake", "path"=>"/snake" ]));
+$projects = new Model\Menu\Item([ "name"=>"Projects", "submenu" => [
+		"Eval"=>"/eval",
+		"Snake"=>"/snake"
+	] 
+]);
 
-$aboutme = new Model\Menu\Item([ "name"=>"About Me", "path"=>"#" ]);
-$aboutme->addMenu(new Model\Menu\Item(["name"=>"Portfolio", "path"=>"/portfolio"]));
-$aboutme->addMenu(new Model\Menu\Item(["name"=>"Mission", "path"=>"/aboutme"]));
+$notes = new Model\Menu\Item([ "name"=>"Notes", "submenu" => [
+		"GTK"=>"/goodtoknow"
+	]
+]);
+
+$aboutme = new Model\Menu\Item([ "name"=>"About Me", "submenu" => [
+		"Portfolio"=>"/portfolio",
+		"Mission"=>"/aboutme"
+	]
+]);
+
+$other = new Model\Menu\Item([ "name"=>"Other", "submenu"=>[
+		"GitHub"=>"https://github.com/ALJCepeda"
+	]
+]);
+
 $menuList = [ 
-	new Model\Menu\Item([ "name"=>"GTK", "path"=>"/goodtoknow"]),
 	$projects,
-	$aboutme
+	$notes,
+	$aboutme,
+	$other
 ];
 
 if(isset($_SESSION['notification'])) {

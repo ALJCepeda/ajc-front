@@ -9,7 +9,16 @@ class Item {
 
 	function __construct($options) {
 		$this->setName($options["name"]);
-		$this->setPath($options["path"]);
+
+		if(isset($options["path"]) === true) {
+			$this->setPath($options["path"]);
+		}
+
+		if(isset($options["submenu"]) === true) {
+			foreach ($options["submenu"] as $key => $value) {
+				$this->addMenu(new Item(["name"=>$key, "path"=>$value]));
+			}
+		}
 	}
 
 	public function setName($name) {
