@@ -33,15 +33,7 @@ $routes->add("gtk", new Route("/goodtoknow", [ "title"=>"Good To Know", "script"
 $routes->add("portfolio", new Route("/portfolio", 
 									[ 
 										"title" => "Portfolio",
-										"css" => [ "colors" ],
-										"notifications" => [
-											new Model\Other\Notification([
-												"status" => "Under Construction",
-												"type" => "alert-warning",
-												"dismissable" => true,
-												"message" => "Currently under active development and will undergo regular updates througout the week... check back!"
-											])
-										]
+										"css" => [ "colors" ]
 									]
 								));
 $routes->add("createUser", new Route("/user/create", 
