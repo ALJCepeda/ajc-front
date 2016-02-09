@@ -12,9 +12,15 @@
 						<b class="caret"></b>
 					</a>
 
-					<ul class="dropdown-menu dropdown-menu-right">
+					<ul class="dropdown-menu dropdown-menu-right" style="background-color:silver">
 						<?php foreach ($m->getMenu() as $i => $subM) { ?>
-							<li><a href="<?= $subM->getPath() ?>"><?= $subM->getName() ?></a></li>
+							<li>
+								<a href="<?= $subM->getPath() ?>">
+									<span style="color:black">
+										<?= $subM->getName() ?>
+									</span>
+								</a>
+							</li>
 						<?php }	?>
 					</ul>
 				</div>
