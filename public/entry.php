@@ -1,12 +1,15 @@
 <?php
 
+$test = new Model\Menu\Item([ "name"=>"Test", "path"=>"/test" ]);
+$test->addMenu(new Model\Menu\Item(["name"=>"Foo", "path"=>"/Bar"]));
 $menuList = [ 
 	new Model\Menu\Item([ "name"=>"Home", "path"=>"/"]),
 	new Model\Menu\Item([ "name"=>"Eval", "path"=>"/eval"]),
 	new Model\Menu\Item([ "name"=>"Snake", "path"=>"/snake"]),
 	new Model\Menu\Item([ "name"=>"GTK", "path"=>"/goodtoknow"]),
 	new Model\Menu\Item([ "name"=>"Portfolio", "path"=>"/portfolio"]),
-	new Model\Menu\Item([ "name"=>"About Me", "path"=>"/aboutme"])
+	new Model\Menu\Item([ "name"=>"About Me", "path"=>"/aboutme"]),
+	$test
 ];
 
 if(isset($_SESSION['notification'])) {

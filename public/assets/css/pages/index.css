@@ -3,6 +3,10 @@ html, body {
 	height: 96%;
 }
 
+.default-font {
+	color: #fff;
+}
+
 body {
 	text-shadow: 0 1px 3px rgba(0,0,0,.5);
 	background: url(/assets/images/stars.jpg) no-repeat center center fixed;
