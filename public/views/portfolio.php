@@ -18,6 +18,10 @@ $_SESSION["portfolio"] = add_defaults($_SESSION["portfolio"], [
 	"interest" => [
 		"image" => "Chart",
 		"question" => 0
+	],
+	"other" => [
+		"image" => "Gameofficials",
+		"question" => 0
 	]
 ]);
 

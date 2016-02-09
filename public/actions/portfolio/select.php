@@ -11,7 +11,8 @@
 		"projections", 
 		"repair", 
 		"terror",
-		"interest"
+		"interest",
+		"other"
 	]) === FALSE) {
 		throw new Exception("Page fault!");
 	}

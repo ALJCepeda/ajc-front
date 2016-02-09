@@ -9,7 +9,8 @@
 		<h3><?= $m->title ?></h3>
 	</div>
 
-	<div class="left col-nw m-between">
+	<?php $class = count($m->questions) > 0 ? "left col-nw m-between" : "footer col-nw m-between"; ?>
+	<div class="<?= $class ?>">
 		<form action="/actions/portfolio/select.php?section=<?= $key ?>" method="POST" style="margin-bottom:10px;">
 			<div class="row-nw m-around c-center">
 		<?php 	foreach ($m->images as $name => $image) { 	?>
@@ -27,6 +28,7 @@
 		</a>
 	</div>
     
+ 	<?php if(count($m->questions) > 0) {	?>
 	<div class="right col-nw m-start c-center y-scroll">
 		<form action="/actions/portfolio/select.php?section=<?= $key ?>" method="POST" style="width:100%">
 			<?php foreach ($m->questions as $index => $entry) { ?>
@@ -44,4 +46,5 @@
 			<?php } ?>
 		</form>
 	</div>
+	<?php }	?>
 </div>

@@ -61,10 +61,21 @@ function generate_entries($model) {
 	$interest->selectImage($model["interest"]["image"]);
 	$interest->selectQuestion($model["interest"]["question"]);
 
+	$other = new Model\Portfolio\entry("Other Work");
+	$other->addImage("Gameofficials", "other/gameofficials");
+	$other->addImage("Divergence", "other/divergence");
+	$other->addImage("Bodyworks", "other/bodyworks");
+	$other->addImage("Clinipro", "other/clinipro");
+	$other->addImage("Omnipod", "other/omnipod");
+	$other->addImage("Diabetes", "other/diabetes");
+
+	$other->selectImage($model["other"]["image"]);
+
 	return [ 
 		"projections"=>$projections, 
 		"interest"=>$interest,
 		"terror"=>$terror,
-		"repair"=>$repair
+		"repair"=>$repair,
+		"other"=>$other
 	];
 }
