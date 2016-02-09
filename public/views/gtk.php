@@ -54,7 +54,7 @@
 </style>
 
 <div class="q4 row-nw m-center">
-	<div class="q3-w tall col-w c-center">
+	<div class="q3-w tall col-nw c-center">
 		<div class="header">
 			<h1>Good To Know!</h1>
 		</div>
