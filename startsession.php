@@ -3,8 +3,8 @@
 require 'config.php';
 
 //Will redirect user to security fault page and kill script if error is encountered
-//Initializes and configures $jwtmanager
-if(strpos($_SERVER["REQUEST_URI"], "error")) {
+//Initializes and configures $jwtmanager/
+if(strpos($_SERVER["REQUEST_URI"], "/error")) {
 	//No need to validate the session if the user has encountered an error
 	return;
 }

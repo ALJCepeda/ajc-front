@@ -1,22 +1,6 @@
 <?php
-function generate_entries() {
-	if(!isset($_SESSION["portfolio"])) {
-		$_SESSION["portfolio"] = [
-			"projections" => [
-				"image" => "Bar",
-				"question" => 1
-			],
-			"repair" => [
-				"image" => "Broken",
-				"question" => 1
-			]
-		];
-	}
-
-	$model = $_SESSION["portfolio"];
-
+function generate_entries($model) {
 	$projections = new Model\Portfolio\Entry("Financial Projections");
-
 	$projections->addImage("Bar", "projections/bar.png");
 	$projections->addImage("Chart", "projections/chart.png");
 	$projections->addImage("Grouped", "projections/grouped.png");
@@ -32,13 +16,11 @@ function generate_entries() {
 	$projections->selectQuestion($model["projections"]["question"]);
 
 	$repair = new Model\Portfolio\entry("Electronic Repair");
-
 	$repair->addImage("Broken", "ipad/broken.jpg");
 	$repair->addImage("Opened", "ipad/opened.jpg");
 	$repair->addImage("Repaired", "ipad/repaired.jpg");
 	$repair->addImage("Finished", "ipad/finished.jpg");
 	
-
 	$repair->addQuestion("How long did it take?", "The entire process from start to finish took less than 30 minutes");
 	$repair->addQuestion("How much did it cost?", "In order to buy all the toys and necessary parts to perform the repair cost a total of $140...which was sitll $70 less than the $200 pricetag the Apple store gave me");
 	$repair->addQuestion("Will you repair my device?", "Sure, but better yet I'll point you to the resources so you can do it yourself. Its really easy, will save you a ton of money and boost your confidence for repairing other electronics");
@@ -46,5 +28,35 @@ function generate_entries() {
 	$repair->selectImage($model["repair"]["image"]);
 	$repair->selectQuestion($model["repair"]["question"]);
 
-	return [ "projections"=>$projections, "repair"=>$repair ];
+	$terror = new Model\Portfolio\entry("Terror Torch(iOS)");
+	$terror->addImage("FrontUI", "terror/frontui.png");
+	$terror->addImage("Gallery", "terror/gallery.png");
+	$terror->addImage("Camera", "terror/camera.jpg");
+	$terror->addImage("Sound", "terror/sound.png");
+	$terror->addImage("About", "terror/about.png");
+
+	$terror->addQuestion("This is a question", "This an answer");
+
+	$terror->selectImage($model["terror"]["image"]);
+	$terror->selectQuestion($model["terror"]["question"]);
+
+	$interest = new Model\Portfolio\entry("Interest Calculator");
+	$interest->addImage("Chart", "interest/chart");
+	$interest->addImage("Grid", "interest/grid");
+	$interest->addImage("Loading", "interest/loading");
+	$interest->addImage("FullGrid", "interest/fullgrid");
+	$interest->addImage("FullChart", "interest/fullchart");
+	$interest->addImage("EditGrid", "interest/editgrid");
+
+	$interest->addQuestion("This is a question", "This is an answer");
+
+	$interest->selectImage($model["interest"]["image"]);
+	$interest->selectQuestion($model["interest"]["question"]);
+
+	return [ 
+		"projections"=>$projections, 
+		"repair"=>$repair,
+		"terror"=>$terror,
+		"interest"=>$interest
+	];
 }

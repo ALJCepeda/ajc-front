@@ -1,7 +1,27 @@
 <?php
 require ROOT . "/resources/models/portfolio/entries.php";
 
-$entries = generate_entries();
+$_SESSION["portfolio"] = isset($_SESSION["portfolio"]) ? $_SESSION["portfolio"] : [];
+$_SESSION["portfolio"] = add_defaults($_SESSION["portfolio"], [
+	"projections" => [
+		"image" => "Bar",
+		"question" => 0
+	],
+	"repair" => [
+		"image" => "Broken",
+		"question" => 0
+	],
+	"terror" => [
+		"image" => "FrontUI",
+		"question" => 0
+	],
+	"interest" => [
+		"image" => "Chart",
+		"question" => 0
+	]
+]);
+
+$entries = generate_entries($_SESSION["portfolio"]);
 ?>
 
 <div class="content-container">

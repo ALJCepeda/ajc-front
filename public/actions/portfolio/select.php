@@ -7,7 +7,12 @@
 	}
 
 	$section = filter_input(INPUT_GET, "section");
-	if(in_array($section, [ "projections", "repair" ]) === FALSE) {
+	if(in_array($section, [ 
+		"projections", 
+		"repair", 
+		"terror",
+		"interest"
+	]) === FALSE) {
 		throw new Exception("Page fault!");
 	}
 

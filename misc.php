@@ -1,5 +1,17 @@
 <?php
 
+function add_defaults($var, $defaults) {
+	if(is_array($var)) {
+		foreach ($defaults as $key => $value) {
+			if(isset($var[$key]) === false) {
+				$var[$key] = $value;
+			}
+		}
+	}
+
+	return $var;
+}
+
 function render_template($template, $model) {
 	$url = ROOT . "/resources/templates/" . $template;
 	render($url, $model);
