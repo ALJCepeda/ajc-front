@@ -46,16 +46,18 @@ if(isset($_SESSION['notification'])) {
 		<h4>ALJCepeda</h4>
 		<?php render_template("menu", [ "menuList"=>$menuList, "path"=>$path ]); ?>
 	</ul>	
-
-	<?php foreach ($notifications as $key => $notification) {
-		render_template("notification", [ "m"=>$notification ]);
-	}	?>
 </header>
 
 <body>
+<div class="body">
+	<?php foreach ($notifications as $key => $notification) {
+		render_template("notification", [ "m"=>$notification ]);
+	}	?>
+
 	<div class="outer-container">
 		<?php render_view($script, null); ?>
 	</div>
+</div>
 </body>
 
 </html>
