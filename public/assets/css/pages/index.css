@@ -3,24 +3,23 @@ html, body {
 	height: 96%;
 }
 
-.default-font {
-	color: #fff;
-}
-
 body {
 	text-shadow: 0 1px 3px rgba(0,0,0,.5);
 	background: url(/assets/images/stars.jpg) no-repeat center center fixed;
 	background-size: cover;
 }
 
-.body {
+body {
 	height: 100%;
 	width: 100%;
-	overflow-y: auto;
 	margin-left: auto;
 	margin-right: auto;
 	padding-top:20px;
 	padding-bottom: 20px;
+}
+
+.default-font {
+	color: #fff;
 }
 
 .header, .footer{

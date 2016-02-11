@@ -1,16 +1,8 @@
 <style type="text/css">
-    .outer-container {
-        display: flex;
-        flex-direction:column;
-        align-items: center;
-        justify-content: center;
-    }
-
 	.content-container {
         width: 50%;
 		text-align: center;
 	}
-
 </style>
 
 <div class="content-container">

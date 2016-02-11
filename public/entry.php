@@ -65,15 +65,13 @@ if(isset($_SESSION['notification'])) {
 </header>
 
 <body>
-<div class="body">
-	<?php foreach ($notifications as $key => $notification) {
-		render_template("notification", [ "m"=>$notification ]);
-	}	?>
+	<div class="col-nw m-center c-center wide tall" style="overflow-y:auto">
+		<?php foreach ($notifications as $key => $notification) {
+			render_template("notification", [ "m"=>$notification ]);
+		}	?>
 
-	<div class="outer-container">
 		<?php render_view($script, null); ?>
 	</div>
-</div>
 </body>
 
 </html>
