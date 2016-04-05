@@ -6,7 +6,7 @@ $projects = new Model\Menu\Item([ "name"=>"Projects", "submenu" => [
 ]);
 
 $notes = new Model\Menu\Item([ "name"=>"Notes", "submenu" => [
-		"GTK"=>"/goodtoknow"
+		"Good To Know"=>"/goodtoknow"
 	]
 ]);
 

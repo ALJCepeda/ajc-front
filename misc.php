@@ -25,7 +25,11 @@ function render_view($view, $model) {
 function render($url, $model) {
 	if($model !== null) { extract($model); }
 
-	require $url . ".php";
+	if(strpos($url, ".") === false) {
+		require $url . ".php";
+	} else {
+		require $url;
+	}
 }
 
 function arrayTo_HTMLList($array, $attributesForItem) {

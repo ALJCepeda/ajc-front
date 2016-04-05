@@ -16,7 +16,7 @@ require ROOT . "/resources/router/parametizer.php";
 $params = new Parametizer($parameters, require_map());
 
 
-render("entry", [ 
+render("main", [ 
 	"title" => $params->title(),
 	"script" => $params->script(),
 	"notifications" => $params->notifications(),
