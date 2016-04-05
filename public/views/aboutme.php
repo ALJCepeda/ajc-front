@@ -25,13 +25,13 @@
 		<p>It seemed all hope was lost and the light side of the knowledge would be lost to the evil empire's most fearsome weapon... commercialism.</p>
 
 		<br />
-		<p>"Never!", roared our favorite nerd of wonder, "We are bright! We are innovative and we are strong! Lets us stand together, as brothers and fight for our enlightenment!"</p>
+		<p>"Never!", roared our favorite nerd of wonder, "We are bright! We are innovative and we are strong! Lets us stand together as brothers and fight for the future!"</p>
 
-		<p>And so they fought and still do with one hope and a shared vision... To leave this world a slightly better place</p> 
+		<p>Words were exchanged and swords clashed as an epic battle ensued ... one that continues to this day.</p> 
 
-		<p>I hold a strong opinion and a unique wordly view. I'm very passionate about my studies, I believe education and community are the foundation of a better tomorrow</p>
+		<br />
+		<p>I hold a strong opinion, a unique wordly world view and an undying passion for software. If you strive to develop the best quality software possible then we should talk :)</p>
 
-		<p>If you stand for more than money and work tirelessly for a better future then we should talk.</p>
 		<br />
 		<br />
 		<br />

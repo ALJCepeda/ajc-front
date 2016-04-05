@@ -13,6 +13,7 @@ p#start {
 	position: absolute;
 	width: 100%;
 	top:40%;
+	left:0;
 	text-align: center;
 	overflow: hidden;
 	font-size: 200%;
@@ -40,6 +41,7 @@ p#start {
 	position: absolute;
 	width: 100%;
 	top: 30%;
+	left:0;
 	font-size: 10em;
 	text-align: center;
 	overflow: hidden;

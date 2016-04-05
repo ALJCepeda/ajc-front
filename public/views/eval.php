@@ -43,14 +43,11 @@ $version = exec("cd ". PARENTDIR . "/eval; git describe --tags --abbrev=0");
 		<div>
 			<h1>To Do:</h1>
 			<ul>
-				<li>Output programming errors</li>
-				<li>Panel for HTML output</li>
-				<li>Panel for STDOUT output</li>
-				<li>Persistent scripts</li>
 				<li>Multi-document support</li>
+				<li>Configuration support</li>
 				<li>SQL support</li>
 				<li>Webserver support</li>
-				<li>Cross-platform support</li>
+				<li>Other services?</li>
 			</ul>
 		</div>
 	</div>
