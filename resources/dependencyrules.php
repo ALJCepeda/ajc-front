@@ -1,9 +1,0 @@
-<?php
-
-
-return [
-	'TempDB' => DI\object('\DB\SQL')->constructor(TEMPDB, DS_USERNAME, DS_PASSWORD, [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]),
-	'ServerDB' => DI\object('\DB\SQL')->constructor(SERVERDB, DS_USERNAME, DS_PASSWORD, [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]),
-	'AccountsDB' => DI\object('\DB\SQL')->constructor(ACCOUNTSDB, DS_USERNAME, DS_PASSWORD, [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION])
-];
-

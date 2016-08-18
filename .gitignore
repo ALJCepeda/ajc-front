@@ -6,3 +6,6 @@ aljcepeda.php
 error_log
 public/downloads
 public/bower
+access.log
+error.log
+*.lock

@@ -11,10 +11,6 @@ if(strpos($_SERVER["REQUEST_URI"], "error")) {
 
 session_start();
 
-$builder = new DI\ContainerBuilder();
-$builder->addDefinitions(ROOT . '/resources/dependencyrules.php');
-$container = $builder->build();
-
 recordRequest();
 
 function recordRequest( $max = 0 ) {
