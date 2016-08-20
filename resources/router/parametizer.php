@@ -11,9 +11,13 @@ class Parametizer {
  		$this->parameters = $parameters;
  	}
 
- 	public function script() {
-		return isset($this->parameters["script"]) ? $this->parameters["script"] : $this->route;
+ 	public function location() {
+		return isset($this->parameters["location"]) ? $this->parameters["location"] : $this->route;
  	}
+
+	public function path() {
+		return $this->parameters['path'];
+	}
 
  	public function title() {
  		return isset($this->parameters['title']) ? $this->parameters['title'] : 'ALJCepeda';
@@ -29,7 +33,7 @@ class Parametizer {
 		if(isset($this->parameters['js'])) {
 			foreach ($this->parameters['js'] as $script) {
 				$result[] = "<script src='$script'></script>";
-			} 
+			}
 		}
 
 		return $result;
@@ -43,7 +47,7 @@ class Parametizer {
 		if(file_exists(ROOT . "/public/$stylesheetURL") !== FALSE) {
 			$result[] = "<link rel='stylesheet' type='text/css' href='$stylesheetURL'>";
 		}
-	
+
 		if(isset($this->parameters['css'])) {
 			foreach ($this->parameters['css'] as $sheet) {
 				$result[] = "<link rel='stylesheet' type='text/css' href='assets/css/$sheet.css'>";

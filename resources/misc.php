@@ -13,7 +13,7 @@ function render_view($view, $model) {
 function render($url, $model) {
 	if($model !== null) { extract($model); }
 
-	require $url . ".php";
+	require $url;
 }
 
 function arrayTo_HTMLList($array, $attributesForItem) {
@@ -32,7 +32,7 @@ function arrayTo_HTMLList($array, $attributesForItem) {
 				//If we're given a string, assume it's a valid URL
 				$html .= "<a href='$value'>$label</a>";
 			}
-			
+
 			else if(is_array($value)) {
 				//We have a list of items, recursively generate HTML
 				$html .= "$label";
@@ -86,7 +86,7 @@ function phpInput($input) {
 }
 
 /*
-	Recaptcha validation 
+	Recaptcha validation
 	Send POST request along with recaptcha details to determine if it was answered correctly
 */
 function validRecaptcha($grecaptcharesponse) {
@@ -94,7 +94,7 @@ function validRecaptcha($grecaptcharesponse) {
 		//Always assume a valid captcha when local
 		return true;
 	}
-	
+
 	$url = RECAPTCHAURL;
 	$data = [ 'secret' => RECAPTCHASCRT, 'response' => $grecaptcharesponse, 'remoteip' => filter_input(INPUT_SERVER, 'REMOVE_ADDR') ];
 	$options = 	[ 'http' => [
@@ -212,7 +212,7 @@ function destroySession(){
 	if(session_status() == PHP_SESSION_ACTIVE) {
 		session_start();
 	}
-	
+
 	session_unset();
 	session_destroy();
 
@@ -226,7 +226,7 @@ function bindValues($statement, $bindings){
 	foreach($bindings as $bind => $value){
 		$statement = str_replace($bind, $value, $statement);
 	}
-	
+
 	return $statement;
 }
 /*
@@ -297,7 +297,7 @@ function implicitType($input){
 		return 'integer';
 	}
 	if(is_double($input)){
-		return 'double'; 
+		return 'double';
 	}
 	if(is_array($input)){
 		return 'array';
@@ -320,7 +320,7 @@ function castValue($value, $type){
 	if($type == "datetime"){
 		$timezone = isset($_SERVER["TIMEZONE"]) ? $_SERVER["TIMEZONE"] : new DateTimeZone('America/Los_Angeles');
 		$datetime = DateTime::createFromFormat("!m/d/Y",  $value, $timezone);
-		return $datetime; 
+		return $datetime;
 	}
 }
 function copyKeys($array){

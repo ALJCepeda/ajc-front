@@ -9,3 +9,4 @@ public/bower
 access.log
 error.log
 *.lock
+logs

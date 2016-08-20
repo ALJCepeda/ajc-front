@@ -1,8 +1,8 @@
 <?php
-require "constants.php";
+require "resources/constants.php";
 require "aljcepeda.php";
 
-require "misc.php";
+require "resources/misc.php";
 require VENDOR . "/autoload.php";
 require "resources/security/errorhandler.php";
 
