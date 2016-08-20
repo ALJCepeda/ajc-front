@@ -1,0 +1,22 @@
+{
+  "name": "aljcepeda",
+  "version": "2.0.0",
+  "description": "Landing page for services",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALJCepeda/aljcepeda.git"
+  },
+  "author": "ALJCepeda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ALJCepeda/aljcepeda/issues"
+  },
+  "homepage": "https://github.com/ALJCepeda/aljcepeda#readme",
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}

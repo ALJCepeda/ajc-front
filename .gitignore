@@ -10,3 +10,4 @@ access.log
 error.log
 *.lock
 logs
+node_modules
