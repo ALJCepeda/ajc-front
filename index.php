@@ -11,6 +11,7 @@ require 'resources/router/router.php';
 $parameters = getParameters($routes);
 
 if(isset($parameters['isFile']) === true && $parameters['isFile'] === true) {
+	header('Content-Type: ' . $parameters['Content-Type']);
 	readfile($parameters['location']);
 } else {
 	include 'output.php';

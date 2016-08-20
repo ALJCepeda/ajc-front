@@ -4,9 +4,35 @@ use Symfony\Component\Routing\Route;
 
 function getRoutes() {
 	$routes = new RouteCollection();
-	$routes->add('mainpage', new Route('/', [ 'location' => 'views/main.php']));
-	$routes->add('jquery', new Route('/jquery.js', [ 'location' => 'node_modules/jquery/dist/jquery.js', 'isFile' => true]));
-	$routes->add('redirect', new Route('/redirect'));
+	
+	$routes->add('mainpage',
+		new Route('/', [
+			'location' => 'views/main.php'
+		]));
+
+	$routes->add('jquery.js',
+		new Route('/jquery.js', [
+			'location' => 'node_modules/jquery/dist/jquery.min.js',
+			'isFile' => true,
+			'Content-Type' => 'text/javascript'
+		]));
+
+	$routes->add('bootstrap.js',
+		new Route('/bootstrap.js', [
+			'location' => 'node_modules/bootstrap/dist/js/bootstrap.min.js',
+			'isFile' => true,
+			'Content-Type' => 'text/javascript'
+		]));
+
+	$routes->add('bootstrap.css',
+		new Route('/bootstrap.css', [
+			'location' => 'node_modules/bootstrap/dist/css/bootstrap.min.css',
+			'isFile' => true,
+			'Content-Type' => 'text/css'
+		]));
+
+	$routes->add('redirect',
+		new Route('/redirect'));
 	$routes->add('404', new Route('/error/404', ['title' => '404 Error', 'script' => 'error/404']));
 	$routes->add('invalidsession', new Route('/error/invalid', ['title' => 'Invalid Request', 'script' => 'error/invalidsession', 'error' => 'badsession']));
 	$routes->add('repair', new Route('/repair', ['title' => 'Repair']));
