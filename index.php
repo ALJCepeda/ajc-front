@@ -10,7 +10,7 @@ $routes = getRoutes();
 require 'resources/router/router.php';
 $parameters = getParameters($routes);
 
-if(isset($parameters['isFile']) === true && $parameters['isFile'] === true) {
+if(isset($parameters['Content-Type']) === true) {
 	header('Content-Type: ' . $parameters['Content-Type']);
 	readfile($parameters['location']);
 } else {

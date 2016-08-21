@@ -4,7 +4,7 @@ use Symfony\Component\Routing\Route;
 
 function getRoutes() {
 	$routes = new RouteCollection();
-	
+
 	$routes->add('mainpage',
 		new Route('/', [
 			'location' => 'views/main.php'
@@ -13,21 +13,24 @@ function getRoutes() {
 	$routes->add('jquery.js',
 		new Route('/jquery.js', [
 			'location' => 'node_modules/jquery/dist/jquery.min.js',
-			'isFile' => true,
 			'Content-Type' => 'text/javascript'
 		]));
 
 	$routes->add('bootstrap.js',
 		new Route('/bootstrap.js', [
 			'location' => 'node_modules/bootstrap/dist/js/bootstrap.min.js',
-			'isFile' => true,
 			'Content-Type' => 'text/javascript'
 		]));
 
 	$routes->add('bootstrap.css',
 		new Route('/bootstrap.css', [
 			'location' => 'node_modules/bootstrap/dist/css/bootstrap.min.css',
-			'isFile' => true,
+			'Content-Type' => 'text/css'
+		]));
+
+	$routes->add('bootstrap.mdl.css',
+		new Route('/bootstrap.mdl.css', [
+			'location' => 'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css',
 			'Content-Type' => 'text/css'
 		]));
 
