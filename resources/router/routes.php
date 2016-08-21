@@ -9,37 +9,6 @@ function getRoutes() {
 		new Route('/', [
 			'location' => 'views/main.php'
 		]));
-
-	$routes->add('jquery.js',
-		new Route('/jquery.js', [
-			'location' => 'node_modules/jquery/dist/jquery.min.js',
-			'Content-Type' => 'text/javascript'
-		]));
-
-	$routes->add('bootstrap.js',
-		new Route('/bootstrap.js', [
-			'location' => 'node_modules/bootstrap/dist/js/bootstrap.min.js',
-			'Content-Type' => 'text/javascript'
-		]));
-
-	$routes->add('bootstrap.mdl.js',
-		new Route('/bootstrap.mdl.js', [
-			'location' => 'node_modules/bootstrap-material-design/dist/js/material.min.js',
-			'Content-Type' => 'text/javascript'
-		]));
-
-	$routes->add('bootstrap.css',
-		new Route('/bootstrap.css', [
-			'location' => 'node_modules/bootstrap/dist/css/bootstrap.min.css',
-			'Content-Type' => 'text/css'
-		]));
-
-	$routes->add('bootstrap.mdl.css',
-		new Route('/bootstrap.mdl.css', [
-			'location' => 'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css',
-			'Content-Type' => 'text/css'
-		]));
-
 	$routes->add('redirect',
 		new Route('/redirect'));
 	$routes->add('404', new Route('/error/404', ['title' => '404 Error', 'script' => 'error/404']));
@@ -81,10 +50,36 @@ function getRoutes() {
 										]
 									));
 	$routes->add('createUser', new Route('/user/create',
-										[
-											'title' => 'Create User',
-											'require' => ['recaptcha']
-										]
-									));
+			[
+				'title' => 'Create User',
+				'require' => ['recaptcha']
+			]
+		));
+	$routes->add('jquery.js',
+		new Route('/jquery.js', [
+			'location' => 'node_modules/jquery/dist/jquery.min.js',
+			'Content-Type' => 'text/javascript'
+		]));
+	$routes->add('bootstrap.js',
+		new Route('/bootstrap.js', [
+			'location' => 'node_modules/bootstrap/dist/js/bootstrap.min.js',
+			'Content-Type' => 'text/javascript'
+		]));
+	$routes->add('bootstrap.mdl.js',
+		new Route('/bootstrap.mdl.js', [
+			'location' => 'node_modules/bootstrap-material-design/dist/js/material.min.js',
+			'Content-Type' => 'text/javascript'
+		]));
+	$routes->add('bootstrap.css',
+		new Route('/bootstrap.css', [
+			'location' => 'node_modules/bootstrap/dist/css/bootstrap.min.css',
+			'Content-Type' => 'text/css'
+		]));
+	$routes->add('bootstrap.mdl.css',
+		new Route('/bootstrap.mdl.css', [
+			'location' => 'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css',
+			'Content-Type' => 'text/css'
+		]));
+		
 	return $routes;
 }
