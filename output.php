@@ -25,6 +25,7 @@ $navbarModel =[
 
 	<script type='text/javascript' src='jquery.js'></script>
 	<script type='text/javascript' src='bootstrap.js'></script>
+	<script type='text/javascript' src='bootstrap.mdl.js'></script>
 
 	<link rel='stylesheet' type='text/css' href='bootstrap.css'>
 	<link rel='stylesheet' type='text/css' href='bootstrap.mdl.css'>

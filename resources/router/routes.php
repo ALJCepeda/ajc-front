@@ -22,6 +22,12 @@ function getRoutes() {
 			'Content-Type' => 'text/javascript'
 		]));
 
+	$routes->add('bootstrap.mdl.js',
+		new Route('/bootstrap.mdl.js', [
+			'location' => 'node_modules/bootstrap-material-design/dist/js/material.min.js',
+			'Content-Type' => 'text/javascript'
+		]));
+
 	$routes->add('bootstrap.css',
 		new Route('/bootstrap.css', [
 			'location' => 'node_modules/bootstrap/dist/css/bootstrap.min.css',
