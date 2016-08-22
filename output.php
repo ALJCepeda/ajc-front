@@ -24,14 +24,18 @@ $navbarModel =[
 	<title><?= $parameters['title'] ?? 'ALJCepeda' ?></title>
 
 	<script type='text/javascript' src='jquery.js'></script>
+	<script type='text/javascript' src='knockout.js'></script>
 	<script type='text/javascript' src='bootstrap.js'></script>
 	<script type='text/javascript' src='bootstrap.mdl.js'></script>
 
 	<link rel='stylesheet' type='text/css' href='bootstrap.css'>
 	<link rel='stylesheet' type='text/css' href='bootstrap.mdl.css'>
+
 	<link rel='stylesheet' type='text/css' href='/assets/css/flex.css'>
 	<link rel='stylesheet' type='text/css' href='/assets/css/pages/index.css'>
 	<link rel='stylesheet' type='text/css' href='/assets/css/pages/navbar.css'>
+
+	<script type='text/javascript' src='require.js' data-main='index' ></script>
 </head>
 
 <div class='header-panel shadow-z-2'>
@@ -59,9 +63,16 @@ $navbarModel =[
 		<div class='col-xs-9 page active' style='height:400px;'>
 			<div class='row'>
 				<div class='col-xs-12'>
-					<div class='well page active'>
-						<h1> This is a page </h1>
-						<p> This is a paragraph </p>
+					<div class='page well active'>
+						<h1>Welcome</h1>
+					 	<p>To the domain of a restless mind</p>
+					 	<br />
+					 	<br />
+					 	<p>This website is laid out using CSS3 Flexbox, new technology that has it's issues. Some things may not display correctly in Safari and Internet Explorer.
+
+					 	<br />
+					 	<br />
+					 	The website has been confirmed to work on the latest Chrome and Firefox browsers.
 					</div>
 				</div>
 			</div>

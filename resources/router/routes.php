@@ -55,6 +55,16 @@ function getRoutes() {
 				'require' => ['recaptcha']
 			]
 		));
+	$routes->add('require.js',
+		new Route('/require.js', [
+			'location' => 'node_modules/requirejs/require.js',
+			'Content-Type' => 'text/javascript'
+		]));
+	$routes->add('knockout.js',
+		new Route('/knockout.js', [
+			'location' => 'node_modules/knockout/build/output/knockout-latest.js',
+			'Content-Type' => 'text/javascript'
+		]));
 	$routes->add('jquery.js',
 		new Route('/jquery.js', [
 			'location' => 'node_modules/jquery/dist/jquery.min.js',
@@ -80,6 +90,6 @@ function getRoutes() {
 			'location' => 'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css',
 			'Content-Type' => 'text/css'
 		]));
-		
+
 	return $routes;
 }
