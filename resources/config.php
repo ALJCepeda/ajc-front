@@ -1,10 +1,10 @@
 <?php
-require "resources/constants.php";
-require "aljcepeda.php";
+require "constants.php";
+require "../aljcepeda.php";
 
-require "resources/misc.php";
+require "misc.php";
 require VENDOR . "/autoload.php";
-require "resources/security/errorhandler.php";
+require "security/errorhandler.php";
 
 date_default_timezone_set(TIMEZONE);
 

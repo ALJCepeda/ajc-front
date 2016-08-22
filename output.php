@@ -34,14 +34,38 @@ $navbarModel =[
 	<link rel='stylesheet' type='text/css' href='/assets/css/pages/navbar.css'>
 </head>
 
-<header>
-	<?php render('views/navbar.php', $navbarModel); ?>
-</header>
-
-<body>
-	<div class='outer-container'>
-		<?php render($parameters['location'], null) ?>
+<div class='header-panel shadow-z-2'>
+	<div class='container-fluid'>
+		<div class='row'>
+			<div class='col-xs-3'>
+				<h1>ALJCepeda</h1>
+			</div>
+		</div>
 	</div>
-</body>
+</div>
 
+<div class='container-fluid main'>
+	<div class='row'>
+		<div class='col-xs-2 menu'>
+			<ul>
+				<li>Home</li>
+				<li>Eval</li>
+				<li>Snake</li>
+				<li>Repair</li>
+				<li>Portfolio</li>
+				<li>About Me</li>
+			</ul>
+		</div>
+		<div class='col-xs-9 page active' style='height:400px;'>
+			<div class='row'>
+				<div class='col-xs-12'>
+					<div class='well page active'>
+						<h1> This is a page </h1>
+						<p> This is a paragraph </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </html>

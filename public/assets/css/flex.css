@@ -82,13 +82,13 @@
 .f-aside {
 	flex:1 1;
 }
-.f-big { 
+.f-big {
 	flex:2 1;
 }
 .f-little {
 	flex:1 1;
 }
 
-.panel-footer { 
-	align-self:flex-end; 
+.panel-footer {
+	align-self:flex-end;
 }

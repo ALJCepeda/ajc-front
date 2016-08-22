@@ -1,0 +1,116 @@
+html, body {
+	color: #fff;
+	height: 96%;
+}
+
+body {
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+	background: url(/assets/images/stars.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
+
+.outer-container {
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header, .footer{
+  	flex: 1 auto;
+  	width: 100%;
+}
+
+.header, .footer {
+	text-align: center;
+}
+
+.aside {
+	flex: 1 0 50%;
+}
+
+.right > div {
+	float:right;
+	clear:both;
+}
+
+.header { order: 1; }
+.left { order: 2; }
+.right { order: 3; }
+.footer  { order: 4; }
+
+.menu {
+	overflow: auto;
+	padding: 0;
+}
+
+.menu, .menu * {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.menu ul {
+	padding: 0;
+	margin: 7px 0;
+}
+
+.menu ul li {
+	list-style: none;
+	padding: 20px 0 20px 50px;
+	font-size: 15px;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.menu ul li.active {
+	background-color: #dedede;
+	position: relative;
+}
+
+.menu ul li a {
+	color: rgb(51, 51, 51);
+	text-decoration: none;
+}
+
+.pages {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 4;
+	padding: 0;
+	overflow: auto;
+}
+
+.pages > div {
+	padding: 0 5px;
+	padding-top: 64px;
+	margin: 0;
+}
+
+.pages .header {
+	color: rgb(82, 101, 162);
+	/*font-size: 24px;*/
+	/*font-weight: normal;*/
+	/*margin-top: 5px;*/
+	/*margin-bottom: 60px;*/
+	/*letter-spacing: 1.20000004768372px;*/
+}
+
+.page {
+	color: black;
+	transform: translateY(1080px);
+	transition: transform 0 linear;
+	display: none;
+	opacity: 0;
+	font-size: 16px;
+	margin-left: 1em;
+}
+
+.page.active {
+	transform: translateY(0px);
+	transition: all 0.3s ease-out;
+	display: block;
+	opacity: 1;
+}
