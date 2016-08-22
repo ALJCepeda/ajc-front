@@ -1,7 +1,7 @@
 define(['scripts/injector'], function(Injector) {
     var pageContainer = document.getElementById('pageContainer');
     var injector = new Injector('/');
-    
+
     var mainVM = function() {
         var self = this;
         this.menu = [
@@ -13,29 +13,55 @@ define(['scripts/injector'], function(Injector) {
             'About Me'
         ];
         this.activeMenuItem = ko.observable();
+        this.activePage = ko.observable();
+
+        this.setMenuItem = function(name) {
+            var element = document.getElementById('menu_' + name);
+            element.className += ' active';
+
+            self.activeMenuItem().className = '';
+            self.activeMenuItem(element);
+            console.log('Did set item: ' + name);
+        };
+
+        this.setPage = function(name) {
+            var element = document.getElementById('page_' + name);
+            element.className += ' active';
+
+            self.activePage().className = 'page well';
+            self.activePage(element);
+            console.log('Did set page: ' + name);
+        };
 
         this.activeMenuItem.subscribe(function(itemElement) {
-            var elem = document.getElementById('page_' + itemElement.name);
+            var name = itemElement.name;
+            var elem = document.getElementById('page_' + name);
 
             if(elem === null) {
-                console.log('Page hasn\'t been injected');
+                injector.injectComponent(pageContainer, 'components/home', {
+                    append:true,
+                    modifyHTML:function(html) {
+                        return '<div id="page_' + name +'" class="page well">' + html + '</div>';
+                    }
+                }).then(function(result) {
+                    self.setPage(name);
+                }).catch(function(e) {
+                    debugger;
+                });
             }
         });
 
-        this.didClickMenu = function(item, e) {
-            var elem = e.currentTarget;
-            elem.className += 'active';
-
-            self.activeMenuItem().className = '';
-            self.activeMenuItem(elem);
-            console.log('Did Click: ' + item);
-        }
+        this.didClickMenu = function(item) {
+            self.setMenuItem(item);
+        };
     };
 
     var vm = new mainVM();
 	ko.applyBindings(vm, document.getElementById('main'));
 
-    var home = document.getElementById('menu_Home')
-    vm.activeMenuItem(home);
-    home.className += 'active';
+    var homeItem = document.getElementById('menu_Home');
+    var homePage = document.getElementById('page_Home');
+    vm.activeMenuItem(homeItem);
+    vm.activePage(homePage);
+    homeItem.className += ' active';
 });

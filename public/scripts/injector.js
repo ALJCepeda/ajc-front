@@ -3,26 +3,40 @@ define([ 'bareutil.ajax' ], function(ajax) {
 		this.base = base;
 	};
 
-	Injector.prototype.injectHTML = function(selector, html) {
-		var element = document.querySelector(selector);
-		element.innerHTML = html;
+	Injector.prototype.injectHTML = function(selector, html, options) {
+		var element;
+		if(typeof selector.nodeType !== 'undefined') {
+			element = selector;
+		} else {
+			element = document.querySelector(selector);
+		}
+
+		if(typeof options.modifyHTML !== 'undefined') {
+			html = options.modifyHTML(html);
+		}
+
+		if(options.append === true) {
+			element.innerHTML = element.innerHTML + ' ' + html;
+		} else {
+			element.innerHTML = html;
+		}
 
 		return element;
 	};
 
-	Injector.prototype.injectView = function(selector, view) {
+	Injector.prototype.injectView = function(selector, view, options) {
 		var url = view + '.html';
 		if(this.base !== '/') {
 			url = this.base + '/' + url;
 		}
 
 		return ajax.get(url).then(function(html) {
-		 	return this.injectHTML(selector, html);
+		 	return this.injectHTML(selector, html, options);
 		}.bind(this));
 	};
 
-	Injector.prototype.inject = function(selector, view, model) {
-		var promise = this.injectView(selector, view);
+	Injector.prototype.inject = function(selector, view, model, options) {
+		var promise = this.injectView(selector, view, options);
 
 		if(typeof model !== 'undefined') {
 			promise = promise.then(function(element) {
@@ -39,8 +53,8 @@ define([ 'bareutil.ajax' ], function(ajax) {
 		return promise;
 	};
 
-	Injector.prototype.injectVM = function(selector, path) {
-		return this.injectView(selector, path).then(function(element) {
+	Injector.prototype.injectComponent = function(selector, path, options) {
+		return this.injectView(selector, path, options).then(function(element) {
 			return new Promise(function(resolve, reject) {
 				try {
 					require([path], function(model) {

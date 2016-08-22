@@ -49,12 +49,6 @@ function getRoutes() {
 											]
 										]
 									));
-	$routes->add('createUser', new Route('/user/create',
-			[
-				'title' => 'Create User',
-				'require' => ['recaptcha']
-			]
-		));
 	$routes->add('require.js',
 		new Route('/require.js', [
 			'location' => 'node_modules/requirejs/require.js',
