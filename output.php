@@ -58,7 +58,7 @@ $navbarModel =[
 		<div class='col-xs-9' style='height:400px;'>
 			<div class='row'>
 				<div id='pageContainer' class='col-xs-12'>
-					<div id='page_Home' class='page well'>
+					<div id='page_Home' class='page well active'>
 						<h1>Welcome</h1>
 					 	<p>To the domain of a restless mind</p>
 					 	<br />

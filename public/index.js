@@ -12,54 +12,53 @@ define(['scripts/injector'], function(Injector) {
             'Portfolio',
             'About Me'
         ];
-        this.activeMenuItem = ko.observable();
-        this.activePage = ko.observable();
+        this.activeTab = ko.observable('Home');
+        this.loadedTabs = { 'Home':true };
 
-        this.setMenuItem = function(name) {
-            var element = document.getElementById('menu_' + name);
-            self.activeMenuItem().className = '';
-            self.activeMenuItem(element);
-            element.className += ' active';
-            console.log('Did set item: ' + name);
-        };
-
-        this.setPage = function(name) {
-            var element = document.getElementById('page_' + name);
-            self.activePage().className = '';
-            self.activePage(element);
-            element.className += ' active';
-            console.log('Did set page: ' + name);
-        };
-
-        this.activeMenuItem.subscribe(function(itemElement) {
-            var name = itemElement.name;
-            var elem = document.getElementById('page_' + name);
-            if(elem === null) {
+        this.setTab = function(tab) {
+            var previousTab = this.activeTab();
+            if(this.loadedTabs[tab] !== true) {
                 injector.injectComponent(pageContainer, 'components/home', {
                     append:true,
                     modifyHTML:function(html) {
-                        return '<div id="page_' + name +'" class="page well">' + html + '</div>';
+                        return '<div id="page_' + tab +'" class="page well">' + html + '</div>';
                     }
                 }).then(function(result) {
-                    self.setPage(name);
-                }).catch(function(e) {
-                    debugger;
+                    self.loadedTabs[tab] = true;
+                    self.makeInactive(previousTab);
+                    self.makeActive(tab);
+                    self.activeTab(tab);
                 });
+            } else {
+                self.makeInactive(previousTab);
+                self.makeActive(tab);
+                self.activeTab(tab);
             }
-        });
+        };
+
+        this.makeInactive = function(tab) {
+            var menuElem = document.getElementById('menu_' + tab);
+            var pageElem = document.getElementById('page_' + tab);
+            menuElem.className = '';
+            pageElem.className = 'page well';
+        };
+
+        this.makeActive = function(tab) {
+            var menuElem = document.getElementById('menu_' + tab);
+            var pageElem = document.getElementById('page_' + tab);
+            menuElem.className = 'active';
+            pageElem.className = 'page well active';
+        };
 
         this.didClickMenu = function(item) {
-            self.setMenuItem(item);
+            self.setTab(item);
         };
     };
 
     var vm = new mainVM();
 	ko.applyBindings(vm, document.getElementById('main'));
 
-    var homeItem = document.getElementById('menu_Home');
-    var homePage = document.getElementById('page_Home');
-    vm.activeMenuItem(homeItem);
-    vm.activePage(homePage);
-    homeItem.className += ' active';
-    homePage.className += ' active';
+    //Since menu items are loaded dynamically, menu item needs to be set active
+    var menuElem = document.getElementById('menu_' + vm.activeTab());
+    menuElem.className += 'active';
 });
