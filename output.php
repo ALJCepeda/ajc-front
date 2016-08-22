@@ -55,10 +55,10 @@ $navbarModel =[
 				<li data-bind='text: $data, click:$root.didClickMenu, attr: { id:"menu_" + $data, name:$data }'>
 			</ul>
 		</div>
-		<div class='col-xs-9 page active' style='height:400px;'>
+		<div class='col-xs-9' style='height:400px;'>
 			<div class='row'>
 				<div id='pageContainer' class='col-xs-12'>
-					<div id='page_Home' class='page well active'>
+					<div id='page_Home' class='page well'>
 						<h1>Welcome</h1>
 					 	<p>To the domain of a restless mind</p>
 					 	<br />
