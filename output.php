@@ -48,16 +48,11 @@ $navbarModel =[
 	</div>
 </div>
 
-<div class='container-fluid main'>
+<div id='main' class='container-fluid main'>
 	<div class='row'>
 		<div class='col-xs-2 menu'>
-			<ul>
-				<li>Home</li>
-				<li>Eval</li>
-				<li>Snake</li>
-				<li>Repair</li>
-				<li>Portfolio</li>
-				<li>About Me</li>
+			<ul data-bind='foreach: menu'>
+				<li data-bind='text: $data, click:$root.didClickMenu, attr: { id:"menu_" + $data }'>
 			</ul>
 		</div>
 		<div class='col-xs-9 page active' style='height:400px;'>
