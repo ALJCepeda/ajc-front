@@ -65,6 +65,16 @@ function getRoutes() {
 			'location' => 'node_modules/knockout/build/output/knockout-latest.js',
 			'Content-Type' => 'text/javascript'
 		]));
+	$routes->add('bareutil.ajax',
+		new Route('/bareutil.ajax.js', [
+			'location' => 'node_modules/bareutil/scripts/ajax.js',
+			'Content-Type' => 'text/javascript'
+		]));
+	$routes->add('bluebird',
+		new Route('/bluebird.js', [
+			'location' => 'node_modules/bluebird/js/browser/bluebird.min.js',
+			'Content-Type' => 'text/javascript'
+		]));
 	$routes->add('jquery.js',
 		new Route('/jquery.js', [
 			'location' => 'node_modules/jquery/dist/jquery.min.js',

@@ -1,5 +1,7 @@
-define([], function() {
+define(['scripts/injector'], function(Injector) {
     var pageContainer = document.getElementById('pageContainer');
+    var injector = new Injector('/');
+    
     var mainVM = function() {
         var self = this;
         this.menu = [

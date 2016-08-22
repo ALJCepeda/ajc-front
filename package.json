@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/ALJCepeda/aljcepeda#readme",
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.1.0",
-    "knockout": "^3.4.0",
-    "requirejs": "^2.2.0"
+    "bareutil": "*",
+    "bootstrap": "*",
+    "bootstrap-material-design": "*",
+    "jquery": "*",
+    "knockout": "*",
+    "requirejs": "*"
   }
 }
