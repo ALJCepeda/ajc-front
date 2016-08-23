@@ -37,30 +37,31 @@ $navbarModel =[
 
 	<script type='text/javascript' src='require.js' data-main='index' ></script>
 </head>
-
-<div class='header-panel shadow-z-2'>
-	<div class='container-fluid'>
-		<div class='row'>
-			<div class='col-xs-3'>
-				<h1>ALJCepeda</h1>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div id='main' class='container-fluid main'>
-	<div class='row'>
-		<div class='col-xs-2 menu'>
-			<ul data-bind='foreach: menu'>
-				<li data-bind='text: $data, click:$root.didClickMenu, attr: { id:"menu_" + $data, name:$data }'>
-			</ul>
-		</div>
-		<div class='col-xs-9' style='height:400px;'>
+<body>
+	<div class='header-panel shadow-z-2'>
+		<div class='container-fluid'>
 			<div class='row'>
-				<div id='pageContainer' class='col-xs-12'>
+				<div class='col-xs-3'>
+					<h1>ALJCepeda</h1>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
+	<div id='main' class='container-fluid main'>
+		<div class='row'>
+			<div class='col-xs-2 menu' style='max-height:100vh'>
+				<ul data-bind='foreach: menu'>
+					<li data-bind='text: $data, click:$root.didClickMenu, attr: { id:"menu_" + $data, name:$data }'>
+				</ul>
+			</div>
+			<div class='col-xs-9 pages' style='max-height:100vh'>
+				<div class='row'>
+					<div id='pageContainer' class='col-xs-10'>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
 </html>
