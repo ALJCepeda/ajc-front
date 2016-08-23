@@ -12,17 +12,33 @@ define(['scripts/injector'], function(Injector) {
             'Portfolio',
             'About Me'
         ];
-        this.activeTab = ko.observable('Home');
-        this.loadedTabs = { 'Home':true };
+        this.activeTab = ko.observable();
+        this.loadedTabs = { };
 
         this.setTab = function(tab) {
             var previousTab = this.activeTab();
+            var url = 'components/' + tab.toLowerCase();
             if(this.loadedTabs[tab] !== true) {
-                injector.injectComponent(pageContainer, 'components/home', {
+                injector.injectView(pageContainer, url, {
                     append:true,
                     modifyHTML:function(html) {
                         return '<div id="page_' + tab +'" class="page well">' + html + '</div>';
                     }
+                }).then(function(element) {
+                    var containedElem = document.getElementById('page_' + tab);
+                    return new Promise(function(resolve, reject) {
+                        try {
+                            require([url], function(model) {
+                                ko.applyBindings(model, containedElem);
+                                resolve({
+                                    model:model,
+                                    element:containedElem
+                                });
+                            });
+                        } catch(err) {
+                            reject(err);
+                        }
+                    });
                 }).then(function(result) {
                     self.loadedTabs[tab] = true;
                     self.makeInactive(previousTab);
@@ -37,6 +53,10 @@ define(['scripts/injector'], function(Injector) {
         };
 
         this.makeInactive = function(tab) {
+            if(typeof tab === 'undefined' || tab === '') {
+                return;
+            }
+
             var menuElem = document.getElementById('menu_' + tab);
             var pageElem = document.getElementById('page_' + tab);
             menuElem.className = '';
@@ -57,8 +77,6 @@ define(['scripts/injector'], function(Injector) {
 
     var vm = new mainVM();
 	ko.applyBindings(vm, document.getElementById('main'));
+    vm.setTab('Home');
 
-    //Since menu items are loaded dynamically, menu item needs to be set active
-    var menuElem = document.getElementById('menu_' + vm.activeTab());
-    menuElem.className += 'active';
 });
