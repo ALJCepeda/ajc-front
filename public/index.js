@@ -26,19 +26,12 @@ define(['scripts/injector'], function(Injector) {
                     }
                 }).then(function(element) {
                     var containedElem = document.getElementById('page_' + tab);
-                    return new Promise(function(resolve, reject) {
-                        try {
-                            require([url], function(model) {
-                                ko.applyBindings(model, containedElem);
-                                resolve({
-                                    model:model,
-                                    element:containedElem
-                                });
-                            });
-                        } catch(err) {
-                            reject(err);
-                        }
-                    });
+                    var model = require([url]);
+                    ko.applyBindings(model, containedElem);
+                    return {
+                        model:model,
+                        element:containedElem
+                    };
                 }).then(function(result) {
                     self.loadedTabs[tab] = true;
                     self.makeInactive(previousTab);
@@ -78,5 +71,4 @@ define(['scripts/injector'], function(Injector) {
     var vm = new mainVM();
 	ko.applyBindings(vm, document.getElementById('main'));
     vm.setTab('Home');
-
 });
