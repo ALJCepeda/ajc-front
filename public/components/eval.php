@@ -8,18 +8,7 @@ if(ISLOCAL === true) {
 }
 ?>
 
-<style type='text/css'>
-	.content-container {
-		width: 100%;
-		height: 100%;
-
-	  	display: flex;
-	  	flex-flow: row wrap;
-	  	justify-content:space-around;
-	}
-</style>
-
-<div class='content-container'>
+<div class='flex-container'>
 	<div class='header'>
 		<h1>Eval</h1>
 	</div>
