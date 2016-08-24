@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ALJCepeda/aljcepeda#readme",
   "dependencies": {
+    "backbone": "^1.3.3",
     "bareutil": "*",
     "bootstrap": "*",
     "bootstrap-material-design": "*",

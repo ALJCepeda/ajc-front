@@ -25,7 +25,7 @@ define([ 'bareutil.ajax' ], function(ajax) {
 	};
 
 	Injector.prototype.injectView = function(selector, view, options) {
-		var url = view + '.php';
+		var url = view;
 		if(this.base !== '/') {
 			url = this.base + '/' + url;
 		}

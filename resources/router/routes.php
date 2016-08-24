@@ -52,37 +52,42 @@ function getRoutes() {
 	$routes->add('require.js',
 		new Route('/require.js', [
 			'location' => 'node_modules/requirejs/require.js',
-			'Content-Type' => 'text/javascript'
+			'Content-Type' => 'application/javascript'
 		]));
 	$routes->add('knockout.js',
 		new Route('/knockout.js', [
 			'location' => 'node_modules/knockout/build/output/knockout-latest.js',
-			'Content-Type' => 'text/javascript'
+			'Content-Type' => 'application/javascript'
+		]));
+	$routes->add('backbone.js',
+		new Route('/backbone.js', [
+			'location' => 'node_modules/backbone/backbone-min.js',
+			'Content-Type' => 'application/javascript'
 		]));
 	$routes->add('bareutil.ajax',
 		new Route('/bareutil.ajax.js', [
 			'location' => 'node_modules/bareutil/scripts/ajax.js',
-			'Content-Type' => 'text/javascript'
+			'Content-Type' => 'application/javascript'
 		]));
 	$routes->add('bluebird',
 		new Route('/bluebird.js', [
 			'location' => 'node_modules/bluebird/js/browser/bluebird.min.js',
-			'Content-Type' => 'text/javascript'
+			'Content-Type' => 'application/javascript'
 		]));
 	$routes->add('jquery.js',
 		new Route('/jquery.js', [
 			'location' => 'node_modules/jquery/dist/jquery.min.js',
-			'Content-Type' => 'text/javascript'
+			'Content-Type' => 'application/javascript'
 		]));
 	$routes->add('bootstrap.js',
 		new Route('/bootstrap.js', [
 			'location' => 'node_modules/bootstrap/dist/js/bootstrap.min.js',
-			'Content-Type' => 'text/javascript'
+			'Content-Type' => 'application/javascript'
 		]));
 	$routes->add('bootstrap.mdl.js',
 		new Route('/bootstrap.mdl.js', [
 			'location' => 'node_modules/bootstrap-material-design/dist/js/material.min.js',
-			'Content-Type' => 'text/javascript'
+			'Content-Type' => 'application/javascript'
 		]));
 	$routes->add('bootstrap.css',
 		new Route('/bootstrap.css', [
