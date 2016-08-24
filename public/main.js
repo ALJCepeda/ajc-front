@@ -71,7 +71,7 @@ define(['scripts/injector', 'scripts/tabs'], function(Injector, tabs) {
             pageElem.className = 'page well active';
         };
 
-        this.didClick = function(tab) {
+        this.clickedTab = function(tab) {
             self.router.navigate(tab.hash, { trigger:true });
         };
 

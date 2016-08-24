@@ -53,7 +53,7 @@ $navbarModel =[
 		<div class='row'>
 			<div class='col-xs-2 menu' style='max-height:100vh'>
 				<ul data-bind='foreach: tabs'>
-					<li data-bind='text: $data.name, click:$root.didClick, attr: { id:"menu_" + $data.name, name:$data.name, href:$data.hash }'>
+					<li data-bind='text: $data.name, click:$root.clickedTab, attr: { id:"menu_" + $data.name, name:$data.name, href:$data.hash }'>
 				</ul>
 			</div>
 			<div class='col-xs-9 pages' style='max-height:100vh; min-height:400px;'>
