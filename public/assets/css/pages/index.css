@@ -102,15 +102,23 @@ body {
 	font-size: 15px;
 	font-weight: normal;
 	cursor: pointer;
+	text-align: center;
 }
 
 .menu-small ul > li > div {
-	padding-top:15px;
-	padding-bottom:5px;
+	margin-top:10px;
+	margin-bottom:5px;
+	display:none;
 }
 .menu-small ul li.active {
 	background-color: #dedede;
 	position: relative;
+}
+
+.menu-small ul li.active > div {
+	display:block;
+	background-color:white;
+	text-align:left;
 }
 
 .menu-small ul li a {

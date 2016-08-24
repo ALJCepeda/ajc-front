@@ -24,23 +24,23 @@ $entries = generate_entries();
 		<div class='col-xs-5'>
 			<img src='assets/images/portfolio/projections/bar.png' style='width:100%; height:auto;' />
 		</div>
-		<div class='col-xs-5 menu-small'>
+		<div class='col-xs-5 menu-small' style='align-self:flex-start'>
 			<ul>
-				<li>
+				<li class='active'>
 					What technologies were used?
 					<div>
 						DevExpress was used for the bar and area graphs. KnockoutJS for UI two-way binding and responsiveness. Bootstrap for layout and CSS styling. Behind the scenes I was forced to make clever use of the Adapter and Delegate design patterns in order to handle some poor decisions made by my senior developer
 					</div>
 				</li>
-				<li>
+				<li class='active'>
 					What's the point of this app?
-					<div style='display:none'>
+					<div>
 						TerrorTorch's main attraction was the ability to frighten people as they passed by camera by playing a sudden loud sound. The camera would record their reactions and the video would be uploaded to a server to be viewed in a public gallery. This was a project being hosted by the domain http://reBaked.com
 					</div>
 				</li>
 				<li>
 					What's the point of this app?
-					<div style='display:none'>
+					<div>
 						TerrorTorch's main attraction was the ability to frighten people as they passed by camera by playing a sudden loud sound. The camera would record their reactions and the video would be uploaded to a server to be viewed in a public gallery. This was a project being hosted by the domain http://reBaked.com
 					</div>
 				</li>
