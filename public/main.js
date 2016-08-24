@@ -1,6 +1,5 @@
-define(['scripts/injector', 'scripts/tabs', 'bareutil.ajax'], function(Injector, tabs, ajax) {
+define(['bareutil.ajax', 'scripts/tabs'], function(ajax, tabs) {
     var pageContainer = document.getElementById('pageContainer');
-    var injector = new Injector('/');
 
     var Main = function(tabs, router) {
         var self = this;
@@ -19,7 +18,6 @@ define(['scripts/injector', 'scripts/tabs', 'bareutil.ajax'], function(Injector,
                     element.innerHTML = html;
                     pageContainer.appendChild(element);
 
-                    debugger;
                     return element;
                 }).then(function(element) {
                     if(typeof tab.js !== 'undefined') {
