@@ -1,10 +1,11 @@
 <?php
+include '../../resources/constants.php';
 $version = '2.0.0';
 
 if(ISLOCAL === true) {
-	$evalURL = $_SERVER['SERVER_NAME'] . ':8002';
+	$evalURL = 'http://' . $_SERVER['SERVER_NAME'] . ':8002';
 } else {
-	$evalURL = 'eval.' . $_SERVER['SERVER_NAME'];
+	$evalURL = 'http://' . 'eval.' . $_SERVER['SERVER_NAME'];
 }
 ?>
 
@@ -51,7 +52,7 @@ if(ISLOCAL === true) {
 	</div>
 
 	<div class='footer'>
-		<a href='<?= evalURL ?>'>
+		<a href='<?= $evalURL ?>'>
 	   		<input class='orange button' type='button' value='Code Now!' />
 		</a>
 

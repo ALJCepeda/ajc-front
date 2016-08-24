@@ -14,5 +14,5 @@ if(isset($parameters['Content-Type']) === true) {
 	header('Content-Type: ' . $parameters['Content-Type']);
 	readfile('../' . $parameters['location']);
 } else {
-	include '../output.php';
+	include 'output.php';
 }

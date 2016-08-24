@@ -1,10 +1,11 @@
 <?php
+include '../../resources/constants.php';
 $version = '0.1.0';
 
 if(ISLOCAL === true) {
-	$snakeURL = $_SERVER['SERVER_NAME'] . ':8001';
+	$snakeURL = 'http://' . $_SERVER['SERVER_NAME'] . ':8001';
 } else {
-	$snakeURL = 'snake.' . $_SERVER['SERVER_NAME'];
+	$snakeURL = 'http://' . 'snake.' . $_SERVER['SERVER_NAME'];
 }
 ?>
 
