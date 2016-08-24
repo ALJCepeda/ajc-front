@@ -12,40 +12,24 @@ $entries = generate_entries();
 
 <div class='container-fluid' data-bind='foreach: entries'>
 	<div class='row-nw m-center c-center'>
-		<h3 data-bind='$data.name'>Projections</h3>
+		<h3 data-bind='text: $data.name'></h3>
 	</div>
 	<div class='row-nw m-start c-center'>
 		<div class='col-xs-2 menu'>
-			<ul>
-				<li class='active-underline' style='padding-left:10px'><u>Bar</u></li>
-				<li style='padding-left:10px'>Chart</li>
-				<li style='padding-left:10px'>Grouped</li>
-				<li style='padding-left:10px'>Expanded</li>
-				<li style='padding-left:10px'>Both</li>
+			<ul data-bind='foreach: $data.images'>
+				<li style='padding-left:10px' data-bind='click:$parent.clickedImage, css: { "active-underline":$data.isActive }'>
+					<u data-bind='text:$data.name'></u>
+				</li>
 			</ul>
 		</div>
 		<div class='col-xs-5'>
-			<img src='assets/images/portfolio/projections/bar.png' style='width:100%; height:auto;' />
+			<img style='width:100%; height:auto;' data-bind='attr: { src:$data.imageSRC }' />
 		</div>
 		<div class='col-xs-5 menu-small' style='align-self:flex-start'>
-			<ul>
-				<li class='active'>
-					What technologies were used?
-					<div>
-						DevExpress was used for the bar and area graphs. KnockoutJS for UI two-way binding and responsiveness. Bootstrap for layout and CSS styling. Behind the scenes I was forced to make clever use of the Adapter and Delegate design patterns in order to handle some poor decisions made by my senior developer
-					</div>
-				</li>
-				<li>
-					What's the point of this app?
-					<div>
-						TerrorTorch's main attraction was the ability to frighten people as they passed by camera by playing a sudden loud sound. The camera would record their reactions and the video would be uploaded to a server to be viewed in a public gallery. This was a project being hosted by the domain http://reBaked.com
-					</div>
-				</li>
-				<li>
-					What's the point of this app?
-					<div>
-						TerrorTorch's main attraction was the ability to frighten people as they passed by camera by playing a sudden loud sound. The camera would record their reactions and the video would be uploaded to a server to be viewed in a public gallery. This was a project being hosted by the domain http://reBaked.com
-					</div>
+			<ul data-bind='foreach:$data.faq'>
+				<li data-bind='click:$parent.clickedFAQ, css: { active:$data.isActive }'>
+					<span data-bind='text:$data.question'></span>
+					<div data-bind='text:$data.answer'></div>
 				</li>
 			</ul>
 		</div>
