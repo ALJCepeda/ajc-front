@@ -18,9 +18,6 @@ body {
 }
 
 .flex-container {
-	width: 100%;
-	height: 100%;
-
   	display: flex;
   	flex-flow: row wrap;
   	justify-content:space-around;
@@ -38,10 +35,6 @@ body {
 	text-align: center;
 }
 
-.aside {
-	flex: 1 0 50%;
-}
-
 .right > div {
 	float:right;
 	clear:both;
@@ -49,8 +42,8 @@ body {
 
 .header { order: 1; }
 .body { order: 2; }
-.left { order: 2; }
-.right { order: 3; }
+.left { order: 2; width:40% }
+.right { order: 3; width:40% }
 .footer  { order: 4; }
 
 .menu {

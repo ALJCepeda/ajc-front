@@ -13,7 +13,7 @@ if(ISLOCAL === true) {
 		<h1>Snake.IO</h1>
 	</div>
 
-	<div class='aside left' style='width:30%;padding-left:30px;'>
+	<div class='left'>
 		<h1>About</h1>
 		<p>Welcome to my 'MMO' version of the old school atari game, Snake</p>
 
@@ -26,7 +26,7 @@ if(ISLOCAL === true) {
 		The more food you eat, the larger you get, the higher your score!</p>
 	</div>
 
-	<div class='aside right' style='width:30%;padding-right:30px;'>
+	<div class='right'>
 		<div>
 			<h1>To Do</h1>
 			<ul>

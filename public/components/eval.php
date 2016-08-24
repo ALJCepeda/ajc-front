@@ -13,7 +13,7 @@ if(ISLOCAL === true) {
 		<h1>Eval</h1>
 	</div>
 
-	<div class='aside left' style='width:30%;padding-left:30px;'>
+	<div class='left'>
 		<h1>About</h1>
 		<p>Multi-language multi-version code intepreter/compiler</p>
 
@@ -34,7 +34,7 @@ if(ISLOCAL === true) {
 		</div>
 	</div>
 
-	<div class='aside right' style='width:30%;padding-right:30px;'>
+	<div class='right'>
 		<div>
 			<h1>To Do:</h1>
 			<ul>
