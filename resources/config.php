@@ -1,6 +1,6 @@
 <?php
 require "constants.php";
-require "../aljcepeda.php";
+require __DIR__ . "/../aljcepeda.php";
 
 require "misc.php";
 require VENDOR . "/autoload.php";

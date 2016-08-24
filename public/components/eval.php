@@ -1,5 +1,5 @@
 <?php
-include '../../resources/constants.php';
+include '../../resources/config.php';
 $version = '2.0.0';
 
 if(ISLOCAL === true) {

@@ -13,8 +13,8 @@ function generate_entries() {
 	$projections->addQuestion("What technologies were used?", "DevExpress was used for the bar and area graphs. KnockoutJS for UI two-way binding and responsiveness. Bootstrap for layout and CSS styling. Behind the scenes I was forced to make clever use of the Adapter and Delegate design patterns in order to handle some poor decisions made by my senior developer");
 	$projections->addQuestion("How would you improve it?", "Currently the back-end makes use of a blob object with unintuitive keys and poorly thought out ecapsulation. Rather than client-side make use of an adapter to transform the data, server-side should just structure the data correctly. A better structure would improve server-side's workflow as well");
 
-	$projections->selectImage($_SESSION['portfolio']['image']);
-	$projections->selectQuestion($_SESSION['portfolio']['question']);
+	$projections->selectImage("Bar");
+	$projections->selectQuestion(0);
 
 	return [ $projections ];
 }
