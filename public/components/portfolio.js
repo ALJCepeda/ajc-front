@@ -125,7 +125,64 @@ define([], function() {
     terror.faq[0].isActive(true);
     terror.selectedFAQ(terror.faq[0]);
 
+    var interest = new Entry('assets/images/portfolio/interest/');
+    interest.id = 'interest';
+    interest.name = 'Interest Calculator';
+    interest.images = [
+        { name:'Chart', url:'chart.png', isActive:ko.observable(false) },
+        { name:'Grid', url:'grid.png', isActive:ko.observable(false) },
+        { name:'Loading', url:'loading.png', isActive:ko.observable(false) },
+        { name:'Full Gird', url:'fullgrid.png', isActive:ko.observable(false) },
+        { name:'Full Chart', url:'fullchart.png', isActive:ko.observable(false) },
+        { name:'Edit Grid', url:'editgrid.png', isActive:ko.observable(false) },
+    ];
+    interest.faq = [
+        {   question:'What\'s the point of this app?',
+            answer:'This is a calculator that takes some basic financial information and calculates a rough estimate of how their accounts will grow over time. It can also guess different field such as the number of years or the annual interest rate necessary for the account the reach a final value.',
+            isActive:ko.observable(false)   },
+        {   question:'How long was development',
+            answer:'It took about 3 1/2 months, I\'ve developed most of this feature except for few minor backend tasks like user preferences.',
+            isActive:ko.observable(false)   },
+        {   question:'What are some special design features?',
+            answer:'Fully responsive UI that fits the width of any device. The ui is completely non-blocking and all the code is beautifully organized and fully unit tested',
+            isActive:ko.observable(false)   }
+    ];
+    interest.images[0].isActive(true);
+    interest.selectedImage(interest.images[0]);
+    interest.faq[0].isActive(true);
+    interest.selectedFAQ(interest.faq[0]);
+
+    var other = new Entry('assets/images/portfolio/other/');
+    other.id = 'other';
+    other.name = 'Other Work';
+    other.images = [
+        { name:'Gameofficials', url:'gameofficials.png', isActive:ko.observable(false) },
+        { name:'Divergence', url:'divergence.png', isActive:ko.observable(false) },
+        { name:'Bodyworks', url:'bodyworks.png', isActive:ko.observable(false) },
+        { name:'Clinipro', url:'clinipro.png', isActive:ko.observable(false) },
+        { name:'Omnipod', url:'omnipod.png', isActive:ko.observable(false) },
+        { name:'Diabetes', url:'diabetes.png', isActive:ko.observable(false) }
+    ];
+    other.faq = [
+        {   question:'Tell me about Gameofficials',
+            answer:'A web application written with Coldfusion, it matches referees with games in the local area. I was a full stack developer and lead 5 minor releases while I was there including huge optimizations to MySQL queries and stored procedues',
+            isActive:ko.observable(false)   },
+        {   question:'Tell me about Divergence',
+            answer:'A game written in Unity3D set in the future in an infinitely large procedurally generated world. I was involed in helping devlop their inventory system and interface with UML plugin that allowed for randomly generated avatars',
+            isActive:ko.observable(false)   },
+        {   question:'Tell me about Bodyworks',
+            answer:'A simple website I improved for a local messeuse to show cased services she offered. The server was hacked and contained a virus so I was in charge of removing the threat, patching the vulnerability and updating some of the content',
+            isActive:ko.observable(false)   },
+        {   question:'Tell me about the rest',
+            answer:'Clinipro/Omnipod/Diabetes was part of company named Numedics that provided software for hospitals in the area. It was written with ASP.Net MVC, I was in charge of improving front-end and managed version control and release. I helped develop implement several long lasting policies',
+            isActive:ko.observable(false)   }
+    ];
+    other.images[0].isActive(true);
+    other.selectedImage(other.images[0]);
+    other.faq[0].isActive(true);
+    other.selectedFAQ(other.faq[0]);
+
     return {
-        entries: [ projections, ipad, terror ]
+        entries: [ projections, ipad, terror, interest, other ]
     };
 });

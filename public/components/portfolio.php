@@ -1,9 +1,7 @@
 <?php
 require '../../resources/config.php';
-require '../../resources/models/portfolio/entries.php';
-
-$entries = generate_entries();
 ?>
+
 <div class='flex-container'>
 	<div class='header'>
 		<h1>Portfolio</h1>
@@ -35,6 +33,6 @@ $entries = generate_entries();
 				</ul>
 			</div>
 		</div>
-		<hr data-bind='visible: $data.id !== "terror"'>
+		<hr data-bind='visible: $data.id !== "other"'>
 	</div>
 </div>
