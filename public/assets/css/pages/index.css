@@ -98,14 +98,15 @@ body {
 
 .menu-small ul li {
 	list-style: none;
-	padding-top:25px;
+	padding-top:10px;
 	font-size: 15px;
 	font-weight: normal;
 	cursor: pointer;
 }
 
 .menu-small ul > li > div {
-	padding-top:25px;
+	padding-top:15px;
+	padding-bottom:5px;
 }
 .menu-small ul li.active {
 	background-color: #dedede;

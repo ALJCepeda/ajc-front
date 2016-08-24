@@ -34,7 +34,13 @@ $entries = generate_entries();
 				</li>
 				<li>
 					What's the point of this app?
-					<div>
+					<div style='display:none'>
+						TerrorTorch's main attraction was the ability to frighten people as they passed by camera by playing a sudden loud sound. The camera would record their reactions and the video would be uploaded to a server to be viewed in a public gallery. This was a project being hosted by the domain http://reBaked.com
+					</div>
+				</li>
+				<li>
+					What's the point of this app?
+					<div style='display:none'>
 						TerrorTorch's main attraction was the ability to frighten people as they passed by camera by playing a sudden loud sound. The camera would record their reactions and the video would be uploaded to a server to be viewed in a public gallery. This was a project being hosted by the domain http://reBaked.com
 					</div>
 				</li>
