@@ -2,6 +2,7 @@ define([], function() {
     var Entry = function(base) {
         var self = this;
         this.base = base;
+        this.id = '';
         this.name = '';
         this.images = [];
         this.faq = [];
@@ -37,6 +38,7 @@ define([], function() {
     };
 
     var projections = new Entry('assets/images/portfolio/projections/');
+    projections.id = 'projections';
     projections.name = 'Financial Projections';
     projections.images = [
         { name:'Bar', url:'bar.png', isActive:ko.observable(false) },
@@ -68,6 +70,7 @@ define([], function() {
     projections.selectedFAQ(projections.faq[0]);
 
     var ipad = new Entry('assets/images/portfolio/ipad/');
+    ipad.id = 'ipad';
     ipad.name = 'Electronic Repair';
     ipad.images = [
         { name:'Broken', url:'broken.jpg', isActive:ko.observable(false) },

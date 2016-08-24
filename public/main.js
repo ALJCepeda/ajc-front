@@ -10,10 +10,10 @@ define(['bareutil.ajax', 'scripts/tabs'], function(ajax, tabs) {
 
         this.setTab = function(tab) {
             var previousTab = this.activeTab();
-            if(this.loadedTabs[tab.name] !== true) {
+            if(this.loadedTabs[tab.id] !== true) {
                 return ajax.get(tab.url).then(function(html) {
                     var element = document.createElement('div');
-                    element.id = 'page_' + tab.name;
+                    element.id = 'page_' + tab.id;
                     element.className = 'page well';
                     element.innerHTML = html;
                     pageContainer.appendChild(element);
@@ -38,7 +38,7 @@ define(['bareutil.ajax', 'scripts/tabs'], function(ajax, tabs) {
                         });
                     }
                 }).then(function(result) {
-                    self.loadedTabs[tab.name] = true;
+                    self.loadedTabs[tab.id] = true;
                     self.makeInactive(previousTab);
                     self.makeActive(tab);
                     self.activeTab(tab);
@@ -59,15 +59,15 @@ define(['bareutil.ajax', 'scripts/tabs'], function(ajax, tabs) {
                 return;
             }
 
-            var menuElem = document.getElementById('menu_' + tab.name);
-            var pageElem = document.getElementById('page_' + tab.name);
+            var menuElem = document.getElementById('menu_' + tab.id);
+            var pageElem = document.getElementById('page_' + tab.id);
             menuElem.className = '';
             pageElem.className = 'page well';
         };
 
         this.makeActive = function(tab) {
-            var menuElem = document.getElementById('menu_' + tab.name);
-            var pageElem = document.getElementById('page_' + tab.name);
+            var menuElem = document.getElementById('menu_' + tab.id);
+            var pageElem = document.getElementById('page_' + tab.id);
             menuElem.className = 'active';
             pageElem.className = 'page well active';
         };
