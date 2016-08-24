@@ -19,17 +19,22 @@ define(['scripts/injector', 'scripts/tabs'], function(Injector, tabs) {
                     }
                 }).then(function(element) {
                     var containedElem = document.getElementById('page_' + tab.name);
-                    if(tab.js === true) {
-                        var model = require([tab.url]);
-                        ko.applyBindings(model, containedElem);
-                        return {
-                            model:model,
-                            element:containedElem
-                        };
+                    if(typeof tab.js !== 'undefined') {
+                        return new Promise(function(resolve, reject) {
+                            require([tab.js], function(model) {
+                                ko.applyBindings(model, containedElem);
+                                resolve({
+                                    model:model,
+                                    element:containedElem
+                                });
+                            }, function(err) {
+                                reject(err);
+                            });
+                        });
                     } else {
-                        return {
+                        return Promise.resolve({
                             element:containedElem
-                        };
+                        });
                     }
                 }).then(function(result) {
                     self.loadedTabs[tab.name] = true;

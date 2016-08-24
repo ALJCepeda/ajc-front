@@ -10,9 +10,9 @@ $entries = generate_entries();
 	</div>
 </div>
 
-<div class='container-fluid'>
+<div class='container-fluid' data-bind='foreach: entries'>
 	<div class='row-nw m-center c-center'>
-		<h3>Projections</h3>
+		<h3 data-bind='$data.name'>Projections</h3>
 	</div>
 	<div class='row-nw m-start c-center'>
 		<div class='col-xs-2 menu'>
