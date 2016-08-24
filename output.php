@@ -24,6 +24,7 @@ $navbarModel =[
 	<title><?= $parameters['title'] ?? 'ALJCepeda' ?></title>
 
 	<script type='text/javascript' src='jquery.js'></script>
+	<script type='text/javascript' src='underscore.js'></script>
 	<script type='text/javascript' src='knockout.js'></script>
 	<script type='text/javascript' src='bootstrap.js'></script>
 	<script type='text/javascript' src='bootstrap.mdl.js'></script>
@@ -52,7 +53,7 @@ $navbarModel =[
 		<div class='row'>
 			<div class='col-xs-2 menu' style='max-height:100vh'>
 				<ul data-bind='foreach: tabs'>
-					<li data-bind='text: $data.name, click:$root.didClickMenu, attr: { id:"menu_" + $data.name, name:$data.name, href:$data.hash }'>
+					<li data-bind='text: $data.name, click:$root.didClick, attr: { id:"menu_" + $data.name, name:$data.name, href:$data.hash }'>
 				</ul>
 			</div>
 			<div class='col-xs-9 pages' style='max-height:100vh'>

@@ -64,6 +64,11 @@ function getRoutes() {
 			'location' => 'node_modules/backbone/backbone-min.js',
 			'Content-Type' => 'application/javascript'
 		]));
+	$routes->add('underscore.js',
+		new Route('/underscore.js', [
+			'location' => 'node_modules/underscore/underscore-min.js',
+			'Content-Type' => 'application/javascript'
+		]));
 	$routes->add('bareutil.ajax',
 		new Route('/bareutil.ajax.js', [
 			'location' => 'node_modules/bareutil/scripts/ajax.js',

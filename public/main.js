@@ -2,16 +2,17 @@ define(['scripts/injector', 'scripts/tabs'], function(Injector, tabs) {
     var pageContainer = document.getElementById('pageContainer');
     var injector = new Injector('/');
 
-    var MainVM = function() {
+    var Main = function(tabs, router) {
         var self = this;
         this.tabs = tabs;
         this.activeTab = ko.observable();
         this.loadedTabs = { };
+        this.router = router;
 
         this.setTab = function(tab) {
             var previousTab = this.activeTab();
             if(this.loadedTabs[tab.name] !== true) {
-                injector.injectView(pageContainer, tab.url, {
+                return injector.injectView(pageContainer, tab.url, {
                     append:true,
                     modifyHTML:function(html) {
                         return '<div id="page_' + tab.name +'" class="page well">' + html + '</div>';
@@ -35,11 +36,15 @@ define(['scripts/injector', 'scripts/tabs'], function(Injector, tabs) {
                     self.makeInactive(previousTab);
                     self.makeActive(tab);
                     self.activeTab(tab);
+
+                    return tab;
                 });
             } else {
                 self.makeInactive(previousTab);
                 self.makeActive(tab);
                 self.activeTab(tab);
+
+                return Promise.resolve(tab);
             }
         };
 
@@ -61,9 +66,13 @@ define(['scripts/injector', 'scripts/tabs'], function(Injector, tabs) {
             pageElem.className = 'page well active';
         };
 
-        this.didClickMenu = function(tab) {
+        this.didClick = function(tab) {
+            self.router.navigate(tab.hash, { trigger:true });
+        };
+
+        router.gotPage = function(tab) {
             self.setTab(tab);
         };
     };
-    return new MainVM();
+    return Main;
 });

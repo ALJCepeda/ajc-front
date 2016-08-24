@@ -23,6 +23,7 @@
     "bootstrap-material-design": "*",
     "jquery": "*",
     "knockout": "*",
-    "requirejs": "*"
+    "requirejs": "*",
+    "underscore": "^1.8.3"
   }
 }
