@@ -1,4 +1,4 @@
-define(['scripts/injector', 'scripts/tabs'], function(Injector, tabs) {
+define(['scripts/injector', 'scripts/tabs', 'bareutil.ajax'], function(Injector, tabs, ajax) {
     var pageContainer = document.getElementById('pageContainer');
     var injector = new Injector('/');
 
@@ -12,20 +12,23 @@ define(['scripts/injector', 'scripts/tabs'], function(Injector, tabs) {
         this.setTab = function(tab) {
             var previousTab = this.activeTab();
             if(this.loadedTabs[tab.name] !== true) {
-                return injector.injectView(pageContainer, tab.url, {
-                    append:true,
-                    modifyHTML:function(html) {
-                        return '<div id="page_' + tab.name +'" class="page well">' + html + '</div>';
-                    }
+                return ajax.get(tab.url).then(function(html) {
+                    var element = document.createElement('div');
+                    element.id = 'page_' + tab.name;
+                    element.className = 'page well';
+                    element.innerHTML = html;
+                    pageContainer.appendChild(element);
+
+                    debugger;
+                    return element;
                 }).then(function(element) {
-                    var containedElem = document.getElementById('page_' + tab.name);
                     if(typeof tab.js !== 'undefined') {
                         return new Promise(function(resolve, reject) {
                             require([tab.js], function(model) {
-                                ko.applyBindings(model, containedElem);
+                                ko.applyBindings(model, element);
                                 resolve({
                                     model:model,
-                                    element:containedElem
+                                    element:element
                                 });
                             }, function(err) {
                                 reject(err);
@@ -33,7 +36,7 @@ define(['scripts/injector', 'scripts/tabs'], function(Injector, tabs) {
                         });
                     } else {
                         return Promise.resolve({
-                            element:containedElem
+                            element:element
                         });
                     }
                 }).then(function(result) {
