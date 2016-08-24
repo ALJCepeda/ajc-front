@@ -16,6 +16,7 @@ define([], function() {
             return self.base + self.selectedImage().url;
         });
         this.clickedImage = function(image) {
+            debugger;
             var previousImage = self.selectedImage();
             if(previousImage) {
                 previousImage.isActive(false);

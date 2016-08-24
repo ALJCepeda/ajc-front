@@ -78,7 +78,7 @@ body {
 .menu ul li.active-underline {
 	position: relative;
 }
-.menu ul li.active-underline u {
+.menu ul li.active-underline span {
 	text-decoration: none;
 	border-bottom: 2px solid blue;
 }

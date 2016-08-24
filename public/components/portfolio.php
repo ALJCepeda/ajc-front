@@ -18,7 +18,7 @@ $entries = generate_entries();
 		<div class='col-xs-2 menu'>
 			<ul data-bind='foreach: $data.images'>
 				<li style='padding-left:10px' data-bind='click:$parent.clickedImage, css: { "active-underline":$data.isActive }'>
-					<u data-bind='text:$data.name'></u>
+					<span data-bind='text:$data.name'></span>
 				</li>
 			</ul>
 		</div>
