@@ -13,9 +13,6 @@ function generate_entries() {
 	$projections->addQuestion('What are some special design features?', 'Fully responsive UI that fits the width of any device. The ui is completely non-blocking and all the code is beautifully organized and fully unit tested');
 	$projections->addQuestion('How would you improve it?', 'Currently the back-end makes use of a blob object with unintuitive keys and poorly thought out ecapsulation. Rather than client-side make use of an adapter to transform the data, server-side should just structure the data correctly. A better structure would improve server-side\'s workflow as well');
 
-	$projections->selectImage('Bar');
-	$projections->selectQuestion(0);
-
 	$repair = new Model\Portfolio\entry('Electronic Repair');
 	$repair->addImage('Broken', 'ipad/broken.jpg');
 	$repair->addImage('Opened', 'ipad/opened.jpg');
@@ -25,9 +22,6 @@ function generate_entries() {
 	$repair->addQuestion('How long did it take?', 'The entire process from start to finish took less than 30 minutes');
 	$repair->addQuestion('How much did it cost?', 'In order to buy all the toys and necessary parts to perform the repair cost a total of $140...which was still $70 less than the $200 pricetag the Apple store gave me');
 	$repair->addQuestion('Will you repair my device?', 'Sure, but better yet I\'ll point you to the resources so you can do it yourself. Its really easy, will save you a ton of money and boost your confidence for repairing other electronics');
-
-	$repair->selectImage('Broken');
-	$repair->selectQuestion(0);
 
 	$terror = new Model\Portfolio\entry('Terror Torch(iOS)');
 	$terror->addImage('FrontUI', 'terror/frontui.png');
@@ -42,9 +36,6 @@ function generate_entries() {
 	$terror->addQuestion('Why was it never released?', 'I wish I knew. I was never contacted by the project manager and the domain was sold soon after. As far as I know the project is still waiting to be sent for review... I sometimes wonder the legal issues of releasing the app myself but I haven\'t done the research');
 	$terror->addQuestion('What are some special design features?', 'Motion detection is able to sense when a person passes infront of the camera. Videos uploaded to server and shared on a youtube gallery. Was developed during iOS Beta 8 series and was ready to release before the beta was completed, written almost entirely in Swift');
 
-	$terror->selectImage('FrontUI');
-	$terror->selectQuestion(0);
-
 	$interest = new Model\Portfolio\entry('Interest Calculator');
 	$interest->addImage('Chart', 'interest/chart');
 	$interest->addImage('Grid', 'interest/grid');
@@ -57,9 +48,6 @@ function generate_entries() {
 	$interest->addQuestion('How long was development', 'It took about 3 1/2 months, I\'ve developed most of this feature except for few minor backend tasks like user preferences.');
 	$interest->addQuestion('What are some special design features?', 'Fully responsive UI that fits the width of any device. The ui is completely non-blocking and all the code is beautifully organized and fully unit tested');
 
-	$interest->selectImage('Chart');
-	$interest->selectQuestion(0);
-
 	$other = new Model\Portfolio\entry('Other Work');
 	$other->addImage('Gameofficials', 'other/gameofficials');
 	$other->addImage('Divergence', 'other/divergence');
@@ -67,8 +55,6 @@ function generate_entries() {
 	$other->addImage('Clinipro', 'other/clinipro');
 	$other->addImage('Omnipod', 'other/omnipod');
 	$other->addImage('Diabetes', 'other/diabetes');
-
-	$other->selectImage('Gameofficials');
 
 	return [
 		'projections'=>$projections,
