@@ -17,7 +17,7 @@ $entries = generate_entries();
 	<div class='row-nw m-start c-center'>
 		<div class='col-xs-2 menu'>
 			<ul>
-				<li style='padding-left:10px'>Bar</li>
+				<li class='active-underline' style='padding-left:10px'><u>Bar</u></li>
 				<li style='padding-left:10px'>Chart</li>
 				<li style='padding-left:10px'>Grouped</li>
 				<li style='padding-left:10px'>Expanded</li>
