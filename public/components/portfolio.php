@@ -35,6 +35,6 @@ $entries = generate_entries();
 				</ul>
 			</div>
 		</div>
-		<hr data-bind='visible: $data.id !== "ipad"'>
+		<hr data-bind='visible: $data.id !== "terror"'>
 	</div>
 </div>

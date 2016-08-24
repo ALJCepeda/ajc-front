@@ -17,7 +17,6 @@ define([], function() {
             return self.base + self.selectedImage().url;
         });
         this.clickedImage = function(image) {
-            debugger;
             var previousImage = self.selectedImage();
             if(previousImage) {
                 previousImage.isActive(false);
@@ -93,7 +92,40 @@ define([], function() {
     ipad.selectedImage(ipad.images[0]);
     ipad.faq[0].isActive(true);
     ipad.selectedFAQ(ipad.faq[0]);
+
+    var terror = new Entry('assets/images/portfolio/terror/');
+    terror.id = 'terror';
+    terror.name = 'Terror Torch';
+    terror.images = [
+        { name:'FrontUI', url:'frontui.png', isActive:ko.observable(false) },
+        { name:'Gallery', url:'gallery.png', isActive:ko.observable(false) },
+        { name:'Camera', url:'camera.jpg', isActive:ko.observable(false) },
+        { name:'Sound', url:'sound.png', isActive:ko.observable(false) },
+        { name:'About', url:'about.png', isActive:ko.observable(false) }
+    ];
+    terror.faq = [
+        {   question:'What\'s the point of this app?',
+            answer:'TerrorTorch\'s main attraction was the ability to frighten people as they passed by camera by playing a sudden loud sound. The camera would record their reactions and the video would be uploaded to a server to be viewed in a public gallery. This was a project being hosted by the domain http://reBaked.com',
+            isActive:ko.observable(false)   },
+        {   question:'What\'s the big power button in FastUI?',
+            answer:'The app also featured a flashlight which is managed by this control. It\'s possible to adjust the intensity of the flashlight by rotating this control like a dial',
+            isActive:ko.observable(false)   },
+        {   question:'How long did it take?',
+            answer:'It took a little more than three months to complete, I was the project\'s only programmer. TerrorTorch was tested, approved and uploaded to iTunes Connect where it awaited final approval from the project manager. It was never released :(',
+            isActive:ko.observable(false)   },
+        {   question:'Why was it never released?',
+            answer:'I wish I knew. I was never contacted by the project manager and the domain was sold soon after. As far as I know the project is still waiting to be sent for review... I sometimes wonder the legal issues of releasing the app myself but I haven\'t done the research',
+            isActive:ko.observable(false)   },
+        {   question:'What are some special design features?',
+            answer:'Motion detection is able to sense when a person passes infront of the camera. Videos uploaded to server and shared on a youtube gallery. Was developed during iOS Beta 8 series and was ready to release before the beta was completed, written almost entirely in Swift',
+            isActive:ko.observable(false)   }
+    ];
+    terror.images[0].isActive(true);
+    terror.selectedImage(terror.images[0]);
+    terror.faq[0].isActive(true);
+    terror.selectedFAQ(terror.faq[0]);
+
     return {
-        entries: [ projections, ipad ]
+        entries: [ projections, ipad, terror ]
     };
 });
