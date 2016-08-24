@@ -56,10 +56,9 @@ $navbarModel =[
 					<li data-bind='text: $data.name, click:$root.didClick, attr: { id:"menu_" + $data.name, name:$data.name, href:$data.hash }'>
 				</ul>
 			</div>
-			<div class='col-xs-9 pages' style='max-height:100vh'>
+			<div class='col-xs-9 pages' style='max-height:100vh; min-height:400px;'>
 				<div class='row'>
-					<div id='pageContainer' class='col-xs-10'>
-					</div>
+					<div id='pageContainer' class='col-xs-10'></div>
 				</div>
 			</div>
 		</div>
