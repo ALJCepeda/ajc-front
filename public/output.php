@@ -33,9 +33,7 @@ $navbarModel =[
 	<link rel='stylesheet' type='text/css' href='bootstrap.mdl.css'>
 
 	<link rel='stylesheet' type='text/css' href='/assets/css/flex.css'>
-	<link rel='stylesheet' type='text/css' href='/assets/css/pages/index.css'>
-	<link rel='stylesheet' type='text/css' href='/assets/css/pages/navbar.css'>
-
+	<link rel='stylesheet' type='text/css' href='/assets/css/index.css'>
 	<script type='text/javascript' src='require.js' data-main='index' ></script>
 </head>
 <body>
