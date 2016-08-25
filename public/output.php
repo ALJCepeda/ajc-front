@@ -1,19 +1,3 @@
-<?php
-$navbarModel =[
-	'menu' => [
-		'Home' => '/',
-		'Eval' => '/eval',
-		'Snake' => '/snake',
-	 	'Repair' => '/repair',
-	 	'Portfolio' => '/portfolio',
-	 	'About Me' => '/aboutme'
-	],
-	'notifications' => $parameters['notifications'] ?? [],
-	'path' => $parameters['path']
-];
-
-?>
-
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -49,15 +33,13 @@ $navbarModel =[
 
 	<div id='main' class='container-fluid main'>
 		<div class='row'>
-			<div class='col-xs-2 menu' style='max-height:100vh'>
+			<div class='col-xs-3 menu' style='max-height:100vh'>
 				<ul data-bind='foreach: tabs'>
 					<li data-bind='text: $data.name, click:$root.clickedTab, attr: { id:"menu_" + $data.id, name:$data.name, href:$data.hash }'>
 				</ul>
 			</div>
-			<div class='col-xs-9 pages' style='max-height:100vh; min-height:400px;'>
-				<div class='row'>
-					<div id='pageContainer' class='col-xs-10'></div>
-				</div>
+			<div id='pages' class='col-xs-9 pages row-w m-center' style='height:100vh; min-height:400px; background-color:#B3E5FC'>
+				<div id='pageContainer' class='col-xs-10'></div>
 			</div>
 		</div>
 	</div>

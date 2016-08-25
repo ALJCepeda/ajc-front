@@ -33,6 +33,6 @@ require '../../resources/config.php';
 				</ul>
 			</div>
 		</div>
-		<hr data-bind='visible: $data.id !== "other"'>
+		<hr data-bind='visible: $data.id !== "ipad"'>
 	</div>
 </div>
