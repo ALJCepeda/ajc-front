@@ -21,9 +21,11 @@
     "bareutil": "*",
     "bootstrap": "*",
     "bootstrap-material-design": "*",
+    "gsap": "^1.19.0",
     "jquery": "*",
     "knockout": "*",
     "requirejs": "*",
+    "scrollmagic": "^2.0.5",
     "underscore": "^1.8.3"
   }
 }

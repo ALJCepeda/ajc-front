@@ -21,27 +21,57 @@
 	<script type='text/javascript' src='require.js' data-main='index' ></script>
 </head>
 <body>
-	<div class='header-panel shadow-z-2'>
-		<div class='container-fluid'>
-			<div class='row'>
-				<div class='col-xs-3'>
-					<h1>ALJCepeda</h1>
-				</div>
-			</div>
-		</div>
-	</div>
+<style type="text/css">
+.parallaxParent {
+	height: 100vh;
+	overflow: hidden;
+}
+.parallaxParent > * {
+	height: 200%;
+	position: relative;
+	top: -100%;
+}
+</style>
+<div class="spacer s0"></div>
+<div class='box2 blue'>
+	<div class='flex-container'>
+	    <div class='header'>
+	        <h1>Welcome</h1>
+	    </div>
 
-	<div id='main' class='container-fluid main'>
-		<div class='row'>
-			<div class='col-xs-3 menu' style='max-height:100vh'>
-				<ul data-bind='foreach: tabs'>
-					<li data-bind='text: $data.name, click:$root.clickedTab, attr: { id:"menu_" + $data.id, name:$data.name, href:$data.hash }'>
-				</ul>
-			</div>
-			<div id='pages' class='col-xs-9 pages row-w m-center' style='height:100vh; min-height:400px; background-color:#B3E5FC'>
-				<div id='pageContainer' class='col-xs-10'></div>
-			</div>
-		</div>
+	    <div class='body text-center'>
+	        <p>To the domain of a restless mind</p>
+	        <br />
+	        <br />
+	        <p>This website showcases some projects I've worked on and information on services I provide. Be sure to check back occasionally. I have a big plans and will continue updating whenever I have the time</p>
+	        <br />
+	        <br />
+	    </div>
 	</div>
+</div>
+<div id="parallax1" class="parallaxParent">
+<div style="background-image: url(assets/images/example_parallax_bg1.png);"></div>
+</div>
+<div class="spacer s1">
+<div class="box2 blue">
+	<p>Content 1</p>
+	<a href="#" class="viewsource">view source</a>
+</div>
+</div>
+<div class="spacer s0"></div>
+<div id="parallax2" class="parallaxParent">
+<div style="background-image: url(assets/images/example_parallax_bg1.png);"></div>
+</div>
+<div class="spacer s1">
+<div class="box2 blue">
+	<p>Content 2</p>
+	<a href="#" class="viewsource">view source</a>
+</div>
+</div>
+<div class="spacer s0"></div>
+<div id="parallax3" class="parallaxParent">
+<div style="background-image: url(assets/images/example_parallax_bg1.png);"></div>
+</div>
+<div class="spacer s2"></div>
 </body>
 </html>
