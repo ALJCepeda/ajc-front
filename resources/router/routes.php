@@ -69,6 +69,11 @@ function getRoutes() {
 			'location' => 'node_modules/underscore/underscore-min.js',
 			'Content-Type' => 'application/javascript'
 		]));
+	$routes->add('skrollr.js',
+		new Route('/skrollr.js', [
+			'location' => 'node_modules/skrollr/dist/skrollr.min.js',
+			'Content-Type' => 'application/javascript'
+		]));
 	$routes->add('particles.js',
 		new Route('/particles.js', [
 			'location' => 'node_modules/particles.js/particles.js',
