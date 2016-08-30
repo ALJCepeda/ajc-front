@@ -33,6 +33,15 @@
 </head>
 <body>
 <style type="text/css">
+body {
+	background-image: url(assets/images/space/space.gif);
+	background-repeat: repeat;
+	background-size: auto;
+}
+
+.blue {
+	background-color: blue;
+}
 .parallaxParent {
 	height: 100vh;
 	overflow: hidden;
@@ -50,9 +59,6 @@
 	height: 200%;
 	position: relative;
 	top: -125%;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-color:black;
 }
 </style>
 <div class="spacer s0"></div>
@@ -103,8 +109,11 @@
 	</div>
 </div>
 <div id="parallax1" class="parallaxParent_fixed">
-	<div style="background-image: url(assets/images/sun.gif);"></div>
+	<div class='row-w m-center c-center'>
+		<img src='assets/images/space/sun.gif'></img>
+	</div>
 </div>
+
 <div class="spacer s1">
 <div class="box2 blue row-w m-center c-center" style='height:100vh;'>
 	<div class='flex-container'>
@@ -160,41 +169,44 @@
 </div>
 </div>
 <div class="spacer s0"></div>
-<div id="parallax2" class="parallaxParent">
-	<div style="background-image: url(assets/images/space.gif);"></div>
-</div>
+<div id="parallax2" class="parallaxParent"></div>
 <div class="spacer s1">
-	<div class='portfolio-outer'>
-		<div class='portfolio-container'>
-			<div class='header'>
-				<h1>Device Repair</h1>
-			</div>
+	<div class='box2 blue'>
+		<div class='portfolio-outer'>
+			<div class='portfolio-container'>
+				<div class='header'>
+					<h1>Device Repair</h1>
+				</div>
 
-			<div class='body'>
-				<p> Along with Software Engineering I'm able to perform minor hardware repairs on computers, game console and some small smart devices. The following pictures are of a recent repair on an iPad Mini. Apple would have charged me $200 to do this repair, but I was able to get it done for $50. </p>
+				<div class='body'>
+					<p> Along with Software Engineering I'm able to perform minor hardware repairs on computers, game console and some small smart devices. The following pictures are of a recent repair on an iPad Mini. Apple would have charged me $200 to do this repair, but I was able to get it done for $50. </p>
 
-				<img src='<?=$ipadURL?>/broken.jpg' width='75%' height='auto' />
+					<img src='<?=$ipadURL?>/broken.jpg' width='75%' height='auto' />
 
-				<p> The iPad's digitizer is removed exposing the underlying LCD screen. You can visibly see the damage to the LCD even with the power turned off. I didn't have all the right tools at the time and had to pry off the digitizer in order to separate it from the adhesive. Since then I've purchased a heat gun to avoid going through the hassle.</p>
+					<p> The iPad's digitizer is removed exposing the underlying LCD screen. You can visibly see the damage to the LCD even with the power turned off. I didn't have all the right tools at the time and had to pry off the digitizer in order to separate it from the adhesive. Since then I've purchased a heat gun to avoid going through the hassle.</p>
 
-				<img src='<?=$ipadURL?>/opened.jpg' width='75%' height='auto' />
+					<img src='<?=$ipadURL?>/opened.jpg' width='75%' height='auto' />
 
-				<p> Here is what lies underneath the LCD screen. As you can see the battery takes up most of the room in the device, which is typical for smart devices. Take a look at how big your cellphone battery is to get an idea. In this picture I've also completely removed the digitizer and LCD screen in preparation for their replacements.</p>
+					<p> Here is what lies underneath the LCD screen. As you can see the battery takes up most of the room in the device, which is typical for smart devices. Take a look at how big your cellphone battery is to get an idea. In this picture I've also completely removed the digitizer and LCD screen in preparation for their replacements.</p>
 
-				<img src='<?=$ipadURL?>/repaired.jpg' width='75%' height='auto' />
+					<img src='<?=$ipadURL?>/repaired.jpg' width='75%' height='auto' />
 
-				<p> Finally we have the repaired product, looking clean, slick and plugged in waiting to be tested. The original digitizer is still intact, functional and can be used to as a spare part in the future. </p>
+					<p> Finally we have the repaired product, looking clean, slick and plugged in waiting to be tested. The original digitizer is still intact, functional and can be used to as a spare part in the future. </p>
 
-				<img src='<?=$ipadURL?>/finished.jpg' width='75%' height='auto' />
+					<img src='<?=$ipadURL?>/finished.jpg' width='75%' height='auto' />
 
-				<p> Hurray! Working and ready for the best game available on the iOS marketplace, Faster Than Light: FTL. Get it now and fulfill your childhood dreams of being a two dimensional space captain, you'll thank me later :D</p>
+					<p> Hurray! Working and ready for the best game available on the iOS marketplace, Faster Than Light: FTL. Get it now and fulfill your childhood dreams of being a two dimensional space captain, you'll thank me later :D</p>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 <div class="spacer s0"></div>
 <div id="parallax3" class="parallaxParent_fixed">
-	<div style="background-image: url(assets/images/moon.gif);"></div>
+	<div class='row-w m-center c-center'>
+		<img src='assets/images/space/moon.gif'></img>
+	</div>
 </div>
 <div class="spacer s1">
 	<div class="box2 blue row-w m-center c-center" style='height:100vh;'>
@@ -219,7 +231,9 @@
 </div>
 <div class="spacer s0"></div>
 <div id="parallax4" class="parallaxParent_fixed">
-	<div style="background-image: url(assets/images/earth.gif);"></div>
+	<div class='row-w m-center c-center'>
+		<img src='assets/images/space/earth.gif'></img>
+	</div>
 </div>
 </body>
 </html>
