@@ -69,36 +69,6 @@ function getRoutes() {
 			'location' => 'node_modules/underscore/underscore-min.js',
 			'Content-Type' => 'application/javascript'
 		]));
-	$routes->add('scrollmagic.js',
-		new Route('/ScrollMagic.js', [
-			'location' => 'node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
-			'Content-Type' => 'application/javascript'
-		]));
-	$routes->add('animation.gsap.js',
-		new Route('/animation.gsap.js', [
-			'location' => 'node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js',
-			'Content-Type' => 'application/javascript'
-		]));
-	$routes->add('debug.addIndicators.js',
-		new Route('/debug.addIndicators.js', [
-			'location' => 'node_modules/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js',
-			'Content-Type' => 'application/javascript'
-		]));
-	$routes->add('tweenmax.js',
-		new Route('/TweenMax.js', [
-			'location' => 'node_modules/gsap/src/minified/TweenMax.min.js',
-			'Content-Type' => 'application/javascript'
-		]));
-	$routes->add('timelinemax.js',
-		new Route('/TimelineMax.js', [
-			'location' => 'node_modules/gsap/src/minified/TimelineMax.min.js',
-			'Content-Type' => 'application/javascript'
-		]));
-	$routes->add('tweenlite.js',
-		new Route('/TweenLite.js', [
-			'location' => 'node_modules/gsap/src/minified/TweenLite.min.js',
-			'Content-Type' => 'application/javascript'
-		]));
 	$routes->add('particles.js',
 		new Route('/particles.js', [
 			'location' => 'node_modules/particles.js/particles.js',
