@@ -99,6 +99,11 @@ function getRoutes() {
 			'location' => 'node_modules/gsap/src/minified/TweenLite.min.js',
 			'Content-Type' => 'application/javascript'
 		]));
+	$routes->add('particles.js',
+		new Route('/particles.js', [
+			'location' => 'node_modules/particles.js/particles.js',
+			'Content-Type' => 'application/javascript'
+		]));
 	$routes->add('bareutil.ajax',
 		new Route('/bareutil.ajax.js', [
 			'location' => 'node_modules/bareutil/scripts/ajax.js',

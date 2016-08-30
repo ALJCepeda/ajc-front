@@ -24,6 +24,7 @@
     "gsap": "^1.19.0",
     "jquery": "*",
     "knockout": "*",
+    "particles.js": "^2.0.0",
     "requirejs": "*",
     "scrollmagic": "^2.0.5",
     "underscore": "^1.8.3"
