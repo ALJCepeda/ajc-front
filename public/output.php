@@ -33,15 +33,6 @@
 </head>
 <body>
 <style type="text/css">
-body {
-	background-image: url(assets/images/space/space.gif);
-	background-repeat: repeat;
-	background-size: auto;
-}
-
-.blue {
-	background-color: blue;
-}
 .parallaxParent {
 	height: 100vh;
 	overflow: hidden;
@@ -109,7 +100,7 @@ body {
 	</div>
 </div>
 <div id="parallax1" class="parallaxParent_fixed">
-	<div class='row-w m-center c-center'>
+	<div class='row-w m-center c-center' style='background-image:url(assets/images/space/space.gif)'>
 		<img src='assets/images/space/sun.gif'></img>
 	</div>
 </div>
@@ -169,7 +160,10 @@ body {
 </div>
 </div>
 <div class="spacer s0"></div>
-<div id="parallax2" class="parallaxParent"></div>
+<div id="parallax2" class="parallaxParent">
+	<div class='row-w m-center c-center' style='background-image:url(assets/images/space/space.gif)'>
+	</div>
+</div>
 <div class="spacer s1">
 	<div class='box2 blue'>
 		<div class='portfolio-outer'>
@@ -204,7 +198,7 @@ body {
 
 <div class="spacer s0"></div>
 <div id="parallax3" class="parallaxParent_fixed">
-	<div class='row-w m-center c-center'>
+	<div class='row-w m-center c-center' style='background-image:url(assets/images/space/space.gif)'>
 		<img src='assets/images/space/moon.gif'></img>
 	</div>
 </div>
@@ -231,7 +225,7 @@ body {
 </div>
 <div class="spacer s0"></div>
 <div id="parallax4" class="parallaxParent_fixed">
-	<div class='row-w m-center c-center'>
+	<div class='row-w m-center c-center' style='background-image:url(assets/images/space/space.gif)'>
 		<img src='assets/images/space/earth.gif'></img>
 	</div>
 </div>
