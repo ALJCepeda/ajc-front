@@ -17,4 +17,9 @@ define(['ScrollMagic', 'TweenMax', 'scripts/main', 'scripts/tabs', 'scripts/rout
 					.setTween("#parallax3 > div", {y: "80%", ease: Linear.easeNone})
 					.addIndicators()
 					.addTo(controller);
+
+	new ScrollMagic.Scene({triggerElement: "#parallax4"})
+					.setTween("#parallax4 > div", {y: "80%", ease: Linear.easeNone})
+					.addIndicators()
+					.addTo(controller);
 });

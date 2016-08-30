@@ -89,6 +89,9 @@
 	flex:1 1;
 }
 
-.panel-footer {
-	align-self:flex-end;
+.flex-container {
+	display:flex;
+	flex-flow:row wrap;
+	justify-content:center;
+	width:80%;
 }
