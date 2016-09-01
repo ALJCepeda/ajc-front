@@ -34,7 +34,7 @@
 	<div id='main' class='container-fluid main'>
 		<div class='row'>
 			<div class='col-xs-3 menu' style='max-height:100vh'>
-				<ul data-bind='foreach: tabs'>
+				<ul data-bind='foreach: menuTabs'>
 					<li data-bind='text: $data.name, click:$root.clickedTab, attr: { id:"menu_" + $data.id, name:$data.name, href:$data.hash }'>
 				</ul>
 			</div>

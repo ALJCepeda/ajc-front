@@ -8,6 +8,12 @@ define(['bareutil.ajax', 'scripts/tabs'], function(ajax, tabs) {
         this.loadedTabs = { };
         this.router = router;
 
+        this.menuTabs = ko.computed(function() {
+            return self.tabs.filter(function(item) {
+                return typeof item.name !== 'undefined';
+            });
+        });
+
         this.setTab = function(tab) {
             var previousTab = this.activeTab();
             if(this.loadedTabs[tab.id] !== true) {
@@ -59,16 +65,22 @@ define(['bareutil.ajax', 'scripts/tabs'], function(ajax, tabs) {
                 return;
             }
 
-            var menuElem = document.getElementById('menu_' + tab.id);
+            if(typeof tab.name !== 'undefined') {
+                var menuElem = document.getElementById('menu_' + tab.id);
+                menuElem.className = '';
+            }
+
             var pageElem = document.getElementById('page_' + tab.id);
-            menuElem.className = '';
             pageElem.className = 'page well';
         };
 
         this.makeActive = function(tab) {
-            var menuElem = document.getElementById('menu_' + tab.id);
+            if(typeof tab.name !== 'undefined') {
+                var menuElem = document.getElementById('menu_' + tab.id);
+                menuElem.className = 'active';
+            }
+
             var pageElem = document.getElementById('page_' + tab.id);
-            menuElem.className = 'active';
             pageElem.className = 'page well active';
         };
 
