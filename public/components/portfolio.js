@@ -157,32 +157,7 @@ define([], function() {
     other.faq[0].isActive(true);
     other.selectedFAQ(other.faq[0]);
 
-    var ipad = new Entry('assets/images/portfolio/ipad/');
-    ipad.id = 'ipad';
-    ipad.name = 'Electronic Repair';
-    ipad.images = [
-        { name:'Broken', url:'broken.jpg', isActive:ko.observable(false) },
-        { name:'Open', url:'opened.jpg', isActive:ko.observable(false) },
-        { name:'Repaired', url:'repaired.jpg', isActive:ko.observable(false) },
-        { name:'Finished', url:'finished.jpg', isActive:ko.observable(false) }
-    ];
-    ipad.faq = [
-        {   question:'How long did it take?',
-            answer:'The entire process from start to finish took less than 30 minutes',
-            isActive:ko.observable(false)   },
-        {   question:'How much did it cost?',
-            answer:'In order to buy all the toys and necessary parts to perform the repair cost a total of $140...which was still $70 less than the $200 pricetag the Apple store gave me',
-            isActive:ko.observable(false)   },
-        {   question:'Will you repair my device?',
-            answer:'Sure, but better yet I\'ll point you to the resources so you can do it yourself. Its really easy, will save you a ton of money and boost your confidence for repairing other electronics',
-            isActive:ko.observable(false)   }
-    ];
-    ipad.images[0].isActive(true);
-    ipad.selectedImage(ipad.images[0]);
-    ipad.faq[0].isActive(true);
-    ipad.selectedFAQ(ipad.faq[0]);
-    
     return {
-        entries: [ projections, terror, interest, other, ipad ]
+        entries: [ projections, terror, interest, other ]
     };
 });
