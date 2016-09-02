@@ -39,10 +39,7 @@ if(ISLOCAL === true) {
 		<div>
 			<h1>To Do:</h1>
 			<ul>
-				<li>Output programming errors</li>
-				<li>Panel for HTML output</li>
-				<li>Panel for STDOUT output</li>
-				<li>Persistent scripts</li>
+				<li>Multi-version support</li>
 				<li>Multi-document support</li>
 				<li>SQL support</li>
 				<li>Webserver support</li>
