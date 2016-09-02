@@ -1,4 +1,4 @@
-define(['libs/bareutil.ajax', 'scripts/tabs'], function(ajax, tabs) {
+define(['/libs/bareutil.ajax', '/scripts/tabs'], function(ajax, tabs) {
     var pageContainer = document.getElementById('pageContainer');
 
     var Main = function(tabs, router) {
