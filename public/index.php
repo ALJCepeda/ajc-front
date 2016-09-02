@@ -4,7 +4,7 @@ require '../resources/config.php';
 $uri = $_SERVER['REQUEST_URI'];
 
 if($uri !== '/' && $uri !== '/index.php') {
-	header('Location: /');
+	header('Location: /#invalid');
 }
 ?>
 
