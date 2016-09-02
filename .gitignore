@@ -11,3 +11,4 @@ error.log
 *.lock
 logs
 node_modules
+public/libs

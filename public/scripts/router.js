@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define([], function() {
 	var Router = function(main, tabs) {
 		this.backRouter = '';
         this.main = main;

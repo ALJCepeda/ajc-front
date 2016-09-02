@@ -4,7 +4,7 @@ require __DIR__ . "/../aljcepeda.php";
 
 require "misc.php";
 require VENDOR . "/autoload.php";
-require "security/errorhandler.php";
+require "errorhandler.php";
 
 date_default_timezone_set(TIMEZONE);
 
