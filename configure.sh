@@ -45,7 +45,7 @@ mkdir "/home/$1/bash"
 wget -O "/home/$1/bash/git-prompt.sh" https://gist.githubusercontent.com/ALJCepeda/d90844bf63e23a06d3d3/raw/d1975442c357c0351990ed6a7de70b8259a0f40d/gistfile1.sh
 wget -O "/home/$1/.bashrc" https://gist.githubusercontent.com/ALJCepeda/dc006ba37c7befec4f42/raw/480f86b33575ba680cf4e773d7b48d6acafb80ae/gistfile1.sh
 su << EOF
-    echo "define('PSQL_ALJCEPEDA','postgres://$1:$2@localhost/aljcepeda');" >> aljcepeda.php
+    echo "define('PGSQL_ALJCEPEDA', 'pgsql:host=localhost;dbname=aljcepeda;user=$1;password=$2');" >> aljcepeda.php;
 EOF
 chown -R "$1:root" "/home/$1/"
 
