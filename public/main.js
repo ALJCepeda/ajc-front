@@ -1,6 +1,6 @@
 define(['/libs/bareutil.ajax', '/scripts/tabs'], function(ajax, tabs) {
-    var pageContainer = document.getElementById('pageContainer');
-    var pageClass = 'page well col-xs-10';
+    var pageContainer = document.getElementById('pages');
+    var pageClass = 'col-xs-12 page';
     var Main = function(tabs, router) {
         var self = this;
         this.tabs = tabs;

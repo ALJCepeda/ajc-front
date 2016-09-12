@@ -59,7 +59,7 @@ body {
 
 .menu ul {
 	padding: 0;
-	margin: 7px 0;
+	margin: 0px 0;
 }
 
 .menu ul li {
@@ -157,19 +157,13 @@ body {
 
 .page {
 	color: black;
-	transform: translateY(1080px);
-	transition: transform 0 linear;
-	display: none;
-	opacity: 0;
+	display:none;
 	font-size: 16px;
 	margin-left: 1em;
 }
 
 .page.active {
-	transform: translateY(0px);
-	transition: all 0.3s ease-out;
-	display: block;
-	opacity: 1;
+	display:block;
 }
 
 #page_portfolio hr{

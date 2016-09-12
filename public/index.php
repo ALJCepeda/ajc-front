@@ -50,7 +50,6 @@ if($uri !== '/' && $uri !== '/index.php') {
 				</ul>
 			</div>
 			<div id='pages' class='col-xs-10 pages' style='height:100vh; min-height:400px; background-color:#B3E5FC'>
-				<div id='pageContainer' class='col-xs-12 row-w m-center'></div>
 			</div>
 		</div>
 	</div>
