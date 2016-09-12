@@ -5,6 +5,7 @@ $uri = $_SERVER['REQUEST_URI'];
 
 if($uri !== '/' && $uri !== '/index.php') {
 	header('Location: /#invalid');
+	die();
 }
 ?>
 
