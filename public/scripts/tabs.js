@@ -1,6 +1,7 @@
 define([], function() {
     return [
         { id:'home', name:'Home', hash:'#home', url:'/components/home.php' },
+        { id:'blog', name:'Blog', hash:'#blog', url:'/components/blog.php' },
         { id:'eval', name:'Eval', hash:'#eval', url:'/components/eval.php' },
         { id:'repair', name:'Repair', hash:'#repair', url:'/components/repair.php' },
         { id:'portfolio', name:'Portfolio', hash:'#portfolio', url:'/components/portfolio.php', js:'/components/portfolio.js' },
