@@ -1,6 +1,6 @@
 define(['/libs/bareutil.ajax', '/scripts/tabs'], function(ajax, tabs) {
     var pageContainer = document.getElementById('pageContainer');
-
+    var pageClass = 'page well col-xs-10';
     var Main = function(tabs, router) {
         var self = this;
         this.tabs = tabs;
@@ -20,7 +20,7 @@ define(['/libs/bareutil.ajax', '/scripts/tabs'], function(ajax, tabs) {
                 return ajax.get(tab.url).then(function(html) {
                     var element = document.createElement('div');
                     element.id = 'page_' + tab.id;
-                    element.className = 'page well';
+                    element.className = pageClass;
                     element.innerHTML = html;
                     pageContainer.appendChild(element);
 
@@ -71,7 +71,7 @@ define(['/libs/bareutil.ajax', '/scripts/tabs'], function(ajax, tabs) {
             }
 
             var pageElem = document.getElementById('page_' + tab.id);
-            pageElem.className = 'page well';
+            pageElem.className = pageClass;
         };
 
         this.makeActive = function(tab) {
@@ -81,7 +81,7 @@ define(['/libs/bareutil.ajax', '/scripts/tabs'], function(ajax, tabs) {
             }
 
             var pageElem = document.getElementById('page_' + tab.id);
-            pageElem.className = 'page well active';
+            pageElem.className = pageClass + ' active';
         };
 
         this.clickedTab = function(tab) {

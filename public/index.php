@@ -36,7 +36,7 @@ if($uri !== '/' && $uri !== '/index.php') {
 		<div class='container-fluid'>
 			<div class='row'>
 				<div class='col-xs-3'>
-					<h1>ALJCepeda</h1>
+					<h3>ALJCepeda</h3>
 				</div>
 			</div>
 		</div>
@@ -44,13 +44,13 @@ if($uri !== '/' && $uri !== '/index.php') {
 
 	<div id='main' class='container-fluid main'>
 		<div class='row'>
-			<div class='col-xs-3 menu' style='max-height:100vh'>
+			<div class='col-xs-2 menu' style='max-height:100vh'>
 				<ul data-bind='foreach: menuTabs'>
 					<li data-bind='text: $data.name, click:$root.clickedTab, attr: { id:"menu_" + $data.id, name:$data.name, href:$data.hash }'>
 				</ul>
 			</div>
-			<div id='pages' class='col-xs-9 pages row-w m-center' style='height:100vh; min-height:400px; background-color:#B3E5FC'>
-				<div id='pageContainer' class='col-xs-10'></div>
+			<div id='pages' class='col-xs-10 pages' style='height:100vh; min-height:400px; background-color:#B3E5FC'>
+				<div id='pageContainer' class='col-xs-12 row-w m-center'></div>
 			</div>
 		</div>
 	</div>
