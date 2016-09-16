@@ -1,15 +1,13 @@
-define(['/libs/bareutil.ajax', '/scripts/tabs'], function(ajax, tabs) {
+define(['/libs/bareutil.ajax', '/scripts/tabs', '/scripts/router'], function(ajax, tabs, router) {
     var pageContainer = document.getElementById('pages');
     var pageClass = 'col-xs-12 page';
-    var Main = function(tabs, router) {
+    var Main = function() {
         var self = this;
-        this.tabs = tabs;
         this.activeTab = ko.observable();
         this.loadedTabs = { };
-        this.router = router;
 
         this.menuTabs = ko.computed(function() {
-            return self.tabs.filter(function(item) {
+            return tabs.filter(function(item) {
                 return typeof item.name !== 'undefined';
             });
         });
@@ -85,10 +83,22 @@ define(['/libs/bareutil.ajax', '/scripts/tabs'], function(ajax, tabs) {
         };
 
         this.clickedTab = function(tab) {
-            self.router.navigate(tab.hash, { trigger:true });
+            router.navigate(tab.hash, { trigger:true });
         };
 
-        router.gotPage = function(tab) {
+        router.gotDefaultPage = function() {
+            self.setTab(tabs[0]);
+        };
+
+        router.gotPage = function(pageHash) {
+            var tab = tabs.find(function(tab) {
+                return tab.hash === '#' + pageHash;
+            });
+
+            if(typeof tab === 'undefined') {
+                tab = tabs[0];
+            }
+
             self.setTab(tab);
         };
     };

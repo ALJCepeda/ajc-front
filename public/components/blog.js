@@ -1,14 +1,20 @@
-define([], function() {
-    var Entry = function() {
-        this.url = '';
-        this.name = '';
-        this.content = '';
-    };
-
+define(['/libs/bareutil.ajax'], function(ajax) {
     var Blog = function() {
-        this.entries = [];
+        this.entries = ko.observableArray();
     };
-    console.log('Connected');
 
-    return new Blog();
+    Blog.prototype.loadEntries = function() {
+        var self = this;
+        ajax.get('/actions/blog/entries.php').then(function(entries) {
+            self.entries(JSON.parse(entries));
+        });
+    };
+
+    Blog.prototype.clickedEntry = function(entry) {
+        console.log(entry);
+    };
+
+    var blog = new Blog();
+    blog.loadEntries();
+    return blog;
 });

@@ -1,8 +1,6 @@
 define([], function() {
-	var Router = function(main, tabs) {
+	var Router = function() {
 		this.backRouter = '';
-        this.main = main;
-        this.tabs = tabs;
 	};
 
 	Router.prototype.start = function() {
@@ -13,18 +11,10 @@ define([], function() {
 				":url":"pageRoute",
 			},
 			default: function() {
-				self.gotPage(self.tabs[0]);
+				self.gotDefaultPage();
 			},
 		  	pageRoute: function(pageHash) {
-				var tab = self.tabs.find(function(tab) {
-                    return tab.hash === '#' + pageHash;
-                });
-
-                if(typeof tab === 'undefined') {
-                    tab = self.tabs[0];
-                }
-
-                self.gotPage(tab);
+                self.gotPage(pageHash);
 			}
 		});
 
@@ -36,5 +26,5 @@ define([], function() {
 		this.backRouter.navigate(route, options);
 	};
 
-	return Router;
+	return new Router();
 });
