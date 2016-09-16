@@ -9,12 +9,17 @@ define([], function() {
 		  	routes: {
 				"":"default",
 				":url":"pageRoute",
+				"blog/:title":"blogRoute"
 			},
 			default: function() {
 				self.gotDefaultPage();
 			},
 		  	pageRoute: function(pageHash) {
                 self.gotPage(pageHash);
+			},
+			blogRoute: function(title) {
+				self.gotPage('blog');
+				self.gotTitle(title);
 			}
 		});
 

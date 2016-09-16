@@ -1,6 +1,11 @@
-define(['/libs/bareutil.ajax'], function(ajax) {
+define(['/libs/bareutil.ajax', '/scripts/router'], function(ajax, router) {
     var Blog = function() {
+        var self = this;
         this.entries = ko.observableArray();
+
+        router.gotTitle = function(title) {
+            console.log("Got blog title: ", title);
+        };
     };
 
     Blog.prototype.loadEntries = function() {

@@ -14,6 +14,11 @@ define(['/libs/bareutil.ajax', '/scripts/tabs', '/scripts/router'], function(aja
 
         this.setTab = function(tab) {
             var previousTab = this.activeTab();
+
+            if(previousTab === tab) {
+                return;
+            }
+            
             if(this.loadedTabs[tab.id] !== true) {
                 return ajax.get(tab.url).then(function(html) {
                     var element = document.createElement('div');
