@@ -7,6 +7,16 @@
 
             <div class='body' data-bind='text: content'></div>
         </div>
+
+    <!-- Test div
+        <div class='flex-container' data-bind='with: selectedContent'>
+            <div class='header'>
+                <h1 data-bind='text: title'></h1>
+            </div>
+
+            <div class='body' data-bind='text: content'></div>
+        </div>
+    -->
     </div>
     <div class='well col-xs-3 menu-small' style='margin-right:15px; max-height:80vh; overflow-y:auto; padding-left:0px; padding-right:0px'>
         <div style='text-align:center; width:100%'>Blogs</div>
