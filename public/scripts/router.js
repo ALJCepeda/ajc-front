@@ -9,7 +9,7 @@ define([], function() {
 		  	routes: {
 				"":"default",
 				":url":"pageRoute",
-				"blog/:title":"blogRoute"
+				"blog/:url":"blogRoute"
 			},
 			default: function() {
 				self.gotDefaultPage();
@@ -17,9 +17,10 @@ define([], function() {
 		  	pageRoute: function(pageHash) {
                 self.gotPage(pageHash);
 			},
-			blogRoute: function(title) {
-				self.gotPage('blog');
-				self.gotTitle(title);
+			blogRoute: function(url) {
+				self.gotPage('blog').then(function() {
+					self.gotBlogURL(url);
+				});
 			}
 		});
 

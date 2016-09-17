@@ -16,9 +16,9 @@ define(['/libs/bareutil.ajax', '/scripts/tabs', '/scripts/router'], function(aja
             var previousTab = this.activeTab();
 
             if(previousTab === tab) {
-                return;
+                return Promise.resolve(tab);
             }
-            
+
             if(this.loadedTabs[tab.id] !== true) {
                 return ajax.get(tab.url).then(function(html) {
                     var element = document.createElement('div');
@@ -104,7 +104,7 @@ define(['/libs/bareutil.ajax', '/scripts/tabs', '/scripts/router'], function(aja
                 tab = tabs[0];
             }
 
-            self.setTab(tab);
+            return self.setTab(tab);
         };
     };
     return Main;
