@@ -9,12 +9,12 @@
         </div>
 
     <!-- Test div
-        <div class='flex-container' data-bind='with: selectedContent'>
+        <div class='flex-container'>
             <div class='header'>
-                <h1 data-bind='text: title'></h1>
+                <h1></h1>
             </div>
 
-            <div class='body' data-bind='text: content'></div>
+            <div class='body'></div>
         </div>
     -->
     </div>
