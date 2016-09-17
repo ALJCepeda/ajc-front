@@ -20,8 +20,17 @@ define(['/libs/bareutil.ajax', '/scripts/router'], function(ajax, router) {
 
     Blog.prototype.loadContent = function(url) {
         var self = this;
-        return ajax.get('/actions/blog/content.php?url='+url).then(function(content) {
-            self.content[url] = JSON.parse(content);
+        return ajax.get('/actions/blog/content.php?url='+url).then(function(data) {
+            var content = JSON.parse(data);
+
+            if(typeof content.error !== 'undefined') {
+                self.content[url] = {
+                    title:'Invalid blog: ' + url,
+                    content:''
+                };
+            } else {
+                self.content[url] = content;
+            }
         });
     };
 
