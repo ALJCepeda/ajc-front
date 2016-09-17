@@ -1,13 +1,11 @@
 <div class='row-w m-between'>
     <div class='well col-xs-8' style='margin-left:15px;'>
-        <div class='flex-container'>
+        <div class='flex-container' data-bind='with: selectedContent'>
             <div class='header'>
-                <h1>Test blog</h1>
+                <h1 data-bind='text: title'></h1>
             </div>
 
-            <div class='body'>
-        		This is a test blog
-            </div>
+            <div class='body' data-bind='text: content'></div>
         </div>
     </div>
     <div class='well col-xs-3 menu-small' style='margin-right:15px; max-height:80vh; overflow-y:auto; padding-left:0px; padding-right:0px'>
