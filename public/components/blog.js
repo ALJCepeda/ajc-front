@@ -3,7 +3,6 @@ define(['/libs/bareutil.ajax', '/scripts/router'], function(ajax, router) {
         var self = this;
         this.content = {};
         this.entries = ko.observableArray();
-        this.selectedEntry = ko.observable();
         this.selectedContent = ko.observable();
 
         router.gotBlogURL = function(url) {
@@ -38,14 +37,12 @@ define(['/libs/bareutil.ajax', '/scripts/router'], function(ajax, router) {
         var self = this;
         if(typeof self.content[url] === 'undefined') {
             return self.loadContent(url).then(function() {
-                self.selectedEntry(url);
                 self.selectedContent(self.content[url]);
 
                 return self.content[url];
             });
         }
 
-        self.selectedEntry(url);
         self.selectedContent(self.content[url]);
         return Promise.resolve(self.content[url]);
     };

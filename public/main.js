@@ -101,7 +101,7 @@ define(['/libs/bareutil.ajax', '/scripts/tabs', '/scripts/router'], function(aja
             });
 
             if(typeof tab === 'undefined') {
-                tab = tabs[0];
+                tab = tabs[tabs.length-1];
             }
 
             return self.setTab(tab);
