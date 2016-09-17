@@ -12,8 +12,10 @@ define(['/libs/bareutil.ajax', '/scripts/router'], function(ajax, router) {
 
     Blog.prototype.loadEntries = function() {
         var self = this;
-        return ajax.get('/actions/blog/entries.php').then(function(entries) {
-            self.entries(JSON.parse(entries));
+        return ajax.get('/actions/blog/entries.php').then(function(data) {
+            var entries = JSON.parse(data);
+            self.entries(entries);
+            router.navigate('/blog/' + entries[0].url, { trigger:true });
         });
     };
 
@@ -48,7 +50,7 @@ define(['/libs/bareutil.ajax', '/scripts/router'], function(ajax, router) {
     };
 
     Blog.prototype.clickedEntry = function(entry) {
-        router.navigate('blog/'+entry.url, { trigger:true });
+        router.navigate('/blog/'+entry.url, { trigger:true });
     };
 
     var blog = new Blog();
