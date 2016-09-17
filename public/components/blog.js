@@ -16,7 +16,7 @@ define(['/libs/bareutil.ajax', '/scripts/router'], function(ajax, router) {
     };
 
     Blog.prototype.clickedEntry = function(entry) {
-        console.log(entry);
+        router.navigate('blog/'+entry.url, { trigger:true });
     };
 
     var blog = new Blog();
