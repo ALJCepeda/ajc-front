@@ -26,6 +26,7 @@ cp node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min
 cp node_modules/requirejs/require.js public/libs
 cp node_modules/bareutil/scripts/ajax.js public/libs/bareutil.ajax.js
 
+useradd -m -p $2 $1
 touch /home/$1/.psql_history >/dev/null 2>&1
 
 content=`sed "s/\\$1/$1/g" /sources/aljcepeda/sql/init_user.sql`
