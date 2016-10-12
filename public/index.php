@@ -37,11 +37,14 @@ if($uri !== '/' && $uri !== '/index.php') {
 		<nav class='menu top-nav'>
       <h4>ALJCepeda</h4>
 
-			<ul data-bind='foreach: menuTabs'>
-				<li>
-          <a data-bind='text: $data.name, click:$root.clickedTab, attr: { id:"menu_" + $data.id, name:$data.name, href:$data.hash }'></a>
-        </li>
-			</ul>
+      <ul>
+        <li><a id='menu_home' href='/#home'>Home</a></li>
+        <li><a id='menu_blog' href='/#blog'>Blog</a></li>
+        <li><a id='menu_eval' href='/#eval'>Eval</a></li>
+        <li><a id='menu_repair' href='/#repair'>Repair</a></li>
+        <li><a id='menu_portfolio' href='/#portfolio'>Portfolio</a></li>
+        <li><a id='menu_aboutme' href='/#aboutme'>About Me</a></li>
+      </ul>
     </nav>
 
     <div id='pages' class='pages content'></div>
