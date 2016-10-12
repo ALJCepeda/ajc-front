@@ -33,22 +33,18 @@ if($uri !== '/' && $uri !== '/index.php') {
 	<script type='text/javascript' src='/libs/require.js' data-main='/index' ></script>
 </head>
 <body>
-	<div id='main' class='container-fluid'>
-		<div class='row menu'>
-      <div class='col-xs-2 header-panel shadow-z-2'>
-        <h4>ALJCepeda</h4>
-      </div>
+	<div class='main'>
+		<nav class='menu top-nav'>
+      <h4>ALJCepeda</h4>
 
 			<ul data-bind='foreach: menuTabs'>
 				<li>
           <a data-bind='text: $data.name, click:$root.clickedTab, attr: { id:"menu_" + $data.id, name:$data.name, href:$data.hash }'></a>
         </li>
 			</ul>
-    </div>
-    <div class='row'>
-			<div id='pages' class='col-xs-12 pages' style='height:100%; background-color:#B3E5FC'>
-			</div>
-		</div>
+    </nav>
+
+    <div id='pages' class='pages content'></div>
 	</div>
 </body>
 </html>
