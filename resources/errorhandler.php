@@ -12,7 +12,7 @@ function log_error( $num, $str, $file, $line, $context = null ) {
 */
 function log_exception( $e ) {
     $message = get_class( $e ) . ": {$e->getMessage()}; File: {$e->getFile()}; Line: {$e->getLine()};";
-    file_put_contents( ROOT . "/logs/aljcepeda.log", $message . PHP_EOL, FILE_APPEND );
+    file_put_contents( "/logs/aljcepeda/aljcepeda.log", $message . PHP_EOL, FILE_APPEND );
     header( "Location: /#invalid" );
 
     exit();

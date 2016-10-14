@@ -12,15 +12,15 @@ define([], function() {
 				"blog/:url":"blogRoute"
 			},
 			default: function() {
-				self.gotDefaultPage();
+			//	self.gotDefaultPage();
 			},
 		  	pageRoute: function(pageHash) {
-                self.gotPage(pageHash);
+                //self.gotPage(pageHash);
 			},
 			blogRoute: function(url) {
-				self.gotPage('blog').then(function() {
+			/*	self.gotPage('blog').then(function() {
 					self.gotBlogURL(url);
-				});
+				});*/
 			}
 		});
 

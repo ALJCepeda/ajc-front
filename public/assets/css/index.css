@@ -109,21 +109,17 @@ html, body {
 	text-decoration: none;
 }
 
-.pages > div {
-	padding: 0 5px;
-	padding-top: 64px;
-	margin: 0;
-}
-
 .page {
-	color: black;
-	display:none;
+  margin-top:64px;
+  color: black;
 	font-size: 16px;
-	margin-left: 1em;
+  padding:5px;
 }
-
-.page.active {
-	display:block;
+.page-content {
+  display:flex;
+	flex-flow:row nowrap;
+  align-items:center;
+  justify-content:center;
 }
 
 #page_portfolio hr{

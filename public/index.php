@@ -47,7 +47,9 @@ if($uri !== '/' && $uri !== '/index.php') {
       </ul>
     </nav>
 
-    <div id='pages' class='pages content'></div>
+    <div id='pages' class='content row-w c-between m-center'>
+      <?php require('./pages/home.php'); ?>
+    </div>
 	</div>
 </body>
 </html>
