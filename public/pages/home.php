@@ -7,7 +7,9 @@ style="width:100%;height:95vh;">
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
-      <img src="..." alt="First slide">
+      <div style="background:url('assets/images/devices.jpg');">
+        This is where?
+      </div>
     </div>
     <div class="carousel-item">
       <img src="..." alt="Second slide">

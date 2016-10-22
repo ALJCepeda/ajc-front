@@ -57,8 +57,6 @@ html, body {
 
 .header { order: 1; }
 .body { order: 2; }
-.left { order: 2; width:40% }
-.right { order: 3; width:40% }
 .footer  { order: 4; }
 
 .menu-small {
