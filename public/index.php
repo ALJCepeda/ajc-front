@@ -49,6 +49,9 @@ if($uri !== '/' && $uri !== '/index.php') {
 
     <div id='pages' class='content row-w c-between m-center'>
       <?php require('./pages/home.php'); ?>
+      <?php require('./pages/blog.php'); ?>
+      <?php require('./pages/eval.php'); ?>
+      <?php require('./pages/repair.php'); ?>
     </div>
 	</div>
 </body>

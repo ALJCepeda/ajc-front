@@ -1,4 +1,5 @@
-<div class='row-w m-between'>
+<div class='page'>
+  <div class='page-content'>
     <div class='well col-xs-8' style='margin-left:15px;'>
     <!--
         <div class='flex-container' data-bind='with: selectedContent'>
