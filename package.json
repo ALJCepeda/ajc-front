@@ -25,5 +25,10 @@
     "knockout": "*",
     "requirejs": "*",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-less": "^1.4.0",
+    "grunt-contrib-watch": "^1.0.0"
   }
 }
