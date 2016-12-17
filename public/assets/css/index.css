@@ -2,6 +2,13 @@ html, body {
 	color: #fff;
 }
 
+.home-carousel {
+	height:50%;
+	width:50%;
+}
+
+
+
 .main .content {
   position:absolute;
   top:7%;

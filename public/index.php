@@ -24,12 +24,18 @@ if($uri !== '/' && $uri !== '/index.php') {
 	<script type='text/javascript' src='/libs/bootstrap.min.js'></script>
 	<script type='text/javascript' src='/libs/material.min.js'></script>
 	<script type='text/javascript' src='/libs/backbone-min.js'></script>
+	<script type='text/javascript' src='/libs/bluebird.min.js'></script>
+
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 
 	<link rel='stylesheet' type='text/css' href='/libs/bootstrap.min.css'>
 	<link rel='stylesheet' type='text/css' href='/libs/bootstrap-material-design.min.css'>
 
 	<link rel='stylesheet' type='text/css' href='/assets/css/flex.css'>
 	<link rel='stylesheet' type='text/css' href='/assets/css/index.css'>
+
 	<script type='text/javascript' src='/libs/require.js' data-main='/index' ></script>
 </head>
 <body>
@@ -49,9 +55,9 @@ if($uri !== '/' && $uri !== '/index.php') {
 
     <div id='pages' class='content row-w c-between m-center'>
       <?php require('./pages/home.php'); ?>
-      <?php require('./pages/blog.php'); ?>
-      <?php require('./pages/eval.php'); ?>
-      <?php require('./pages/repair.php'); ?>
+      <?php //require('./pages/blog.php'); ?>
+      <?php //require('./pages/eval.php'); ?>
+      <?php //require('./pages/repair.php'); ?>
     </div>
 	</div>
 </body>

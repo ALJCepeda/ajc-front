@@ -1,3 +1,13 @@
+<div class='home-carousel'>
+  <div><h3>Hello 1</h3></div>
+  <div><h3>Hello 2</h3></div>
+  <div><h3>Hello 3</h3></div>
+  <div><h3>Hello 4</h3></div>
+  <div><h3>Hello 5</h3></div>
+  <div><h3>Hello 6</h3></div>
+</div>
+<!--
+
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
 style="width:100%;height:95vh;">
   <ol class="carousel-indicators">
@@ -26,7 +36,7 @@ style="width:100%;height:95vh;">
     <span class="icon-next" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div>-->
 
 <div class='page'>
   <div class='page-content'>

@@ -3,4 +3,7 @@ define(['main', '/scripts/router'], function(Main, router) {
 	ko.applyBindings(main, document.getElementById('main'));
 
 	router.start();
+
+	/*Home script*/
+	$('.home-carousel').slick();
 });

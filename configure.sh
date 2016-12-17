@@ -26,6 +26,13 @@ cp node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min
 cp node_modules/requirejs/require.js public/libs
 cp node_modules/bareutil/scripts/ajax.js public/libs/bareutil.ajax.js
 
+cp node_modules/backbone/backbone-min.map public/libs
+cp node_modules/jquery/dist/jquery.min.map public/libs
+cp node_modules/underscore/underscore-min.map public/libs
+cp node_modules/bootstrap-material-design/dist/js/material.min.js.map public/libs
+cp node_modules/bootstrap/dist/css/bootstrap.min.css.map public/libs
+cp node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css.map public/libs
+
 useradd -m -p $2 $1
 touch /home/$1/.psql_history >/dev/null 2>&1
 
@@ -68,6 +75,8 @@ echo '<VirtualHost *:80>
   order allow,deny
   allow from all
 </Directory>' >> /etc/apache2/sites-available/aljcepeda.conf
+
+composer install
 
 a2enmod php7.0
 a2enmod rewrite
