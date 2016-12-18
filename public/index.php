@@ -34,7 +34,7 @@ if($uri !== '/' && $uri !== '/index.php') {
 	<link rel='stylesheet' type='text/css' href='/libs/bootstrap-material-design.min.css'>
 
 	<link rel='stylesheet' type='text/css' href='/assets/css/flex.css'>
-	<link rel='stylesheet' type='text/css' href='/assets/css/index.css'>
+	<link rel='stylesheet' type='text/css' href='/assets/css/styles.css'>
 
 	<script type='text/javascript' src='/libs/require.js' data-main='/index' ></script>
 </head>
