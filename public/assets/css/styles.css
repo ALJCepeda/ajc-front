@@ -2,3 +2,13 @@ html,
 body {
   background: #0E0816;
 }
+.home-carousel {
+  width: 100vw;
+  height: 100vh;
+}
+.home-carousel .slick-prev {
+  left: 0px;
+}
+.home-carousel .slick-next {
+  right: 0px;
+}
