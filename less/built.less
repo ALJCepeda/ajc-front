@@ -2,6 +2,9 @@
 
 @top-nav-height:8%;
 
+@font-size-body:2.1vh;
+@font-size-header:3.2vh;
+
 body {
 	height:100vh;
 	width:100vw;
@@ -9,10 +12,18 @@ body {
 	flex-flow:row wrap;
 
 	background-color:@dark1;
+	font-size:@font-size-body;
 }
 
 .top-nav {
 	height:@top-nav-height;
+
+	h4 {
+		//Override bootstrap font size
+		font-size:@font-size-header;
+		margin-left:20px;
+		margin-right:15px;
+	}
 }
 
 .pages {
