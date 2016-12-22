@@ -1,9 +1,15 @@
 .home-carousel {
   height:(100vh - @top-nav-height);
   width:100vw;
-  background-color:blue;
 
+  .slick-slide {
+    background-color:green;
+  }
+  .slick-list, .slick-track, .slide-slide {
+    height:inherit;
+  }
   .slick-prev {
+    z-index:1;
     left:0px;
   }
   .slick-next {

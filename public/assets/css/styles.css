@@ -2,14 +2,22 @@ body {
   background-color: #0E0816;
 }
 .top-nav {
-  height: 10vh;
+  height: 8vh;
 }
 .home-carousel {
-  height: 90vh;
+  height: 92vh;
   width: 100vw;
-  background-color: blue;
+}
+.home-carousel .slick-slide {
+  background-color: green;
+}
+.home-carousel .slick-list,
+.home-carousel .slick-track,
+.home-carousel .slide-slide {
+  height: inherit;
 }
 .home-carousel .slick-prev {
+  z-index: 1;
   left: 0px;
 }
 .home-carousel .slick-next {
