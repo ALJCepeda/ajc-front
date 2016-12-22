@@ -39,7 +39,7 @@ style="width:100%;height:95vh;">
     <span class="sr-only">Next</span>
   </a>
 </div>
-
+-->
 <div class='page'>
   <div class='page-content'>
       <div class='well col-xs-10'>
@@ -90,4 +90,3 @@ style="width:100%;height:95vh;">
       </div>
   </div>
 </div>
--->

@@ -52,7 +52,7 @@ if($uri !== '/' && $uri !== '/index.php') {
     </ul>
   </nav>
 
-  <div id='pages' class='content row-w c-between m-center'>
+  <div class='pages'>
     <?php require('./pages/home.php'); ?>
     <?php //require('./pages/blog.php'); ?>
     <?php //require('./pages/eval.php'); ?>

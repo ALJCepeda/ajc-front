@@ -1,8 +1,13 @@
 @dark1:#0E0816;
 
-@top-nav-height:8vh;
+@top-nav-height:8%;
 
 body {
+	height:100vh;
+	width:100vw;
+	display:flex;
+	flex-flow:row wrap;
+
 	background-color:@dark1;
 }
 
@@ -10,21 +15,27 @@ body {
 	height:@top-nav-height;
 }
 
+.pages {
+	height:(100% - @top-nav-height);
+  width:100%;
+	overflow-y: auto;
+}
+
 .home-carousel {
-  height:(100vh - @top-nav-height);
-  width:100vw;
+  height:100%;
+  width:100%;
 
   .slick-slide {
-    background-color:green;
+    background-color:blue;
   }
   .slick-list, .slick-track, .slide-slide {
     height:inherit;
   }
   .slick-prev {
     z-index:1;
-    left:0px;
+    left:5px;
   }
   .slick-next {
-    right:0px;
+    right:5px;
   }
 }

@@ -1,7 +1,18 @@
 body {
+	height:100vh;
+	width:100vw;
+	display:flex;
+	flex-flow:row wrap;
+
 	background-color:@dark1;
 }
 
 .top-nav {
 	height:@top-nav-height;
+}
+
+.pages {
+	height:(100% - @top-nav-height);
+  width:100%;
+	overflow-y: auto;
 }

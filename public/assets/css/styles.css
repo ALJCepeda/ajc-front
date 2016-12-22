@@ -1,15 +1,24 @@
 body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: row wrap;
   background-color: #0E0816;
 }
 .top-nav {
-  height: 8vh;
+  height: 8%;
+}
+.pages {
+  height: 92%;
+  width: 100%;
+  overflow-y: auto;
 }
 .home-carousel {
-  height: 92vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 .home-carousel .slick-slide {
-  background-color: green;
+  background-color: blue;
 }
 .home-carousel .slick-list,
 .home-carousel .slick-track,
@@ -18,8 +27,8 @@ body {
 }
 .home-carousel .slick-prev {
   z-index: 1;
-  left: 0px;
+  left: 5px;
 }
 .home-carousel .slick-next {
-  right: 0px;
+  right: 5px;
 }
