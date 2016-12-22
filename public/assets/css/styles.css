@@ -1,10 +1,13 @@
-html,
 body {
-  background: #0E0816;
+  background-color: #0E0816;
+}
+.top-nav {
+  height: 10vh;
 }
 .home-carousel {
+  height: 90vh;
   width: 100vw;
-  height: 100vh;
+  background-color: blue;
 }
 .home-carousel .slick-prev {
   left: 0px;

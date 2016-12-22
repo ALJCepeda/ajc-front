@@ -1,5 +1,7 @@
 <div class='home-carousel'>
-  <div><h3>Hello 1</h3></div>
+  <div class='slide1'>
+    <h3>Hello 1</h3>
+  </div>
   <div><h3>Hello 2</h3></div>
   <div><h3>Hello 3</h3></div>
   <div><h3>Hello 4</h3></div>
@@ -36,7 +38,7 @@ style="width:100%;height:95vh;">
     <span class="icon-next" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>-->
+</div>
 
 <div class='page'>
   <div class='page-content'>
@@ -88,3 +90,4 @@ style="width:100%;height:95vh;">
       </div>
   </div>
 </div>
+-->
