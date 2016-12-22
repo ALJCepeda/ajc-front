@@ -5,7 +5,8 @@ module.exports = function(grunt) {
 
   var lessFiles = [
     'less/variables.less',
-    'less/index.less'
+    'less/index.less',
+    'less/home.less'
   ];
 
   grunt.initConfig({
@@ -28,17 +29,6 @@ module.exports = function(grunt) {
         tasks: ['concat', 'less']
       }
     }
-  });
-
-  let changed = [];
-  var onChange = grunt.util._.debounce(function() {
-    grunt.config('concat.default.src', changed);
-    changed = [];
-  }, 200);
-
-  grunt.event.on('watch', function(action, filepath) {
-    changed.push(filepath);
-    onChange();
   });
 
   grunt.registerTask('default', ['concat', 'less', 'watch']);
