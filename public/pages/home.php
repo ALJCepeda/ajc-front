@@ -1,12 +1,19 @@
 <div class='home-carousel'>
-  <div class='slide1'>
-    <h3>Hello 1</h3>
+  <div>
+    <div class='overlay'>
+      <h3>Hello 1</h3>
+    </div>
+    
+    <img src='/assets/images/workstation.png'>
   </div>
-  <div><h3>Hello 2</h3></div>
-  <div><h3>Hello 3</h3></div>
-  <div><h3>Hello 4</h3></div>
-  <div><h3>Hello 5</h3></div>
-  <div><h3>Hello 6</h3></div>
+  <div>
+    <img src='/assets/images/browser kids.jpg' />
+    <h3>Hello 2</h3>
+  </div>
+  <div>
+    <img src='/assets/images/devices.png' />
+    <h3>Hello 3</h3>
+  </div>
 </div>
 <!--
 

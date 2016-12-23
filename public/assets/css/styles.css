@@ -4,13 +4,15 @@ body {
   display: flex;
   flex-flow: row wrap;
   background-color: #0E0816;
-  font-size: 2.1vh;
+  color: #E7DFDD;
+  font-size: 15px;
 }
 .top-nav {
   height: 8%;
+  color: #E7DFDD;
 }
 .top-nav h4 {
-  font-size: 3.2vh;
+  font-size: 1.4em;
   margin-left: 20px;
   margin-right: 15px;
 }
@@ -23,12 +25,16 @@ body {
   height: 100%;
   width: 100%;
 }
-.home-carousel .slick-slide {
-  background-color: blue;
+.home-carousel .slick-slide .overlay {
+  position: absolute;
+}
+.home-carousel .slick-slide img {
+  height: inherit;
+  width: 100%;
 }
 .home-carousel .slick-list,
 .home-carousel .slick-track,
-.home-carousel .slide-slide {
+.home-carousel .slick-slide {
   height: inherit;
 }
 .home-carousel .slick-prev {

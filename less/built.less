@@ -1,9 +1,7 @@
 @dark1:#0E0816;
+@body1:#E7DFDD;
 
 @top-nav-height:8%;
-
-@font-size-body:2.1vh;
-@font-size-header:3.2vh;
 
 body {
 	height:100vh;
@@ -12,15 +10,16 @@ body {
 	flex-flow:row wrap;
 
 	background-color:@dark1;
-	font-size:@font-size-body;
+	color:@body1;
+	font-size:15px;
 }
 
 .top-nav {
 	height:@top-nav-height;
+	color:@body1; //OVR BS color
 
 	h4 {
-		//Override bootstrap font size
-		font-size:@font-size-header;
+		font-size:1.4em;
 		margin-left:20px;
 		margin-right:15px;
 	}
@@ -37,9 +36,16 @@ body {
   width:100%;
 
   .slick-slide {
-    background-color:blue;
+    .overlay {
+      position:absolute;
+    }
+
+    img {
+      height:inherit;
+      width:100%;
+    }
   }
-  .slick-list, .slick-track, .slide-slide {
+  .slick-list, .slick-track, .slick-slide {
     height:inherit;
   }
   .slick-prev {
