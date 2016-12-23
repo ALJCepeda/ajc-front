@@ -21,12 +21,33 @@ body {
   width: 100%;
   overflow-y: auto;
 }
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
 .home-carousel {
   height: 100%;
   width: 100%;
 }
 .home-carousel .slick-slide .overlay {
   position: absolute;
+  padding-top: 30px;
+  padding-bottom: 35px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: inherit;
+  height: inherit;
+}
+.home-carousel .slick-slide .overlay h3 {
+  font-size: 2.5em;
+}
+.home-carousel .slick-slide .overlay .box {
+  height: 75%;
+  width: 30%;
+  margin-top: 40px;
+  padding-left: 30px;
 }
 .home-carousel .slick-slide img {
   height: inherit;

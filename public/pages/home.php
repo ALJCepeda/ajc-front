@@ -1,9 +1,19 @@
 <div class='home-carousel'>
   <div>
     <div class='overlay'>
-      <h3>Hello 1</h3>
+      <h3>Automated. Minimal. Secure.</h3>
+
+      <div class='left box'>
+        <h4>Intelligent design</h4>
+        <h4>Test Driven Development</h4>
+        </p>
+      </div>
+
+      <div class='right box'>
+        <p>Right side</p>
+      </div>
     </div>
-    
+
     <img src='/assets/images/workstation.png'>
   </div>
   <div>
