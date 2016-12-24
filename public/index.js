@@ -1,8 +1,5 @@
-define(['main', '/scripts/router'], function(Main, router) {
+define(['main'], function(Main) {
 	var main = new Main();
-	ko.applyBindings(main, document.getElementById('main'));
-
-	router.start();
 
 	/*Home script*/
 	$('.home-carousel').slick();
