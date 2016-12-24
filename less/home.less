@@ -10,12 +10,33 @@
       padding-left:50px;
       padding-right:50px;
       width:inherit;
-      height:inherit;
+      min-height:inherit;
 
+      display:flex;
+      flex-flow:row wrap;
+      justify-content:space-between;
+
+
+      .tinyh({
+        padding-top:0px;
+        padding-bottom:0px;
+
+        h3 {
+          margin-top:0px;
+        }
+      });
+
+      h3 {
+        width:100%;
+      }
       .box {
         height:75%;
-        width:30%;
+        min-width:275px;
         margin-top:40px;
+
+        .smallh({
+          margin-top:0px;
+        });
 
         ul {
           padding-left:0px;
@@ -23,6 +44,10 @@
 
           li {
             padding-bottom:20px;
+
+            .medh({
+              padding-bottom:0px;
+            });
           }
         }
 
@@ -39,6 +64,10 @@
       height:inherit;
       width:100%;
     }
+  }
+
+  .slide2 {
+    color:@black;
   }
 
   .slick-prev:before, .slick-next:before {

@@ -1,3 +1,82 @@
+.home-carousel {
+  height: 100%;
+  width: 100%;
+}
+.home-carousel .slick-slide .overlay {
+  position: absolute;
+  padding-top: 30px;
+  padding-bottom: 35px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: inherit;
+  min-height: inherit;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+@media (max-height: 300px) {
+  .home-carousel .slick-slide .overlay {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .home-carousel .slick-slide .overlay h3 {
+    margin-top: 0px;
+  }
+}
+.home-carousel .slick-slide .overlay h3 {
+  width: 100%;
+}
+.home-carousel .slick-slide .overlay .box {
+  height: 75%;
+  min-width: 275px;
+  margin-top: 40px;
+}
+@media (max-height: 360px) {
+  .home-carousel .slick-slide .overlay .box {
+    margin-top: 0px;
+  }
+}
+.home-carousel .slick-slide .overlay .box ul {
+  padding-left: 0px;
+  list-style-type: none;
+}
+.home-carousel .slick-slide .overlay .box ul li {
+  padding-bottom: 20px;
+}
+@media (max-height: 525px) {
+  .home-carousel .slick-slide .overlay .box ul li {
+    padding-bottom: 0px;
+  }
+}
+.home-carousel .slick-slide .overlay .box.left {
+  padding-left: 20px;
+}
+.home-carousel .slick-slide .overlay .box.right {
+  padding-left: 30px;
+}
+.home-carousel .slick-slide img {
+  height: inherit;
+  width: 100%;
+}
+.home-carousel .slide2 {
+  color: #0E0816;
+}
+.home-carousel .slick-prev:before,
+.home-carousel .slick-next:before {
+  color: #0E0816;
+}
+.home-carousel .slick-list,
+.home-carousel .slick-track,
+.home-carousel .slick-slide {
+  height: inherit;
+}
+.home-carousel .slick-prev {
+  z-index: 1;
+  left: 15px;
+}
+.home-carousel .slick-next {
+  right: 15px;
+}
 body {
   height: 100vh;
   width: 100vw;
@@ -32,54 +111,9 @@ h4 {
 .right {
   float: right;
 }
-.home-carousel {
-  height: 100%;
-  width: 100%;
+.w50 {
+  width: 50%;
 }
-.home-carousel .slick-slide .overlay {
-  position: absolute;
-  padding-top: 30px;
-  padding-bottom: 35px;
-  padding-left: 50px;
-  padding-right: 50px;
-  width: inherit;
-  height: inherit;
-}
-.home-carousel .slick-slide .overlay .box {
-  height: 75%;
+.w30 {
   width: 30%;
-  margin-top: 40px;
-}
-.home-carousel .slick-slide .overlay .box ul {
-  padding-left: 0px;
-  list-style-type: none;
-}
-.home-carousel .slick-slide .overlay .box ul li {
-  padding-bottom: 20px;
-}
-.home-carousel .slick-slide .overlay .box.left {
-  padding-left: 20px;
-}
-.home-carousel .slick-slide .overlay .box.right {
-  padding-left: 30px;
-}
-.home-carousel .slick-slide img {
-  height: inherit;
-  width: 100%;
-}
-.home-carousel .slick-prev:before,
-.home-carousel .slick-next:before {
-  color: #0E0816;
-}
-.home-carousel .slick-list,
-.home-carousel .slick-track,
-.home-carousel .slick-slide {
-  height: inherit;
-}
-.home-carousel .slick-prev {
-  z-index: 1;
-  left: 15px;
-}
-.home-carousel .slick-next {
-  right: 15px;
 }

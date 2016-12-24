@@ -5,8 +5,8 @@ module.exports = function(grunt) {
 
   var lessFiles = [
     'less/variables.less',
-    'less/index.less',
-    'less/home.less'
+    'less/home.less',
+    'less/index.less'
   ];
 
   grunt.initConfig({

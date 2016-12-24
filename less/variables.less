@@ -3,4 +3,18 @@
 @red:#B82601;
 @violet:#813772;
 
+@tinyh:300px;
+@smallh:360px;
+@medh:525px;
+
 @top-nav-height:8%;
+.maxh(@size; @rules) {
+  @media(max-height:@size) {
+    @rules();
+  }
+};
+
+.tinyh(@rules) { .maxh(300px, @rules); }
+.smallh(@rules) { .maxh(360px, @rules); }
+.medh(@rules) { .maxh(525px, @rules); }
+.largeh(@rules) { .minh(525px, @rules); }
