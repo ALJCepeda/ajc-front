@@ -19,19 +19,14 @@ if($uri !== '/' && $uri !== '/index.php') {
 	<title>ALJCepeda</title>
 
 	<script type='text/javascript' src='/libs/jquery.min.js'></script>
-	<script type='text/javascript' src='/libs/underscore-min.js'></script>
-	<script type='text/javascript' src='/libs/knockout-latest.js'></script>
-	<script type='text/javascript' src='/libs/bootstrap.min.js'></script>
-	<script type='text/javascript' src='/libs/material.min.js'></script>
-	<script type='text/javascript' src='/libs/backbone-min.js'></script>
 	<script type='text/javascript' src='/libs/bluebird.min.js'></script>
 
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 
-	<link rel='stylesheet' type='text/css' href='/libs/bootstrap.min.css'>
-	<link rel='stylesheet' type='text/css' href='/libs/bootstrap-material-design.min.css'>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
 	<link rel='stylesheet' type='text/css' href='/assets/css/flex.css'>
 	<link rel='stylesheet' type='text/css' href='/assets/css/styles.css'>
