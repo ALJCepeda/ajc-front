@@ -7,12 +7,17 @@ body {
   color: #E7DFDD;
   font-size: 15px;
 }
+h3 {
+  font-size: 2.5em;
+}
+h4 {
+  font-size: 1.5em;
+}
 .top-nav {
   height: 8%;
   color: #E7DFDD;
 }
 .top-nav h4 {
-  font-size: 1.4em;
   margin-left: 20px;
   margin-right: 15px;
 }
@@ -40,18 +45,31 @@ body {
   width: inherit;
   height: inherit;
 }
-.home-carousel .slick-slide .overlay h3 {
-  font-size: 2.5em;
-}
 .home-carousel .slick-slide .overlay .box {
   height: 75%;
   width: 30%;
   margin-top: 40px;
+}
+.home-carousel .slick-slide .overlay .box ul {
+  padding-left: 0px;
+  list-style-type: none;
+}
+.home-carousel .slick-slide .overlay .box ul li {
+  padding-bottom: 20px;
+}
+.home-carousel .slick-slide .overlay .box.left {
+  padding-left: 20px;
+}
+.home-carousel .slick-slide .overlay .box.right {
   padding-left: 30px;
 }
 .home-carousel .slick-slide img {
   height: inherit;
   width: 100%;
+}
+.home-carousel .slick-prev:before,
+.home-carousel .slick-next:before {
+  color: #0E0816;
 }
 .home-carousel .slick-list,
 .home-carousel .slick-track,
@@ -60,8 +78,8 @@ body {
 }
 .home-carousel .slick-prev {
   z-index: 1;
-  left: 5px;
+  left: 15px;
 }
 .home-carousel .slick-next {
-  right: 5px;
+  right: 15px;
 }

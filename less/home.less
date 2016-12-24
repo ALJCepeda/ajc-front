@@ -12,15 +12,26 @@
       width:inherit;
       height:inherit;
 
-      h3 {
-        font-size:2.5em;
-      }
-
       .box {
         height:75%;
         width:30%;
         margin-top:40px;
-        padding-left:30px;
+
+        ul {
+          padding-left:0px;
+          list-style-type: none;
+
+          li {
+            padding-bottom:20px;
+          }
+        }
+
+        &.left {
+          padding-left:20px;
+        }
+        &.right {
+          padding-left:30px;
+        }
       }
     }
 
@@ -29,14 +40,18 @@
       width:100%;
     }
   }
+
+  .slick-prev:before, .slick-next:before {
+    color:@black;
+  }
   .slick-list, .slick-track, .slick-slide {
     height:inherit;
   }
   .slick-prev {
     z-index:1;
-    left:5px;
+    left:15px;
   }
   .slick-next {
-    right:5px;
+    right:15px;
   }
 }

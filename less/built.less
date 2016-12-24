@@ -1,5 +1,7 @@
-@dark1:#0E0816;
+@black:#0E0816;
 @body1:#E7DFDD;
+@red:#B82601;
+@violet:#813772;
 
 @top-nav-height:8%;
 
@@ -9,9 +11,17 @@ body {
 	display:flex;
 	flex-flow:row wrap;
 
-	background-color:@dark1;
+	background-color:@black;
 	color:@body1;
 	font-size:15px;
+}
+
+h3 {
+	font-size:2.5em;
+}
+
+h4 {
+	font-size:1.5em;
 }
 
 .top-nav {
@@ -19,7 +29,6 @@ body {
 	color:@body1; //OVR BS color
 
 	h4 {
-		font-size:1.4em;
 		margin-left:20px;
 		margin-right:15px;
 	}
@@ -52,15 +61,26 @@ body {
       width:inherit;
       height:inherit;
 
-      h3 {
-        font-size:2.5em;
-      }
-
       .box {
         height:75%;
         width:30%;
         margin-top:40px;
-        padding-left:30px;
+
+        ul {
+          padding-left:0px;
+          list-style-type: none;
+
+          li {
+            padding-bottom:20px;
+          }
+        }
+
+        &.left {
+          padding-left:20px;
+        }
+        &.right {
+          padding-left:30px;
+        }
       }
     }
 
@@ -69,14 +89,18 @@ body {
       width:100%;
     }
   }
+
+  .slick-prev:before, .slick-next:before {
+    color:@black;
+  }
   .slick-list, .slick-track, .slick-slide {
     height:inherit;
   }
   .slick-prev {
     z-index:1;
-    left:5px;
+    left:15px;
   }
   .slick-next {
-    right:5px;
+    right:15px;
   }
 }

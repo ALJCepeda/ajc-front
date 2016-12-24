@@ -1,26 +1,52 @@
 <div class='home-carousel'>
-  <div>
+  <div class='slide1'>
     <div class='overlay'>
       <h3>Automated. Minimal. Secure.</h3>
 
       <div class='left box'>
-        <h4>Intelligent design</h4>
-        <h4>Test Driven Development</h4>
-        </p>
+        <ul>
+          <li><h4>Modern Technologies</h4></li>
+          <li><h4>Efficient design</h4></li>
+          <li><h4>Test Driven Development</h4></li>
+          <li><h4>Distributed Computing</h4></li>
+          <li><h4>API Integration</h4></li>
+        </ul>
       </div>
 
       <div class='right box'>
-        <p>Right side</p>
+        <p>
+          Producing exceptional quality and future resistant systems that will grow along-side your business
+        </p>
       </div>
     </div>
 
     <img src='/assets/images/workstation.png'>
   </div>
-  <div>
+
+  <div class='slide2'>
+    <div class='overlay'>
+      <h3>Automated. Minimal. Secure.</h3>
+
+      <div class='left box'>
+        <ul>
+          <li><h4>Modern Technologies</h4></li>
+          <li><h4>Efficient design</h4></li>
+          <li><h4>Test Driven Development</h4></li>
+          <li><h4>Distributed Computing</h4></li>
+          <li><h4>API Integration</h4></li>
+        </ul>
+      </div>
+
+      <div class='right box'>
+        <p>
+          Producing exceptional quality and future resistant systems that will grow along-side your business
+        </p>
+      </div>
+    </div>
+
     <img src='/assets/images/browser kids.jpg' />
-    <h3>Hello 2</h3>
   </div>
-  <div>
+  <div class='slide3'>
     <img src='/assets/images/devices.png' />
     <h3>Hello 3</h3>
   </div>
