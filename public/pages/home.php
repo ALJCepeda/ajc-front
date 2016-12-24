@@ -1,9 +1,9 @@
 <div class='home-carousel'>
   <div class='slide1'>
-    <div class='overlay'>
-      <h3>Automated. Minimal. Secure.</h3>
+    <div class='overlay flex'>
+      <h3 class='w100'>Automated. Minimal. Secure.</h3>
 
-      <div class='left box w30'>
+      <div class='box w30'>
         <ul>
           <li><h4>Modern Technologies</h4></li>
           <li><h4>Efficient design</h4></li>
@@ -13,7 +13,7 @@
         </ul>
       </div>
 
-      <div class='right box w30'>
+      <div class='box w30'>
         <p>
           Producing exceptional quality and future resistant systems that will grow along-side your business
         </p>
@@ -24,10 +24,10 @@
   </div>
 
   <div class='slide2'>
-    <div class='overlay'>
-      <h3>Fullstack Web Development</h3>
+    <div class='overlay flex'>
+      <h3 class='w50'>Fullstack Web Development</h3>
 
-      <div class='right box w50'>
+      <div class='box w40'>
         <p>
           Producing exceptional quality and future resistant systems that will grow along-side your business
         </p>

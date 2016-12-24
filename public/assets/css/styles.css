@@ -9,10 +9,7 @@
   padding-left: 50px;
   padding-right: 50px;
   width: inherit;
-  min-height: inherit;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  height: inherit;
 }
 @media (max-height: 300px) {
   .home-carousel .slick-slide .overlay {
@@ -23,12 +20,8 @@
     margin-top: 0px;
   }
 }
-.home-carousel .slick-slide .overlay h3 {
-  width: 100%;
-}
 .home-carousel .slick-slide .overlay .box {
   height: 75%;
-  min-width: 275px;
   margin-top: 40px;
 }
 @media (max-height: 360px) {
@@ -53,6 +46,11 @@
 }
 .home-carousel .slick-slide .overlay .box.right {
   padding-left: 30px;
+}
+.home-carousel .slick-slide .overlay.flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 .home-carousel .slick-slide img {
   height: inherit;
@@ -111,8 +109,14 @@ h4 {
 .right {
   float: right;
 }
+.w100 {
+  width: 100%;
+}
 .w50 {
   width: 50%;
+}
+.w40 {
+  width: 40%;
 }
 .w30 {
   width: 30%;

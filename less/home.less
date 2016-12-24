@@ -10,12 +10,7 @@
       padding-left:50px;
       padding-right:50px;
       width:inherit;
-      min-height:inherit;
-
-      display:flex;
-      flex-flow:row wrap;
-      justify-content:space-between;
-
+      height:inherit;
 
       .tinyh({
         padding-top:0px;
@@ -26,12 +21,8 @@
         }
       });
 
-      h3 {
-        width:100%;
-      }
       .box {
         height:75%;
-        min-width:275px;
         margin-top:40px;
 
         .smallh({
@@ -60,12 +51,18 @@
       }
     }
 
+    .overlay.flex {
+      display:flex;
+      flex-flow:row wrap;
+      justify-content:space-between;
+    }
+
     img {
       height:inherit;
       width:100%;
     }
   }
-
+  
   .slide2 {
     color:@black;
   }
