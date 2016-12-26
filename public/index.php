@@ -35,7 +35,7 @@ if($uri !== '/' && $uri !== '/index.php') {
 
 	<script type='text/javascript' src='/libs/require.js' data-main='/index' ></script>
 </head>
-<body>
+<body class='flex'>
 	<nav class='menu top-nav'>
     <h4>ALJCepeda</h4>
 

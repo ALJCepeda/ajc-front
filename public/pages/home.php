@@ -3,14 +3,12 @@
     <div class='overlay flex'>
       <h3 class='w100'>Automated. Minimal. Secure.</h3>
 
-      <div class='box w30'>
-        <ul>
-          <li><h4>Modern Technologies</h4></li>
-          <li><h4>Efficient design</h4></li>
-          <li><h4>Test Driven Development</h4></li>
-          <li><h4>Distributed Computing</h4></li>
-          <li><h4>API Integration</h4></li>
-        </ul>
+      <div class='box w30 flex'>
+        <div>Modern Technologies</div>
+        <div>Efficient design</div>
+        <div>Test Driven Development</div>
+        <div>Distributed Computing</div>
+        <div>API Integration</div>
       </div>
 
       <div class='box w30'>

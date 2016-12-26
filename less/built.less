@@ -3,6 +3,9 @@
 @color-red:#B82601;
 @color-violet:#813772;
 
+@fontsize-large:1.5em;
+@fontsize-largest:2.5em;
+
 @height-topnav:8%;
 @height-page:100% - @height-topnav;
 .height-max(@size; @rules) {
@@ -70,15 +73,14 @@
         &.right {
           padding-left:30px;
         }
+        &.flex {
+          div {
+            width:100%;
+            font-size:1.5em;
+          }
+        }
       }
     }
-
-    .overlay.flex {
-      display:flex;
-      flex-flow:row wrap;
-      justify-content:space-between;
-    }
-
     img {
       height:inherit;
       width:100%;
@@ -107,8 +109,6 @@
 body {
 	height:100vh;
 	width:100vw;
-	display:flex;
-	flex-flow:row wrap;
 
 	background-color:@color-black;
 	color:@color-body;
@@ -116,11 +116,11 @@ body {
 }
 
 h3 {
-	font-size:2.5em;
+	font-size:@fontsize-largest;
 }
 
 h4 {
-	font-size:1.5em;
+	font-size:@fontsize-large;
 }
 
 .top-nav {
@@ -150,3 +150,9 @@ h4 {
 .w50 { width:50%; }
 .w40 { width:40%; }
 .w30 { width:30%; }
+
+.flex {
+	display:flex;
+	flex-flow:row wrap;
+	justify-content:space-between;
+}

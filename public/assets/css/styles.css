@@ -47,10 +47,9 @@
 .home-carousel .slick-slide .overlay .box.right {
   padding-left: 30px;
 }
-.home-carousel .slick-slide .overlay.flex {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+.home-carousel .slick-slide .overlay .box.flex div {
+  width: 100%;
+  font-size: 1.5em;
 }
 .home-carousel .slick-slide img {
   height: inherit;
@@ -78,8 +77,6 @@
 body {
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-flow: row wrap;
   background-color: #0E0816;
   color: #E7DFDD;
   font-size: 15px;
@@ -125,4 +122,9 @@ h4 {
 }
 .w30 {
   width: 30%;
+}
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
