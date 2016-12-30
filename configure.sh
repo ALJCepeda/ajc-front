@@ -13,31 +13,8 @@ fi
 npm update
 npm prune
 
-mkdir public/libs
-cp node_modules/backbone/backbone-min.js public/libs
-cp node_modules/bluebird/js/browser/bluebird.min.js public/libs
-cp node_modules/jquery/dist/jquery.min.js public/libs
-cp node_modules/underscore/underscore-min.js public/libs
-cp node_modules/knockout/build/output/knockout-latest.js public/libs
-cp node_modules/bootstrap/dist/js/bootstrap.min.js public/libs
-cp node_modules/bootstrap-material-design/dist/js/material.min.js public/libs
-cp node_modules/bootstrap/dist/css/bootstrap.min.css public/libs
-cp node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css public/libs
-cp node_modules/requirejs/require.js public/libs
-cp node_modules/bareutil/scripts/ajax.js public/libs/bareutil.ajax.js
-
-cp node_modules/backbone/backbone-min.map public/libs
-cp node_modules/jquery/dist/jquery.min.map public/libs
-cp node_modules/underscore/underscore-min.map public/libs
-cp node_modules/bootstrap-material-design/dist/js/material.min.js.map public/libs
-cp node_modules/bootstrap/dist/css/bootstrap.min.css.map public/libs
-cp node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css.map public/libs
-
 useradd -m -p $2 $1
 touch /home/$1/.psql_history >/dev/null 2>&1
-
-content=`sed "s/\\$1/$1/g" /sources/aljcepeda/sql/init_user.sql`
-sed -i -e "s/'bluebird'/'\/libs\/bluebird.min'/g" public/libs/bareutil.ajax.js
 
 su postgres << EOF
     cd ~/
