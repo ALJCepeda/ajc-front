@@ -2,14 +2,65 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-mkdir');
 
-  var lessFiles = [
+  let lessFiles = [
     'less/variables.less',
     'less/home.less',
     'less/index.less'
   ];
 
+  let staticFiles = [
+    'vue/dist/vue.js',
+    'bluebird/js/browser/bluebird.js',
+    'jquery/dist/jquery.js',
+    'materialize-css/dist/css/materialize.css',
+    'materialize-css/dist/js/materialize.js',
+    'slick-carousel/slick/slick.css',
+    'slick-carousel/slick/slick-theme.css',
+    'slick-carousel/slick/slick.js',
+    'slick-carousel/slick/ajax-loader.gif',
+    'requirejs/require.js'
+  ];
+
+  let fonts = [
+    'slick-carousel/slick/fonts/**',
+    'materialize-css/dist/fonts/**'
+  ];
+
   grunt.initConfig({
+    clean: [ 'public/libs/**' ],
+    mkdir: {
+      default: {
+        options: {
+          mode:0755,
+          create:['public/libs/fonts', 'public/fonts' ]
+        }
+      }
+    },
+    copy: {
+      default: {
+        expand: true,
+        flatten:true,
+        cwd:'node_modules',
+        src:staticFiles,
+        dest:'public/libs/'
+      },
+      materialize: {
+        expand: true,
+        flatten:true,
+        src:'node_modules/materialize-css/dist/fonts/roboto/**.* ',
+        dest:'public/fonts/roboto/'
+      },
+      slick: {
+        expand: true,
+        flatten:true,
+        src:'node_modules/slick-carousel/slick/fonts/**.* ',
+        dest:'public/libs/fonts/'
+      }
+    },
     concat: {
       default: {
         src: lessFiles,
@@ -31,5 +82,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['concat', 'less', 'watch']);
+  grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'copy:materialize', 'copy:slick', 'concat', 'less', 'watch']);
 };

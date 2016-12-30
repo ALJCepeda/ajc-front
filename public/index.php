@@ -18,22 +18,22 @@ if($uri !== '/' && $uri !== '/index.php') {
 	<meta name='author' content='ALJCepeda'>
 	<title>ALJCepeda</title>
 
-	<script type='text/javascript' src='/libs/bluebird.min.js'></script>
+	<script type='text/javascript' src='/libs/bluebird.js'></script>
 
-	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="/libs/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="/libs/slick-theme.css"/>
 
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/libs/jquery.js"></script>
 	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+	<script type="text/javascript" src="/libs/slick.js"></script>
 
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+	<link rel="stylesheet" href="/libs/materialize.css">
+	<script src="/libs/materialize.js"></script>
 
 	<link rel='stylesheet' type='text/css' href='/assets/css/flex.css'>
 	<link rel='stylesheet' type='text/css' href='/assets/css/styles.css'>
 
-	<script type='text/javascript' src='https://unpkg.com/vue@2.1.8/dist/vue.js'></script>
+	<script type='text/javascript' src='/libs/vue.js'></script>
 	<script type='text/javascript' src='/libs/require.js' data-main='/index' ></script>
 </head>
 <body class='flex'>
