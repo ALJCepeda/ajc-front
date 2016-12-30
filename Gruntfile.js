@@ -42,23 +42,23 @@ module.exports = function(grunt) {
     },
     copy: {
       default: {
-        expand: true,
-        flatten:true,
-        cwd:'node_modules',
-        src:staticFiles,
-        dest:'public/libs/'
-      },
-      materialize: {
-        expand: true,
-        flatten:true,
-        src:'node_modules/materialize-css/dist/fonts/roboto/**.* ',
-        dest:'public/fonts/roboto/'
-      },
-      slick: {
-        expand: true,
-        flatten:true,
-        src:'node_modules/slick-carousel/slick/fonts/**.* ',
-        dest:'public/libs/fonts/'
+        files: [{
+          expand: true,
+          flatten:true,
+          cwd:'node_modules',
+          src:staticFiles,
+          dest:'public/libs/'
+        }, {
+          expand: true,
+          flatten:true,
+          src:'node_modules/materialize-css/dist/fonts/roboto/**.* ',
+          dest:'public/fonts/roboto/'
+        }, {
+          expand: true,
+          flatten:true,
+          src:'node_modules/slick-carousel/slick/fonts/**.* ',
+          dest:'public/libs/fonts/'
+        }]
       }
     },
     concat: {
@@ -82,5 +82,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'copy:materialize', 'copy:slick', 'concat', 'less', 'watch']);
+  grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'concat', 'less', 'watch']);
 };
