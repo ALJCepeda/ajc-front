@@ -22,7 +22,8 @@
     "materialize": "^1.0.0",
     "requirejs": "*",
     "slick-carousel": "^1.6.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "vue": "^2.1.8"
   },
   "devDependencies": {
     "grunt": "^1.0.1",

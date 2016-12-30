@@ -33,6 +33,7 @@ if($uri !== '/' && $uri !== '/index.php') {
 	<link rel='stylesheet' type='text/css' href='/assets/css/flex.css'>
 	<link rel='stylesheet' type='text/css' href='/assets/css/styles.css'>
 
+	<script type='text/javascript' src='https://unpkg.com/vue@2.1.8/dist/vue.js'></script>
 	<script type='text/javascript' src='/libs/require.js' data-main='/index' ></script>
 </head>
 <body class='flex'>
