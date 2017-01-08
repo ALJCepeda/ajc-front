@@ -13,8 +13,8 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd;
 module.exports = {
   entry: { app: './src/index.js' },
   output: {
-    path: config.build.assetsRoot,
-    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
     filename: '[name].js'
   },
   resolve: {
@@ -61,7 +61,7 @@ module.exports = {
         loader: 'json'
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(html|png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url',
         query: {
           limit: 10000,
