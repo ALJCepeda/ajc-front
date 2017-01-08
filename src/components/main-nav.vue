@@ -14,10 +14,8 @@
 </template>
 
 <script>
-  module.exports = {
-    data: () => {
-      return {};
-    }
+  export default {
+    name: 'mainNav'
   };
 </script>
 
