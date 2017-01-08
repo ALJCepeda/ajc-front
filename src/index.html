@@ -1,14 +1,3 @@
-<?php
-//Does all preprocessing such as providing dependencies, constants and refreshes session
-require '../resources/config.php';
-$uri = $_SERVER['REQUEST_URI'];
-
-if($uri !== '/' && $uri !== '/index.php') {
-	header('Location: /#invalid');
-	die();
-}
-?>
-
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -51,10 +40,7 @@ if($uri !== '/' && $uri !== '/index.php') {
   </nav>
 
   <div class='pages'>
-    <?php require('./pages/home.php'); ?>
-    <?php //require('./pages/blog.php'); ?>
-    <?php //require('./pages/eval.php'); ?>
-    <?php //require('./pages/repair.php'); ?>
+
   </div>
 </body>
 </html>

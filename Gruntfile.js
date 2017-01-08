@@ -5,6 +5,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-mkdir');
+  grunt.loadNpmTasks('grunt-vueify');
 
   let lessFiles = [
     'less/variables.less',
@@ -22,7 +23,8 @@ module.exports = function(grunt) {
     'slick-carousel/slick/slick-theme.css',
     'slick-carousel/slick/slick.js',
     'slick-carousel/slick/ajax-loader.gif',
-    'requirejs/require.js'
+    'requirejs/require.js',
+    'vueify/lib/insert-css.js'
   ];
 
   let fonts = [
@@ -72,6 +74,17 @@ module.exports = function(grunt) {
         files: {
           'public/assets/css/styles.css':'less/built.less'
         }
+      }
+    },
+    vueify: {
+      default: {
+        files: [{
+          expand: true,
+          cwd:'components',
+          src: '**/*.vue',
+          dest: 'public/components',
+          ext: '.vue.js'
+        }]
       }
     },
     watch: {
