@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.js';
 import 'materialize-css/dist/css/materialize.css';
 import 'materialize-css/dist/js/materialize.js';
-import './assets/css/flex.css';
+import './less/flex.less';
 import './less/variables.less';
 import './less/index.less';
 import Vue from 'vue';
