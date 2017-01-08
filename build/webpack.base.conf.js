@@ -1,25 +1,27 @@
-var path = require('path');
-var config = require('./config');
-var utils = require('./utils');
+var path = require('path')
+var config = require('../config')
+var utils = require('./utils')
+var projectRoot = path.resolve(__dirname, '../')
 
-var root = path.resolve(__dirname, '../');
-var env = process.env.NODE_ENV;
+var env = process.env.NODE_ENV
 // check env & config/index.js to decide whether to enable CSS source maps for the
 // various preprocessor loaders added to vue-loader at the end of this file
-var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap);
-var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap);
-var useCssSourceMap = cssSourceMapDev || cssSourceMapProd;
+var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
+var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
+var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
-  entry: { app: './src/index.js' },
+  entry: {
+    app: './src/index.js'
+  },
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/',
+    path: config.build.assetsRoot,
+    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
     filename: '[name].js'
   },
   resolve: {
     extensions: ['', '.js', '.vue', '.json'],
-    fallback: [ path.join(__dirname, '../node_modules') ],
+    fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'vue$': 'vue/dist/vue.common.js',
       'src': path.resolve(__dirname, '../src'),
@@ -28,20 +30,24 @@ module.exports = {
     }
   },
   resolveLoader: {
-    fallback: [ path.join(__dirname, '../node_modules') ]
+    fallback: [path.join(__dirname, '../node_modules')]
   },
   module: {
     preLoaders: [
       {
         test: /\.vue$/,
         loader: 'eslint',
-        include: [ path.join(root, 'src') ],
+        include: [
+          path.join(projectRoot, 'src')
+        ],
         exclude: /node_modules/
       },
       {
         test: /\.js$/,
         loader: 'eslint',
-        include: [ path.join(root, 'src') ],
+        include: [
+          path.join(projectRoot, 'src')
+        ],
         exclude: /node_modules/
       }
     ],
@@ -53,7 +59,9 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        include: [ path.join(root, 'src') ],
+        include: [
+          path.join(projectRoot, 'src')
+        ],
         exclude: /node_modules/
       },
       {
@@ -61,7 +69,7 @@ module.exports = {
         loader: 'json'
       },
       {
-        test: /\.(html|png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url',
         query: {
           limit: 10000,
@@ -89,4 +97,4 @@ module.exports = {
       })
     ]
   }
-};
+}

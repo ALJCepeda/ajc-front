@@ -1,18 +1,17 @@
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var FriendlyErrors = require('friendly-errors-webpack-plugin');
-
-var config = require('./config');
-var utils = require('./utils');
-var baseConfig = require('./base.conf')
+var config = require('../config')
+var webpack = require('webpack')
+var merge = require('webpack-merge')
+var utils = require('./utils')
+var baseWebpackConfig = require('./webpack.base.conf')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var FriendlyErrors = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
-Object.keys(baseConfig.entry).forEach(function (name) {
-  baseConfig.entry[name] = ['./build/dev-client'].concat(baseConfig.entry[name])
+Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+  baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
 
-module.exports = merge(baseConfig, {
+module.exports = merge(baseWebpackConfig, {
   module: {
     loaders: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
   },
@@ -29,6 +28,7 @@ module.exports = merge(baseConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
+      template: __dirname + '/../src/index.html',
       inject: true
     }),
     new FriendlyErrors()
