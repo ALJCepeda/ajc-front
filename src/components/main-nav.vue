@@ -20,7 +20,5 @@
 </script>
 
 <style scoped>
-  h4 {
-    color:red;
-  }
+
 </style>

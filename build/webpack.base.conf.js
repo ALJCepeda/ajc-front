@@ -23,10 +23,7 @@ module.exports = {
     extensions: ['', '.js', '.vue', '.json'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
-      'vue$': 'vue/dist/vue.common.js',
-      'src': path.resolve(__dirname, '../src'),
-      'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'vue$': 'vue/dist/vue.common.js'
     }
   },
   resolveLoader: {
@@ -91,9 +88,6 @@ module.exports = {
   },
   vue: {
     loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
-    html:{
-
-    },
     postcss: [
       require('autoprefixer')({
         browsers: ['last 2 versions']
