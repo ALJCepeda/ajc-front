@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <img src='/assets/images/workstation.png'>
+        <img src='../assets/images/workstation.png'>
       </div>
 
       <div class='slide2'>
@@ -34,10 +34,10 @@
           </div>
         </div>
 
-        <img src='/assets/images/browser kids.jpg' />
+        <img src='../assets/images/browserkids.jpg' />
       </div>
       <div class='slide3'>
-        <img src='/assets/images/devices.png' />
+        <img src='../assets/images/devices.png' />
         <h3>Hello 3</h3>
       </div>
     </div>
