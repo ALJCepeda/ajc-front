@@ -4,19 +4,28 @@
 
       <div class='slide1'>
         <div class='overlay flex'>
-          <h3 class='w100'>Automated. Minimal. Secure.</h3>
+          <h3 class='w100'>Automated. Scalable. Secure.</h3>
 
           <div class='box w30 flex'>
-            <div>Modern Technologies</div>
+            <div>Custom algorithms and systems</div>
+            <div>API Integration</div>
             <div>Efficient design</div>
             <div>Test Driven Development</div>
             <div>Distributed Computing</div>
-            <div>API Integration</div>
+            <div>Modern Technologies</div>
           </div>
 
           <div class='box w30'>
             <p>
-              Producing exceptional quality and future resistant systems that will grow along-side your business
+              Experiences working with individuals, small and large companies as well being a part of and leading teams. Close communication and clear expectations are a priority
+            </p>
+
+            <p>
+              Each contract includes a thorough analysis of requirements and a detailed roadmap of development from start to finish
+            </p>
+
+            <p>
+              Thoughtful design will ensure an easy to maintain system with a low barrier of entry. This means future developers will find it easy to work on the project
             </p>
           </div>
         </div>
@@ -26,7 +35,7 @@
 
       <div class='slide2'>
         <div class='overlay flex'>
-          <h3 class='w50'>Fullstack Web Development</h3>
+          <h3>Fullstack Web Development</h3>
 
           <div class='box w40'>
             <p>
@@ -42,7 +51,6 @@
         <img src='../assets/images/devices.png' />
         <h3>Hello 3</h3>
       </div>
-
     </div>
   </div>
 </template>
@@ -86,6 +94,10 @@
         .height-small({
           margin-top:0px;
         });
+
+        p:not(:first-child) {
+          margin-top:40px;
+        }
 
         ul {
           padding-left:0px;
