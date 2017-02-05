@@ -2,13 +2,13 @@
   <div id='app'>
     <main-nav></main-nav>
 
-    <div class='pages'>
+    <!--<div class='pages'>
       <home></home>
 
       <hr>
 
       <codepad></codepad>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -23,12 +23,14 @@
   };
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
   @import './less/variables.less';
+  @import './less/flex.less';
 
   #app {
-    height:100vh;
-    width:100vw;
+    height:100%;
+    width:100%;
+    max-width:1025px;
   }
 
   hr {
