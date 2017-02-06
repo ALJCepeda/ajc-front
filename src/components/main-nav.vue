@@ -35,7 +35,7 @@
 
   .container {
     width:100%;
-    height:70%;
+    height:50%;
     background:#fff;
   }
 
@@ -61,15 +61,17 @@
     .row-nw;.c-center;.m-center;
 
     height:100%;
-    width:25%;
+    width:24%;
 
     img {
       position:absolute;
       bottom:8%;
       left:2%;
 
-      height:20vw;
+      height:auto;
       width:20%;
+      max-width:170px;
+      max-height:170px;
 
       border:4px solid #fff;
       border-radius:2px;
@@ -91,7 +93,7 @@
 
         color:#fff;
         font-family:Helvetica, Arial, sans-serif;
-        font-size:2.2em;
+        font-size:1.7em;
         font-weight:500;
         line-height:30px;
       }
@@ -116,7 +118,7 @@
           padding:0 20px;
           float:left;
 
-          font-size:1.4em;
+          font-size:1.1em;
           font-weight:bold;
           line-height:3.05;
           border-right:1px solid #e9eaed;
