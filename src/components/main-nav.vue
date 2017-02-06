@@ -10,12 +10,15 @@
           <span>Alfred Cepeda</span>
         </div>
 
-        <div class='nav'>
-          <!--<ul>
+        <nav>
+          <ul>
             <li>Timeline</li>
             <li>About</li>
-          </ul>-->
-        </div>
+            <li>Friends <span class='subtitle'>71</span></li>
+            <li>Photos</li>
+            <li>More <i class='material-icons'>&#xE5C5;</i></li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
@@ -37,7 +40,7 @@
   }
 
   .cover-photo {
-    height:85%;
+    height:89%;
     background-image:url('../assets/images/workstation.png');
     background-size:cover;
     background-repeat:no-repeat;
@@ -48,7 +51,7 @@
     .row-nw;
 
     position:relative;
-    top:-130px;
+    top:-35%;
 
     width:100%;
     height:46%;
@@ -58,11 +61,15 @@
     .row-nw;.c-center;.m-center;
 
     height:100%;
-    width:20%;
+    width:25%;
 
     img {
-      height:155px;
-      width:170px;
+      position:absolute;
+      bottom:8%;
+      left:2%;
+
+      height:20vw;
+      width:20%;
 
       border:4px solid #fff;
       border-radius:2px;
@@ -70,31 +77,56 @@
   }
 
   .content {
-    width:80%;
+    width:75%;
     height:100%;
 
     .info {
       position:relative;
-      height:68%;
+      height:76%;
 
       span {
         position:absolute;
-        bottom:10px;
-        left:5px;
+        bottom:7%;
+        left:1%;
 
         color:#fff;
         font-family:Helvetica, Arial, sans-serif;
-        font-size:24px;
+        font-size:2.2em;
         font-weight:500;
         line-height:30px;
       }
     }
 
-    .nav {
-      height:32%;
+    nav {
+      height:24%;
       width:100%;
 
-      background:blue;
+      ul {
+        height:100%;
+        margin:0;
+        padding:0;
+
+        list-style:none;
+        border-left:1px solid #e9eaed;
+
+        li {
+          .row-nw;.m-center;.c-center;
+
+          height:100%;
+          padding:0 20px;
+          float:left;
+
+          font-size:1.4em;
+          font-weight:bold;
+          line-height:3.05;
+          border-right:1px solid #e9eaed;
+          color: #365899;
+
+          .subtitle {
+            margin-top:4px;
+          }
+        }
+      }
     }
   }
 </style>
