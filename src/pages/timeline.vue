@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <div class='timeline'>
     <intro></intro>
     <stories></stories>
   </div>
@@ -18,7 +18,7 @@
 <style lang='less' scoped>
   @import './../less/flex.less';
 
-  .container {
+  .timeline {
     .row-nw;.m-between;
   }
 </style>

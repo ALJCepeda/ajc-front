@@ -133,10 +133,10 @@
   }
 
   .slide2 {
-    color:@color-black;
+    color:@color-black1;
   }
   .slick-prev:before, .slick-next:before {
-    color:@color-black;
+    color:@color-black1;
   }
   .slick-list, .slick-track, .slick-slide {
     height:inherit;

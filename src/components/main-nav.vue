@@ -1,5 +1,5 @@
 <template>
-  <div class='container border'>
+  <div class='mainNav border'>
     <div class='cover-photo'></div>
     <div class='header'>
       <div class='main-photo'>
@@ -33,12 +33,15 @@
 </script>
 
 <style lang='less' scoped>
+  @import './../less/variables.less';
   @import './../less/flex.less';
 
-  .container {
+  .mainNav {
     width:100%;
     height:360px;
-    background:#fff;
+    background:@color-white;
+
+    margin-bottom:20px;
   }
 
   .cover-photo {
@@ -94,8 +97,7 @@
         bottom:7%;
         left:1%;
 
-        color:#fff;
-        font-family:Helvetica, Arial, sans-serif;
+        color:@color-white;
         font-size:1.7em;
         font-weight:500;
         line-height:30px;
@@ -129,7 +131,7 @@
         }
 
         li.active {
-          color:#4b4f56;
+          color:@color-black1;
         }
       }
     }
