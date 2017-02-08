@@ -14,7 +14,7 @@
 
         <nav>
           <ul>
-            <li>Timeline</li>
+            <li class='active'>Timeline</li>
             <li>About</li>
             <li>Friends <span class='subtitle'>71</span></li>
             <li>Photos</li>
@@ -123,6 +123,10 @@
           line-height:3.05;
           border-right:1px solid #e9eaed;
           color: #365899;
+        }
+
+        li.active {
+          color:#4b4f56;
         }
       }
     }
