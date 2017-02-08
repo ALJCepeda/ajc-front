@@ -53,14 +53,17 @@
     .row-nw;
 
     position:relative;
-    top:-163px;
+    top:-142px;
 
     width:100%;
-    height:60%;
+    height:52%;
   }
 
   .main-photo {
     .row-nw;.c-center;.m-center;
+    position:relative;
+    top:-12px;
+
     height:100%;
     width:21%;
 

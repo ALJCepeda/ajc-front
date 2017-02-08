@@ -2,6 +2,7 @@
   <div id='app'>
     <main-nav></main-nav>
 
+    <timeline></timeline>
     <!--<div class='pages'>
       <home></home>
 
@@ -14,12 +15,13 @@
 
 <script>
   import mainNav from './components/main-nav.vue';
+  import timeline from './pages/timeline.vue';
   import home from './pages/home.vue';
   import codepad from './pages/codepad.vue';
 
   export default {
     name: 'app',
-    components: { mainNav, home, codepad }
+    components: { mainNav, home, codepad, timeline }
   };
 </script>
 
