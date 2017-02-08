@@ -1,6 +1,7 @@
 // let tabs = require('./scripts/tabs');
 // let router = require('./scripts/router');
 import $ from 'jquery';
+import 'material-design-icons/index.js';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.js';

@@ -1,9 +1,11 @@
 <template>
-  <div class='container'>
+  <div class='container border'>
     <div class='cover-photo'></div>
     <div class='header'>
       <div class='main-photo'>
-        <img src='./../assets/images/me.jpeg'></img>
+        <div class='border'>
+          <img src='./../assets/images/me.jpeg'></img>
+        </div>
       </div>
       <div class='content'>
         <div class='info'>
@@ -35,12 +37,12 @@
 
   .container {
     width:100%;
-    height:50%;
+    height:360px;
     background:#fff;
   }
 
   .cover-photo {
-    height:89%;
+    height:315px;
     background-image:url('../assets/images/workstation.png');
     background-size:cover;
     background-repeat:no-repeat;
@@ -51,27 +53,25 @@
     .row-nw;
 
     position:relative;
-    top:-35%;
+    top:-163px;
 
     width:100%;
-    height:46%;
+    height:60%;
   }
 
   .main-photo {
     .row-nw;.c-center;.m-center;
-
     height:100%;
-    width:24%;
+    width:21%;
+
+    .border {
+      height:178px;
+      width:178px;
+    }
 
     img {
-      position:absolute;
-      bottom:8%;
-      left:2%;
-
-      height:auto;
-      width:20%;
-      max-width:170px;
-      max-height:170px;
+      height:170px;
+      width:170px;
 
       border:4px solid #fff;
       border-radius:2px;
@@ -123,10 +123,6 @@
           line-height:3.05;
           border-right:1px solid #e9eaed;
           color: #365899;
-
-          .subtitle {
-            margin-top:4px;
-          }
         }
       }
     }
