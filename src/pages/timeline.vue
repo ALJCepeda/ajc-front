@@ -1,7 +1,7 @@
 <template>
   <div class='timeline'>
     <intro></intro>
-    <stories></stories>
+    <stories :image='image'></stories>
   </div>
 </template>
 
@@ -11,7 +11,8 @@
 
   export default {
     name: 'timeline',
-    components: { intro, stories }
+    components: { intro, stories },
+    props: ['image']
   };
 </script>
 

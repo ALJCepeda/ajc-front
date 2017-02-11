@@ -1,20 +1,22 @@
 <template>
-  <div class='container'>
+  <div class='stories'>
     <h2>Stories</h2>
+
   </div>
 </template>
 
 <script>
   export default {
     name: 'stories',
-    components: { }
+    props: ['image']
   };
 </script>
 
 <style lang='less' scoped>
-  .container {
+  .stories {
     background:blue;
     color:black;
     width:60%;
+    height:1000px;
   }
 </style>

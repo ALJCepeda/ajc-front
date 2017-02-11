@@ -1,8 +1,7 @@
 <template>
   <div id='app'>
-    <main-nav></main-nav>
-
-    <timeline></timeline>
+    <main-nav :image='mainImg'></main-nav>
+    <timeline :image='mainImg'></timeline>
     <!--<div class='pages'>
       <home></home>
 
@@ -21,7 +20,12 @@
 
   export default {
     name: 'app',
-    components: { mainNav, home, codepad, timeline }
+    components: { mainNav, home, codepad, timeline },
+    data: function() {
+      return {
+        mainImg: require('./assets/images/me.jpeg')
+      };
+    }
   };
 </script>
 
@@ -30,7 +34,6 @@
   @import './less/flex.less';
 
   #app {
-    height:100%;
     width:100%;
     max-width:1025px;
   }
@@ -42,7 +45,6 @@
   }
 
   .pages {
-  	height:@height-page;
   	width:100%;
   	overflow-y: auto;
   }

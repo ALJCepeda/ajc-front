@@ -12,7 +12,7 @@
           Former Senior Developer at <a href='#'>6-Bit Consulting</a>
         </span>
       </div>
-      
+
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE88A;</i>
@@ -50,6 +50,7 @@
 
   .intro {
     .row-w;.m-center;
+    align-self:flex-start;
     background:@color-white;
     width:38%;
 

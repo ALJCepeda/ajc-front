@@ -4,7 +4,7 @@
     <div class='header'>
       <div class='main-photo'>
         <div class='border'>
-          <img src='./../assets/images/me.jpeg'></img>
+          <img :src='image'></img>
         </div>
       </div>
       <div class='content'>
@@ -28,7 +28,8 @@
 
 <script>
   export default {
-    name: 'mainNav'
+    name: 'mainNav',
+    props: ['image']
   };
 </script>
 
