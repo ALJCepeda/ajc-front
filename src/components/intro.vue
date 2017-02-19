@@ -15,63 +15,63 @@
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
-          Senior Developer at <a href='#'>URBANFORT Corps</a>
+          Senior Developer at <a href='https://urbanfort.com/' target='_blank'>URBANFORT Corps</a>
         </span>
       </div>
 
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
-          Senior Developer at <a href='#'>Little Rocket</a>
+          Senior Developer at <a href='http://www.littlerocket.io/' target='_blank'>Little Rocket</a>
         </span>
       </div>
 
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
-          Former Senior Developer at <a href='#'>6-Bit Consulting</a>
+          Former Senior Developer at <a href='http://www.acappellamedia.com/' target='_blank'>Acapella Media</a>
         </span>
       </div>
 
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
-          Former Senior Developer at <a href='#'>reBaked</a>
+          Former Senior Developer at <a href='http://www.reBaked.com' target='_blank'>reBaked</a>
         </span>
       </div>
 
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
-          Former Junior Developer at <a href='#'>Trustbuilders</a>
+          Former Junior Developer at <a href='http://www.asktrak.com' target='_blank'>Trustbuilders</a>
         </span>
       </div>
 
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
-          Former Junior Developer at <a href='#'>Bonzi Sports Software</a>
+          Former Junior Developer at <a href='http://www.bonzicentral.com' target='_blank'>Bonzi Sports Software</a>
         </span>
       </div>
 
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
-          Former Junior Developer at <a href='#'>Numedics</a>
+          Former Junior Developer at <a href='http://www.numedics.com' target='_blank'>Numedics</a>
         </span>
       </div>
 
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE88A;</i>
-          Lives in <a href='#'>Port St Lucie, FL</a>
+          Lives in <a href='https://goo.gl/maps/NfcWPHEqCuF2' target='_blank'>Port St Lucie, FL</a>
         </span>
       </div>
 
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE8B4;</i>
-          From <a href='#'>Yorktown Heights, New York</a>
+          From <a href='https://goo.gl/maps/QVckXpQgAPE2' target='_blank'>Yorktown Heights, New York</a>
         </span>
       </div>
 
