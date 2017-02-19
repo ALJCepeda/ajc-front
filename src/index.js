@@ -18,9 +18,9 @@ import timeline from './pages/timeline';
 Vue.use(VueRouter);
 let router = new VueRouter({
   routes: [
+    { path: '/', redirect: '/timeline' },
     {
-      path: '/',
-      alias: '/timeline',
+      path: '/timeline',
       component: timeline,
       props: data
     }

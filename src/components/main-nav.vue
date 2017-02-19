@@ -14,11 +14,11 @@
 
         <nav>
           <ul>
-            <li class='active'>Timeline</li>
-            <li>About</li>
-            <li>Friends <span class='subtitle'>71</span></li>
-            <li>Photos</li>
-            <li>More <i class='material-icons'>&#xE5C5;</i></li>
+            <li><router-link to='/timeline'>Timeline</router-link></li>
+            <li><router-link to='/about'>About</router-link></li>
+            <li><router-link to='/friends'>Friends <span class='subtitle'>71</span></router-link></li>
+            <li><router-link to='/photos'>Photos</router-link></li>
+            <li><router-link to='/more'>More <i class='material-icons'>&#xE5C5;</i></router-link></li>
           </ul>
         </nav>
       </div>
@@ -129,10 +129,10 @@
           line-height:3.05;
           border-right:1px solid #e9eaed;
           color: #365899;
-        }
 
-        li.active {
-          color:@color-black1;
+          .router-link-active {
+            color:@color-black1;
+          }
         }
       }
     }
