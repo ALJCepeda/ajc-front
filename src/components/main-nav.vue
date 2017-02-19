@@ -9,7 +9,7 @@
       </div>
       <div class='content'>
         <div class='info'>
-          <span>Alfred Cepeda</span>
+          <span>{{ name }}</span>
         </div>
 
         <nav>
@@ -29,7 +29,7 @@
 <script>
   export default {
     name: 'mainNav',
-    props: ['image']
+    props: ['image', 'name']
   };
 </script>
 

@@ -11,6 +11,7 @@ import './less/index.less';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import app from './app';
+import data from './static';
 
 import timeline from './pages/timeline';
 
@@ -21,10 +22,7 @@ let router = new VueRouter({
       path: '/',
       alias: '/timeline',
       component: timeline,
-      props: {
-        name: 'Alfred Cepeda',
-        image: require('./assets/images/me.jpeg')
-      }
+      props: data
     }
   ]
 });
@@ -33,9 +31,7 @@ let router = new VueRouter({
 new Vue({
   el: '#app',
   render: h => h(app, {
-    props: {
-      image: require('./assets/images/me.jpeg')
-    }
+    props: data
   }),
   template: `<app></app>`,
   components: { app },

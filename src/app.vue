@@ -1,6 +1,6 @@
 <template>
   <div class='app'>
-    <main-nav :image='image'></main-nav>
+    <main-nav :image='image' :name='name'></main-nav>
 
     <router-view></router-view>
   </div>
@@ -12,7 +12,7 @@
   export default {
     name: 'app',
     components: { mainNav },
-    props: ['image']
+    props: ['image', 'name']
   };
 </script>
 
