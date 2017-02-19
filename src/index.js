@@ -19,14 +19,7 @@ let router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: timeline,
-      props: {
-        name: 'Alfred Cepeda',
-        image: require('./assets/images/me.jpeg')
-      }
-    },
-    {
-      path: '/timeline',
+      alias: '/timeline',
       component: timeline,
       props: {
         name: 'Alfred Cepeda',
