@@ -1,8 +1,8 @@
 <template>
   <div id='app'>
     <main-nav :image='mainImg'></main-nav>
-    <timeline :image='mainImg'
-              :name='name'></timeline>
+
+    <router-view></router-view>
     <!--<div class='pages'>
       <home></home>
 
