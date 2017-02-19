@@ -1,7 +1,8 @@
 <template>
   <div id='app'>
     <main-nav :image='mainImg'></main-nav>
-    <timeline :image='mainImg'></timeline>
+    <timeline :image='mainImg'
+              :name='name'></timeline>
     <!--<div class='pages'>
       <home></home>
 
@@ -23,6 +24,7 @@
     components: { mainNav, home, codepad, timeline },
     data: function() {
       return {
+        name: 'Alfred Cepeda',
         mainImg: require('./assets/images/me.jpeg')
       };
     }

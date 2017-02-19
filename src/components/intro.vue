@@ -9,7 +9,55 @@
       <div class='w100'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
+          Self Employed as Software Engineer
+        </span>
+      </div>
+      <div class='w100'>
+        <span>
+          <i class="material-icons">&#xE8F9;</i>
+          Senior Developer at <a href='#'>URBANFORT Corps</a>
+        </span>
+      </div>
+
+      <div class='w100'>
+        <span>
+          <i class="material-icons">&#xE8F9;</i>
+          Senior Developer at <a href='#'>Little Rocket</a>
+        </span>
+      </div>
+
+      <div class='w100'>
+        <span>
+          <i class="material-icons">&#xE8F9;</i>
           Former Senior Developer at <a href='#'>6-Bit Consulting</a>
+        </span>
+      </div>
+
+      <div class='w100'>
+        <span>
+          <i class="material-icons">&#xE8F9;</i>
+          Former Senior Developer at <a href='#'>reBaked</a>
+        </span>
+      </div>
+
+      <div class='w100'>
+        <span>
+          <i class="material-icons">&#xE8F9;</i>
+          Former Junior Developer at <a href='#'>Trustbuilders</a>
+        </span>
+      </div>
+
+      <div class='w100'>
+        <span>
+          <i class="material-icons">&#xE8F9;</i>
+          Former Junior Developer at <a href='#'>Bonzi Sports Software</a>
+        </span>
+      </div>
+
+      <div class='w100'>
+        <span>
+          <i class="material-icons">&#xE8F9;</i>
+          Former Junior Developer at <a href='#'>Numedics</a>
         </span>
       </div>
 
@@ -53,6 +101,7 @@
     align-self:flex-start;
     background:@color-white;
     width:38%;
+    padding-bottom: 10px;
 
     header {
       .row-nw;.c-center;
