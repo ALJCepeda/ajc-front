@@ -1,33 +1,18 @@
 <template>
-  <div id='app'>
-    <main-nav :image='mainImg'></main-nav>
+  <div class='app'>
+    <main-nav :image='image'></main-nav>
 
     <router-view></router-view>
-    <!--<div class='pages'>
-      <home></home>
-
-      <hr>
-
-      <codepad></codepad>
-    </div>-->
   </div>
 </template>
 
 <script>
   import mainNav from './components/main-nav.vue';
-  import timeline from './pages/timeline.vue';
-  import home from './pages/home.vue';
-  import codepad from './pages/codepad.vue';
 
   export default {
     name: 'app',
-    components: { mainNav, home, codepad, timeline },
-    data: function() {
-      return {
-        name: 'Alfred Cepeda',
-        mainImg: require('./assets/images/me.jpeg')
-      };
-    }
+    components: { mainNav },
+    props: ['image']
   };
 </script>
 
@@ -35,19 +20,8 @@
   @import './less/variables.less';
   @import './less/flex.less';
 
-  #app {
+  .app {
     width:100%;
     max-width:1025px;
-  }
-
-  hr {
-    margin-top:40px;
-    margin-bottom:40px;
-    width:85%;
-  }
-
-  .pages {
-  	width:100%;
-  	overflow-y: auto;
   }
 </style>

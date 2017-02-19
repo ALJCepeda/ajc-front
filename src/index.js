@@ -32,8 +32,12 @@ let router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  render: h => h(app),
-  template: '<app/>',
+  render: h => h(app, {
+    props: {
+      image: require('./assets/images/me.jpeg')
+    }
+  }),
+  template: `<app></app>`,
   components: { app },
   router
 });
