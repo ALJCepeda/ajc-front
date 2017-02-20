@@ -12,15 +12,13 @@
           <span>{{ name }}</span>
         </div>
 
-        <nav>
-          <ul>
-            <li><router-link to='/timeline'>Timeline</router-link></li>
-            <li><router-link to='/about'>About</router-link></li>
-            <li><router-link to='/blog'>Blog <span class='subtitle'>71</span></router-link></li>
-            <li><router-link to='/projects'>Projects</router-link></li>
-            <li><router-link to='/more'>More <i class='material-icons'>&#xE5C5;</i></router-link></li>
-          </ul>
-        </nav>
+        <div class='nav'>
+          <router-link to='/timeline'>Timeline</router-link>
+          <router-link to='/about'>About</router-link>
+          <router-link to='/blog'>Blog <span class='subtitle'>71</span></router-link>
+          <router-link to='/projects'>Projects</router-link>
+          <router-link to='/more'>More <i class='material-icons'>&#xE5C5;</i></router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -37,16 +35,22 @@
   @import './../less/variables.less';
   @import './../less/flex.less';
 
+  .clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
   .mainNav {
     width:100%;
-    height:360px;
+    height:400px;
     background:@color-white;
 
     margin-bottom:20px;
   }
 
   .cover-photo {
-    height:315px;
+    height:355px;
     background-image:url('../assets/images/workstation.png');
     background-size:cover;
     background-repeat:no-repeat;
@@ -55,29 +59,18 @@
 
   .header {
     .row-nw;
-
     position:relative;
-    top:-142px;
-
+    top:-138px;
     width:100%;
-    height:52%;
   }
 
   .main-photo {
-    .row-nw;.c-center;.m-center;
-    position:relative;
-    top:-12px;
-
-    height:100%;
-    width:21%;
-
-    .border {
-      height:178px;
-      width:178px;
-    }
+    margin-left:15px;
+    margin-right:18px;
+    margin-bottom:15px;
 
     img {
-      height:170px;
+      height:155px;
       width:170px;
 
       border:4px solid #fff;
@@ -86,18 +79,16 @@
   }
 
   .content {
+    .row-nw;.c-center;
     width:75%;
-    height:100%;
+    height:45px;
+    align-self:flex-end;
 
     .info {
-      position:relative;
-      height:76%;
+      position:absolute;
+      top:96px;
 
       span {
-        position:absolute;
-        bottom:7%;
-        left:1%;
-
         color:@color-white;
         font-size:1.7em;
         font-weight:500;
@@ -105,34 +96,30 @@
       }
     }
 
-    nav {
-      height:24%;
+    .nav {
+      .row-nw;.c-center;
       width:100%;
+      height:100%;
+      border-left:1px solid #e9eaed;
 
-      ul {
+      a {
         height:100%;
-        margin:0;
-        padding:0;
+        padding-left:20px;
+        padding-right:20px;
+        text-align:center;
+        line-height:45px;
+        border-right:1px solid #e9eaed;
 
-        list-style:none;
-        border-left:1px solid #e9eaed;
+        &:hover {
+         background:#F6F7F9;
+        }
+        &.router-link-active {
+          color:@color-black1;
+        }
 
-        li {
-          .row-nw;.m-center;.c-center;
-
-          height:100%;
-          padding:0 20px;
-          float:left;
-
-          font-size:1.1em;
-          font-weight:bold;
-          line-height:3.05;
-          border-right:1px solid #e9eaed;
-          color: #365899;
-
-          .router-link-active {
-            color:@color-black1;
-          }
+        i {
+          position:relative;
+          top:6px;
         }
       }
     }
