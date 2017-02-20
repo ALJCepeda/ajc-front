@@ -14,6 +14,7 @@ import app from './app';
 import data from './static';
 
 import timeline from './pages/timeline';
+import about from './pages/about';
 
 Vue.use(VueRouter);
 let router = new VueRouter({
@@ -23,6 +24,9 @@ let router = new VueRouter({
       path: '/timeline',
       component: timeline,
       props: data
+    }, {
+      path: '/about',
+      component: about
     }
   ]
 });

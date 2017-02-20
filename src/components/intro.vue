@@ -134,7 +134,7 @@
 
         margin-right:10px;
         font-size:17px;
-        color:@color-grey;
+        color:@color-grey1;
       }
 
       div {
