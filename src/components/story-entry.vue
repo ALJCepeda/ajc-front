@@ -1,5 +1,5 @@
 <template>
-  <div class='story-entry'>
+  <div class='story-entry border'>
     <div class='header'>
       <div class='img'>
         <img :src='image'></img>

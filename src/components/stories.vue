@@ -19,6 +19,5 @@
   .stories {
     color:black;
     width:60%;
-    height:1000px;
   }
 </style>
