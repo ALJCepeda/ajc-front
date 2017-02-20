@@ -16,8 +16,8 @@
           <ul>
             <li><router-link to='/timeline'>Timeline</router-link></li>
             <li><router-link to='/about'>About</router-link></li>
-            <li><router-link to='/friends'>Friends <span class='subtitle'>71</span></router-link></li>
-            <li><router-link to='/photos'>Photos</router-link></li>
+            <li><router-link to='/blog'>Blog <span class='subtitle'>71</span></router-link></li>
+            <li><router-link to='/projects'>Projects</router-link></li>
             <li><router-link to='/more'>More <i class='material-icons'>&#xE5C5;</i></router-link></li>
           </ul>
         </nav>
