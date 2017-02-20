@@ -18,11 +18,7 @@
 
     <div class='main'>
       <p>
-        I've worked with enough companies to know better. If you can't invest the time to make sure you have a solid work environment then there's no way in hell you're going to invest in making my dreams come true.
-      </p>
-
-      <p>
-        The truth is. you're just going to use the money you would have spent to treat me like a real employee to instead pay for pursuits that I'm going to have to do on my own time anyway. And that's a big assumption you'll even bother to fulfill your promises. How the hell is this a better deal for anyone?
+        Timeline entries has not been completed yet
       </p>
     </div>
 
