@@ -79,15 +79,12 @@
   }
 
   .content {
-    .row-nw;.c-center;
     width:75%;
-    height:45px;
     align-self:flex-end;
 
     .info {
-      position:absolute;
-      top:96px;
-
+      width:100%;
+      margin-bottom:13px;
       span {
         color:@color-white;
         font-size:1.7em;
@@ -98,16 +95,13 @@
 
     .nav {
       .row-nw;.c-center;
-      width:100%;
-      height:100%;
       border-left:1px solid #e9eaed;
 
       a {
-        height:100%;
         padding-left:20px;
         padding-right:20px;
         text-align:center;
-        line-height:45px;
+        line-height:44px;
         border-right:1px solid #e9eaed;
 
         &:hover {
