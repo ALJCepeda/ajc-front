@@ -18,14 +18,17 @@ import about from './pages/about';
 
 Vue.use(VueRouter);
 let router = new VueRouter({
+  mode: 'history',
   routes: [
     { path: '/', redirect: '/timeline' },
     {
       path: '/timeline',
       component: timeline,
       props: data
-    }, {
-      path: '/about',
+    },
+    { path: '/about', redirect: '/about/overview' },
+    {
+      path: '/about/:section',
       component: about
     }
   ]

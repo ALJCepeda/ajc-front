@@ -12,13 +12,13 @@
           <span>{{ name }}</span>
         </div>
 
-        <div class='nav'>
+        <nav>
           <router-link to='/timeline'>Timeline</router-link>
           <router-link to='/about'>About</router-link>
           <router-link to='/blog'>Blog <span class='subtitle'>71</span></router-link>
           <router-link to='/projects'>Projects</router-link>
           <router-link to='/more'>More <i class='material-icons'>&#xE5C5;</i></router-link>
-        </div>
+        </nav>
       </div>
     </div>
   </div>
@@ -93,7 +93,7 @@
       }
     }
 
-    .nav {
+    nav {
       .row-nw;.c-center;
       border-left:1px solid #e9eaed;
 
