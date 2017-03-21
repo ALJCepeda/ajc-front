@@ -29,6 +29,11 @@ module.exports = {
   resolveLoader: {
     fallback: [path.join(__dirname, '../node_modules')]
   },
+  externals: {
+      'jquery':'jQuery',
+      'vue':'Vue',
+      'vue-router':'VueRouter'
+  },
   module: {
     preLoaders: [
       {
