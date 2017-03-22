@@ -21,6 +21,6 @@
   @import './../less/flex.less';
 
   .timeline {
-    .row-nw;.m-between;
+    .row-nw;.jc-between;
   }
 </style>

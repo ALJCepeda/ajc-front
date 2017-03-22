@@ -1,5 +1,3 @@
-import EventEmitter from 'event-emitter';
-
 let Work = {
   Name: 'N/A',
   link: '#',
@@ -13,25 +11,31 @@ export default {
     mock: [
       Object.assign({
         id: 0,
-        name: 'Nikao Coporation',
-        link: 'https://www.linkedin.com/company/nikao-corporation'
+        company: 'Nikao Coporation',
+        title: 'Front End Developer',
+        href: 'https://www.linkedin.com/company/nikao-corporation'
       }, Work), Object.assign({
         id: 1,
-        name: '6-Bit Consulting'
+        company: '6-Bit Consulting'
       }, Work), Object.assign({
         id: 2,
-        name: 'Self-Employed',
+        company: 'Self-Employed',
         link: '#'
       }, Work)
     ],
-    events: new EventEmitter(),
     all: function() {
-
+      return this.mock;
     },
-    meta: function() {
-      return {
-        length: this.work.length
-      };
+    get: function(id) {
+      return this.mock.find((entry) => {
+        return entry.id === id;
+      });
+    },
+    ids: function(id) {
+      return this.mock.map((entry) => entry.id);
+    },
+    i: function(index) {
+      return this.mock[index];
     }
   }
 };

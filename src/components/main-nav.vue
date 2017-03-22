@@ -1,7 +1,7 @@
 <template>
   <div class='mainNav border'>
     <div class='cover-photo'></div>
-    <div class='header'>
+    <div class='header row-nw'>
       <div class='main-photo'>
         <div class='border'>
           <img :src='image'></img>
@@ -46,6 +46,7 @@
     height:400px;
     background:@color-white;
 
+    padding:1px;
     margin-bottom:20px;
   }
 
@@ -58,7 +59,6 @@
   }
 
   .header {
-    .row-nw;
     position:relative;
     top:-138px;
     width:100%;
@@ -79,7 +79,6 @@
   }
 
   .content {
-    width:75%;
     align-self:flex-end;
 
     .info {
@@ -94,15 +93,19 @@
     }
 
     nav {
-      .row-nw;.c-center;
+      @nav-height:45px;
+      height:@nav-height;
       border-left:1px solid #e9eaed;
 
       a {
+        float:left;
+        height:inherit;
         padding-left:20px;
         padding-right:20px;
         text-align:center;
-        line-height:44px;
+        font-weight:bold;
         border-right:1px solid #e9eaed;
+        line-height:@nav-height;
 
         &:hover {
          background:#F6F7F9;

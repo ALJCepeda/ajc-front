@@ -1,7 +1,7 @@
 <template>
   <div class='story-entry border'>
-    <div class='header'>
-      <div class='img'>
+    <div class='header row-nw'>
+      <div class='img row-nw ai-center'>
         <img :src='image'></img>
       </div>
 
@@ -42,11 +42,9 @@
     color:black;
 
     .header {
-      .row-nw;
       padding:10px;
 
       .img {
-        .row-nw;.c-center;
         width:10%;
 
         img {

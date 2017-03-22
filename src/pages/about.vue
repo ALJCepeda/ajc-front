@@ -1,10 +1,10 @@
 <template>
   <main class='about border'>
-    <header>
+    <header class='row-nw ai-center'>
       <i class="material-icons">&#xE7FD;</i> About
     </header>
 
-    <section>
+    <section class='row-nw'>
       <nav>
         <router-link to='/about/overview'>Overview</router-link>
         <router-link to='/about/work'>Work and Education</router-link>
@@ -47,8 +47,6 @@
     background:blue;
 
     header {
-      .row-nw;.c-center;
-
       height:55px;
       width:100%;
       background:#f6f7f9;
@@ -68,7 +66,6 @@
     }
 
     section {
-      .row-nw;
       background:@color-white;
 
       nav {
@@ -81,7 +78,7 @@
           height:45px;
           line-height:45px;
           margin-left:15px;
-          color:@color-grey3;
+          color:@color-grey4;
           font-weight:normal;
 
           &.router-link-active {

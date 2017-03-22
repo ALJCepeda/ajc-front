@@ -1,14 +1,13 @@
 <template>
-  <main class='overview'>
+  <main class='overview row-nw'>
     <section class='content'>
-      <div class='row'>
-        <div class='logo'>
-
+      <div class='row row-nw'>
+        <div class='logo row-nw ai-center jc-end'>
+          <img :src='work.i(0).logo'></img>
         </div>
-        <div class='description'>
-          <label>Front End Developer at NIKAO Corporation</label>
-          <br>
-          <span class='caption'>Past: <a href='#'>6-Bit Consulting</a> and <a href='#'>Self-Employed</a></span>
+        <div class='description col-w ac-start jc-center'>
+          <header>{{work.i(0).title}} at <a :href='work.i(0).href'>{{work.i(0).company}}</a></header>
+          <label class='caption'>Past: <a :href='work.i(1).href'>{{work.i(1).company}}</a> and <a :href='work.i(2).href'>{{work.i(2).company}}</a></label>
         </div>
       </div>
     </section>
@@ -20,8 +19,15 @@
 </template>
 
 <script>
+  import api from './../../api.js';
+
   export default {
-    name: 'overview'
+    name: 'overview',
+    data: function() {
+      return {
+        work: api.work
+      };
+    }
   };
 </script>
 
@@ -29,26 +35,34 @@
   @import './../../less/index.less';
 
   .overview {
-    .row-nw;
-
     .content {
       width:62%;
       height:200px;
       padding:20px;
 
       .row {
-        .row-nw;
         width:100%;
         height:90px;
 
+        &:hover {
+          background-color:@color-grey3;
+        }
+
         .logo {
           width:20%;
+
+          img {
+            float:right;
+            margin-right:20px;
+            height:auto;
+            max-width:100%;
+          }
         }
 
         .description {
           width:80%;
 
-          label {
+          header {
             color:@color-black1;
           }
         }

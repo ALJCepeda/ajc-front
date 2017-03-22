@@ -97,14 +97,14 @@
   @import './../less/variables.less';
 
   .intro {
-    .row-w;.m-center;
+    .row-w;.jc-center;
     align-self:flex-start;
     background:@color-white;
     width:38%;
     padding-bottom: 10px;
 
     header {
-      .row-nw;.c-center;
+      .row-nw;.jc-center;
       margin-left:12px;
       height:50px;
       width:100%;
