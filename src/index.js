@@ -7,7 +7,7 @@ import './less/index.less';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import app from './app';
-import data from './static';
+import api from './api';
 
 import timeline from './pages/timeline';
 import about from './pages/about';
@@ -20,7 +20,7 @@ let router = new VueRouter({
     {
       path: '/timeline',
       component: timeline,
-      props: data
+      props: api
     },
     { path: '/about', redirect: '/about/overview' },
     {
@@ -34,7 +34,7 @@ let router = new VueRouter({
 new Vue({
   el: '#app',
   render: h => h(app, {
-    props: data
+    props: api
   }),
   template: `<app></app>`,
   components: { app },

@@ -6,7 +6,9 @@
 
         </div>
         <div class='description'>
-
+          <label>Front End Developer at NIKAO Corporation</label>
+          <br>
+          <span class='caption'>Past: <a href='#'>6-Bit Consulting</a> and <a href='#'>Self-Employed</a></span>
         </div>
       </div>
     </section>
@@ -24,7 +26,7 @@
 </script>
 
 <style lang='less' scoped>
-  @import './../../less/flex.less';
+  @import './../../less/index.less';
 
   .overview {
     .row-nw;
@@ -33,22 +35,22 @@
       width:62%;
       height:200px;
       padding:20px;
-      background: blue;
 
       .row {
         .row-nw;
         width:100%;
         height:90px;
-        background:yellow;
 
         .logo {
           width:20%;
-          background:brown;
         }
 
         .description {
           width:80%;
-          background:silver;
+
+          label {
+            color:@color-black1;
+          }
         }
       }
     }
