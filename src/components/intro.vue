@@ -100,7 +100,6 @@
     align-self:flex-start;
     background:@color-white;
     width:38%;
-    padding-bottom: 10px;
 
     header {
       margin-left:12px;
@@ -119,8 +118,8 @@
     }
 
     .content {
+      padding: 8px 0px 5px 15px;
       border-top:1px solid #e9ebee;
-      padding-top:8px;
       font-size:13px;
       color:@color-black2;
 
@@ -134,11 +133,7 @@
       }
 
       .row {
-        margin-left:14px;
-      }
-
-      div {
-        margin-bottom:10px;
+        height:26px;
       }
     }
   }
