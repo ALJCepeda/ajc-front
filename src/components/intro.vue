@@ -1,81 +1,81 @@
 <template>
   <div class='intro border'>
-    <header>
+    <header class='row-nw ai-center'>
       <i class='material-icons'>&#xE80B;</i>
       <span>Intro</span>
     </header>
 
     <div class='content'>
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
           Self Employed as Software Engineer
         </span>
       </div>
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
           Senior Developer at <a href='https://urbanfort.com/' target='_blank'>URBANFORT Corps</a>
         </span>
       </div>
 
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
           Senior Developer at <a href='http://www.littlerocket.io/' target='_blank'>Little Rocket</a>
         </span>
       </div>
 
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
           Former Senior Developer at <a href='http://www.acappellamedia.com/' target='_blank'>Acapella Media</a>
         </span>
       </div>
 
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
           Former Senior Developer at <a href='http://www.reBaked.com' target='_blank'>reBaked</a>
         </span>
       </div>
 
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
           Former Junior Developer at <a href='http://www.asktrak.com' target='_blank'>Trustbuilders</a>
         </span>
       </div>
 
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
           Former Junior Developer at <a href='http://www.bonzicentral.com' target='_blank'>Bonzi Sports Software</a>
         </span>
       </div>
 
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE8F9;</i>
           Former Junior Developer at <a href='http://www.numedics.com' target='_blank'>Numedics</a>
         </span>
       </div>
 
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE88A;</i>
           Lives in <a href='https://goo.gl/maps/NfcWPHEqCuF2' target='_blank'>Port St Lucie, FL</a>
         </span>
       </div>
 
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE8B4;</i>
           From <a href='https://goo.gl/maps/QVckXpQgAPE2' target='_blank'>Yorktown Heights, New York</a>
         </span>
       </div>
 
-      <div class='w100'>
+      <div class='row'>
         <span>
           <i class="material-icons">&#xE050;</i>
           Pronounces name AL-fred si-PE-dah
@@ -97,17 +97,14 @@
   @import './../less/variables.less';
 
   .intro {
-    .row-w;.jc-center;
     align-self:flex-start;
     background:@color-white;
     width:38%;
     padding-bottom: 10px;
 
     header {
-      .row-nw;.jc-center;
       margin-left:12px;
       height:50px;
-      width:100%;
 
       .material-icons {
         color:#4267B2;
@@ -124,7 +121,6 @@
     .content {
       border-top:1px solid #e9ebee;
       padding-top:8px;
-      width:91%;
       font-size:13px;
       color:@color-black2;
 
@@ -135,6 +131,10 @@
         margin-right:10px;
         font-size:17px;
         color:@color-grey1;
+      }
+
+      .row {
+        margin-left:14px;
       }
 
       div {
