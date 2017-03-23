@@ -1,5 +1,5 @@
 <template>
-  <div class='timeline'>
+  <div class='timeline row-nw ai-between'>
     <intro></intro>
     <stories :image='image'
              :name='name'></stories>
@@ -19,8 +19,4 @@
 
 <style lang='less' scoped>
   @import './../less/flex.less';
-
-  .timeline {
-    .row-nw;.jc-between;
-  }
 </style>
