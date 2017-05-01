@@ -14,3 +14,4 @@ logs
 node_modules
 public/libs
 public/fonts
+npm-debug.log

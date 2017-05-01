@@ -4,6 +4,7 @@
   "description": "Landing page for services",
   "main": "index.php",
   "scripts": {
+    "start": "node build/dev-server.js",
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"

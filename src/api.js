@@ -1,41 +1,23 @@
-let Work = {
-  Name: 'N/A',
-  link: '#',
-  logo: require('./assets/images/work-icon.png')
-};
+import mock from './mock.js';
 
 export default {
+  test: mock['addresses'],
   name: 'Alfred Cepeda',
   image: require('./assets/images/me.jpeg'),
-  work: {
-    mock: [
-      Object.assign({
-        id: 0,
-        company: 'Nikao Coporation',
-        title: 'Front End Developer',
-        href: 'https://www.linkedin.com/company/nikao-corporation'
-      }, Work), Object.assign({
-        id: 1,
-        company: '6-Bit Consulting'
-      }, Work), Object.assign({
-        id: 2,
-        company: 'Self-Employed',
-        link: '#'
-      }, Work)
-    ],
-    all: function() {
-      return this.mock;
-    },
-    get: function(id) {
-      return this.mock.find((entry) => {
-        return entry.id === id;
-      });
-    },
-    ids: function(id) {
-      return this.mock.map((entry) => entry.id);
-    },
-    i: function(index) {
-      return this.mock[index];
-    }
+  all: function(key) {
+    return mock[key];
+  },
+  get: function(key, id) {
+    return mock[key].find((entry) => {
+      return entry.id === id;
+    });
+  },
+  i: function(key, index) {
+    console.log(key);
+    console.log(index);
+    console.log(mock);
+    console.log(mock[key]);
+    console.log(mock[key][index]);
+    return mock[key][index];
   }
 };

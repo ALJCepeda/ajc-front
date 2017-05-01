@@ -32,7 +32,8 @@ module.exports = {
   externals: {
       'jquery':'jQuery',
       'vue':'Vue',
-      'vue-router':'VueRouter'
+      'vue-router':'VueRouter',
+      'moment':'moment'
   },
   module: {
     preLoaders: [

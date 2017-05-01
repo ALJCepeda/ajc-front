@@ -3,11 +3,11 @@
     <section class='content'>
       <div class='row row-nw'>
         <div class='logo row-nw ai-center jc-end'>
-          <img :src='work.i(0).logo'></img>
+          <img :src='api.i("jobs", 0).logo'></img>
         </div>
         <div class='description col-w ac-start jc-center'>
-          <header>{{work.i(0).title}} at <a :href='work.i(0).href'>{{work.i(0).company}}</a></header>
-          <label class='caption'>Past: <a :href='work.i(1).href'>{{work.i(1).company}}</a> and <a :href='work.i(2).href'>{{work.i(2).company}}</a></label>
+          <header>{{api.i("jobs", 0).title}} at <a :href='api.i("jobs", 0).href'>{{api.i("jobs", 0).company}}</a></header>
+          <label class='caption'>Past: <a :href='api.i("jobs", 1).href'>{{api.i("jobs", 1).company}}</a> and <a :href='api.i("jobs", 2).href'>{{api.i("jobs", 2).company}}</a></label>
         </div>
       </div>
     </section>
@@ -17,7 +17,7 @@
     </section>
   </main>
 </template>
-
+24
 <script>
   import api from './../../api.js';
 
@@ -25,7 +25,7 @@
     name: 'overview',
     data: function() {
       return {
-        work: api.work
+        api: api
       };
     }
   };
