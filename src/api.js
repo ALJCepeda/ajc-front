@@ -1,23 +1,39 @@
+import _ from '_';
 import mock from './mock.js';
 
 export default {
   test: mock['addresses'],
   name: 'Alfred Cepeda',
   image: require('./assets/images/me.jpeg'),
-  all: function(key) {
-    return mock[key];
+  keyInject: {
+    'first': function(coll, offset) {
+      let index = 0 + (offset || 0);
+      return coll[index];
+    },
+    'last': function(coll, offset) {
+      let index = (coll.length - 1) - (offset || 0);
+      return coll[index];
+    }
   },
-  get: function(key, id) {
-    return mock[key].find((entry) => {
+  all: function(collection) {
+    return mock[collection];
+  },
+  id: function(collection, id) {
+    return mock[collection].find((entry) => {
       return entry.id === id;
     });
   },
-  i: function(key, index) {
-    console.log(key);
-    console.log(index);
-    console.log(mock);
-    console.log(mock[key]);
-    console.log(mock[key][index]);
-    return mock[key][index];
+  key: function(coll, key, offset) {
+    var result = mock[coll][key];
+
+    if (_.isUndefined(result)) {
+      var inject = this.keyInject[key];
+
+      if (_.isFunction(inject)) {
+        result = inject(mock[coll], offset);
+      }
+    }
+
+    return result;
   }
 };
