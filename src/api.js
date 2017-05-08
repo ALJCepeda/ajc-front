@@ -15,11 +15,11 @@ export default {
       return coll[index];
     }
   },
-  all: function(collection) {
-    return mock[collection];
+  all: function(coll) {
+    return mock[coll];
   },
-  id: function(collection, id) {
-    return mock[collection].find((entry) => {
+  id: function(coll, id) {
+    return mock[coll].find((entry) => {
       return entry.id === id;
     });
   },
@@ -34,7 +34,11 @@ export default {
       }
     }
 
-    if (!_.isUndefined(result.street) && _.isUndefined(result.city)) {
+    console.log(coll, key);
+    console.log(result);
+    if (!_.isUndefined(result.zip) && _.isUndefined(result.address)) {
+      console.log(mock['addresses']);
+      console.log(mock[coll]);
       debugger;
     }
     return result;

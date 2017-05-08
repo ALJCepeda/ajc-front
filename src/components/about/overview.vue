@@ -54,14 +54,14 @@
         <div class='description col-w ac-start jc-center'>
           <header>
             Lives in
-            <a :href='api.key("homes", "last").city.href'>
-              {{ api.key("homes", "last").city.name }}, {{ api.key("homes", "last").city.state }}
+            <a :href='api.key("homes", "last").address.city.href'>
+              {{ api.key("homes", "last").address.city.name }}, {{ api.key("homes", "last").address.city.state }}
             </a>
           </header>
           <span class='caption'>
             From
-            <a :href='api.key("homes", "first").city.href'>
-              {{ api.key("homes", "first").city.name }}, {{ api.key("homes", "first").city.state }}
+            <a :href='api.key("homes", "first").address.city.href'>
+              {{ api.key("homes", "first").address.city.name }}, {{ api.key("homes", "first").address.city.state }}
             </a>
               · Lived in
             <a :href='api.key("cities", "Independence, OR").href'>
