@@ -64,8 +64,8 @@
               {{ api.key("addresses", "first").city.name }}, {{ api.key("addresses", "first").city.state }}
             </a>
               · Lived in
-            <a :href='api.key("cities", "last", 1).href'>
-              {{ api.key("cities", "last", 1).name }}, {{ api.key("cities", "last", 1).state }}
+            <a :href='api.key("cities", "Independence, OR").href'>
+              {{ api.key("cities", "Independence, OR").name }}, {{ api.key("cities", "Independence, OR").state }}
             </a>
           </span>
         </div>

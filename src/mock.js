@@ -1,3 +1,4 @@
+import _ from '_';
 import moment from 'moment';
 
 let Work = {
@@ -13,28 +14,7 @@ let mock = {
     birthdate: moment('8/30/1988'),
     hometown: 'Yorktown Heights, New York'
   },
-  cities: [
-    {
-      name: 'Yorktown Heights',
-      state: 'New York',
-      zip: 'N/A',
-      country: 'United States of America',
-      logo: null,
-      href: null
-    }, {
-      name: 'Independence',
-      state: 'Oregon',
-      country: 'United States of America',
-      logo: null,
-      href: null
-    }, {
-      name: 'Port Saint Lucie',
-      state: 'Florida',
-      country: 'United States of America',
-      logo: null,
-      href: null
-    }
-  ],
+  cities: { },
   addresses: [ ],
   jobs: [
     Object.assign({
@@ -67,32 +47,68 @@ let mock = {
   }
 };
 
+let cities = [
+  {
+    name: 'Yorktown Heights',
+    state: 'New York',
+    shortState: 'NY',
+    zip: 'N/A',
+    country: 'United States of America',
+    logo: null,
+    href: null
+  }, {
+    name: 'Independence',
+    state: 'Oregon',
+    shortState: 'OR',
+    country: 'United States of America',
+    logo: null,
+    href: null
+  }, {
+    name: 'Port Saint Lucie',
+    state: 'Florida',
+    shortState: 'FL',
+    country: 'United States of America',
+    logo: null,
+    href: null
+  }
+];
+
+cities.forEach((city) => {
+  let key = `${city.name}, ${city.shortState}`;
+
+  if (!_.isUndefined(mock.cities[key])) {
+    throw new Error('Primary key already defined:', key);
+  }
+
+  mock.cities[key] = city;
+});
+
 mock.addresses = [
   {
     number: 2763,
     street: 'Moreland St',
-    city: mock.cities[0],
+    city: mock.cities['Yorktown Heights, NY'],
     zip: 10598,
     start: null,
     end: null
   }, {
     number: 175,
     street: 'Independence Way',
-    city: mock.cities[1],
+    city: mock.cities['Independence, OR'],
     zip: 97351,
     start: moment('8/1/2012'),
     end: moment('6/1/2016')
   }, {
     number: 811,
     street: 'North Main Street',
-    city: mock.cities[1],
+    city: mock.cities['Independence, OR'],
     zip: 97351,
     start: moment('6/1/2016'),
     end: moment('8/1/2017')
   }, {
     number: 8,
     street: 'Brisa Lane',
-    city: mock.cities[2],
+    city: mock.cities['Port Saint Lucie, FL'],
     zip: 34952,
     start: moment('8/1/2017'),
     end: null
