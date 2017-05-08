@@ -122,19 +122,6 @@
       border-top:1px solid #e9ebee;
       font-size:13px;
       color:@color-black2;
-
-      .material-icons {
-        position:relative;
-        top:3px;
-
-        margin-right:10px;
-        font-size:17px;
-        color:@color-grey1;
-      }
-
-      .row {
-        height:26px;
-      }
     }
   }
 

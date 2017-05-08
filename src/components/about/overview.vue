@@ -12,14 +12,14 @@
               {{ api.key("jobs", 0).company }}
             </a>
           </header>
-          <label class='caption'>
+          <span class='caption'>
             Past:
             <a :href='api.key("jobs", 1).href'>
               {{ api.key("jobs", 1).company }}
             </a> and <a :href='api.key("jobs", 2).href'>
               {{ api.key("jobs", 2).company }}
             </a>
-          </label>
+          </span>
         </div>
       </div>
 
@@ -36,12 +36,12 @@
               {{ api.key("education", "college").name }}
             </a>
           </header>
-          <label class='caption'>
+          <span class='caption'>
             Past:
             <a :href='api.key("education", "highschool").href'>
               {{ api.key("education", "highschool").name }}
             </a>
-          </label>
+          </span>
         </div>
       </div>
 
@@ -58,26 +58,45 @@
               {{ api.key("addresses", "last").city.name }}, {{ api.key("addresses", "last").city.state }}
             </a>
           </header>
-          <label class='caption'>
+          <span class='caption'>
             From
             <a :href='api.key("addresses", "first").city.href'>
               {{ api.key("addresses", "first").city.name }}, {{ api.key("addresses", "first").city.state }}
             </a>
-            Lived in
+              · Lived in
             <a :href='api.key("cities", "last", 1).href'>
               {{ api.key("cities", "last", 1).name }}, {{ api.key("cities", "last", 1).state }}
             </a>
-          </label>
+          </span>
         </div>
       </div>
     </section>
 
     <section class='info'>
+        <div class='row caption'>
+          <span>
+            <i class="material-icons">stay_current_portrait</i>
+            (813) 562-3862
+          </span>
+        </div>
 
+        <div class='row caption'>
+          <span>
+            <i class="material-icons">email</i>
+            alfredjcepeda@gmail.com
+          </span>
+        </div>
+
+        <div class='row caption'>
+          <span>
+            <i class="material-icons">cake</i>
+            August 30, 1988
+          </span>
+        </div>
     </section>
   </main>
 </template>
-24
+
 <script>
   import api from './../../api.js';
 
@@ -97,11 +116,11 @@
   .overview {
     .content {
       width:62%;
-      height:200px;
-      padding:20px;
+      padding:0px 20px 20px 10px;
 
       hr {
         width: 90%;
+        border-top: 1px solid @color-greyHr;
       }
 
       .row {
@@ -133,9 +152,13 @@
     }
 
     .info {
-      width:38%;
+      width:35%;
       height:200px;
-      background: green;
+      padding: 20px;
+
+      .row {
+          margin-bottom:10px;
+      }
     }
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <main class='about border'>
-    <header class='row-nw ai-center'>
+    <header>
       <i class="material-icons">&#xE7FD;</i> About
     </header>
 
@@ -58,6 +58,8 @@
       border-bottom:2px solid #e9eaed;
 
       i {
+        position:relative;
+        top:10px;
         margin-left:10px;
         margin-right:10px;
         color:@color-grey2;
