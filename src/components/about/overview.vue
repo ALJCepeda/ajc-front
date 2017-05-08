@@ -153,7 +153,6 @@
 
     .info {
       width:35%;
-      height:200px;
       padding: 20px;
 
       .row {
