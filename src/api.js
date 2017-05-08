@@ -34,6 +34,9 @@ export default {
       }
     }
 
+    if (!_.isUndefined(result.street) && _.isUndefined(result.city)) {
+      debugger;
+    }
     return result;
   }
 };

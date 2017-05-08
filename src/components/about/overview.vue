@@ -49,19 +49,19 @@
 
       <div class='row row-nw'>
         <div class='logo row-nw ai-center jc-end'>
-          <img :src='api.key("addresses", "first").logo'></img>
+          <img :src='api.key("homes", "first").logo'></img>
         </div>
         <div class='description col-w ac-start jc-center'>
           <header>
             Lives in
-            <a :href='api.key("addresses", "last").city.href'>
-              {{ api.key("addresses", "last").city.name }}, {{ api.key("addresses", "last").city.state }}
+            <a :href='api.key("homes", "last").city.href'>
+              {{ api.key("homes", "last").city.name }}, {{ api.key("homes", "last").city.state }}
             </a>
           </header>
           <span class='caption'>
             From
-            <a :href='api.key("addresses", "first").city.href'>
-              {{ api.key("addresses", "first").city.name }}, {{ api.key("addresses", "first").city.state }}
+            <a :href='api.key("homes", "first").city.href'>
+              {{ api.key("homes", "first").city.name }}, {{ api.key("homes", "first").city.state }}
             </a>
               · Lived in
             <a :href='api.key("cities", "Independence, OR").href'>

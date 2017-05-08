@@ -15,22 +15,9 @@ let mock = {
     hometown: 'Yorktown Heights, New York'
   },
   cities: { },
-  addresses: [ ],
-  jobs: [
-    Object.assign({
-      id: 0,
-      company: 'Nikao Coporation',
-      title: 'Front End Developer',
-      href: 'https://www.linkedin.com/company/nikao-corporation'
-    }, Work), Object.assign({
-      id: 1,
-      company: '6-Bit Consulting'
-    }, Work), Object.assign({
-      id: 2,
-      company: 'Self-Employed',
-      link: '#'
-    }, Work)
-  ],
+  addresses: { },
+  jobs: [ ],
+  homes: [ ],
   education: {
     college: {
       name: 'University of Central Florida',
@@ -64,9 +51,23 @@ let cities = [
     logo: null,
     href: null
   }, {
+    name: 'Portland',
+    state: 'Oregon',
+    shortState: 'OR',
+    country: 'United States of America',
+    logo: null,
+    href: null
+  }, {
     name: 'Port Saint Lucie',
     state: 'Florida',
     shortState: 'FL',
+    country: 'United States of America',
+    logo: null,
+    href: null
+  }, {
+    name: 'Kansas City',
+    state: 'Kansas',
+    shortState: 'KS',
     country: 'United States of America',
     logo: null,
     href: null
@@ -83,7 +84,7 @@ cities.forEach((city) => {
   mock.cities[key] = city;
 });
 
-mock.addresses = [
+let addresses = [
   {
     number: 2763,
     street: 'Moreland St',
@@ -97,22 +98,70 @@ mock.addresses = [
     city: mock.cities['Independence, OR'],
     zip: 97351,
     start: moment('8/1/2012'),
-    end: moment('6/1/2016')
+    end: moment('6/1/2015')
   }, {
     number: 811,
     street: 'North Main Street',
     city: mock.cities['Independence, OR'],
     zip: 97351,
-    start: moment('6/1/2016'),
-    end: moment('8/1/2017')
+    start: moment('6/1/2015'),
+    end: moment('8/1/2016')
   }, {
     number: 8,
     street: 'Brisa Lane',
     city: mock.cities['Port Saint Lucie, FL'],
     zip: 34952,
-    start: moment('8/1/2017'),
+    start: moment('8/1/2016'),
+    end: moment('3/31/2017')
+  }, {
+    number: 1620,
+    street: 'SE Green Acres Circle',
+    apartment: 'N-103',
+    city: mock.cities['Port Saint Lucie, FL'],
+    zip: 34952,
+    start: moment('4/1/2017'),
     end: null
   }
+];
+
+addresses.forEach((address) => {
+  var key = `${address.number} ${address.street}`;
+
+  if (_.isString(address.apartment)) {
+    key = `${key} ${address.apartment}`;
+  }
+
+  if (!_.isUndefined(mock.cities[key])) {
+    throw new Error('Primary key already defined:', key);
+  }
+
+  mock.addresses[key] = address;
+});
+
+mock.homes = [
+  mock.addresses['1620 SE Green Acres Circle N-103'],
+  mock.addresses['8 Brisa Lane'],
+  mock.addresses['811 North Main Street'],
+  mock.addresses['175 Independence Way'],
+  mock.addresses['2763 Moreland St']
+];
+
+mock.jobs = [
+  Object.assign({
+    id: 0,
+    company: 'Nikao Coporation',
+    title: 'Front End Developer',
+    href: 'https://www.linkedin.com/company/nikao-corporation',
+    city: mock.cities['Kansas City, KS']
+  }, Work), Object.assign({
+    id: 1,
+    company: '6-Bit Consulting',
+    city: mock.cities['Independence, OR']
+  }, Work), Object.assign({
+    id: 2,
+    company: 'Self-Employed',
+    link: '#'
+  }, Work)
 ];
 
 export default mock;
