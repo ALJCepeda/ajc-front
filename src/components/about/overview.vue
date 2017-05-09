@@ -117,28 +117,23 @@
   .overview {
     .content {
       width:62%;
-      padding:0px 20px 20px 10px;
-
-      hr {
-        width: 90%;
-        border-top: 1px solid @color-greyHr;
-      }
+      padding: 10px 20px 10px 20px;
 
       .row {
         width:100%;
-        height:90px;
+        padding:20px 10px 20px 20px;
+        margin-top:10px;
+        margin-tobbomt:10px;
 
         &:hover {
           background-color:@color-grey3;
         }
 
         .logo {
-          width:17%;
-
           img {
             height: 32px;
             width: 32px;
-            margin: auto;
+            margin-right: 15px;
           }
         }
 

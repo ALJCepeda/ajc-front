@@ -1,10 +1,9 @@
 <template>
   <main class='work'>
     <header>
-      work
+      WORK
       <hr>
     </header>
-    <h1>This is work</h1>
   </main>
 </template>
 
@@ -15,5 +14,12 @@
 </script>
 
 <style lang='less'>
+  @import './../../less/variables.less';
 
+  .work {
+    padding: 15px;
+    color: @color-grey4;
+    font-weight: bold;
+    font-size: 12px;
+  }
 </style>
