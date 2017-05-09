@@ -71,23 +71,26 @@
     </section>
 
     <section class='info'>
-        <div class='row caption'>
+        <div class='icon-row row-nw ai-center caption'>
+          <i class="material-icons">stay_current_portrait</i>
+
           <span>
-            <i class="material-icons">stay_current_portrait</i>
             (813) 562-3862
           </span>
         </div>
 
-        <div class='row caption'>
+        <div class='icon-row row-nw ai-center caption'>
+          <i class="material-icons">email</i>
+
           <span>
-            <i class="material-icons">email</i>
             alfredjcepeda@gmail.com
           </span>
         </div>
 
-        <div class='row caption'>
+        <div class='icon-row row-nw ai-center caption'>
+          <i class="material-icons">cake</i>
+
           <span>
-            <i class="material-icons">cake</i>
             August 30, 1988
           </span>
         </div>
@@ -153,7 +156,7 @@
       width:35%;
       padding: 20px;
 
-      .row {
+      .icon-row {
           margin-bottom:10px;
       }
     }
