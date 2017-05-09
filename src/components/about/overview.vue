@@ -16,8 +16,6 @@
             Past:
             <a :href='api.key("jobs", 1).href'>
               {{ api.key("jobs", 1).company }}
-            </a> and <a :href='api.key("jobs", 2).href'>
-              {{ api.key("jobs", 2).company }}
             </a>
           </span>
         </div>

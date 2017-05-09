@@ -6,78 +6,89 @@
     </header>
 
     <div class='content'>
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">work</i>
+
         <span>
-          <i class="material-icons">&#xE8F9;</i>
           Self Employed as Software Engineer
         </span>
       </div>
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">work</i>
+
         <span>
-          <i class="material-icons">&#xE8F9;</i>
           Senior Developer at <a href='https://urbanfort.com/' target='_blank'>URBANFORT Corps</a>
         </span>
       </div>
 
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">work</i>
+
         <span>
-          <i class="material-icons">&#xE8F9;</i>
           Senior Developer at <a href='http://www.littlerocket.io/' target='_blank'>Little Rocket</a>
         </span>
       </div>
 
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">work</i>
+
         <span>
-          <i class="material-icons">&#xE8F9;</i>
           Former Senior Developer at <a href='http://www.acappellamedia.com/' target='_blank'>Acapella Media</a>
         </span>
       </div>
 
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">work</i>
+
         <span>
-          <i class="material-icons">&#xE8F9;</i>
           Former Senior Developer at <a href='http://www.reBaked.com' target='_blank'>reBaked</a>
         </span>
       </div>
 
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">work</i>
+
         <span>
-          <i class="material-icons">&#xE8F9;</i>
           Former Junior Developer at <a href='http://www.asktrak.com' target='_blank'>Trustbuilders</a>
         </span>
       </div>
 
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">work</i>
+
         <span>
-          <i class="material-icons">&#xE8F9;</i>
           Former Junior Developer at <a href='http://www.bonzicentral.com' target='_blank'>Bonzi Sports Software</a>
         </span>
       </div>
 
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">work</i>
+
         <span>
-          <i class="material-icons">&#xE8F9;</i>
           Former Junior Developer at <a href='http://www.numedics.com' target='_blank'>Numedics</a>
         </span>
       </div>
 
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">&#xE88A;</i>
+
         <span>
-          <i class="material-icons">&#xE88A;</i>
           Lives in <a href='https://goo.gl/maps/NfcWPHEqCuF2' target='_blank'>Port St Lucie, FL</a>
         </span>
       </div>
 
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">&#xE8B4;</i>
+
         <span>
-          <i class="material-icons">&#xE8B4;</i>
           From <a href='https://goo.gl/maps/QVckXpQgAPE2' target='_blank'>Yorktown Heights, New York</a>
         </span>
       </div>
 
-      <div class='row'>
+      <div class='icon-row row-nw ai-center'>
+        <i class="material-icons">&#xE050;</i>
+
         <span>
-          <i class="material-icons">&#xE050;</i>
           Pronounces name AL-fred si-PE-dah
         </span>
       </div>
@@ -118,7 +129,7 @@
     }
 
     .content {
-      padding: 8px 0px 5px 15px;
+      padding: 15px;
       border-top:1px solid #e9ebee;
       font-size:13px;
       color:@color-black2;

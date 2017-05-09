@@ -159,21 +159,18 @@ mock.homes = [
 
 mock.jobs = [
   Object.assign({
-    id: 0,
     company: 'Nikao Coporation',
     title: 'Front End Developer',
     href: 'https://www.linkedin.com/company/nikao-corporation',
-    address: mock.addresses['6811 Shawnee Mission Pkwy']
+    address: mock.addresses['6811 Shawnee Mission Pkwy'],
+    start: moment('2/27/17'),
+    end: null
   }, Work), Object.assign({
-    id: 1,
-    company: '6-Bit Consulting',
-    title: 'Senior Front End Developer',
-    address: mock.addresses['8 Brisa Lane']
-  }, Work), Object.assign({
-    id: 2,
     company: 'Self-Employed',
     title: 'Software Engineer',
-    address: mock.addresses['8 Brisa Lane']
+    address: mock.addresses['8 Brisa Lane'],
+    start: moment('1/1/2012'),
+    end: moment('2/27/17')
   }, Work)
 ];
 

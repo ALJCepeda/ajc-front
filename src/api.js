@@ -34,13 +34,6 @@ export default {
       }
     }
 
-    console.log(coll, key);
-    console.log(result);
-    if (!_.isUndefined(result.zip) && _.isUndefined(result.address)) {
-      console.log(mock['addresses']);
-      console.log(mock[coll]);
-      debugger;
-    }
     return result;
   }
 };
