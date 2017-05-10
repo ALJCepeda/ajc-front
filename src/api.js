@@ -16,7 +16,9 @@ export default {
     }
   },
   all: function(coll) {
-    return mock[coll];
+    return new Promise((resolve, reject) => {
+      resolve(mock[coll]);
+    });
   },
   id: function(coll, id) {
     return mock[coll].find((entry) => {

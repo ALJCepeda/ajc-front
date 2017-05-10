@@ -65,7 +65,7 @@ let cities = [
     logo: null,
     href: null
   }, {
-    name: 'Kansas City',
+    name: 'Overland Park',
     state: 'Kansas',
     shortState: 'KS',
     country: 'United States of America',
@@ -162,13 +162,15 @@ mock.jobs = [
     company: 'Nikao Coporation',
     title: 'Front End Developer',
     href: 'https://www.linkedin.com/company/nikao-corporation',
-    address: mock.addresses['6811 Shawnee Mission Pkwy'],
+    address: mock.addresses['6811 Shawnee Mission Pkwy #206'],
+    description: 'Nikao is a web and mobile technology innovation company that incubates and operates a diverse set of companies. We are founders, innovators, thinkers who are highly motivated and superbly caffeinated.',
     start: moment('2/27/17'),
     end: null
   }, Work), Object.assign({
     company: 'Self-Employed',
     title: 'Software Engineer',
-    address: mock.addresses['8 Brisa Lane'],
+    address: mock.addresses['8 Brisa Ln'],
+    description: 'Mobile/Web/Software/Database development, consulting, review, and optimizations',
     start: moment('1/1/2012'),
     end: moment('2/27/17')
   }, Work)

@@ -1,5 +1,5 @@
 <template>
-  <div class='intro border'>
+  <main class='intro border'>
     <header class='row-nw ai-center'>
       <i class='material-icons'>&#xE80B;</i>
       <span>Intro</span>
@@ -93,7 +93,7 @@
         </span>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

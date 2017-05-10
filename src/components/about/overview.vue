@@ -1,17 +1,19 @@
 <template>
   <main class='overview row-nw'>
-    <section class='content'>
-      <div class='row row-nw'>
-        <div class='logo row-nw ai-center jc-end'>
+    <section class='entries'>
+      <div class='row row-nw ai-center'>
+        <div class='logo'>
           <img :src='api.key("jobs", 0).logo'></img>
         </div>
-        <div class='description col-w ac-start jc-center'>
+
+        <div class='description'>
           <header>
             {{ api.key("jobs", 0).title }} at
             <a :href='api.key("jobs", 0).href'>
               {{ api.key("jobs", 0).company }}
             </a>
           </header>
+
           <span class='caption'>
             Past:
             <a :href='api.key("jobs", 1).href'>
@@ -23,17 +25,19 @@
 
       <hr>
 
-      <div class='row row-nw'>
-        <div class='logo row-nw ai-center jc-end'>
+      <div class='row row-nw ai-center'>
+        <div class='logo'>
           <img :src='api.key("education", "college").logo'></img>
         </div>
-        <div class='description col-w ac-start jc-center'>
+
+        <div class='description'>
           <header>
             Studied at
             <a :href='api.key("education", "college").href'>
               {{ api.key("education", "college").name }}
             </a>
           </header>
+
           <span class='caption'>
             Past:
             <a :href='api.key("education", "highschool").href'>
@@ -45,17 +49,19 @@
 
       <hr>
 
-      <div class='row row-nw'>
-        <div class='logo row-nw ai-center jc-end'>
+      <div class='row row-nw ai-center'>
+        <div class='logo'>
           <img :src='api.key("homes", "first").logo'></img>
         </div>
-        <div class='description col-w ac-start jc-center'>
+
+        <div class='description'>
           <header>
             Lives in
             <a :href='api.key("homes", "last").address.city.href'>
               {{ api.key("homes", "last").address.city.name }}, {{ api.key("homes", "last").address.city.state }}
             </a>
           </header>
+
           <span class='caption'>
             From
             <a :href='api.key("homes", "first").address.city.href'>
@@ -115,7 +121,7 @@
   @import './../../less/index.less';
 
   .overview {
-    .content {
+    .entries {
       width:62%;
       padding: 10px 20px 10px 20px;
 

@@ -1,5 +1,5 @@
 <template>
-  <div class='story-entry border'>
+  <main class='story-entry border'>
     <div class='header row-nw'>
       <div class='img row-nw ai-center'>
         <img :src='image'></img>
@@ -22,7 +22,7 @@
       </p>
     </div>
 
-  </div>
+  </main>
 </template>
 
 <script>

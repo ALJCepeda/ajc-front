@@ -1,8 +1,8 @@
 <template>
-  <div class='stories'>
+  <main class='stories'>
     <story-entry :name='name' :image='image'></story-entry>
 
-  </div>
+  </main>
 </template>
 
 <script>

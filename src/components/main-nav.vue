@@ -1,12 +1,14 @@
 <template>
-  <div class='mainNav border'>
+  <main class='mainNav border'>
     <div class='cover-photo'></div>
+
     <div class='header row-nw'>
       <div class='main-photo'>
         <div class='border'>
           <img :src='image'></img>
         </div>
       </div>
+
       <div class='content'>
         <div class='info'>
           <span>{{ name }}</span>
@@ -21,7 +23,7 @@
         </nav>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

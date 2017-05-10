@@ -1,5 +1,5 @@
 <template>
-  <div class='outer'>
+  <main class='outer'>
     <div class='card blue-grey darken-1'>
       <div class='card-content white-text'>
         <span class='card-title'>{{data.title}}</span>
@@ -10,7 +10,7 @@
         <a :href='data.goto' style='float:right'>Try it out!</a>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
