@@ -1,23 +1,23 @@
 <template>
   <main class='overview row-nw'>
     <section class='entries'>
-      <div class='row row-nw ai-center'>
+      <div class='row row-nw ai-center' v-if='jobs[0] && jobs[1]'>
         <div class='logo'>
-          <img :src='api.key("jobs", 0).logo'></img>
+          <img :src='jobs[0].logo'></img>
         </div>
 
         <div class='description'>
           <header>
-            {{ api.key("jobs", 0).title }} at
-            <a :href='api.key("jobs", 0).href'>
-              {{ api.key("jobs", 0).company }}
+            {{ jobs[0].title }} at
+            <a :href='jobs[0].href'>
+              {{ jobs[0].company }}
             </a>
           </header>
 
           <span class='caption'>
             Past:
-            <a :href='api.key("jobs", 1).href'>
-              {{ api.key("jobs", 1).company }}
+            <a :href='jobs[1].href'>
+              {{ jobs[1].company }}
             </a>
           </span>
         </div>
@@ -25,23 +25,23 @@
 
       <hr>
 
-      <div class='row row-nw ai-center'>
+      <div class='row row-nw ai-center' v-if='education["college"] && education["highschool"]'>
         <div class='logo'>
-          <img :src='api.key("education", "college").logo'></img>
+          <img :src='education["college"].logo'></img>
         </div>
 
         <div class='description'>
           <header>
             Studied at
-            <a :href='api.key("education", "college").href'>
-              {{ api.key("education", "college").name }}
+            <a :href='education["college"].href'>
+              {{ education["college"].name }}
             </a>
           </header>
 
           <span class='caption'>
             Past:
-            <a :href='api.key("education", "highschool").href'>
-              {{ api.key("education", "highschool").name }}
+            <a :href='education["highschool"].href'>
+              {{ education["highschool"].name }}
             </a>
           </span>
         </div>
@@ -49,27 +49,27 @@
 
       <hr>
 
-      <div class='row row-nw ai-center'>
+      <div class='row row-nw ai-center' v-if='homes["first"] && homes["last"]'>
         <div class='logo'>
-          <img :src='api.key("homes", "first").logo'></img>
+          <img :src='homes["first"].logo'></img>
         </div>
 
         <div class='description'>
           <header>
             Lives in
-            <a :href='api.key("homes", "last").address.city.href'>
-              {{ api.key("homes", "last").address.city.name }}, {{ api.key("homes", "last").address.city.state }}
+            <a :href='homes["last"].address.city.href'>
+              {{ homes["last"].address.city.name }}, {{ homes["last"].address.city.state }}
             </a>
           </header>
 
           <span class='caption'>
             From
-            <a :href='api.key("homes", "first").address.city.href'>
-              {{ api.key("homes", "first").address.city.name }}, {{ api.key("homes", "first").address.city.state }}
+            <a :href='homes["first"].address.city.href'>
+              {{ homes["first"].address.city.name }}, {{ homes["first"].address.city.state }}
             </a>
               · Lived in
-            <a :href='api.key("cities", "Independence, OR").href'>
-              {{ api.key("cities", "Independence, OR").name }}, {{ api.key("cities", "Independence, OR").state }}
+            <a :href='city.href'>
+              {{ city.name }}, {{ city.state }}
             </a>
           </span>
         </div>
@@ -111,8 +111,28 @@
     name: 'overview',
     data: function() {
       return {
-        api: api
+        jobs: [],
+        education: {},
+        homes: [],
+        city: {}
       };
+    },
+    created: function() {
+      api.slice('jobs', 0, 2).then((jobs) => {
+        this.jobs = jobs;
+      });
+
+      api.keys('education', [ 'college', 'highschool' ]).then((education) => {
+        this.education = education;
+      });
+
+      api.keys('homes', [ 'first', 'last' ]).then((homes) => {
+        this.homes = homes;
+      });
+
+      api.key('city', 'Independence, OR').then((city) => {
+        this.city = city;
+      });
     }
   };
 </script>

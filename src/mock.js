@@ -14,7 +14,7 @@ let mock = {
     birthdate: moment('8/30/1988'),
     hometown: 'Yorktown Heights, New York'
   },
-  cities: { },
+  city: { },
   addresses: { },
   jobs: [ ],
   homes: [ ],
@@ -34,7 +34,7 @@ let mock = {
   }
 };
 
-let cities = [
+let city = [
   {
     name: 'Yorktown Heights',
     state: 'New York',
@@ -74,43 +74,43 @@ let cities = [
   }
 ];
 
-cities.forEach((city) => {
+city.forEach((city) => {
   let key = `${city.name}, ${city.shortState}`;
 
-  if (!_.isUndefined(mock.cities[key])) {
+  if (!_.isUndefined(mock.city[key])) {
     throw new Error('Primary key already defined:', key);
   }
 
-  mock.cities[key] = city;
+  mock.city[key] = city;
 });
 
 let addresses = [
   {
     number: 2763,
     street: 'Moreland St',
-    city: mock.cities['Yorktown Heights, NY']
+    city: mock.city['Yorktown Heights, NY']
   }, {
     number: 175,
     street: 'Independence Way',
-    city: mock.cities['Independence, OR']
+    city: mock.city['Independence, OR']
   }, {
     number: 811,
     street: 'North Main St',
-    city: mock.cities['Independence, OR']
+    city: mock.city['Independence, OR']
   }, {
     number: 8,
     street: 'Brisa Ln',
-    city: mock.cities['Port Saint Lucie, FL']
+    city: mock.city['Port Saint Lucie, FL']
   }, {
     number: 1620,
     street: 'SE Green Acres Cir',
     unit: 'N-103',
-    city: mock.cities['Port Saint Lucie, FL']
+    city: mock.city['Port Saint Lucie, FL']
   }, {
     number: 6811,
     street: 'Shawnee Mission Pkwy',
     unit: '#206',
-    city: mock.cities['Overland Park, KS']
+    city: mock.city['Overland Park, KS']
   }
 ];
 
@@ -121,7 +121,7 @@ addresses.forEach((address) => {
     key = `${key} ${address.unit}`;
   }
 
-  if (!_.isUndefined(mock.cities[key])) {
+  if (!_.isUndefined(mock.city[key])) {
     throw new Error('Primary key already defined:', key);
   }
 

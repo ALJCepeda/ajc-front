@@ -34,8 +34,7 @@
     name: 'work',
     data: function() {
       return {
-        api: api,
-        jobs: [ 'moo' ]
+        jobs: []
       };
     },
     created: function() {

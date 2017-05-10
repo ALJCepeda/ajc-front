@@ -20,22 +20,56 @@ export default {
       resolve(mock[coll]);
     });
   },
+  slice: function(coll, start, end) {
+    return new Promise((resolve, reject) => {
+      resolve(mock[coll].slice(start, end - start));
+    });
+  },
   id: function(coll, id) {
     return mock[coll].find((entry) => {
       return entry.id === id;
     });
   },
   key: function(coll, key, offset) {
-    var result = mock[coll][key];
+    return new Promise((resolve, reject) => {
+      var result = mock[coll][key];
 
-    if (_.isUndefined(result)) {
-      var inject = this.keyInject[key];
+      if (_.isUndefined(result)) {
+        var inject = this.keyInject[key];
 
-      if (_.isFunction(inject)) {
-        result = inject(mock[coll], offset);
+        if (_.isFunction(inject)) {
+          result = inject(mock[coll], offset);
+        }
       }
-    }
 
-    return result;
+      resolve(result);
+    });
+  },
+  keys: function(coll, keys) {
+    let promises = [];
+    let result = {};
+
+    keys.forEach((key) => {
+      if (_.isObject(key)) {
+        let promise = this.key(coll, key.key, key.offset).then((data) => {
+          result[key] = data;
+          return data;
+        });
+
+        promises.push(promise);
+      } else {
+        let promise = this.key(coll, key).then((data) => {
+          result[key] = data;
+          return data;
+        });
+
+        promises.push(promise);
+      }
+    });
+
+    return Promise.all(promises).then((all) => {
+      result['$all'] = all;
+      return result;
+    });
   }
 };
