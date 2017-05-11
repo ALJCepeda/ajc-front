@@ -34,6 +34,7 @@ module.exports = {
       'vue':'Vue',
       'vue-router':'VueRouter',
       'moment':'moment',
+      'componentHandler':'componentHandler',
       '_':'_'
   },
   module: {

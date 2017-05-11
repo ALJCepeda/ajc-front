@@ -18,18 +18,73 @@ let mock = {
   addresses: { },
   jobs: [ ],
   homes: [ ],
-  education: {
-    college: {
-      name: 'University of Central Florida',
-      degree: 'Bachelor\'s in Interdisciplinary Studies',
-      graduated: moment('3/1/2012'),
-      href: 'https://ucf.edu',
-      logo: 'https://www.ucf.edu/wp-content/uploads/2015/06/ucf.png'
+  education: { },
+  skills: {
+    'Node.JS': {
+      outOfTen: 7,
+      description: 'Experienced in developing and deploying complicated server infastructures such as distributed models that utilized clusters and messaging queues. Capable of architecting high quality web services, command line tools, and desktop applications in a short amount of time through the smart design of isomorphic Javascript code.',
+      projects: [],
+      rank: 1
     },
-    highschool: {
-      name: 'Newsome High School',
-      graduated: moment('6/1/2008'),
-      href: 'http://newsome.mysdhc.org'
+    'PHP': {
+      outOfTen: 6,
+      description: '',
+      projects: [],
+      rank: 2
+    },
+    'Javascript': {
+      outOfTen: 8,
+      description: '',
+      projects: [],
+      rank: 3
+    },
+    'HTML': {
+      outOfTen: 7,
+      description: '',
+      projects: [],
+      rank: 4
+    },
+    'CSS': {
+      outOfTen: 7,
+      description: '',
+      projects: [],
+      rank: 5
+    },
+    'SQL': {
+      outOfTen: 9,
+      description: '',
+      projects: [],
+      rank: 6
+    },
+    'Vue': {
+      outOfTen: 6,
+      description: '',
+      projects: [],
+      rank: 7
+    },
+    'Angular 1.x': {
+      outOfTen: 7,
+      description: '',
+      projects: [],
+      rank: 8
+    },
+    'Angular 2.x': {
+      outOfTen: 6,
+      description: '',
+      projects: [],
+      rank: 9
+    },
+    'iOS': {
+      outOfTen: 5,
+      description: '',
+      projects: [],
+      rank: 10
+    },
+    'Bash': {
+      outOfTen: 4,
+      description: '',
+      project: [],
+      rank: 11
     }
   }
 };
@@ -71,6 +126,20 @@ let city = [
     country: 'United States of America',
     logo: null,
     href: null
+  }, {
+    name: 'Orlando',
+    state: 'Florida',
+    shortState: 'FL',
+    country: 'United State of America',
+    logo: null,
+    href: null
+  }, {
+    name: 'Lithia',
+    state: 'Florida',
+    shortState: 'FL',
+    country: 'United States of America',
+    logo: null,
+    href: null
   }
 ];
 
@@ -88,29 +157,45 @@ let addresses = [
   {
     number: 2763,
     street: 'Moreland St',
+    zip: 10598,
     city: mock.city['Yorktown Heights, NY']
   }, {
     number: 175,
     street: 'Independence Way',
+    zip: 97351,
     city: mock.city['Independence, OR']
   }, {
     number: 811,
     street: 'North Main St',
+    zip: 97351,
     city: mock.city['Independence, OR']
   }, {
     number: 8,
     street: 'Brisa Ln',
+    zip: 34952,
     city: mock.city['Port Saint Lucie, FL']
   }, {
     number: 1620,
     street: 'SE Green Acres Cir',
     unit: 'N-103',
+    zip: 34952,
     city: mock.city['Port Saint Lucie, FL']
   }, {
     number: 6811,
     street: 'Shawnee Mission Pkwy',
     unit: '#206',
+    zip: 66202,
     city: mock.city['Overland Park, KS']
+  }, {
+    number: 4000,
+    street: 'Central Florida Blvd',
+    zip: 32816,
+    city: mock.city['Orlando, FL']
+  }, {
+    number: 16550,
+    street: 'Fishhawk Blvd',
+    zip: 33547,
+    city: mock.city['Lithia, FL']
   }
 ];
 
@@ -131,27 +216,22 @@ addresses.forEach((address) => {
 mock.homes = [
   {
     address: mock.addresses['1620 SE Green Acres Cir N-103'],
-    zip: 34952,
     start: moment('4/1/2017'),
     end: null
   }, {
     address: mock.addresses['8 Brisa Ln'],
-    zip: 34952,
     start: moment('8/1/2016'),
     end: moment('3/31/2017')
   }, {
     address: mock.addresses['811 North Main St'],
-    zip: 97351,
     start: moment('6/1/2015'),
     end: moment('8/1/2016')
   }, {
     address: mock.addresses['175 Independence Way'],
-    zip: 97351,
     start: moment('8/1/2012'),
     end: moment('6/1/2015')
   }, {
     address: mock.addresses['2763 Moreland St'],
-    zip: 10598,
     start: null,
     end: null
   }
@@ -175,5 +255,23 @@ mock.jobs = [
     end: moment('2/27/17')
   }, Work)
 ];
+
+mock.education = {
+  college: {
+    name: 'University of Central Florida',
+    degree: 'Bachelor\'s in Interdisciplinary Studies',
+    address: mock.addresses['4000 Central Florida Blvd'],
+    graduated: moment('3/1/2013'),
+    href: 'https://ucf.edu',
+    logo: 'https://www.ucf.edu/wp-content/uploads/2015/06/ucf.png'
+  },
+  highschool: {
+    name: 'Newsome High School',
+    address: mock.addresses['16550 Fishhawk Blvd'],
+    graduated: moment('6/1/2006'),
+    href: 'http://newsome.mysdhc.org',
+    logo: null
+  }
+};
 
 export default mock;

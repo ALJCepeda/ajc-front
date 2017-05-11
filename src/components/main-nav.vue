@@ -62,7 +62,7 @@
 
   .header {
     position:relative;
-    top:-138px;
+    top:-134px;
     width:100%;
   }
 

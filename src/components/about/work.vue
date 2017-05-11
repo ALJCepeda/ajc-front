@@ -24,23 +24,84 @@
         </div>
       </div>
     </section>
+
+    <header>
+      PROFESSIONAL SKILLS
+      <hr>
+    </header>
+
+    <section class='entries skills'>
+      <div v-for='(skill, index) in skills'>
+        {{ skill.name }}
+
+        <div :id='"skill-" + index' class='mdl-progress mdl-js-progress' style='margin-top:8px;margin-bottom:15px;'></div>
+      </div>
+    </section>
+
+    <header>
+      EDUCATION
+      <hr>
+    </header>
+
+    <section class='entries'>
+      <div class='row row-nw ai-center' v-for='education in educations'>
+        <img :src='education.logo'></img>
+
+        <div class='description'>
+          <header>
+            {{ education.name }}
+          </header>
+
+          <div class='body caption'>
+            Class of {{ education.graduated.format("YYYY") }} · {{ education.address.city.name }}, {{education.address.city.state}}
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
 <script>
   import api from './../../api.js';
+  import util from './../../util.js';
+  import componentHandler from 'componentHandler';
 
   export default {
     name: 'work',
     data: function() {
       return {
-        jobs: []
+        jobs: [],
+        skills: [],
+        educations: []
       };
     },
     created: function() {
       api.all('jobs').then((jobs) => {
         this.jobs = jobs;
       });
+
+      api.all('skills').then((skills) => {
+        this.skills = util.shuffle(Object.keys(skills)).map((key) => {
+          return Object.assign({ name: key }, skills[key]);
+        });
+      });
+
+      api.all('education').then((education) => {
+        this.educations = [ education['college'], education['highschool'] ];
+      });
+    },
+    watch: {
+      skills: function(skills) {
+        setTimeout(() => {
+          skills.forEach((skill, index) => {
+            document.querySelector(`#skill-${index}`).addEventListener('mdl-componentupgraded', function() {
+              this.MaterialProgress.setProgress(skill.outOfTen * 10);
+            });
+          });
+
+          componentHandler.upgradeDom();
+        });
+      }
     }
   };
 </script>
@@ -61,11 +122,20 @@
       margin-right: 15px;
       height: 36px;
       width: 36px;
+      flex-shrink: 0;
     }
 
     .entries {
+      margin-bottom: 25px;
+
       .row {
         margin-top: 15px;
+        padding-bottom: 20px;
+      }
+
+      &.skills {
+        color: @color-black2;
+        font-weight: bold;
       }
 
       header {
