@@ -143,7 +143,6 @@
   .overview {
     .entries {
       width:62%;
-      padding: 10px 20px 10px 20px;
 
       .row {
         width:100%;

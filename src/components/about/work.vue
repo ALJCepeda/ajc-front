@@ -110,8 +110,6 @@
   @import './../../less/variables.less';
 
   .work {
-    padding: 15px;
-
     header {
       color: @color-grey4;
       font-weight: bold;

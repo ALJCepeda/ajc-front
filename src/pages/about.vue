@@ -8,21 +8,16 @@
       <nav>
         <router-link to='/about/overview'>Overview</router-link>
         <router-link to='/about/work'>Work and Education</router-link>
-        <router-link to='#'>Places You've Lived</router-link>
-        <router-link to='#'>Contact and Basic Info</router-link>
-        <router-link to='#'>Family and Relationships</router-link>
-        <router-link to='#'>Details About You</router-link>
-        <router-link to='#'>Life Events</router-link>
+        <router-link to='/about/homes'>Places You've Lived</router-link>
+        <router-link to='/about/info'>Contact and Basic Info</router-link>
+        <router-link to='/about/family'>Family and Relationships</router-link>
+        <router-link to='/about/details'>Details About You</router-link>
+        <router-link to='/about/events'>Life Events</router-link>
       </nav>
 
       <div class='content'>
-        <div class='overview' v-if='$route.params.section === "overview"'>
-          <overview></overview>
-        </div>
-
-        <div class='work' v-if='$route.params.section === "work"'>
-          <work></work>
-        </div>
+        <overview v-if='$route.params.section === "overview"'></overview>
+        <work v-if='$route.params.section === "work"'></work>
       </div>
     </section>
   </main>
@@ -91,7 +86,8 @@
       }
 
       .content {
-        width:70%;
+        width: 70%;
+        padding: 20px;
       }
     }
   }
