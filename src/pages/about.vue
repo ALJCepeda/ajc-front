@@ -18,6 +18,7 @@
       <div class='content'>
         <overview v-if='$route.params.section === "overview"'></overview>
         <work v-if='$route.params.section === "work"'></work>
+        <homes v-if='$route.params.section === "homes"'></homes>
       </div>
     </section>
   </main>
@@ -26,10 +27,11 @@
 <script>
   import overview from './../components/about/overview';
   import work from './../components/about/work';
+  import homes from './../components/about/homes';
 
   export default {
     name: 'about',
-    components: { overview, work },
+    components: { overview, work, homes },
     props: [ ]
   };
 </script>

@@ -118,9 +118,11 @@
       };
     },
     created: function() {
+      /*
       api.slice('jobs', 0, 2).then((jobs) => {
         this.jobs = jobs;
       });
+      */
 
       api.keys('education', [ 'college', 'highschool' ]).then((education) => {
         this.education = education;
@@ -152,14 +154,6 @@
 
         &:hover {
           background-color:@color-grey3;
-        }
-
-        .logo {
-          img {
-            height: 32px;
-            width: 32px;
-            margin-right: 15px;
-          }
         }
 
         .description {

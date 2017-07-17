@@ -12,6 +12,7 @@ import api from './api';
 import timeline from './pages/timeline';
 import about from './pages/about';
 
+Vue.config.debug = true;
 Vue.use(VueRouter);
 let router = new VueRouter({
   mode: 'history',

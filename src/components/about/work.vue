@@ -1,9 +1,9 @@
 <template>
   <main class='work'>
-    <header>
+    <h5>
       WORK
       <hr>
-    </header>
+    </h5>
 
     <section class='entries'>
       <div class='row row-nw ai-center' v-for='job in jobs'>
@@ -25,10 +25,10 @@
       </div>
     </section>
 
-    <header>
+    <h5>
       PROFESSIONAL SKILLS
       <hr>
-    </header>
+    </h5>
 
     <section class='entries skills'>
       <div v-for='(skill, index) in skills'>
@@ -38,10 +38,10 @@
       </div>
     </section>
 
-    <header>
+    <h5>
       EDUCATION
       <hr>
-    </header>
+    </h5>
 
     <section class='entries'>
       <div class='row row-nw ai-center' v-for='education in educations'>
@@ -110,12 +110,6 @@
   @import './../../less/variables.less';
 
   .work {
-    header {
-      color: @color-grey4;
-      font-weight: bold;
-      font-size: 12px;
-    }
-
     img {
       margin-right: 15px;
       height: 36px;

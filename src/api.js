@@ -1,18 +1,32 @@
 import _ from '_';
 import mock from './mock.js';
 
-export default {
+let api = {
   test: mock['addresses'],
   name: 'Alfred Cepeda',
   image: require('./assets/images/me.jpeg'),
   keyInject: {
-    'first': function(coll, offset) {
-      let index = 0 + (offset || 0);
-      return coll[index];
+    '$first': function(coll, offset, length) {
+      let start = (coll.length - 1) - (offset || 0);
+
+      if (!_.isUndefined(length)) {
+        debugger;
+        return api.slice(coll, start, start + length);
+      } else {
+        debugger;
+        return api.key(coll, start);
+      }
     },
-    'last': function(coll, offset) {
-      let index = (coll.length - 1) - (offset || 0);
-      return coll[index];
+    '$last': function(coll, offset, length) {
+      let start = 0 + (offset || 0);
+
+      if (!_.isUndefined(length)) {
+        debugger;
+        return api.slice(coll, start, start + length);
+      } else {
+        debugger;
+        return api.key(coll, start);
+      }
     }
   },
   all: function(coll) {
@@ -32,14 +46,15 @@ export default {
   },
   key: function(coll, key, offset) {
     return new Promise((resolve, reject) => {
-      var result = mock[coll][key];
-
-      if (_.isUndefined(result)) {
+      var result;
+      if (key[0] === '$') {
         var inject = this.keyInject[key];
 
         if (_.isFunction(inject)) {
           result = inject(mock[coll], offset);
         }
+      } else {
+        result = mock[coll][key];
       }
 
       resolve(result);
@@ -51,19 +66,21 @@ export default {
 
     keys.forEach((key) => {
       if (_.isObject(key)) {
-        let promise = this.key(coll, key.key, key.offset).then((data) => {
-          result[key] = data;
-          return data;
-        });
-
-        promises.push(promise);
+        if (_.isArray(key.offset)) {
+          promises.push(this.key.apply(this, key.offset).then((data) => {
+            result[key.key] = data;
+          }));
+        } else {
+          promises.push(this.key(coll, key.key, key.offset).then((data) => {
+            result[key.key] = data;
+            return data;
+          }));
+        }
       } else {
-        let promise = this.key(coll, key).then((data) => {
+        promises.push(this.key(coll, key).then((data) => {
           result[key] = data;
           return data;
-        });
-
-        promises.push(promise);
+        }));
       }
     });
 
@@ -73,3 +90,5 @@ export default {
     });
   }
 };
+
+export { api };
