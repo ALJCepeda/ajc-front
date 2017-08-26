@@ -27,7 +27,8 @@
 </template>
 
 <script>
-  import api from './../api';
+  import API from './../api.js';
+  const api = new API();
 
   export default {
     name: 'mainNav',
@@ -38,6 +39,8 @@
       };
     },
     created: function() {
+      var test = 1;
+
       api.key('general', ['firstname', 'lastname', 'image']).then((resp) => {
         debugger;
       });
