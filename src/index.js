@@ -6,11 +6,11 @@ import './less/variables.less';
 import './less/index.less';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import app from './app';
-import api from './api';
+import app from './app.vue';
+import api from './api.js';
 
-import timeline from './pages/timeline';
-import about from './pages/about';
+import timeline from './pages/timeline.vue';
+import about from './pages/about.vue';
 
 Vue.config.debug = true;
 Vue.use(VueRouter);

@@ -12,7 +12,8 @@ let mock = {
     firstname: 'Alfred',
     lastname: 'Cepeda',
     birthdate: moment('8/30/1988'),
-    hometown: 'Yorktown Heights, New York'
+    hometown: 'Yorktown Heights, New York',
+    image: require('./assets/images/me.jpeg')
   },
   city: { },
   addresses: { },

@@ -27,9 +27,21 @@
 </template>
 
 <script>
+  import api from './../api';
+
   export default {
     name: 'mainNav',
-    props: ['image', 'name']
+    data: function() {
+      return {
+        image: '',
+        name: ''
+      };
+    },
+    created: function() {
+      api.key('general', ['firstname', 'lastname', 'image']).then((resp) => {
+        debugger;
+      });
+    }
   };
 </script>
 

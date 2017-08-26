@@ -25,9 +25,9 @@
 </template>
 
 <script>
-  import overview from './../components/about/overview';
-  import work from './../components/about/work';
-  import homes from './../components/about/homes';
+  import overview from './../components/about/overview.vue';
+  import work from './../components/about/work.vue';
+  import homes from './../components/about/homes.vue';
 
   export default {
     name: 'about',

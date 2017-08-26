@@ -2,9 +2,6 @@ import _ from '_';
 import mock from './mock.js';
 
 let api = {
-  test: mock['addresses'],
-  name: 'Alfred Cepeda',
-  image: require('./assets/images/me.jpeg'),
   keyInject: {
     '$first': function(coll, offset, length) {
       let start = (coll.length - 1) - (offset || 0);
@@ -91,4 +88,4 @@ let api = {
   }
 };
 
-export { api };
+export default () => { api };
