@@ -62,9 +62,11 @@
 </template>
 
 <script>
-  import api from './../../api.js';
+  import API from './../../api.js';
   import util from './../../util.js';
   import componentHandler from 'componentHandler';
+
+  const api = new API();
 
   export default {
     name: 'work',

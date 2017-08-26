@@ -105,7 +105,8 @@
 </template>
 
 <script>
-  import api from './../../api.js';
+  import API from './../../api.js';
+  const api = new API();
 
   export default {
     name: 'overview',
