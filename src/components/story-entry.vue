@@ -26,9 +26,23 @@
 </template>
 
 <script>
+  import API from './../api.js';
+  const api = new API();
+
   export default {
     name: 'story-entry',
-    props: ['name', 'image']
+    data: function() {
+      return {
+        image: '',
+        name: ''
+      };
+    },
+    created: function() {
+      api.keys('general', ['firstname', 'lastname', 'image']).then((resp) => {
+        this.name = `${resp.firstname} ${resp.lastname}`;
+        this.image = resp.image;
+      });
+    }
   };
 </script>
 

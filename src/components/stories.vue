@@ -1,6 +1,6 @@
 <template>
   <main class='stories'>
-    <story-entry :name='name' :image='image'></story-entry>
+    <story-entry></story-entry>
 
   </main>
 </template>
@@ -10,8 +10,7 @@
 
   export default {
     name: 'stories',
-    components: { storyEntry },
-    props: ['name', 'image']
+    components: { storyEntry }
   };
 </script>
 

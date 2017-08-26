@@ -1,8 +1,7 @@
 <template>
   <div class='timeline row-nw ai-between'>
     <intro></intro>
-    <stories :image='image'
-             :name='name'></stories>
+    <stories></stories>
   </div>
 </template>
 
@@ -12,8 +11,7 @@
 
   export default {
     name: 'timeline',
-    components: { intro, stories },
-    props: ['name', 'image']
+    components: { intro, stories }
   };
 </script>
 
