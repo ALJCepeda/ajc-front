@@ -39,10 +39,9 @@
       };
     },
     created: function() {
-      var test = 1;
-
-      api.key('general', ['firstname', 'lastname', 'image']).then((resp) => {
-        debugger;
+      api.keys('general', ['firstname', 'lastname', 'image']).then((resp) => {
+        this.name = `${resp.firstname} ${resp.lastname}`;
+        this.image = resp.image;
       });
     }
   };
