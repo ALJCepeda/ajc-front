@@ -1,18 +1,18 @@
 import _ from '_';
 import mock from './mock.js';
 
-const api = function() {};
+const http = function() {};
 
-api.prototype.keyInject = {
+http.prototype.keyInject = {
   '$first': function(coll, offset, length) {
     let start = (coll.length - 1) - (offset || 0);
 
     if (!_.isUndefined(length)) {
       debugger;
-      return api.slice(coll, start, start + length);
+      return http.slice(coll, start, start + length);
     } else {
       debugger;
-      return api.key(coll, start);
+      return http.key(coll, start);
     }
   },
   '$last': function(coll, offset, length) {
@@ -20,33 +20,34 @@ api.prototype.keyInject = {
 
     if (!_.isUndefined(length)) {
       debugger;
-      return api.slice(coll, start, start + length);
+      return http.slice(coll, start, start + length);
     } else {
       debugger;
-      return api.key(coll, start);
+      return http.key(coll, start);
     }
   }
 };
 
-api.prototype.all = function(coll) {
+http.prototype.all = function(coll) {
   return new Promise((resolve, reject) => {
     resolve(mock[coll]);
   });
 };
 
-api.prototype.slice = function(coll, start, end) {
+http.prototype.slice = function(coll, start, end) {
   return new Promise((resolve, reject) => {
     resolve(mock[coll].slice(start, end - start));
   });
 };
 
-api.prototype.id = function(coll, id) {
+http.prototype.id = function(coll, id) {
   return mock[coll].find((entry) => {
     return entry.id === id;
   });
 };
 
-api.prototype.key = function(coll, key, offset) {
+http.coll('general').offset(2).filter()
+http.prototype.key = function(coll, key, offset) {
   return new Promise((resolve, reject) => {
     var result;
     if (key[0] === '$') {
@@ -63,7 +64,7 @@ api.prototype.key = function(coll, key, offset) {
   });
 };
 
-api.prototype.keys = function(coll, keys) {
+http.prototype.keys = function(coll, keys) {
   let promises = [];
   let result = {};
 
@@ -93,4 +94,4 @@ api.prototype.keys = function(coll, keys) {
   });
 };
 
-export default api;
+export default http;

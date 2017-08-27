@@ -1,10 +1,12 @@
 // let tabs = require('./scripts/tabs');
 // let router = require('./scripts/router');
 import $ from 'jquery';
+/*
 import './less/flex.less';
 import './less/variables.less';
 import './less/index.less';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import app from './app.vue';
 import api from './api.js';
@@ -13,6 +15,7 @@ import timeline from './pages/timeline.vue';
 import about from './pages/about.vue';
 
 Vue.config.debug = true;
+Vue.use(Vuex);
 Vue.use(VueRouter);
 let router = new VueRouter({
   mode: 'history',
@@ -30,8 +33,10 @@ let router = new VueRouter({
     }
   ]
 });
-
+*/
 /* eslint-disable no-new */
+
+/*
 new Vue({
   el: '#app',
   render: h => h(app, {
@@ -41,6 +46,6 @@ new Vue({
   components: { app },
   router
 });
-
+*/
 /* Home script */
-$('.home-carousel').slick();
+//$('.home-carousel').slick();

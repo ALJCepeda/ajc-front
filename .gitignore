@@ -4,6 +4,7 @@ dist/
 bower_components/
 aljcepeda.php
 /nbproject
+coverage
 error_log
 public/downloads
 public/bower
@@ -15,3 +16,4 @@ node_modules
 public/libs
 public/fonts
 npm-debug.log
+package-lock.json

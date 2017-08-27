@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/ALJCepeda/aljcepeda#readme",
   "dependencies": {
-    "vue": "^2.3.3"
+    "karma-webpack": "^2.0.4",
+    "phantomjs": "^2.1.7",
+    "vue": "^2.3.3",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -35,7 +38,16 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "file-loader": "^0.9.0",
+    "jasmine-core": "^2.8.0",
     "json-loader": "^0.5.4",
+    "karma": "^1.7.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.31",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "loader-utils": "^1.1.0",
