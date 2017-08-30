@@ -61,6 +61,7 @@ module.exports = {
     }
   },
   devServer: {
+    sourceMap: true,
     historyApiFallback: true,
     noInfo: true
   },

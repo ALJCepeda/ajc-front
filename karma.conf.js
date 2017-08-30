@@ -16,10 +16,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'src/index.js'
-    //  'src/**/*.js',
-    //  'src/**/*.vue',
-    //  'tests/**/*.js
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/vue-router/dist/vue-router.js',
+        'node_modules/vuex/dist/vuex.js',
+        'node_modules/moment/moment.js',
+        'tests/**/*.js'
     ],
 
 
@@ -27,11 +28,10 @@ module.exports = function(config) {
     exclude: [
     ],
 
-
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/index.js': ['webpack', 'babel', 'sourcemap']
+      'tests/**/*.js': ['webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
@@ -69,8 +69,17 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-
+    browsers: ['ChromeHeadless'],
+    customLaunchers: {
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9222'
+        ]
+      }
+    },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

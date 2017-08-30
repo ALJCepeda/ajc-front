@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import API from './../api.js';
+  import API from './../services/api.js';
   const api = new API();
 
   export default {

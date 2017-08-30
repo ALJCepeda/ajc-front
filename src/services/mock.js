@@ -4,16 +4,16 @@ import moment from 'moment';
 let Work = {
   Name: 'N/A',
   link: '#',
-  logo: require('./assets/images/work-icon.png')
+  logo: require('./../assets/images/work-icon.png')
 };
 
 let mock = {
   general: {
     firstname: 'Alfred',
     lastname: 'Cepeda',
-    birthdate: moment('8/30/1988'),
+    birthdate: moment('1988-08-30'),
     hometown: 'Yorktown Heights, New York',
-    image: require('./assets/images/me.jpeg')
+    image: require('./../assets/images/me.jpeg')
   },
   city: { },
   addresses: { },
@@ -217,20 +217,20 @@ addresses.forEach((address) => {
 mock.homes = [
   {
     address: mock.addresses['1620 SE Green Acres Cir N-103'],
-    start: moment('4/1/2017'),
+    start: moment('2017-04-01'),
     end: null
   }, {
     address: mock.addresses['8 Brisa Ln'],
-    start: moment('8/1/2016'),
-    end: moment('3/31/2017')
+    start: moment('2016-08-01'),
+    end: moment('2017-03-31')
   }, {
     address: mock.addresses['811 North Main St'],
-    start: moment('6/1/2015'),
-    end: moment('8/1/2016')
+    start: moment('2015-06-01'),
+    end: moment('2016-08-01')
   }, {
     address: mock.addresses['175 Independence Way'],
-    start: moment('8/1/2012'),
-    end: moment('6/1/2015')
+    start: moment('2012-08-01'),
+    end: moment('2015-06-01')
   }, {
     address: mock.addresses['2763 Moreland St'],
     start: null,

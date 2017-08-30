@@ -62,8 +62,8 @@
 </template>
 
 <script>
-  import API from './../../api.js';
-  import util from './../../util.js';
+  import API from './../../services/api.js';
+  import util from './../../services/util.js';
   import componentHandler from 'componentHandler';
 
   const api = new API();

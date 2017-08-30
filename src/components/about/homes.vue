@@ -24,10 +24,9 @@
 </template>
 
 <script>
-  import API from './../../api';
-
+  import API from './../../services/api';
   const api = new API();
-  
+
   export default {
     name: 'homes',
     data: function() {

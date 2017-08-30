@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import API from './../api.js';
+  import API from './../services/store.js';
   const api = new API();
 
   export default {
