@@ -8,7 +8,7 @@ export const state = {
 
 export const mutations = {
   general (state, data) {
-      Object.entries(obj).forEach(([key, value]) => state.general[key] = value);
+      Object.entries(data).forEach(([key, value]) => state.general[key] = value);
   }
 };
 

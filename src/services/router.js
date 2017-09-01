@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import timeline from './../pages/timeline.vue';
-/*import about from './../pages/about.vue';
+import about from './../pages/about.vue';
 
 Vue.use(VueRouter);
 
@@ -15,4 +15,3 @@ export default new VueRouter({
     { path: '/about/:section', component: about }
   ]
 });
-*/
