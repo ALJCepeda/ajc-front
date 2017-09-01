@@ -19,6 +19,7 @@ module.exports = function(config) {
         'node_modules/vue-router/dist/vue-router.js',
         'node_modules/vuex/dist/vuex.js',
         'node_modules/moment/moment.js',
+        'node_modules/lodash/lodash.js',
         'tests/**/*.js'
     ],
 

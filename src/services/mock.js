@@ -15,7 +15,7 @@ let mock = {
     hometown: 'Yorktown Heights, New York',
     image: require('./../assets/images/me.jpeg')
   },
-  city: { },
+  cities: { },
   addresses: { },
   jobs: [ ],
   homes: [ ],
@@ -90,7 +90,7 @@ let mock = {
   }
 };
 
-let city = [
+let cities = [
   {
     name: 'Yorktown Heights',
     state: 'New York',
@@ -144,14 +144,14 @@ let city = [
   }
 ];
 
-city.forEach((city) => {
+cities.forEach((city) => {
   let key = `${city.name}, ${city.shortState}`;
 
-  if (!_.isUndefined(mock.city[key])) {
+  if (!_.isUndefined(mock.cities[key])) {
     throw new Error('Primary key already defined:', key);
   }
 
-  mock.city[key] = city;
+  mock.cities[key] = city;
 });
 
 let addresses = [
@@ -159,44 +159,44 @@ let addresses = [
     number: 2763,
     street: 'Moreland St',
     zip: 10598,
-    city: mock.city['Yorktown Heights, NY']
+    city: mock.cities['Yorktown Heights, NY']
   }, {
     number: 175,
     street: 'Independence Way',
     zip: 97351,
-    city: mock.city['Independence, OR']
+    city: mock.cities['Independence, OR']
   }, {
     number: 811,
     street: 'North Main St',
     zip: 97351,
-    city: mock.city['Independence, OR']
+    city: mock.cities['Independence, OR']
   }, {
     number: 8,
     street: 'Brisa Ln',
     zip: 34952,
-    city: mock.city['Port Saint Lucie, FL']
+    city: mock.cities['Port Saint Lucie, FL']
   }, {
     number: 1620,
     street: 'SE Green Acres Cir',
     unit: 'N-103',
     zip: 34952,
-    city: mock.city['Port Saint Lucie, FL']
+    city: mock.cities['Port Saint Lucie, FL']
   }, {
     number: 6811,
     street: 'Shawnee Mission Pkwy',
     unit: '#206',
     zip: 66202,
-    city: mock.city['Overland Park, KS']
+    city: mock.cities['Overland Park, KS']
   }, {
     number: 4000,
     street: 'Central Florida Blvd',
     zip: 32816,
-    city: mock.city['Orlando, FL']
+    city: mock.cities['Orlando, FL']
   }, {
     number: 16550,
     street: 'Fishhawk Blvd',
     zip: 33547,
-    city: mock.city['Lithia, FL']
+    city: mock.cities['Lithia, FL']
   }
 ];
 
@@ -207,7 +207,7 @@ addresses.forEach((address) => {
     key = `${key} ${address.unit}`;
   }
 
-  if (!_.isUndefined(mock.city[key])) {
+  if (!_.isUndefined(mock.cities[key])) {
     throw new Error('Primary key already defined:', key);
   }
 
