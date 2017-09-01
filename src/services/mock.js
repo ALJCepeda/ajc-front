@@ -245,15 +245,15 @@ mock.jobs = [
     href: 'https://www.linkedin.com/company/nikao-corporation',
     address: mock.addresses['6811 Shawnee Mission Pkwy #206'],
     description: 'Nikao is a web and mobile technology innovation company that incubates and operates a diverse set of companies. We are founders, innovators, thinkers who are highly motivated and superbly caffeinated.',
-    start: moment('2/27/17'),
+    start: moment('2017-02-27'),
     end: null
   }, Work), Object.assign({
     company: 'Self-Employed',
     title: 'Software Engineer',
     address: mock.addresses['8 Brisa Ln'],
     description: 'Mobile/Web/Software/Database development, consulting, review, and optimizations',
-    start: moment('1/1/2012'),
-    end: moment('2/27/17')
+    start: moment('2012-01-01'),
+    end: moment('2017-02-27')
   }, Work)
 ];
 
@@ -262,14 +262,14 @@ mock.education = {
     name: 'University of Central Florida',
     degree: 'Bachelor\'s in Interdisciplinary Studies',
     address: mock.addresses['4000 Central Florida Blvd'],
-    graduated: moment('3/1/2013'),
+    graduated: moment('2013-03-01'),
     href: 'https://ucf.edu',
     logo: 'https://www.ucf.edu/wp-content/uploads/2015/06/ucf.png'
   },
   highschool: {
     name: 'Newsome High School',
     address: mock.addresses['16550 Fishhawk Blvd'],
-    graduated: moment('6/1/2006'),
+    graduated: moment('2006-06-01'),
     href: 'http://newsome.mysdhc.org',
     logo: null
   }

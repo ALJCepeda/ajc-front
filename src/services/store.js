@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+
+import http from './http.js';
+
 Vue.use(Vuex);
 
 export const state = {
@@ -35,6 +38,15 @@ export const getNeedsFetch = function(state, data) {
   return result;
 };
 
+export const doFetch = function(data) {
+  const promises = [];
+
+  for (let [coll, keys] of Object.entries(data)) {
+    let promise = http.keys(coll, keys);
+  }
+
+  return Promise.all(promises);
+}
 export const actions = {
   fetch (state, data) {
     const needsFetch = getNeedsFetch(state, data);

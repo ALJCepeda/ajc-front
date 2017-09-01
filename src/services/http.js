@@ -94,4 +94,4 @@ http.prototype.keys = function(coll, keys) {
   });
 };
 
-export default http;
+export default new http();
