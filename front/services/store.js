@@ -46,12 +46,13 @@ export const doFetch = function(data) {
   }
 
   return Promise.all(promises);
-}
+};
+
 export const actions = {
   fetch (state, data) {
     const needsFetch = getNeedsFetch(state, data);
   }
-}
+};
 
 export default new Vuex.Store({
   state,

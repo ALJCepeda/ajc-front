@@ -20,6 +20,7 @@ module.exports = function(config) {
         'node_modules/vuex/dist/vuex.js',
         'node_modules/moment/moment.js',
         'node_modules/lodash/lodash.js',
+        'node_modules/axios/dist/axios.js',
         'tests/**/*.js'
     ],
 
