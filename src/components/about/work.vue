@@ -62,11 +62,9 @@
 </template>
 
 <script>
-  import API from './../../services/api.js';
-  import util from './../../services/util.js';
+  import data from './../../services/data';
+  import util from './../../services/util';
   import componentHandler from 'componentHandler';
-
-  const api = new API();
 
   export default {
     name: 'work',
@@ -78,19 +76,11 @@
       };
     },
     created: function() {
-      api.all('jobs').then((jobs) => {
-        this.jobs = jobs;
+      this.jobs = data.jobs;
+      this.skills = util.shuffle(Object.keys(data.skills)).map((key) => {
+        return Object.assign({ name: key }, skills[key]);
       });
-
-      api.all('skills').then((skills) => {
-        this.skills = util.shuffle(Object.keys(skills)).map((key) => {
-          return Object.assign({ name: key }, skills[key]);
-        });
-      });
-
-      api.all('education').then((education) => {
-        this.educations = [ education['college'], education['highschool'] ];
-      });
+      this.educations = data.educations;
     },
     watch: {
       skills: function(skills) {

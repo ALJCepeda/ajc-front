@@ -105,8 +105,7 @@
 </template>
 
 <script>
-  import API from './../../services/api.js';
-  const api = new API();
+  import data from './../../services/data';
 
   export default {
     name: 'overview',
@@ -119,23 +118,10 @@
       };
     },
     created: function() {
-      /*
-      api.slice('jobs', 0, 2).then((jobs) => {
-        this.jobs = jobs;
-      });
-      */
-
-      api.keys('education', [ 'college', 'highschool' ]).then((education) => {
-        this.education = education;
-      });
-
-      api.keys('homes', [ 'first', 'last' ]).then((homes) => {
-        this.homes = homes;
-      });
-
-      api.key('city', 'Independence, OR').then((city) => {
-        this.city = city;
-      });
+      this.education = data.education;
+      this.firstHome = data.homes[0];
+      this.lastHome = data.homes[data.homes.length - 1];
+      this.city = data.city['Independence, OR'];
     }
   };
 </script>

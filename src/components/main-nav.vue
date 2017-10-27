@@ -27,8 +27,7 @@
 </template>
 
 <script>
-  import API from './../services/store.js';
-  const api = new API();
+  import data from './../services/data';
 
   export default {
     name: 'mainNav',
@@ -39,10 +38,8 @@
       };
     },
     created: function() {
-      api.keys('general', ['firstname', 'lastname', 'image']).then((resp) => {
-        this.name = `${resp.firstname} ${resp.lastname}`;
-        this.image = resp.image;
-      });
+      this.name = `${data.general.firstname} ${data.general.lastname}`;
+      this.image = data.general.image;
     }
   };
 </script>

@@ -24,8 +24,7 @@
 </template>
 
 <script>
-  import API from './../../services/api';
-  const api = new API();
+  import data from './../../services/data';
 
   export default {
     name: 'homes',
@@ -35,13 +34,7 @@
       };
     },
     created: function() {
-      api.keys('homes', ['$first', '$last']).then((response) => {
-        this.homes = response;
-      });
-
-      api.keys('homes', { '$last': [3, 3] }).then((response) => {
-        debugger;
-      });
+      
     }
   };
 </script>
