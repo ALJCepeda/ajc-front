@@ -44,7 +44,7 @@
     </h5>
 
     <section class='entries'>
-      <div class='row row-nw ai-center' v-for='education in educations'>
+      <div class='row row-nw ai-center' v-for='education in education'>
         <img :src='education.logo'></img>
 
         <div class='description'>
@@ -72,15 +72,15 @@
       return {
         jobs: [],
         skills: [],
-        educations: []
+        education: []
       };
     },
     created: function() {
       this.jobs = data.jobs;
       this.skills = util.shuffle(Object.keys(data.skills)).map((key) => {
-        return Object.assign({ name: key }, skills[key]);
+        return Object.assign({ name: key }, data.skills[key]);
       });
-      this.educations = data.educations;
+      this.education = data.education;
     },
     watch: {
       skills: function(skills) {
