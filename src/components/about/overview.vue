@@ -118,10 +118,11 @@
       };
     },
     created: function() {
-      this.education = data.education;
-      this.firstHome = data.homes[0];
-      this.lastHome = data.homes[data.homes.length - 1];
-      this.city = data.city['Independence, OR'];
+      this.jobs = data.jobs;
+      this.education = data.indexedEducation;
+      this.firstHome = data.homes[data.homes.length - 1];
+      this.lastHome = data.homes[0];
+      this.city = data.indexedCities['Independence, OR'];
     }
   };
 </script>

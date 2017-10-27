@@ -7,6 +7,7 @@ import './less/flex.less';
 import './less/variables.less';
 import './less/index.less';
 
+import data from './services/data';
 import router from './services/router.js';
 import app from './app.vue';
 
@@ -18,6 +19,9 @@ new Vue({
   render: h => h(app, { }),
   template: `<app></app>`,
   components: { app },
+  data: function() {
+    return { data };
+  },
   router
 });
 

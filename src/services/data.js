@@ -1,96 +1,85 @@
 import _ from '_';
 import moment from 'moment';
+import store from './store';
 
-let Work = {
-  Name: 'N/A',
-  link: '#',
-  logo: require('./../assets/images/work-icon.png')
-};
+store.setGeneral({
+  firstname: 'Alfred',
+  lastname: 'Cepeda',
+  birthdate: moment('1988-08-30'),
+  hometown: 'Yorktown Heights, New York',
+  image: require('./../assets/images/me.jpeg')
+});
 
-let data = {
-  general: {
-    firstname: 'Alfred',
-    lastname: 'Cepeda',
-    birthdate: moment('1988-08-30'),
-    hometown: 'Yorktown Heights, New York',
-    image: require('./../assets/images/me.jpeg')
+store.setSkills({
+  'Node.JS': {
+    outOfTen: 7,
+    description: 'Experienced in developing and deploying complicated server infastructures such as distributed models that utilized clusters and messaging queues. Capable of architecting high quality web services, command line tools, and desktop applications in a short amount of time through the smart design of isomorphic Javascript code.',
+    projects: [],
+    rank: 1
   },
-  cities: { },
-  addresses: { },
-  jobs: [ ],
-  homes: [ ],
-  education: { },
-  skills: {
-    'Node.JS': {
-      outOfTen: 7,
-      description: 'Experienced in developing and deploying complicated server infastructures such as distributed models that utilized clusters and messaging queues. Capable of architecting high quality web services, command line tools, and desktop applications in a short amount of time through the smart design of isomorphic Javascript code.',
-      projects: [],
-      rank: 1
-    },
-    'PHP': {
-      outOfTen: 6,
-      description: '',
-      projects: [],
-      rank: 2
-    },
-    'Javascript': {
-      outOfTen: 8,
-      description: '',
-      projects: [],
-      rank: 3
-    },
-    'HTML': {
-      outOfTen: 7,
-      description: '',
-      projects: [],
-      rank: 4
-    },
-    'CSS': {
-      outOfTen: 7,
-      description: '',
-      projects: [],
-      rank: 5
-    },
-    'SQL': {
-      outOfTen: 9,
-      description: '',
-      projects: [],
-      rank: 6
-    },
-    'Vue': {
-      outOfTen: 6,
-      description: '',
-      projects: [],
-      rank: 7
-    },
-    'Angular 1.x': {
-      outOfTen: 7,
-      description: '',
-      projects: [],
-      rank: 8
-    },
-    'Angular 2.x': {
-      outOfTen: 6,
-      description: '',
-      projects: [],
-      rank: 9
-    },
-    'iOS': {
-      outOfTen: 5,
-      description: '',
-      projects: [],
-      rank: 10
-    },
-    'Bash': {
-      outOfTen: 4,
-      description: '',
-      project: [],
-      rank: 11
-    }
+  'PHP': {
+    outOfTen: 6,
+    description: '',
+    projects: [],
+    rank: 2
+  },
+  'Javascript': {
+    outOfTen: 8,
+    description: '',
+    projects: [],
+    rank: 3
+  },
+  'HTML': {
+    outOfTen: 7,
+    description: '',
+    projects: [],
+    rank: 4
+  },
+  'CSS': {
+    outOfTen: 7,
+    description: '',
+    projects: [],
+    rank: 5
+  },
+  'SQL': {
+    outOfTen: 9,
+    description: '',
+    projects: [],
+    rank: 6
+  },
+  'Vue': {
+    outOfTen: 6,
+    description: '',
+    projects: [],
+    rank: 7
+  },
+  'Angular 1.x': {
+    outOfTen: 7,
+    description: '',
+    projects: [],
+    rank: 8
+  },
+  'Angular 2.x': {
+    outOfTen: 6,
+    description: '',
+    projects: [],
+    rank: 9
+  },
+  'iOS': {
+    outOfTen: 5,
+    description: '',
+    projects: [],
+    rank: 10
+  },
+  'Bash': {
+    outOfTen: 4,
+    description: '',
+    project: [],
+    rank: 11
   }
-};
+});
 
-let cities = [
+store.setCities([
   {
     name: 'Yorktown Heights',
     state: 'New York',
@@ -142,142 +131,115 @@ let cities = [
     logo: null,
     href: null
   }
-];
+]);
 
-cities.forEach((city) => {
-  let key = `${city.name}, ${city.shortState}`;
-
-  if (!_.isUndefined(data.cities[key])) {
-    throw new Error('Primary key already defined:', key);
-  }
-
-  data.cities[key] = city;
-});
-
-let addresses = [
+store.setAddresses([
   {
     number: 2763,
     street: 'Moreland St',
     zip: 10598,
-    city: data.cities['Yorktown Heights, NY']
+    city: 'Yorktown Heights, NY'
   }, {
     number: 175,
     street: 'Independence Way',
     zip: 97351,
-    city: data.cities['Independence, OR']
+    city: 'Independence, OR'
   }, {
     number: 811,
     street: 'North Main St',
     zip: 97351,
-    city: data.cities['Independence, OR']
+    city: 'Independence, OR'
   }, {
     number: 8,
     street: 'Brisa Ln',
     zip: 34952,
-    city: data.cities['Port Saint Lucie, FL']
+    city: 'Port Saint Lucie, FL'
   }, {
     number: 1620,
     street: 'SE Green Acres Cir',
     unit: 'N-103',
     zip: 34952,
-    city: data.cities['Port Saint Lucie, FL']
+    city: 'Port Saint Lucie, FL'
   }, {
     number: 6811,
     street: 'Shawnee Mission Pkwy',
     unit: '#206',
     zip: 66202,
-    city: data.cities['Overland Park, KS']
+    city: 'Overland Park, KS'
   }, {
     number: 4000,
     street: 'Central Florida Blvd',
     zip: 32816,
-    city: data.cities['Orlando, FL']
+    city: 'Orlando, FL'
   }, {
     number: 16550,
     street: 'Fishhawk Blvd',
     zip: 33547,
-    city: data.cities['Lithia, FL']
+    city: 'Lithia, FL'
   }
-];
+]);
 
-addresses.forEach((address) => {
-  var key = `${address.number} ${address.street}`;
-
-  if (_.isString(address.unit)) {
-    key = `${key} ${address.unit}`;
-  }
-
-  if (!_.isUndefined(data.cities[key])) {
-    throw new Error('Primary key already defined:', key);
-  }
-
-  data.addresses[key] = address;
-});
-
-data.homes = [
+store.setHomes([
   {
-    address: data.addresses['1620 SE Green Acres Cir N-103'],
+    address: '1620 SE Green Acres Cir N-103',
     start: moment('2017-04-01'),
     end: null
   }, {
-    address: data.addresses['8 Brisa Ln'],
+    address: '8 Brisa Ln',
     start: moment('2016-08-01'),
     end: moment('2017-03-31')
   }, {
-    address: data.addresses['811 North Main St'],
+    address: '811 North Main St',
     start: moment('2015-06-01'),
     end: moment('2016-08-01')
   }, {
-    address: data.addresses['175 Independence Way'],
+    address: '175 Independence Way',
     start: moment('2012-08-01'),
     end: moment('2015-06-01')
   }, {
-    address: data.addresses['2763 Moreland St'],
+    address: '2763 Moreland St',
     start: null,
     end: null
   }
-];
+]);
 
-data.jobs = [
-  Object.assign({
+store.setJobs([
+  {
     company: 'Nikao Coporation',
     title: 'Front End Developer',
     href: 'https://www.linkedin.com/company/nikao-corporation',
-    address: data.addresses['6811 Shawnee Mission Pkwy #206'],
+    address: '6811 Shawnee Mission Pkwy #206',
     description: 'Nikao is a web and mobile technology innovation company that incubates and operates a diverse set of companies. We are founders, innovators, thinkers who are highly motivated and superbly caffeinated.',
     start: moment('2017-02-27'),
     end: null
-  }, Work), Object.assign({
+  }, {
     company: 'Self-Employed',
     title: 'Software Engineer',
-    address: data.addresses['8 Brisa Ln'],
+    address: '8 Brisa Ln',
     description: 'Mobile/Web/Software/Database development, consulting, review, and optimizations',
     start: moment('2012-01-01'),
     end: moment('2017-02-27')
-  }, Work)
-];
+  }
+]);
 
-data.education = {
-  college: {
+store.setEducation([
+  {
+    type: 'college',
     name: 'University of Central Florida',
     degree: 'Bachelor\'s in Interdisciplinary Studies',
-    address: data.addresses['4000 Central Florida Blvd'],
+    address: '4000 Central Florida Blvd',
     graduated: moment('2013-03-01'),
     href: 'https://ucf.edu',
     logo: 'https://www.ucf.edu/wp-content/uploads/2015/06/ucf.png'
-  },
-  highschool: {
+  }, {
+    type:'highschool',
     name: 'Newsome High School',
-    address: data.addresses['16550 Fishhawk Blvd'],
+    address: '16550 Fishhawk Blvd',
     graduated: moment('2006-06-01'),
     href: 'http://newsome.mysdhc.org',
     logo: null
   }
-};
+]);
 
-data.educations = [
-  data.education['highschool'],
-  data.education['college']
-];
-
+const data = store.build();
 export default data;
