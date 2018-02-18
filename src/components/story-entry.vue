@@ -69,10 +69,6 @@
         height:100%;
         padding:6px;
 
-        .top {
-          margin-bottom:10px;
-        }
-
         .bottom {
           color:#90949c;
           font-size:12px;

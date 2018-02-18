@@ -1,7 +1,7 @@
 <template>
   <main class='about border'>
     <header>
-      <i class="material-icons">&#xE7FD;</i> About
+      <i class="material-icons">&#xE7FD;</i>About
     </header>
 
     <section class='row-nw'>
@@ -19,6 +19,7 @@
         <overview v-if='$route.params.section === "overview"'></overview>
         <work v-if='$route.params.section === "work"'></work>
         <homes v-if='$route.params.section === "homes"'></homes>
+        <info v-if='$route.params.section === "info"'></info>
       </div>
     </section>
   </main>
@@ -28,10 +29,11 @@
   import overview from './../components/about/overview.vue';
   import work from './../components/about/work.vue';
   import homes from './../components/about/homes.vue';
+  import info from './../components/about/info.vue';
 
   export default {
     name: 'about',
-    components: { overview, work, homes },
+    components: { overview, work, homes, info },
     props: [ ]
   };
 </script>

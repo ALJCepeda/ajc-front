@@ -110,8 +110,9 @@
   .intro {
     align-self:flex-start;
     background:@color-white;
-    width:38%;
-
+    width:40%;
+    margin-right:20px;
+    
     header {
       margin-left:12px;
       height:50px;

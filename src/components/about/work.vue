@@ -2,11 +2,10 @@
   <main class='work'>
     <h5>
       WORK
-      <hr>
     </h5>
 
     <section class='entries'>
-      <div class='row row-nw ai-center' v-for='job in jobs'>
+      <div class='entry' v-for='job in jobs'>
         <img :src='job.logo'></img>
 
         <div class='description'>
@@ -14,7 +13,7 @@
             {{ job.company }}
           </header>
 
-          <div class='body caption'>
+          <div class='caption'>
             {{ job.title }} · {{ job.address.city.name }}, {{ job.address.city.state }}
           </div>
 
@@ -27,7 +26,6 @@
 
     <h5>
       PROFESSIONAL SKILLS
-      <hr>
     </h5>
 
     <section class='entries skills'>
@@ -40,11 +38,10 @@
 
     <h5>
       EDUCATION
-      <hr>
     </h5>
 
     <section class='entries'>
-      <div class='row row-nw ai-center' v-for='education in education'>
+      <div class='entry' v-for='education in education'>
         <img :src='education.logo'></img>
 
         <div class='description'>
@@ -52,7 +49,7 @@
             {{ education.name }}
           </header>
 
-          <div class='body caption'>
+          <div class='caption'>
             Class of {{ education.graduated.format("YYYY") }} · {{ education.address.city.name }}, {{education.address.city.state}}
           </div>
         </div>
@@ -102,46 +99,10 @@
   @import './../../less/variables.less';
 
   .work {
-    img {
-      margin-right: 15px;
-      height: 36px;
-      width: 36px;
-      flex-shrink: 0;
-    }
-
     .entries {
-      margin-bottom: 25px;
-
-      .row {
-        margin-top: 15px;
-        padding-bottom: 20px;
-      }
-
       &.skills {
         color: @color-black2;
         font-weight: bold;
-      }
-
-      header {
-        color: @color-blue;
-        font-weight: bold;
-        font-size: 1.2em;
-
-        &:hover {
-          text-decoration: underline;
-          cursor: pointer;
-        }
-      }
-
-      .body {
-        margin-top: 3px;
-        color: @color-black1;
-      }
-
-      footer {
-        font-size: 0.8em;
-        margin-top: 5px;
-        color: @color-grey4;
       }
     }
   }

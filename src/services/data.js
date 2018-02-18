@@ -5,8 +5,11 @@ import store from './store';
 store.setGeneral({
   firstname: 'Alfred',
   lastname: 'Cepeda',
+  gender: 'Male',
   birthdate: moment('1988-08-30'),
   hometown: 'Yorktown Heights, New York',
+  phone: '(813) 562-3862',
+  email: 'AlfredJCepeda@gmail.com',
   image: require('./../assets/images/me.jpeg')
 });
 
@@ -85,49 +88,50 @@ store.setCities([
     state: 'New York',
     shortState: 'NY',
     zip: 'N/A',
-    country: 'United States of America',
+    country: 'United States',
     logo: null,
-    href: null
+    href: null,
+    isHometown: true
   }, {
     name: 'Independence',
     state: 'Oregon',
     shortState: 'OR',
-    country: 'United States of America',
+    country: 'United States',
     logo: null,
     href: null
   }, {
     name: 'Portland',
     state: 'Oregon',
     shortState: 'OR',
-    country: 'United States of America',
+    country: 'United States',
     logo: null,
     href: null
   }, {
     name: 'Port Saint Lucie',
     state: 'Florida',
     shortState: 'FL',
-    country: 'United States of America',
+    country: 'United States',
     logo: null,
     href: null
   }, {
     name: 'Overland Park',
     state: 'Kansas',
     shortState: 'KS',
-    country: 'United States of America',
+    country: 'United States',
     logo: null,
     href: null
   }, {
     name: 'Orlando',
     state: 'Florida',
     shortState: 'FL',
-    country: 'United State of America',
+    country: 'United State',
     logo: null,
     href: null
   }, {
     name: 'Lithia',
     state: 'Florida',
     shortState: 'FL',
-    country: 'United States of America',
+    country: 'United States',
     logo: null,
     href: null
   }

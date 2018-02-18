@@ -9,7 +9,7 @@
 @color-grey4:#90949c;
 @color-greyHr:#e9ebee;
 
-@color-body:#E7DFDD;
+@color-body:@color-grey4;
 @color-red:#B82601;
 @color-violet:#813772;
 @color-blue:#365899;
@@ -33,3 +33,20 @@
 .height-small(@rules) { .height-max(360px, @rules); }
 .height-medium(@rules) { .height-max(525px, @rules); }
 .height-large(@rules) { .height-min(525px, @rules); }
+
+.border-bottom { border-bottom: 1px solid @color-greyHr; }
+.body-font {
+  color:@color-body;
+	font-size:15px;
+	font-family:Helvetica, Arial, sans-serif;
+	line-height:18px;
+}
+.header-font {
+  color: @color-blue;
+	font-weight: 600;
+	font-size: 1.2em;
+}
+.subtitle-font {
+  font-size:0.85em;
+	color:@color-grey4;
+}

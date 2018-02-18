@@ -1,10 +1,8 @@
 <template>
   <main class='overview row-nw'>
     <section class='entries'>
-      <div class='row row-nw ai-center' v-if='jobs[0] && jobs[1]'>
-        <div class='logo'>
-          <img :src='jobs[0].logo'></img>
-        </div>
+      <div class='entry' v-if='jobs[0] && jobs[1]'>
+        <img :src='jobs[0].logo'></img>
 
         <div class='description'>
           <header>
@@ -14,21 +12,17 @@
             </a>
           </header>
 
-          <span class='caption'>
+          <footer>
             Past:
             <a :href='jobs[1].href'>
               {{ jobs[1].company }}
             </a>
-          </span>
+          </footer>
         </div>
       </div>
 
-      <hr>
-
-      <div class='row row-nw ai-center' v-if='education["college"] && education["highschool"]'>
-        <div class='logo'>
-          <img :src='education["college"].logo'></img>
-        </div>
+      <div class='entry' v-if='education["college"] && education["highschool"]'>
+        <img :src='education["college"].logo'></img>
 
         <div class='description'>
           <header>
@@ -38,21 +32,17 @@
             </a>
           </header>
 
-          <span class='caption'>
+          <footer>
             Past:
             <a :href='education["highschool"].href'>
               {{ education["highschool"].name }}
             </a>
-          </span>
+          </footer>
         </div>
       </div>
 
-      <hr>
-
-      <div class='row row-nw ai-center' v-if='homes["first"] && homes["last"]'>
-        <div class='logo'>
-          <img :src='homes["first"].logo'></img>
-        </div>
+      <div class='entry' v-if='homes["first"] && homes["last"]'>
+        <img :src='homes["first"].logo'></img>
 
         <div class='description'>
           <header>
@@ -62,7 +52,7 @@
             </a>
           </header>
 
-          <span class='caption'>
+          <footer>
             From
             <a :href='homes["first"].address.city.href'>
               {{ homes["first"].address.city.name }}, {{ homes["first"].address.city.state }}
@@ -71,13 +61,13 @@
             <a :href='city.href'>
               {{ city.name }}, {{ city.state }}
             </a>
-          </span>
+          </footer>
         </div>
       </div>
     </section>
 
     <section class='info'>
-        <div class='icon-row row-nw ai-center caption'>
+        <div class='icon-row row-nw ai-center subtitle-font'>
           <i class="material-icons">stay_current_portrait</i>
 
           <span>
@@ -85,7 +75,7 @@
           </span>
         </div>
 
-        <div class='icon-row row-nw ai-center caption'>
+        <div class='icon-row row-nw ai-center subtitle-font'>
           <i class="material-icons">email</i>
 
           <span>
@@ -93,7 +83,7 @@
           </span>
         </div>
 
-        <div class='icon-row row-nw ai-center caption'>
+        <div class='icon-row row-nw ai-center subtitle-font'>
           <i class="material-icons">cake</i>
 
           <span>
@@ -134,19 +124,12 @@
     .entries {
       width:62%;
 
-      .row {
-        width:100%;
-        padding:20px 10px 20px 20px;
-        margin-top:10px;
-        margin-tobbomt:10px;
-
-        &:hover {
-          background-color:@color-grey3;
+      .entry {
+        header {
+          font-size:1.0em;
         }
 
         .description {
-          width:80%;
-
           header {
             color:@color-black1;
           }

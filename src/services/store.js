@@ -2,7 +2,8 @@ const rawData = {};
 
 const BaseWork = {
   link: '#',
-  logo: require('./../assets/images/work-icon.png')
+  logo: require('./../assets/images/work-icon.png'),
+  isHometown: false
 };
 
 export default {
@@ -79,6 +80,12 @@ export default {
 
     return result;
   },
+  qualifyDates: function(entries) {
+    return entries.map((entry) => Object.assign({
+      fullStart: moment(entry.start).format('MMMM Do, YYYY'),
+      fullEnd: moment(entry.end).format('MMMM Do, YYYY')
+    }, entry));
+  },
   build: function() {
     const general = this.rawData.general;
     general.fullname = `${general.firstname} ${general.lastname}`;
@@ -91,7 +98,9 @@ export default {
     const addresses = this.referenceCities(this.rawData.addresses, indexedCities);
     const indexedAddresses = this.indexAddresses(addresses);
 
-    const homes = this.referenceAddresses(this.rawData.homes, indexedAddresses);
+    const referencedHomes = this.referenceAddresses(this.rawData.homes, indexedAddresses);
+    const homes = this.qualifyDates(referencedHomes);
+
     const jobs = this.referenceAddresses(this.rawData.jobs, indexedAddresses);
 
     const education = this.referenceAddresses(this.rawData.education, indexedAddresses);
