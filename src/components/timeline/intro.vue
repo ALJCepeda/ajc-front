@@ -1,8 +1,9 @@
 <template>
   <main class='intro border'>
-    <header class='row-nw ai-center'>
-      <i class='material-icons'>&#xE80B;</i>
-      <span>Intro</span>
+    <header>
+      <div class='title'>
+        <i class='material-icons'>&#xE80B;</i>Intro
+      </div>
     </header>
 
     <div class='content'>
@@ -104,34 +105,29 @@
 </script>
 
 <style lang='less' scoped>
-  @import './../less/flex.less';
-  @import './../less/variables.less';
+  @import './../../less/flex.less';
+  @import './../../less/variables.less';
 
   .intro {
+    padding: 15px;
     align-self:flex-start;
     background:@color-white;
     width:40%;
     margin-right:20px;
-    
+
     header {
-      margin-left:12px;
-      height:50px;
-
-      .material-icons {
-        color:#4267B2;
-        margin-right:9px;
-      }
-
-      span {
+      padding:0;
+      padding-bottom:10px;
+      background-color:@color-white;
+      border-bottom:1px solid @color-greyHr;
+      .title {
+        font-weight:normal;
         font-size:16px;
-        line-height:20px;
-        color:@color-black1;
       }
     }
 
     .content {
-      padding: 15px;
-      border-top:1px solid #e9ebee;
+      margin-top:10px;
       font-size:13px;
       color:@color-black2;
     }

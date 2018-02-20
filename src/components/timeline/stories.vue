@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import storyEntry from './../components/story-entry.vue';
+  import storyEntry from './../story-entry.vue';
 
   export default {
     name: 'stories',

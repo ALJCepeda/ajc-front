@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import intro from './../components/intro.vue';
-  import stories from './../components/stories.vue';
+  import intro from './../components/timeline/intro.vue';
+  import stories from './../components/timeline/stories.vue';
 
   export default {
     name: 'timeline',
