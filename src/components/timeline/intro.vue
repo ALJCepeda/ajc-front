@@ -7,14 +7,14 @@
     </header>
 
     <div class='content'>
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">work</i>
 
         <span>
           Self Employed as Software Engineer
         </span>
       </div>
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">work</i>
 
         <span>
@@ -22,7 +22,7 @@
         </span>
       </div>
 
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">work</i>
 
         <span>
@@ -30,7 +30,7 @@
         </span>
       </div>
 
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">work</i>
 
         <span>
@@ -38,7 +38,7 @@
         </span>
       </div>
 
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">work</i>
 
         <span>
@@ -46,7 +46,7 @@
         </span>
       </div>
 
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">work</i>
 
         <span>
@@ -54,7 +54,7 @@
         </span>
       </div>
 
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">work</i>
 
         <span>
@@ -62,7 +62,7 @@
         </span>
       </div>
 
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">work</i>
 
         <span>
@@ -70,7 +70,7 @@
         </span>
       </div>
 
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">&#xE88A;</i>
 
         <span>
@@ -78,7 +78,7 @@
         </span>
       </div>
 
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">&#xE8B4;</i>
 
         <span>
@@ -86,7 +86,7 @@
         </span>
       </div>
 
-      <div class='icon-row row-nw ai-center'>
+      <div class='icon-row'>
         <i class="material-icons">&#xE050;</i>
 
         <span>
@@ -112,9 +112,12 @@
     padding: 15px;
     align-self:flex-start;
     background:@color-white;
-    width:40%;
     margin-right:20px;
 
+    .upToTablet({
+      margin-right:0px;
+      margin-bottom:20px;
+    });
     header {
       padding:0;
       padding-bottom:10px;
@@ -123,6 +126,10 @@
       .title {
         font-weight:normal;
         font-size:16px;
+
+        .upToTablet({
+          .jc-center;
+        });
       }
     }
 
@@ -130,6 +137,14 @@
       margin-top:10px;
       font-size:13px;
       color:@color-black2;
+
+      .icon-row {
+        .row-nw;.ai-center;
+
+        .upToTablet({
+          .jc-center;
+        });
+      }
     }
   }
 

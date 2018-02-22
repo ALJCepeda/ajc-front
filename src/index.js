@@ -7,6 +7,7 @@ import './less/flex.less';
 import './less/variables.less';
 import './less/index.less';
 
+import store from './services/vuex.js';
 import data from './services/data';
 import router from './services/router.js';
 import app from './app.vue';
@@ -22,7 +23,7 @@ new Vue({
   data: function() {
     return { data };
   },
-  router
+  router, store
 });
 
 /* Home script */

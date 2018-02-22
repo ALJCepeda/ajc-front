@@ -1,3 +1,6 @@
+var dotenv = require('dotenv');
+dotenv.config();
+
 var path = require('path')
 var webpack = require('webpack')
 
@@ -8,12 +11,22 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+        API_URL: JSON.stringify(process.env.API_URL)
+      }
+    })
+  ],
   externals: {
       'jquery':'jQuery',
+      'Vuex':'Vuex',
       'vue-router':'VueRouter',
       'moment':'moment',
       'componentHandler':'componentHandler',
-      '_':'_'
+      '_':'_',
+      'axios':'axios'
   },
   module: {
     rules: [
@@ -76,11 +89,6 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {

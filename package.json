@@ -4,9 +4,9 @@
   "description": "Landing page for services",
   "main": "index.php",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --hot --host 0.0.0.0",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "test": "cross-env NODE_ENV=development karma start karma.conf.js"
+    "dev": "cross-env webpack-dev-server --hot --host 0.0.0.0",
+    "build": "cross-env webpack --progress --hide-modules",
+    "test": "cross-env karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,9 @@
     "url": "https://github.com/ALJCepeda/aljcepeda/issues"
   },
   "homepage": "https://github.com/ALJCepeda/aljcepeda#readme",
-  "dependencies": {},
+  "dependencies": {
+    "dotenv": "^5.0.0"
+  },
   "devDependencies": {
     "axios": "^0.16.2",
     "babel-core": "^6.0.0",

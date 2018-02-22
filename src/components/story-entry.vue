@@ -18,7 +18,7 @@
 
     <div class='main'>
       <p>
-        Timeline entries has not been completed yet
+        Timeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yet
       </p>
     </div>
 
