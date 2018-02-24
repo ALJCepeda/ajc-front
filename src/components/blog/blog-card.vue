@@ -26,6 +26,7 @@
     .row-nw;.ai-center;
     padding-right:10px;
     width:425px;
+    max-width:96vw;
     cursor:pointer;
 
     &:hover {
