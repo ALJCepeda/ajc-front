@@ -43,10 +43,22 @@
 	}
 }
 
+.upToMedium(@rules) {
+  @media only screen and (max-width:374px) {
+    @rules();
+  }
+}
+
 .downToTablet(@rules) {
 	@media only screen and (min-width:768px) {
 		@rules();
 	}
+}
+
+.downToMedium(@rules) {
+  @media only screen and (min-width:375px) {
+    @rules();
+  }
 }
 
 .hide-upto-tablet {

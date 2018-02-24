@@ -26,8 +26,6 @@
       </div>
     </main>
 
-
-
     <router-view></router-view>
   </div>
 </template>
@@ -87,10 +85,9 @@
   }
 
   .mainNav {
+    max-width:1023px;
     width:100%;
     background:@color-white;
-
-    padding:1px;
     margin-bottom:20px;
   }
 

@@ -25,7 +25,7 @@
     .border;
     .row-nw;.ai-center;
     padding-right:10px;
-    width:450px;
+    width:425px;
     cursor:pointer;
 
     &:hover {

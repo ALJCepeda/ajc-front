@@ -1,20 +1,21 @@
 <template>
   <main class='about border'>
-    <header>
-      <div class='title'>
+    <header class='title'>
+      <div class='content'>
         <i class="material-icons">&#xE7FD;</i>About
+        <i class="material-icons hide-downto-tablet" style='margin-left:10px;cursor:pointer;' @click='showNav()'>&#xE896;</i>
       </div>
     </header>
 
     <section class='row-nw'>
-      <nav>
+      <nav id='about-nav'>
           <router-link to='/about/overview'>Overview</router-link>
           <router-link to='/about/work'>Work and Education</router-link>
           <router-link to='/about/homes'>Places You've Lived</router-link>
           <router-link to='/about/info'>Contact and Basic Info</router-link>
-          <router-link to='/about/family'>Family and Relationships</router-link>
+          <!--<router-link to='/about/family'>Family and Relationships</router-link>
           <router-link to='/about/details'>Details About You</router-link>
-          <router-link to='/about/events'>Life Events</router-link>
+          <router-link to='/about/events'>Life Events</router-link>-->
       </nav>
 
       <div class='content'>
@@ -36,7 +37,66 @@
   export default {
     name: 'about',
     components: { overview, work, homes, info },
-    props: [ ]
+    data: function() {
+      return {
+        isTablet: false,
+        navShowing: true
+      };
+    },
+    props: [ ],
+    methods: {
+      showNav: function() {
+        $("#about-nav").animate({
+          width:'toggle'
+        }, 350);
+
+        this.$data.navShowing = !this.$data.navShowing;
+      }
+    },
+    created() {
+      const $window = $(window);
+      let first = false;
+      const checkWidth = () => {
+        const width = $window.width();
+        if(width <= 767) {
+          this.$data.isTablet = true;
+          if(!first) {
+            first = true;
+            $('#about-nav').hide();
+            this.$data.navShowing = false;
+          }
+        } else {
+          first = false;
+          this.$data.isTablet = false;
+
+          if(this.$data.navShowing === false) {
+            $('#about-nav').show();
+            this.$data.navShowing = true;
+          }
+        }
+      };
+
+      $window.resize(checkWidth);
+      checkWidth();
+
+      setTimeout(() => {
+        if($window.width() <= 767) {
+          $('#about-nav').hide();
+          this.$data.navShowing = false;
+        }
+      });
+
+      this.$router.beforeEach((to, from, next) => {
+        if(this.$data.isTablet === true) {
+          $("#about-nav").animate({
+            width:'hide'
+          }, 350);
+          this.$data.navShowing = false;
+        }
+
+        next();
+      });
+    }
   };
 </script>
 
@@ -44,6 +104,14 @@
   @import './../less/variables.less';
   @import './../less/flex.less';
 
+  #about-nav {
+    .upToTablet({
+      position:absolute;
+      background:@color-white;
+      width:unset;
+      height:100%;
+    });
+  }
   .about {
     background:blue;
 
@@ -71,6 +139,10 @@
       .content {
         width: 70%;
         padding: 20px;
+
+        .upToTablet({
+            width:90%;
+        });
       }
     }
   }

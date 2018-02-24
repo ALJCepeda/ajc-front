@@ -118,6 +118,7 @@
       margin-right:0px;
       margin-bottom:20px;
     });
+
     header {
       padding:0;
       padding-bottom:10px;
@@ -143,6 +144,10 @@
 
         .upToTablet({
           .jc-center;
+        });
+
+        .upToMedium({
+          .jc-start;
         });
       }
     }

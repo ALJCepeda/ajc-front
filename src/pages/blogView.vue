@@ -1,9 +1,5 @@
 <template>
   <main class='blog border'>
-    <div class='top-bar'>
-      <span>Back</span>
-    </div>
-
     <div v-html='html'></div>
   </main>
 </template>

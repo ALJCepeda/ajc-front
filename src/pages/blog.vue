@@ -1,7 +1,7 @@
 <template>
   <main class='blog border'>
-    <header>
-      <div class='title'>
+    <header class='title'>
+      <div class='content'>
         <i class="material-icons">&#xE02F;</i>Blog
       </div>
       <!--
@@ -52,5 +52,9 @@
 
   .blog-list {
     padding:20px 40px;
+
+    .upToTablet({
+      padding:20px 0px;
+    });
   }
 </style>

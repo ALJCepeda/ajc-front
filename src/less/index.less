@@ -126,13 +126,13 @@ header {
 	}
 }
 
-header {
+header.title{
 	background:@color-grey3;
 	color:@color-black1;
 	padding:10px;
 	border-bottom:2px solid @color-greyHr;
 
-	.title {
+	.content {
 		.row-nw;.ai-center;
     width:100%;
     font-size:20px;
@@ -177,4 +177,12 @@ header {
 input[type="text"] {
 	border:1px solid @color-grey4;
 	padding-left:5px;
+}
+
+.rowToCol {
+	.row-nw;
+
+	.upToTablet({
+		.col-nw;
+	});
 }

@@ -1,5 +1,5 @@
 <template>
-  <main class='overview row-nw'>
+  <main class='overview rowToCol'>
     <section class='entries'>
       <div class='entry' v-if='jobs[0] && jobs[1]'>
         <img :src='jobs[0].logo'></img>
@@ -124,6 +124,11 @@
     .entries {
       width:62%;
 
+      .upToTablet({
+        width:100%;
+        order:2
+      });
+
       .entry {
         header {
           font-size:1.0em;
@@ -141,6 +146,12 @@
       width:35%;
       padding: 20px;
 
+      .upToTablet({
+        width:100%;
+        padding:0px;
+        padding-left:10px;
+        order:1;
+      });
       .icon-row {
           margin-bottom:10px;
       }
