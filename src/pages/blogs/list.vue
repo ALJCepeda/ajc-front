@@ -28,27 +28,29 @@
 
 <script>
   import { mapState } from 'vuex';
-  import blogCard from './../components/blog/blog-card.vue';
+  import blogCard from './../../components/blog/blog-card.vue';
 
   export default {
-    name: 'blog',
+    name: 'blogs/list',
     components: { blogCard },
     props: [ ],
-    computed: mapState([ 'manifest' ]),
+    computed: mapState({
+      manifest: state => state.blogs.manifest
+    }),
     methods: {
       clickedBlog: function(blog) {
         this.$router.push(`/blog/${blog.id}`);
       }
     },
     created() {
-      this.$store.dispatch('fetchBlogs');
+      this.$store.dispatch('blogs/fetchAll');
     }
   };
 </script>
 
 <style lang='less' scoped>
-  @import './../less/variables.less';
-  @import './../less/flex.less';
+  @import './../../less/variables.less';
+  @import './../../less/flex.less';
 
   .blog-list {
     padding:20px 40px;

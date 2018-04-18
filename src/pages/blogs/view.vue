@@ -8,7 +8,7 @@
   import { mapState, mapGetters } from 'vuex';
 
   export default {
-    name: 'blogView',
+    name: 'blogs/view',
     methods: {
       updateFrame: function(blog) {
         var iframe = document.getElementById('blogView');
@@ -26,11 +26,12 @@
     },
     computed: Object.assign({
         html() {
-          return this.$store.state.blogs[this.$route.params.id];
+          const entry = this.$store.state.blogs.entries[this.$route.params.id];
+          return entry;
         }
       },
-      mapGetters([ 'getBlogById' ]),
-      mapState([ 'blogs' ])
+      mapGetters('blogs', [ 'id' ]),
+      mapState('blogs', [ 'entries' ])
     ),
     watch: {
       html: function(blog) {
@@ -38,7 +39,7 @@
       }
     },
     created() {
-      this.$store.dispatch('fetchBlog', this.$route.params.id);
+      this.$store.dispatch('blogs/fetch', this.$route.params.id);
     },
     mounted() {
       if(_.isString(this.html)) {
@@ -49,8 +50,8 @@
 </script>
 
 <style lang='less' scoped>
-  @import './../less/variables.less';
-  @import './../less/flex.less';
+  @import './../../less/variables.less';
+  @import './../../less/flex.less';
 
   .blog {
     height:100vh;
