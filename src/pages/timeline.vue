@@ -4,7 +4,7 @@
       <intro></intro>
 
       <div class='stories'>
-        <story-entry></story-entry>
+        <card></card>
       </div>
     </div>
 
@@ -12,21 +12,23 @@
       <intro></intro>
 
       <div class='stories'>
-        <story-entry></story-entry>
+        <card></card>
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
   import intro from './../components/timeline/intro.vue';
-  import storyEntry from './../components/story-entry.vue';
+  import card from './../components/timeline/card.vue';
 
   export default {
     name: 'timeline',
-    components: { intro, storyEntry }
+    components: { intro, card },
+    methods: { },
+    created() {
+      this.$store.dispatch('timeline/indexes');
+    }
   };
 </script>
 

@@ -15,15 +15,19 @@ import app from './app.vue';
 Vue.config.debug = true;
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  render: h => h(app, { }),
-  template: `<app></app>`,
-  components: { app },
-  data: function() {
-    return { data };
-  },
-  router, store
+
+store.dispatch('timeline/manifest').then(() => {
+  console.log('starting app');
+  new Vue({
+    el: '#app',
+    render: h => h(app, { }),
+    template: `<app></app>`,
+    components: { app },
+    data: function() {
+      return { data };
+    },
+    router, store
+  });
 });
 
 /* Home script */

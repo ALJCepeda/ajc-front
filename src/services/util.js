@@ -18,5 +18,15 @@ export default {
     }
 
     return array;
+  },
+  findMissingIndexes: function(array, start, end) {
+    const missing = [];
+    for(let i=start; i<end; i++) {
+      if(_.isUndefined(array[i]) || _.isNull(array[i])) {
+        missing.push(i);
+      }
+    }
+
+    return missing;
   }
 };

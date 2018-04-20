@@ -43,7 +43,7 @@
       }
     },
     created() {
-      this.$store.dispatch('blogs/fetchAll');
+      this.$store.dispatch('blogs/fetchList');
     }
   };
 </script>

@@ -27,7 +27,7 @@ const module = {
     }
   },
   actions: {
-    fetchAll ({ commit, state }) {
+    fetchList ({ commit, state }) {
       if(_.isObject(state.manifest)) {
         return Promise.resolve(state.manifest);
       } else {

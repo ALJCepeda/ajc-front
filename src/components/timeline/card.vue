@@ -1,5 +1,5 @@
 <template>
-  <main class='story-entry border'>
+  <main class='card border'>
     <div class='header row-nw'>
       <div class='img row-nw ai-center'>
         <img :src='image'></img>
@@ -26,10 +26,10 @@
 </template>
 
 <script>
-  import data from './../services/data';
+  import data from './../../services/data';
 
   export default {
-    name: 'story-entry',
+    name: 'card',
     data: function() {
       return {
         image: '',
@@ -44,10 +44,10 @@
 </script>
 
 <style lang='less' scoped>
-  @import './../less/flex.less';
-  @import './../less/variables.less';
+  @import './../../less/flex.less';
+  @import './../../less/variables.less';
 
-  .story-entry {
+  .card {
     width:100%;
     background:@color-white;
     color:black;
