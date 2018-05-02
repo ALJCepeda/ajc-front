@@ -16,8 +16,10 @@ Vue.config.debug = true;
 
 /* eslint-disable no-new */
 
-store.dispatch('timeline/manifest').then(() => {
-  console.log('starting app');
+Promise.all([
+  store.dispatch('blogs/manifest'),
+  store.dispatch('timeline/manifest')
+]).then(() => {
   new Vue({
     el: '#app',
     render: h => h(app, { }),

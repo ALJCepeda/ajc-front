@@ -1,6 +1,6 @@
 <template>
   <main class='blog border'>
-    <iframe id='blogView' width='100%' height='100%' frameBorder="0"></iframe>
+    <iframe id='blog-view' width='100%' height='100%' frameBorder="0"></iframe>
   </main>
 </template>
 
@@ -8,10 +8,10 @@
   import { mapState, mapGetters } from 'vuex';
 
   export default {
-    name: 'blogs/view',
+    name: 'blogs-view',
     methods: {
       updateFrame: function(blog) {
-        var iframe = document.getElementById('blogView');
+        var iframe = document.getElementById('blog-view');
         var doc = iframe.document;
         if(iframe.contentDocument){
             doc = iframe.contentDocument;
@@ -24,22 +24,18 @@
         doc.close();
       }
     },
-    computed: Object.assign({
-        html() {
-          const entry = this.$store.state.blogs.entries[this.$route.params.id];
-          return entry;
-        }
-      },
-      mapGetters('blogs', [ 'id' ]),
-      mapState('blogs', [ 'entries' ])
-    ),
+    computed: {
+      html() {
+        return this.$store.getters['blogs/content'](this.$route.params.id);
+      }
+    },
     watch: {
       html: function(blog) {
         this.updateFrame(blog);
       }
     },
     created() {
-      this.$store.dispatch('blogs/fetch', this.$route.params.id);
+      this.$store.dispatch('blogs/content', this.$route.params.id);
     },
     mounted() {
       if(_.isString(this.html)) {

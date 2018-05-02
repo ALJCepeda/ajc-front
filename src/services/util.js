@@ -28,5 +28,25 @@ export default {
     }
 
     return missing;
+  },
+  rangeFromLimit = function(limit, offset, max) {
+    let start = offset;
+    let end = offset + limit;
+
+    if(limit < 0) {
+      end = offset;
+      start = offset - limit;
+
+      if(start < 0) {
+        start = 0;
+        end = end + Math.abs(start);
+      }
+    }
+
+    if(end > max) {
+      end = max;
+    }
+
+    return { start, end };
   }
 };

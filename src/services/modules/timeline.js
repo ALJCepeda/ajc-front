@@ -1,26 +1,50 @@
+import Vue from 'vue';
+import toolbelt from 'aj-toolbelt';
+
 import api from './../api';
-import util from './../util';
 
 const module = {
   namespaced:true,
   state: {
+    defaults: null,
     manifest: null,
-    entries: []
+    entries: {}
   },
   getters: {
     manifest: (state) => {
       return state.manifest;
     },
-    entries: (state) => (limit, offset) => {
-      return state.entries.slice(offset, offset + limit);
+    entries: (state) => (offset, limit) => {
+      const result = [];
+
+      for(let i = offset; i<limit; i++) {
+        if(_.isObject(state.entries[i])){
+          result.push(state.entries[i]);
+        }
+      }
+
+      return result;
+    },
+    entriesByPage: (state, getters) => (page) => {
+      const limit = state.defaults.entries.limit;
+      const offset = page * limit;
+
+      return getters.entries(offset, limit);
     }
   },
   mutations: {
     manifest: function(state, manifest) {
-      state.manifest = manifest;
+      Vue.set(state, 'manifest', manifest);
+      Vue.set(state, 'defaults', manifest.defaults);
     },
     entries: function(state, entries) {
-      state.entries = _.merge(state.entries, entries);
+      const mapped = _.mapValues(entries, (entry) => {
+        entry.fromNow = moment().calendar(entry.created_at);
+        return entry;
+      });
+
+      const merged = _.merge(state.entries, mapped);
+      Vue.set(state.entries, merged);
     }
   },
   actions: {
@@ -36,7 +60,10 @@ const module = {
         });
       }
     },
-    indexes ({ commit, state }, { limit = 10, offset = 0 } = {}) {
+    entries ({ commit, state, getters }, { limit, offset } = {}) {
+      if(_.isUndefined(limit)) { limit = state.defaults.entries.limit; }
+      if(_.isUndefined(offset)) { offset = state.defaults.entries.offset; }
+
       const start = offset;
       let end = limit + offset;
 
@@ -44,17 +71,23 @@ const module = {
         end = state.manifest.count;
       }
 
-      const entries = state.entries.slice(offset, offset + limit);
-      const indexes = util.findMissingIndexes(entries, start, end);
+      const entries = getters.entries(offset, offset + limit);
+      const indexes = toolbelt.findMissingIndexes(entries, start, end);
 
       if(indexes.length === 0) {
         return Promise.resolve(entries);
       } else {
-        return api.get('/timeline/indexes', { params:indexes }).then((resp) => {
+        return api.get('/timeline/entries', { params:indexes }).then((resp) => {
           commit('entries', resp.data);
           return resp;
         });
       }
+    },
+    entriesByPage({ commit, state, dispatch }, page = 0) {
+      const limit = state.defaults.entries.limit;
+      const offset = page * limit;
+
+      return dispatch('entries', { limit, offset });
     }
   }
 };

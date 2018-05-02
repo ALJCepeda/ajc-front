@@ -60,7 +60,7 @@
 
 <script>
   import data from './../../services/data';
-  import util from './../../services/util';
+  import toolbelt from 'aj-toolbelt';
   import componentHandler from 'componentHandler';
 
   export default {
@@ -74,7 +74,7 @@
     },
     created: function() {
       this.jobs = data.jobs;
-      this.skills = util.shuffle(Object.keys(data.skills)).map((key) => {
+      this.skills = toolbelt.shuffle(Object.keys(data.skills)).map((key) => {
         return Object.assign({ name: key }, data.skills[key]);
       });
       this.education = data.education;

@@ -1,152 +1,63 @@
 <template>
-  <div class='page'>
-    <div class='home-carousel'>
+  <div class='timeline'>
+    <div class='row-nw jc-between hide-upto-tablet'>
+      <intro></intro>
 
-      <div class='slide1'>
-        <div class='overlay flex'>
-          <h3 class='w100'>Automated. Scalable. Secure.</h3>
-
-          <div class='box w30 flex'>
-            <div>Custom algorithms and systems</div>
-            <div>API Integration</div>
-            <div>Efficient design</div>
-            <div>Test Driven Development</div>
-            <div>Distributed Computing</div>
-            <div>Modern Technologies</div>
-          </div>
-
-          <div class='box w30'>
-            <p>
-              Experiences working with individuals, small and large companies as well being a part of and leading teams. Close communication and clear expectations are a priority
-            </p>
-
-            <p>
-              Each contract includes a thorough analysis of requirements and a detailed roadmap of development from start to finish
-            </p>
-
-            <p>
-              Thoughtful design will ensure an easy to maintain system with a low barrier of entry. This means future developers will find it easy to work on the project
-            </p>
-          </div>
-        </div>
-
-        <img src='../assets/images/workstation.png'>
+      <div class='stories'>
+        <card :model='entry' v-for='entry in entries' :key='entry.id'></card>
       </div>
+    </div>
 
-      <div class='slide2'>
-        <div class='overlay flex'>
-          <h3>Fullstack Web Development</h3>
+    <div class='hide-downto-tablet'>
+      <intro></intro>
 
-          <div class='box w40'>
-            <p>
-              Producing exceptional quality and future resistant systems that will grow along-side your business
-            </p>
-          </div>
-        </div>
-
-        <img src='../assets/images/browserkids.jpg' />
-      </div>
-
-      <div class='slide3'>
-        <img src='../assets/images/devices.png' />
-        <h3>Hello 3</h3>
+      <div class='stories'>
+        <card :model='entry' v-for='entry in entries' :key='entry.id'></card>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import intro from './../components/timeline/intro.vue';
+  import card from './../components/timeline/card.vue';
+
   export default {
-    name: 'home'
+    name: 'timeline',
+    components: { intro, card },
+    methods: {
+      fetchEntries() {
+        this.fetchingEntries = true;
+        this.$store.dispatch('timeline/entriesByPage', this.page).then(() => {
+          this.fetchingEntries = false
+        });
+      }
+    },
+    computed: {
+      entries() {
+        return this.$store.getters['timeline/entriesByPage'](this.page);
+      }
+    },
+    data() {
+      return {
+        page:0,
+        fetchingEntries:false
+      }
+    },
+    created() {
+      this.fetchEntries();
+    }
   };
 </script>
 
-<style lang='less'>
-@import '../less/variables.less';
+<style lang='less' scoped>
+  @import './../less/flex.less';
+  @import './../less/variables.less';
+  .stories {
+    width:50%;
 
-.home-carousel {
-  height:100%;
-  width:100%;
-
-  .slick-slide {
-    .overlay {
-      position:absolute;
-      padding-top:30px;
-      padding-bottom:35px;
-      padding-left:50px;
-      padding-right:50px;
-      width:inherit;
-      height:inherit;
-
-      .height-tiny({
-        padding-top:0px;
-        padding-bottom:0px;
-
-        h3 {
-          margin-top:0px;
-        }
-      });
-
-      .box {
-        height:75%;
-        margin-top:40px;
-
-        .height-small({
-          margin-top:0px;
-        });
-
-        p:not(:first-child) {
-          margin-top:40px;
-        }
-
-        ul {
-          padding-left:0px;
-          list-style-type: none;
-
-          li {
-            padding-bottom:20px;
-
-            .height-medium({
-              padding-bottom:0px;
-            });
-          }
-        }
-
-        &.left {
-          padding-left:20px;
-        }
-        &.right {
-          padding-left:30px;
-        }
-        &.flex {
-          div {
-            width:100%;
-            font-size:1.5em;
-          }
-        }
-      }
-    }
-    img {
-      height:inherit;
+    .upToTablet({
       width:100%;
-    }
+    });
   }
-
-  .slide2 {
-    color:@color-black1;
-  }
-  .slick-prev:before, .slick-next:before {
-    color:@color-black1;
-  }
-  .slick-list, .slick-track, .slick-slide {
-    height:inherit;
-  }
-  .slick-prev {
-    z-index:1;
-    left:15px;
-  }
-  .slick-next {
-    right:15px;
-  }
-}
 </style>

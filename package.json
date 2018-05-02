@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ALJCepeda/aljcepeda#readme",
   "dependencies": {
+    "aj-toolbelt": "^1.0.0"
   },
   "devDependencies": {
     "axios": "^0.16.2",

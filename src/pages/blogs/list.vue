@@ -21,29 +21,43 @@
       </header>
 
       <section class='blog-list row-w jc-between'>
-        <blog-card v-for='entry in manifest' :key='entry.id' v-bind:data='entry' @click.native='clickedBlog(entry)'></blog-card>
+        <blog-card v-for='entry in entries' :key='entry.id' v-bind:data='entry' @click.native='clickedBlog(entry)'></blog-card>
       </section>
   </main>
 </template>
 
 <script>
   import { mapState } from 'vuex';
-  import blogCard from './../../components/blog/blog-card.vue';
+  import blogCard from './../../components/blogs/card.vue';
 
   export default {
-    name: 'blogs/list',
+    name: 'blog-slist',
     components: { blogCard },
     props: [ ],
-    computed: mapState({
-      manifest: state => state.blogs.manifest
-    }),
+    computed: {
+      entries() {
+        return this.$store.getters['blogs/entriesByPage'](this.page);
+      }
+    },
     methods: {
-      clickedBlog: function(blog) {
-        this.$router.push(`/blog/${blog.id}`);
+      clickedBlog(blog) {
+        this.$router.push(`/blogs/${blog.id}`);
+      },
+      fetchEntries() {
+        this.fetchingEntries = true;
+        this.$store.dispatch('blogs/entriesByPage', this.page).then(() => {
+          this.fetchingEntries = false
+        });
+      }
+    },
+    data() {
+      return {
+        page:0,
+        fetchingEntries:false
       }
     },
     created() {
-      this.$store.dispatch('blogs/fetchList');
+      this.fetchEntries();
     }
   };
 </script>

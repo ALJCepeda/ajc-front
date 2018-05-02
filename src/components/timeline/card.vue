@@ -2,23 +2,23 @@
   <main class='card border'>
     <div class='header row-nw'>
       <div class='img row-nw ai-center'>
-        <img :src='image'></img>
+        <img :src='model.image'></img>
       </div>
 
       <div class='content'>
         <div class='top'>
-          <a href='#'>{{name}}</a> shared something
+          <a href='#'>{{model.name}}</a><span v-if='model.type'> shared {{ model.type }}</span>
         </div>
 
         <div class='bottom'>
-          Yesterday at 12:06am
+          {{ model.fromNow }}
         </div>
       </div>
     </div>
 
     <div class='main'>
       <p>
-        Timeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yetTimeline entries has not been completed yet
+        {{ model.message }}
       </p>
     </div>
 
@@ -30,16 +30,7 @@
 
   export default {
     name: 'card',
-    data: function() {
-      return {
-        image: '',
-        name: ''
-      };
-    },
-    created: function() {
-      this.name = `${data.general.firstname} ${data.general.lastname}`;
-      this.image = `${data.general.image}`;
-    }
+    props: [ 'model' ]
   };
 </script>
 

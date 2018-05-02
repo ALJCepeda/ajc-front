@@ -1,5 +1,5 @@
 <template>
-  <main class='blog-card'>
+  <main class='card'>
     <img class='logo' :src='data.image'>
     <div class='info'>
       <div class='title'>{{data.title}}</div>
@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: 'projectCard',
+    name: 'blog-card',
     props: [ 'data' ]
   };
 </script>
@@ -21,7 +21,7 @@
   @import './../../less/flex.less';
   @import './../../less/index.less';
 
-  .blog-card {
+  .card {
     .border;
     .row-nw;.ai-center;
     padding-right:10px;
