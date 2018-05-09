@@ -33,7 +33,6 @@ const module = {
         const limit = state.defaults.entries.limit;
         const offset = page * limit;
 
-        debugger;
         return getters.entries(offset, limit);
       };
     },
@@ -44,7 +43,6 @@ const module = {
     },
     content(state) {
       return (id) => {
-        debugger;
         return state.content[id];
       };
     }

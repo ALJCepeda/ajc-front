@@ -1,8 +1,12 @@
 {
-  "name": "aljcepeda",
+  "name": "ajc-front",
   "version": "2.0.0",
   "description": "Landing page for services",
   "main": "index.php",
+  "repository": {
+    "type":"git",
+    "url":"https://github.com/ALJCepeda/ajcepeda-front.git"
+  },
   "scripts": {
     "dev": "cross-env webpack-dev-server --hot --host 0.0.0.0",
     "build": "cross-env webpack --progress --hide-modules",
@@ -12,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/ALJCepeda/aljcepeda.git"
   },
-  "author": "ALJCepeda",
+  "author": "Alfred Cepeda",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ALJCepeda/aljcepeda/issues"
@@ -50,7 +54,6 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.31",
     "karma-webpack": "^2.0.4",
-    "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "loader-utils": "^1.1.0",
     "moment": "^2.18.1",
@@ -63,10 +66,4 @@
     "vue-template-compiler": "^2.3.3",
     "vuex": "^2.4.0",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
-  },
-  "engines": {
-    "node": ">= 4.0.0",
-    "npm": ">= 3.0.0"
-  }
-}
+    "webpack-dev-server": "^2
