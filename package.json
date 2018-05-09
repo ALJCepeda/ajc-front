@@ -66,4 +66,10 @@
     "vue-template-compiler": "^2.3.3",
     "vuex": "^2.4.0",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2
+    "webpack-dev-server": "^2.4.5"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  }
+}
