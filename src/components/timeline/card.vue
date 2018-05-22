@@ -1,5 +1,5 @@
 <template>
-  <main class='card border'>
+  <main class='timeline-card border'>
     <div class='header row-nw'>
       <div class='img row-nw ai-center'>
         <img :src='model.image'></img>
@@ -16,12 +16,11 @@
       </div>
     </div>
 
-    <div class='main'>
+    <div class='message'>
       <p>
         {{ model.message }}
       </p>
     </div>
-
   </main>
 </template>
 
@@ -35,11 +34,12 @@
 </script>
 
 <style lang='less' scoped>
-  @import './../../less/flex.less';
+  @import '~ajc-toolbelt/less/flex.less';
   @import './../../less/variables.less';
 
-  .card {
+  .timeline-card {
     width:100%;
+    max-width:550px;
     background:@color-white;
     color:black;
 
@@ -67,7 +67,7 @@
       }
     }
 
-    .main {
+    .message {
       padding-left:10px;
       padding-right:10px;
       padding-bottom:10px;

@@ -1,5 +1,5 @@
 <template>
-  <main class='work'>
+  <main class='about-work'>
     <h5>
       WORK
     </h5>
@@ -60,7 +60,7 @@
 
 <script>
   import data from './../../services/data';
-  import toolbelt from 'aj-toolbelt';
+  import toolbelt from 'ajc-toolbelt/js';
   import componentHandler from 'componentHandler';
 
   export default {
@@ -98,7 +98,7 @@
 <style lang='less'>
   @import './../../less/variables.less';
 
-  .work {
+  .about-work {
     .entries {
       &.skills {
         color: @color-black2;

@@ -1,5 +1,5 @@
 <template>
-  <main class='overview rowToCol'>
+  <main class='about-overview rowToCol'>
     <section class='entries'>
       <div class='entry' v-if='jobs[0] && jobs[1]'>
         <img :src='jobs[0].logo'></img>
@@ -120,7 +120,7 @@
 <style lang='less' scoped>
   @import './../../less/index.less';
 
-  .overview {
+  .about-overview {
     .entries {
       width:62%;
 

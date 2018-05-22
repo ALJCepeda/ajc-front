@@ -1,6 +1,6 @@
 <template>
-  <main class='blog border'>
-    <iframe id='blog-view' width='100%' height='100%' frameBorder="0"></iframe>
+  <main class='blogs-view border'>
+    <iframe id='view' width='100%' height='100%' frameBorder="0"></iframe>
   </main>
 </template>
 
@@ -11,7 +11,7 @@
     name: 'blogs-view',
     methods: {
       updateFrame: function(blog) {
-        var iframe = document.getElementById('blog-view');
+        var iframe = document.getElementById('view');
         var doc = iframe.document;
         if(iframe.contentDocument){
             doc = iframe.contentDocument;
@@ -47,10 +47,12 @@
 
 <style lang='less' scoped>
   @import './../../less/variables.less';
-  @import './../../less/flex.less';
+  @import '~ajc-toolbelt/less/flex.less';
 
-  .blog {
-    height:100vh;
-    background:@color-white;
+  .blogs-view {
+    #view {
+      height:100vh;
+      background:@color-white;
+    }
   }
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <main class='intro border'>
+  <main class='timeline-intro border'>
     <header>
-      <div class='title'>
-        <i class='material-icons'>&#xE80B;</i>Intro
+      <div class='title row-nw ai-center'>
+        <i class='material-icons' style='margin-right:7px;'>&#xE80B;</i>Intro
       </div>
     </header>
 
@@ -105,10 +105,10 @@
 </script>
 
 <style lang='less' scoped>
-  @import './../../less/flex.less';
+  @import '~ajc-toolbelt/less/flex.less';
   @import './../../less/variables.less';
 
-  .intro {
+  .timeline-intro {
     padding: 15px;
     align-self:flex-start;
     background:@color-white;

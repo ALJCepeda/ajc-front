@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Vuex from 'Vuex';
+import Vuex from 'vuex';
 
 import blogs from './modules/blogs';
 import timeline from './modules/timeline';

@@ -1,19 +1,9 @@
 <template>
   <div class='timeline'>
-    <div class='row-nw jc-between hide-upto-tablet'>
-      <intro></intro>
+    <intro></intro>
 
-      <div class='stories'>
-        <card :model='entry' v-for='entry in entries' :key='entry.id'></card>
-      </div>
-    </div>
-
-    <div class='hide-downto-tablet'>
-      <intro></intro>
-
-      <div class='stories'>
-        <card :model='entry' v-for='entry in entries' :key='entry.id'></card>
-      </div>
+    <div class='cards'>
+      <card :model='entry' v-for='entry in entries' :key='entry.id'></card>
     </div>
   </div>
 </template>
@@ -51,13 +41,10 @@
 </script>
 
 <style lang='less' scoped>
-  @import './../less/flex.less';
+  @import '~ajc-toolbelt/less/flex.less';
   @import './../less/variables.less';
-  .stories {
-    width:50%;
 
-    .upToTablet({
-      width:100%;
-    });
+  .timeline {
+    .row-nw;.jc-between;
   }
 </style>

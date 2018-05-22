@@ -21,7 +21,7 @@ module.exports = {
   ],
   externals: {
       'jquery':'jQuery',
-      'Vuex':'Vuex',
+      'vuex':'Vuex',
       'vue-router':'VueRouter',
       'moment':'moment',
       'componentHandler':'componentHandler',
@@ -70,6 +70,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      'ajc-toolbelt': 'ajc-toolbelt/dist',
       'vue$': 'vue/dist/vue.esm.js'
     }
   },

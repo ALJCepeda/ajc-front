@@ -3,7 +3,6 @@
 import $ from 'jquery';
 import Vue from 'vue';
 
-import './less/flex.less';
 import './less/variables.less';
 import './less/index.less';
 

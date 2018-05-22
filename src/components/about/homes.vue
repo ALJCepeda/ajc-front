@@ -1,5 +1,5 @@
 <template>
-  <main class='homes'>
+  <main class='about-homes'>
     <h5>CURRENT CITY AND HOMETOWN</h5>
 
     <section class='entries'>
@@ -84,5 +84,5 @@
 
 <style lang='less' scoped>
   @import './../../less/variables.less';
-  @import './../../less/flex.less';
+  @import '~ajc-toolbelt/less/flex.less';
 </style>

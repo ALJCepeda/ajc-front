@@ -51,7 +51,7 @@
 
 <style lang='less' scoped>
   @import './less/variables.less';
-  @import './less/flex.less';
+  @import '~ajc-toolbelt/less/flex.less';
 
   .cover-photo {
     .row-nw;

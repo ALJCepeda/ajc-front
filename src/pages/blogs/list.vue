@@ -1,5 +1,5 @@
 <template>
-  <main class='blog border'>
+  <main class='blogs-list border'>
     <header class='title'>
       <div class='content'>
         <i class="material-icons">&#xE02F;</i>Blog
@@ -20,7 +20,7 @@
       -->
       </header>
 
-      <section class='blog-list row-w jc-between'>
+      <section class='list row-w jc-between'>
         <blog-card v-for='entry in entries' :key='entry.id' v-bind:data='entry' @click.native='clickedBlog(entry)'></blog-card>
       </section>
   </main>
@@ -31,7 +31,7 @@
   import blogCard from './../../components/blogs/card.vue';
 
   export default {
-    name: 'blog-slist',
+    name: 'blogs-list',
     components: { blogCard },
     props: [ ],
     computed: {
@@ -64,13 +64,15 @@
 
 <style lang='less' scoped>
   @import './../../less/variables.less';
-  @import './../../less/flex.less';
+  @import '~ajc-toolbelt/less/flex.less';
 
-  .blog-list {
-    padding:20px 40px;
+  .blogs-list {
+    .list {
+      padding:20px 40px;
 
-    .upToTablet({
-      padding:20px 0px;
-    });
+      .upToTablet({
+        padding:20px 0px;
+      });
+    }
   }
 </style>
