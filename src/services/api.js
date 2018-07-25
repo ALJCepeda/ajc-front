@@ -61,7 +61,6 @@ class MappedHandler {
 
     for(const [ key, value ] of Object.entries(data)) {
       map.set(String(key), value);
-      debugger;
     }
   }
 
@@ -97,7 +96,7 @@ class MappedHandler {
     let missingIds = data;
 
     if(!_.isNil(result)) {
-      if(result.entries().length === data.length) {
+      if(result.size === data.length) {
         return Promise.resolve(result);
       }
 
@@ -105,7 +104,6 @@ class MappedHandler {
     }
 
     return this.api.sendRequest({ method, href, query, data:missingIds }).then(resp => {
-      debugger;
       this.set(requestKey, resp.data);
       return this.get(requestKey, data);
     });

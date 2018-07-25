@@ -45,7 +45,6 @@
       fetchEntries() {
         this.fetchingEntries = true;
         this.$store.dispatch('blogs/entriesByPage', this.page).then(entries => {
-          debugger;
           this.entries = Array.from(entries.values());
           this.fetchingEntries = false
         });

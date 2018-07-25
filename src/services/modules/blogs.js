@@ -51,7 +51,6 @@ const module = {
     },
     entries({ commit }, ids = []) {
       return api.post('/blogs/entries', ids).then(entries => {
-        debugger;
         commit('entries', entries);
         return entries;
       });
