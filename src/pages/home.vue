@@ -15,23 +15,18 @@
   export default {
     name: 'timeline',
     components: { intro, card },
+    data: () => ({
+      page:1,
+      entries:[],
+      fetchingEntries:false
+    }),
     methods: {
       fetchEntries() {
         this.fetchingEntries = true;
-        this.$store.dispatch('timeline/entriesByPage', this.page).then(() => {
+        this.$store.dispatch('timeline/entriesByPage', this.page).then(entries => {
+          this.entries = entries;
           this.fetchingEntries = false
         });
-      }
-    },
-    computed: {
-      entries() {
-        return this.$store.getters['timeline/entriesByPage'](this.page);
-      }
-    },
-    data() {
-      return {
-        page:0,
-        fetchingEntries:false
       }
     },
     created() {

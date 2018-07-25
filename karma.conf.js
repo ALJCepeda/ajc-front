@@ -15,13 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'node_modules/jquery/dist/jquery.js',
-        'node_modules/vue-router/dist/vue-router.js',
-        'node_modules/vuex/dist/vuex.js',
-        'node_modules/moment/moment.js',
-        'node_modules/lodash/lodash.js',
-        'node_modules/axios/dist/axios.js',
-        'tests/**/*.js'
+      'node_modules/axios/dist/axios.js',
+      'node_modules/lodash/lodash.js',
+      'tests/**/*.js'
     ],
 
 

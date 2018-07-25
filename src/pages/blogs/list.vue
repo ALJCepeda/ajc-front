@@ -33,27 +33,21 @@
   export default {
     name: 'blogs-list',
     components: { blogCard },
-    props: [ ],
-    computed: {
-      entries() {
-        return this.$store.getters['blogs/entriesByPage'](this.page);
-      }
-    },
+    data: () => ({
+      page:1,
+      entries:[],
+      fetchingEntries:false
+    }),
     methods: {
       clickedBlog(blog) {
         this.$router.push(`/blogs/${blog.id}`);
       },
       fetchEntries() {
         this.fetchingEntries = true;
-        this.$store.dispatch('blogs/entriesByPage', this.page).then(() => {
+        this.$store.dispatch('blogs/entriesByPage', this.page).then(entries => {
+          this.entries = entries;
           this.fetchingEntries = false
         });
-      }
-    },
-    data() {
-      return {
-        page:0,
-        fetchingEntries:false
       }
     },
     created() {
