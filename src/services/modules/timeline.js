@@ -41,14 +41,13 @@ const module = {
       });
     },
     entries({ commit }, ids = []) {
-      return api.post('/timeline/entries', { ids }).then(entries => {
+      return api.post('/timeline/entries', ids).then(entries => {
         commit('entries', entries);
         return entries;
       });
     },
     entriesByPage({ commit, dispatch }, page) {
       return api.get('/timeline/entriesByPage', { page, limit:20 }).then(ids => {
-        debugger;
         return dispatch('entries', ids);
       });
     }

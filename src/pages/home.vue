@@ -24,7 +24,7 @@
       fetchEntries() {
         this.fetchingEntries = true;
         this.$store.dispatch('timeline/entriesByPage', this.page).then(entries => {
-          this.entries = entries;
+          this.entries = Array.from(entries.values());
           this.fetchingEntries = false
         });
       }

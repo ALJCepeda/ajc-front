@@ -18,28 +18,28 @@ class CachedHandler {
   }
 
   requestKey(requestInfo) {
-    let { method, href, query, body } = requestInfo;
+    let { method, href, query, data } = requestInfo;
 
-    if(_.isObject(body) || _.isArray(body)) {
-      body = JSON.stringify(body);
+    if(_.isObject(data) || _.isArray(data)) {
+      data = JSON.stringify(data);
     }
 
     query = JSON.stringify(query);
-    const requestKey = md5(`${method}${href}${query}${body}`.toLowerCase());
+    const requestKey = md5(`${method}${href}${query}${data}`.toLowerCase());
     this.requestKeys.set(requestKey, requestInfo);
     return requestKey;
   }
 
-  request({ method, href, query, body }) {
+  request({ method, href, query, data }) {
     const requestKey = this.requestKey({ method, href, query });
     const result = this.get(requestKey);
     if(!_.isNil(result)) {
       return Promise.resolve(result);
     }
 
-    return this.api.sendRequest({ method, href, query, body }).then(resp => {
-      this.set(requestKey, resp.body);
-      return resp;
+    return this.api.sendRequest({ method, href, query, data }).then(resp => {
+      this.set(requestKey, resp.data);
+      return resp.data;
     });
   }
 }
@@ -60,11 +60,12 @@ class MappedHandler {
     }
 
     for(const [ key, value ] of Object.entries(data)) {
-      map.set(key, value);
+      map.set(String(key), value);
+      debugger;
     }
   }
 
-  get(requestKey, body = []) {
+  get(requestKey, data = []) {
     const result = new Map();
     const map = this.cache.get(requestKey);
 
@@ -72,7 +73,8 @@ class MappedHandler {
       return null;
     }
 
-    body.forEach(key => {
+    data.forEach(key => {
+      key = String(key);
       if(map.has(key)) {
         result.set(key, map.get(key));
       }
@@ -89,24 +91,23 @@ class MappedHandler {
     return requestKey;
   }
 
-  request({ method, href, query, body }) {
-    const requestKey = this.requestKey({ method, href, query, body });
-    const result = this.get(requestKey, body);
-    let missingIds = [];
+  request({ method, href, query, data }) {
+    const requestKey = this.requestKey({ method, href, query, data });
+    const result = this.get(requestKey, data);
+    let missingIds = data;
 
     if(!_.isNil(result)) {
-      if(result.entries().length === body.length) {
+      if(result.entries().length === data.length) {
         return Promise.resolve(result);
       }
 
-      missingIds = body.filter(id => !result.has(id));
+      missingIds = data.filter(id => !result.has(id));
     }
 
-    return this.api.sendRequest({ method, href, query, body:missingIds }).then(resp => {
-      this.set(requestKey, resp.body);
-
-      const result = this.get(requestKey, body);
-      return result;
+    return this.api.sendRequest({ method, href, query, data:missingIds }).then(resp => {
+      debugger;
+      this.set(requestKey, resp.data);
+      return this.get(requestKey, data);
     });
   }
 }
@@ -148,9 +149,9 @@ class API {
     return null;
   }
 
-  sendRequest({ method, href, query, body }) {
+  sendRequest({ method, href, query, data }) {
     return this.axios({
-      method, url:href, query, body
+      method, url:href, query, data
     });
   }
 
@@ -159,12 +160,12 @@ class API {
     const ruleInfo = this.matchRule(href);
 
     if(ruleInfo === null) {
-      return this.sendRequest(request);
+      return this.sendRequest(request).then(resp => resp.data);
     }
 
     const { options } = ruleInfo;
     request.options = options;
-    
+
     if(options.isMap === true) {
       return this.mappedHandler.request(request);
     } else {
@@ -177,16 +178,19 @@ class API {
     return this.request({ method, href, query });
   }
 
-  post(href, body, query) {
+  post(href, data, query) {
     const method = 'post';
-    return this.request({ method, href, query, body });
+    return this.request({ method, href, query, data });
   }
 }
 
 
 export { API };
 
-const api = new API();
+const api = new API({
+  baseURL:process.env.API_URL,
+  timeout:5000
+});
 
 api.addRule('/blogs/manifest');
 api.addRule('/blogs/entries', { isMap:true });
