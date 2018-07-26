@@ -23,13 +23,9 @@ const module = {
     manifest(state, manifest) {
       Vue.set(state, 'manifest', manifest);
     },
-    entries(state, entries) {
-      entries.forEach((entry, id) => {
-        entry.fromNow = moment().calendar(entry.created_at);
-        Vue.set(state.entries, id, entry);
-      });
-    },
     entry(state, entry) {
+      entry.fromNow = moment().calendar(entry.created_at);
+      entry.imageUrl = `${process.env.STATIC_URL}/images/${entry.image}`;
       Vue.set(state.entries, entry.id, entry);
     }
   },
@@ -42,7 +38,7 @@ const module = {
     },
     entries({ commit }, ids = []) {
       return api.post('/timeline/entries', ids).then(entries => {
-        commit('entries', entries);
+        entries.forEach(entry => commit('entry', entry));
         return entries;
       });
     },

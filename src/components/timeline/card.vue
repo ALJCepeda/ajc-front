@@ -2,7 +2,7 @@
   <main class='timeline-card border'>
     <div class='header row-nw'>
       <div class='img row-nw ai-center'>
-        <img :src='model.image'></img>
+        <img :src='model.imageUrl'></img>
       </div>
 
       <div class='content'>

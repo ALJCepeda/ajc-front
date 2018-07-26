@@ -1,6 +1,6 @@
 <template>
   <main class='blogs-card'>
-    <img class='logo' :src='data.image'>
+    <img class='logo' :src='data.imageUrl'>
     <div class='info'>
       <div class='title'>{{data.title}}</div>
 
