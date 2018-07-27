@@ -40,7 +40,7 @@
     }),
     methods: {
       clickedBlog(blog) {
-        this.$router.push(`/blogs/${blog.id}`);
+        this.$router.push(`/blogs/${blog.primary_uri}`);
       },
       fetchEntries() {
         this.fetchingEntries = true;

@@ -16,7 +16,7 @@ export default new VueRouter({
     { path: '/about', redirect: '/about/overview' },
     { path: '/about/:section', component: about },
     { path: '/blogs', redirect: '/blogs/all' },
-    { path: '/blogs/:id(\\d+)', component: blogsView },
-    { path: '/blogs/:section', component: blogsList }
+    { path: '/blogs/:id', component: blogsView },
+    { path: '/blogs/all', component: blogsList }
   ]
 });

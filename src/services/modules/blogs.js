@@ -8,7 +8,7 @@ const module = {
   state: {
     manifest: null,
     entries: {},
-    blogs: {}
+    content: {}
   },
   getters: {
     manifest(state) {
@@ -19,9 +19,9 @@ const module = {
         return state.entries.get(id);
       };
     },
-    blog(state) {
+    content(state) {
       return (id) => {
-        return state.blogs.get(id);
+        return state.content.get(id);
       };
     }
   },
@@ -31,12 +31,11 @@ const module = {
     },
     entry(state, entry) {
       entry.fromNow = moment().calendar(entry.created_at);
-      debugger;
       entry.imageUrl = `${process.env.STATIC_URL}/images/${entry.image}`;
       Vue.set(state.entries, entry.id, entry);
     },
-    blog(state, { id, blog }) {
-      Vue.set(state.blog, id, blog);
+    content(state, { uri, content }) {
+      Vue.set(state.content, uri, content);
     }
   },
   actions: {
@@ -57,9 +56,9 @@ const module = {
         return dispatch('entries', ids);
       });
     },
-    content({ commit }, id) {
-      return api.get(`/blogs/${id}`).then(resp => {
-        commit('blog', { id, blog:resp });
+    content({ commit }, uri) {
+      return api.get(`/blogs/${uri}`).then(resp => {
+        commit('content', { uri, content:resp });
         return resp;
       });
     }

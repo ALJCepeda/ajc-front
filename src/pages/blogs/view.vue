@@ -24,23 +24,10 @@
         doc.close();
       }
     },
-    computed: {
-      html() {
-        return this.$store.getters['blogs/content'](this.$route.params.id);
-      }
-    },
-    watch: {
-      html: function(blog) {
-        this.updateFrame(blog);
-      }
-    },
     created() {
-      this.$store.dispatch('blogs/content', this.$route.params.id);
-    },
-    mounted() {
-      if(_.isString(this.html)) {
-        this.updateFrame(this.html);
-      }
+      this.$store.dispatch('blogs/content', this.$route.params.id).then(content => {
+        this.updateFrame(content);
+      })
     }
   };
 </script>
