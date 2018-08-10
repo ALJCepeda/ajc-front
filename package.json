@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/ALJCepeda/aljcepeda#readme",
   "dependencies": {
-    "ajc-toolbelt": "^1.2.0",
+    "ajc-toolbelt": "^1.2.1",
     "axios": "^0.18.0",
     "lodash": "^4.17.10",
     "md5": "^2.2.1",
