@@ -5,6 +5,7 @@ import home from './../pages/home.vue';
 import about from './../pages/about.vue';
 import blogsList from './../pages/blogs/list.vue';
 import blogsView from './../pages/blogs/view.vue';
+import notFound from './../pages/notFound.vue';
 
 Vue.use(VueRouter);
 
@@ -16,7 +17,8 @@ export default new VueRouter({
     { path: '/about', redirect: '/about/overview' },
     { path: '/about/:section', component: about },
     { path: '/blogs', redirect: '/blogs/all' },
+    { path: '/blogs/all', component: blogsList },
     { path: '/blogs/:id', component: blogsView },
-    { path: '/blogs/all', component: blogsList }
+    { path: '*', component: notFound }
   ]
 });

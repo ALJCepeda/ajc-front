@@ -7,7 +7,7 @@
 
       <div class='content'>
         <div class='top'>
-          <a href='#'>{{model.name}}</a><span v-if='model.type'> shared {{ model.type }}</span>
+          <a href='#'>{{model.name}}</a><span v-if='model.type'> shared a {{ model.type }}</span>
         </div>
 
         <div class='bottom'>
@@ -39,7 +39,6 @@
 
   .timeline-card {
     width:100%;
-    max-width:550px;
     background:@color-white;
     color:black;
 

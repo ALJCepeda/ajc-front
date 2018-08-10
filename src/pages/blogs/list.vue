@@ -4,25 +4,15 @@
       <div class='content'>
         <i class="material-icons">&#xE02F;</i>Blog
       </div>
-      <!--
-        <div class='row-nw jc-between ai-center' style='margin-top:20px;'>
-          <nav class='links'>
-              <router-link to='/blog/all' class='active'>All Blogs<span class='count'> 82</span></router-link>
-              <router-link to='/blog/general'>General<span class='count'> 82</span></router-link>
-              <router-link to='/blog/technology'>Technology<span class='count'> 82</span></router-link>
-              <router-link to='/blog/development'>Development<span class='count'> 82</span></router-link>
-          </nav>
+    </header>
 
-          <div>
-            <input type='text' placeholder='Search for blogs'>
-          </div>
-        </div>
-      -->
-      </header>
+    <section class='list row-w jc-between' v-if='entries.length > 0'>
+      <blog-card v-for='entry in entries' :key='entry.id' v-bind:data='entry' @click.native='clickedBlog(entry)'></blog-card>
+    </section>
 
-      <section class='list row-w jc-between'>
-        <blog-card v-for='entry in entries' :key='entry.id' v-bind:data='entry' @click.native='clickedBlog(entry)'></blog-card>
-      </section>
+    <section class='row-nw ai-center jc-center' v-if='entries.length === 0' style='height:150px;'>
+      <span>No blogs at the moment, please check again later</span>
+    </section>
   </main>
 </template>
 

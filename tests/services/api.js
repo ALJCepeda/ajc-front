@@ -22,7 +22,7 @@ describe('api cache', () => {
       method:'post',
       href:'/blogs/entries',
       query: { company:10 },
-      body: [ 'blog1', 'blog2' ]
+      data: [ 'blog1', 'blog2' ]
     });
 
     expect(requestKey).toBe('65251c1a3c2154e4cd6b2a4032a786da');
@@ -33,14 +33,14 @@ describe('api cache', () => {
       method:'post',
       href:'/blogs/entries',
       query: { company:10 },
-      body: [ 'blog1', 'blog2' ]
+      data: [ 'blog1', 'blog2' ]
     });
 
     expect(requestKey).toBe('115e263c7c1fc17c9fae0023c57cbfaa');
   });
 
   it('should perform request and cache response', (done) => {
-    spyOn(api, 'axios').and.callFake(() => Promise.resolve({ body:'resp' }));
+    spyOn(api, 'axios').and.callFake(() => Promise.resolve({ data:'resp' }));
 
     const regex = /\/blogs\/[\w-]+/;
     const request = {
@@ -59,10 +59,10 @@ describe('api cache', () => {
   it('should cache based on url and params', (done) => {
     spyOn(api, 'axios').and.callFake((args) => {
       if(args.query === 'params') {
-        return Promise.resolve({ body:'withParams' });
+        return Promise.resolve({ data:'withParams' });
       }
 
-      return Promise.resolve({ body:'withoutParams' });
+      return Promise.resolve({ data:'withoutParams' });
     });
 
     const regex = /\/blogs\/[\w-]+/;
@@ -85,7 +85,7 @@ describe('api cache', () => {
 
   it('should cache based on the map response', (done) => {
     spyOn(api, 'axios').and.callFake(() => Promise.resolve({
-      body: {
+      data: {
         'id1':'Blog 1',
         'id9':'Blog 9',
         'id23':'Blog 23',
@@ -117,7 +117,7 @@ describe('api cache', () => {
 
   it('should fetch missing entries', (done) => {
     spyOn(api, 'axios').and.callFake(() => Promise.resolve({
-      body: {
+      data: {
         'id3':'Blog 3',
         'id4':'Blog 4'
       }
@@ -126,7 +126,7 @@ describe('api cache', () => {
     const request = {
       method:'post',
       href:'/blogs/entries',
-      body:[ 'id1', 'id2', 'id3', 'id4' ]
+      data:[ 'id1', 'id2', 'id3', 'id4' ]
     };
 
     const requestKey = api.mappedHandler.requestKey(request);
@@ -142,7 +142,7 @@ describe('api cache', () => {
         method: 'post',
         url: '/blogs/entries',
         query: undefined,
-        body: [ 'id3', 'id4' ]
+        data: [ 'id3', 'id4' ]
       });
 
       expect(resp).toEqual(new Map([
@@ -169,6 +169,28 @@ describe('api cache', () => {
     api.request(request).then((resp) => {
       expect(resp).toEqual('cachedResponse');
       expect(api.axios).not.toHaveBeenCalled();
+      done();
+    });
+  });
+
+  xit('should cache based on mapped field', (done) => {
+    spyOn(api, 'axios').and.returnValue(Promise.resolve({
+      data: [
+        { id:'blog1', message:'This is first blog', uris:[ 'firstblog', 'blogouno' ] },
+        { id:'blog2', message:'This is second blog', uris:[ 'secondblog', 'blogodos' ]}
+      ]
+    }));
+    const request = {
+      method:'post',
+      href:'/blogs/entries'
+    };
+
+    const requestKey = api.mappedHandler.requestKey(request);
+    api.addRule('/blogs/entries', { mapField:'uris' });
+
+    api.request(request).then(resp => {
+      const data = api.mappedHandler.get(requestKey, { capture:'firstblog' });
+      expect(data).toBe(true);
       done();
     });
   });

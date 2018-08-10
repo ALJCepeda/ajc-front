@@ -1,9 +1,9 @@
 <template>
   <div class='timeline'>
-    <intro></intro>
+    <intro class='intro'></intro>
 
     <div class='cards'>
-      <card :model='entry' v-for='entry in entries' :key='entry.id'></card>
+      <card :model='entry' v-for='entry in entries' :key='entry.id' style='margin-bottom:15px;'></card>
     </div>
   </div>
 </template>
@@ -36,10 +36,28 @@
 </script>
 
 <style lang='less' scoped>
+  @import '~ajc-toolbelt/less/resources/mixins.less';
   @import '~ajc-toolbelt/less/flex.less';
   @import './../less/variables.less';
 
   .timeline {
-    .row-nw;.jc-between;
+    .row-w;
+    .jc-between;
+
+    .upTo(923px, {
+      > * {
+        margin:0 auto;
+      }
+    });
+  }
+
+  .intro {
+    width:320px;
+    box-sizing:content-box;
+  }
+
+  .cards {
+    max-width:550px;
+    min-width:320px;
   }
 </style>

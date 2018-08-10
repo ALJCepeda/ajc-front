@@ -20,18 +20,24 @@ class CachedHandler {
   requestKey(requestInfo) {
     let { method, href, query, data } = requestInfo;
 
-    if(_.isObject(data) || _.isArray(data)) {
-      data = JSON.stringify(data);
+    const parts = [ method, href ];
+    if(!_.isNil(query)) {
+      parts.push(JSON.stringify(query));
     }
 
-    query = JSON.stringify(query);
-    const requestKey = md5(`${method}${href}${query}${data}`.toLowerCase());
+    if(!_.isNil(data)) {
+      parts.push(JSON.stringify(data));
+    }
+
+    const digest = parts.join('');
+    const requestKey = md5(digest);
+
     this.requestKeys.set(requestKey, requestInfo);
     return requestKey;
   }
 
   request({ method, href, query, data }) {
-    const requestKey = this.requestKey({ method, href, query });
+    const requestKey = this.requestKey({ method, href, query, data });
     const result = this.get(requestKey);
     if(!_.isNil(result)) {
       return Promise.resolve(result);
@@ -51,7 +57,7 @@ class MappedHandler {
     this.requestKeys = new Map();
   }
 
-  set(requestKey, data) {
+  set(requestKey, data = [], options = {}) {
     let map = this.cache.get(requestKey);
 
     if(_.isNil(map)) {
@@ -59,8 +65,30 @@ class MappedHandler {
       this.cache.set(requestKey, map);
     }
 
+    const mapByField = (key, data) => {
+      if(_.isString(options.mapField)) {
+        const fields = data[key][mapField];
+
+        if(_.isArray(fields)) {
+          fields.forEach(field => {
+            map.set(String(field), value);
+          });
+        }
+
+        if(_.isString(fields)) {
+          map.set(fields, value);
+        }
+      }
+    };
+
+    if(_.isString(options.capture)) {
+      map.set(options.capture, data);
+      mapByField(options.capture, data);
+    }
+
     for(const [ key, value ] of Object.entries(data)) {
       map.set(String(key), value);
+      mapByField(String(key), value);
     }
   }
 
@@ -72,12 +100,22 @@ class MappedHandler {
       return null;
     }
 
-    data.forEach(key => {
+    const getData = (key) => {
       key = String(key);
+
       if(map.has(key)) {
-        result.set(key, map.get(key));
+        const value = map.get(key);
+        result.set(key, value);
       }
-    });
+    }
+
+    if(_.isArray(data)) {
+      data.forEach(key => {
+        getData(key);
+      });
+    } else if(_.isObject(data)) {
+      getData(data.capture);
+    }
 
     return result;
   }
@@ -90,23 +128,38 @@ class MappedHandler {
     return requestKey;
   }
 
-  request({ method, href, query, data }) {
-    const requestKey = this.requestKey({ method, href, query, data });
-    const result = this.get(requestKey, data);
-    let missingIds = data;
+  request(request) {
+    const { method, href, query, data, options } = request;
+    const requestKey = this.requestKey(request);
 
-    if(!_.isNil(result)) {
-      if(result.size === data.length) {
+    if(_.isString(options.capture)) {
+      const result = this.get(requestKey, options);
+
+      if(result.size > 0) {
         return Promise.resolve(result);
       }
 
-      missingIds = data.filter(id => !result.has(id));
-    }
+      return this.sendRequest({ method, href, query, data }).then(resp => {
+        this.set(requestKey, resp.data, options);
+        return resp.data;
+      });
+    } else {
+      const result = this.get(requestKey, data);
+      let missingIds = data;
 
-    return this.api.sendRequest({ method, href, query, data:missingIds }).then(resp => {
-      this.set(requestKey, resp.data);
-      return this.get(requestKey, data);
-    });
+      if(!_.isNil(result)) {
+        if(result.size === data.length) {
+          return Promise.resolve(result);
+        }
+
+        missingIds = data.filter(id => !result.has(id));
+      }
+
+      return this.api.sendRequest({ method, href, query, data:missingIds }).then(resp => {
+        this.set(requestKey, resp.data, options);
+        return this.get(requestKey, data);
+      });
+    }
   }
 }
 
@@ -139,8 +192,16 @@ class API {
     }
 
     for(const [ rule, options ] of this.regexRules) {
-      if(rule.test(path)) {
-        return { rule, options };
+      const execInfo = rule.exec(path);
+
+      if(_.isArray(execInfo)) {
+        const result = { rule, options };
+
+        if(execInfo.length > 1) {
+          options.capture = execInfo[1];
+        }
+
+        return result;
       }
     }
 
@@ -193,7 +254,7 @@ const api = new API({
 api.addRule('/blogs/manifest');
 api.addRule('/blogs/entries', { isMap:true });
 api.addRule('/blogs/entriesByPage');
-api.addRule(/\/blogs\/[\w-]+/);
+api.addRule(/\/blogs\/[\w-]+/, { mapField:'uris' });
 
 api.addRule('/timeline/manifest');
 api.addRule('/timeline/entries', { isMap:true });

@@ -4,8 +4,11 @@ dotenv.config();
 var path = require('path')
 var webpack = require('webpack')
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 module.exports = {
   entry: './src/index.js',
+  mode:process.env.NODE_ENV,
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
@@ -18,7 +21,8 @@ module.exports = {
         API_URL: JSON.stringify(process.env.API_URL),
         STATIC_URL: JSON.stringify(process.env.STATIC_URL)
       }
-    })
+    }),
+    new VueLoaderPlugin()
   ],
   externals: {
       'jquery':'jQuery',

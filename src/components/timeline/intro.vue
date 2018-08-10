@@ -109,6 +109,7 @@
   @import './../../less/variables.less';
 
   .timeline-intro {
+    width:100%;
     padding: 15px;
     align-self:flex-start;
     background:@color-white;
@@ -124,13 +125,10 @@
       padding-bottom:10px;
       background-color:@color-white;
       border-bottom:1px solid @color-greyHr;
+
       .title {
         font-weight:normal;
         font-size:16px;
-
-        .upToTablet({
-          .jc-center;
-        });
       }
     }
 
@@ -140,15 +138,9 @@
       color:@color-black2;
 
       .icon-row {
-        .row-nw;.ai-center;
-
-        .upToTablet({
-          .jc-center;
-        });
-
-        .upToMedium({
-          .jc-start;
-        });
+        .row-nw;
+        .ai-center;
+        .jc-start;
       }
     }
   }
