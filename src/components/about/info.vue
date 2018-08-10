@@ -4,11 +4,6 @@
 
     <section class='entries'>
       <div class='entry'>
-        <div class='left'>Mobile Phones</div>
-        <div class='right'>{{ phone }}</div>
-      </div>
-
-      <div class='entry'>
         <div class='left'>Address</div>
         <div class='right'>
           <div>{{ currentHome.address.number }} {{ currentHome.address.street }}</div>
