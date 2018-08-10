@@ -68,14 +68,6 @@
 
     <section class='info'>
         <div class='icon-row row-nw ai-center subtitle-font'>
-          <i class="material-icons">stay_current_portrait</i>
-
-          <span>
-            (813) 562-3862
-          </span>
-        </div>
-
-        <div class='icon-row row-nw ai-center subtitle-font'>
           <i class="material-icons">email</i>
 
           <span>
