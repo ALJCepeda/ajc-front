@@ -11,22 +11,14 @@
         <i class="material-icons">work</i>
 
         <span>
-          Self Employed as Software Engineer
+          Front End Developer at <a href='http://app.flightschedulepro.com/' target='_blank'>Nikao Corps</a>
         </span>
       </div>
       <div class='icon-row'>
         <i class="material-icons">work</i>
 
         <span>
-          Senior Developer at <a href='https://urbanfort.com/' target='_blank'>URBANFORT Corps</a>
-        </span>
-      </div>
-
-      <div class='icon-row'>
-        <i class="material-icons">work</i>
-
-        <span>
-          Senior Developer at <a href='http://www.littlerocket.io/' target='_blank'>Little Rocket</a>
+          Full Stack Developer at <a href='https://urbanfort.com/' target='_blank'>URBANFORT Corps</a>
         </span>
       </div>
 
@@ -34,7 +26,7 @@
         <i class="material-icons">work</i>
 
         <span>
-          Former Senior Developer at <a href='http://www.acappellamedia.com/' target='_blank'>Acapella Media</a>
+          Front End Developer at <a href='http://www.littlerocket.io/' target='_blank'>Little Rocket</a>
         </span>
       </div>
 
@@ -42,7 +34,7 @@
         <i class="material-icons">work</i>
 
         <span>
-          Former Senior Developer at <a href='http://www.reBaked.com' target='_blank'>reBaked</a>
+          Full Stack Developer at <a href='http://www.acappellamedia.com/' target='_blank'>Acapella Media</a>
         </span>
       </div>
 
@@ -50,7 +42,7 @@
         <i class="material-icons">work</i>
 
         <span>
-          Former Junior Developer at <a href='http://www.asktrak.com' target='_blank'>Trustbuilders</a>
+          iOS Developer at <a href='http://www.reBaked.com' target='_blank'>reBaked</a>
         </span>
       </div>
 
@@ -58,7 +50,7 @@
         <i class="material-icons">work</i>
 
         <span>
-          Former Junior Developer at <a href='http://www.bonzicentral.com' target='_blank'>Bonzi Sports Software</a>
+          Front End Developer at <a href='http://www.asktrak.com' target='_blank'>Trustbuilders</a>
         </span>
       </div>
 
@@ -66,7 +58,15 @@
         <i class="material-icons">work</i>
 
         <span>
-          Former Junior Developer at <a href='http://www.numedics.com' target='_blank'>Numedics</a>
+          Full Stack Developer at <a href='http://www.bonzicentral.com' target='_blank'>Bonzi Sports Software</a>
+        </span>
+      </div>
+
+      <div class='icon-row'>
+        <i class="material-icons">work</i>
+
+        <span>
+          Full Stack Developer at <a href='http://www.numedics.com' target='_blank'>Numedics</a>
         </span>
       </div>
 
