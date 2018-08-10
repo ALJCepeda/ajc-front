@@ -83,7 +83,8 @@ module.exports = {
     historyApiFallback: {
       index: '/src/index.html'
     },
-    noInfo: true
+    noInfo: true,
+    disableHostCheck:true
   },
   performance: {
     hints: false
