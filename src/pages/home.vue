@@ -25,7 +25,7 @@
         this.fetchingEntries = true;
         this.$store.dispatch('timeline/entriesByPage', this.page).then(entries => {
           this.entries = entries;
-          this.fetchingEntries = false
+          this.fetchingEntries = false;
         });
       }
     },
@@ -36,8 +36,8 @@
 </script>
 
 <style lang='less' scoped>
-  @import '~ajc-toolbelt/less/resources/mixins.less';
-  @import '~ajc-toolbelt/less/flex.less';
+  @import '~ajc-toolbelt/dist/less/resources/mixins.less';
+  @import '~ajc-toolbelt/dist/less/flex.less';
   @import './../less/variables.less';
 
   .timeline {

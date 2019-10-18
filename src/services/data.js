@@ -1,4 +1,3 @@
-import _ from '_';
 import moment from 'moment';
 import store from './store';
 

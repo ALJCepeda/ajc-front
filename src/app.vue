@@ -6,14 +6,14 @@
           Alfred Cepeda
 
           <div class='image hide-downto-tablet'>
-            <img class='border' :src='image'></img>
+            <img class='border' :src='image' />
           </div>
         </h1>
       </div>
 
       <div class='nav-holder row-nw'>
         <div class='image hide-upto-tablet'>
-          <img class='border' :src='image'></img>
+          <img class='border' :src='image' />
         </div>
 
         <nav>
@@ -51,7 +51,7 @@
 
 <style lang='less' scoped>
   @import './less/variables.less';
-  @import '~ajc-toolbelt/less/flex.less';
+  @import '~ajc-toolbelt/dist/less/flex.less';
 
   .cover-photo {
     .row-nw;

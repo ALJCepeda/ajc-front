@@ -34,7 +34,7 @@
 
 <style lang='less' scoped>
   @import './../../less/variables.less';
-  @import '~ajc-toolbelt/less/flex.less';
+  @import '~ajc-toolbelt/dist/less/flex.less';
 
   .blogs-view {
     #view {

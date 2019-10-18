@@ -29,6 +29,7 @@
 </template>
 
 <script>
+  import $ from 'jquery';
   import overview from './../components/about/overview.vue';
   import work from './../components/about/work.vue';
   import homes from './../components/about/homes.vue';
@@ -102,7 +103,7 @@
 
 <style lang='less' scoped>
   @import './../less/variables.less';
-  @import '~ajc-toolbelt/less/flex.less';
+  @import '~ajc-toolbelt/dist/less/flex.less';
 
   #about-nav {
     .upToTablet({

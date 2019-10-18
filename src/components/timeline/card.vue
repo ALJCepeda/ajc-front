@@ -2,7 +2,7 @@
   <main class='timeline-card border'>
     <div class='header row-nw'>
       <div class='img row-nw ai-center'>
-        <img :src='model.imageUrl'></img>
+        <img :src='model.imageUrl' />
       </div>
 
       <div class='content'>
@@ -25,8 +25,6 @@
 </template>
 
 <script>
-  import data from './../../services/data';
-
   export default {
     name: 'card',
     props: [ 'model' ]
@@ -34,7 +32,7 @@
 </script>
 
 <style lang='less' scoped>
-  @import '~ajc-toolbelt/less/flex.less';
+  @import '~ajc-toolbelt/dist/less/flex.less';
   @import './../../less/variables.less';
 
   .timeline-card {

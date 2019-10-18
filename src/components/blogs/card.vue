@@ -17,9 +17,9 @@
 </script>
 
 <style lang='less'>
-  @import './../../less/variables.less';
-  @import '~ajc-toolbelt/less/flex.less';
   @import './../../less/index.less';
+  @import './../../less/variables.less';
+  @import '~ajc-toolbelt/dist/less/flex.less';
 
   .blogs-card {
     .border;

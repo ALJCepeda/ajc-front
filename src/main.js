@@ -1,6 +1,5 @@
 // let tabs = require('./scripts/tabs');
 // let router = require('./scripts/router');
-import $ from 'jquery';
 import Vue from 'vue';
 
 import './less/variables.less';
@@ -12,8 +11,7 @@ import router from './services/router.js';
 import app from './app.vue';
 
 Vue.config.debug = true;
-
-/* eslint-disable no-new */
+Vue.config.productionTip = false;
 
 Promise.all([
   //store.dispatch('blogs/manifest'),

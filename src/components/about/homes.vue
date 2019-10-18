@@ -4,7 +4,7 @@
 
     <section class='entries'>
       <div class='entry'>
-        <img :src='moocow'></img>
+        <img :src='moocow' />
 
         <div class='description'>
           <header>
@@ -18,7 +18,7 @@
       </div>
 
       <div class='entry'>
-        <img :src='moocow'></img>
+        <img :src='moocow' />
 
         <div class='description'>
           <header>
@@ -36,7 +36,7 @@
 
     <section class='entries'>
       <div class='entry' v-for='city in otherCities'>
-        <img :src='moocow'></img>
+        <img :src='moocow' />
 
         <div class='description'>
           <header>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+  import { uniq } from 'lodash';
   import data from './../../services/data';
 
   export default {
@@ -77,12 +78,12 @@
         city.fullEnd = home.fullEnd;
         return city;
       });
-      this.otherCities = _.uniq(otherCities);
+      this.otherCities = uniq(otherCities);
     }
   };
 </script>
 
 <style lang='less' scoped>
   @import './../../less/variables.less';
-  @import '~ajc-toolbelt/less/flex.less';
+  @import '~ajc-toolbelt/dist/less/flex.less';
 </style>

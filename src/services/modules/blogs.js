@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import toolbelt from 'ajc-toolbelt/js';
 
 import api from './../api';
 

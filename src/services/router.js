@@ -6,6 +6,7 @@ import about from './../pages/about.vue';
 import blogsList from './../pages/blogs/list.vue';
 import blogsView from './../pages/blogs/view.vue';
 import notFound from './../pages/notFound.vue';
+import adminPage from './../pages/admin.vue';
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,7 @@ export default new VueRouter({
     { path: '/blogs', redirect: '/blogs/all' },
     { path: '/blogs/all', component: blogsList },
     { path: '/blogs/:id', component: blogsView },
+    { path: '/admin', component: adminPage },
     { path: '*', component: notFound }
   ]
 });

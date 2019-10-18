@@ -1,14 +1,22 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  env: {
+    "node": true
+  },
   parserOptions: {
-    sourceType: 'module'
+    "parser": "babel-eslint",
+    "ecmaVersion": 2017,
+    "sourceType": "module"
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
+  extends: [
+    "plugin:vue/base",
+    "plugin:vue/essential",
+    "eslint:recommended"
+  ],
   // required to lint *.vue files
   plugins: [
-    'html'
+    "vue"
   ],
   // add your custom rules here
   'rules': {
@@ -19,6 +27,8 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     semi: ['error', 'always'],
-    'space-before-function-paren': ['error', 'never']
+    'space-before-function-paren': ['error', 'never'],
+    'no-console': 0,
+    'vue/require-v-for-key': 'off'
   }
 };

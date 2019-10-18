@@ -105,7 +105,7 @@
 </script>
 
 <style lang='less' scoped>
-  @import '~ajc-toolbelt/less/flex.less';
+  @import '~ajc-toolbelt/dist/less/flex.less';
   @import './../../less/variables.less';
 
   .timeline-intro {

@@ -1,4 +1,4 @@
-import _ from '_';
+import _ from 'lodash';
 import md5 from 'md5';
 import axios from 'axios';
 
@@ -67,16 +67,16 @@ class MappedHandler {
 
     const mapByField = (key, data) => {
       if(_.isString(options.mapField)) {
-        const fields = data[key][mapField];
+        const fields = data[key][options.mapField];
 
         if(_.isArray(fields)) {
           fields.forEach(field => {
-            map.set(String(field), value);
+            map.set(String(field), data);
           });
         }
 
         if(_.isString(fields)) {
-          map.set(fields, value);
+          map.set(fields, data);
         }
       }
     };
@@ -107,7 +107,7 @@ class MappedHandler {
         const value = map.get(key);
         result.set(key, value);
       }
-    }
+    };
 
     if(_.isArray(data)) {
       data.forEach(key => {
@@ -247,7 +247,7 @@ class API {
 export { API };
 
 const api = new API({
-  baseURL:process.env.API_URL,
+  baseURL:process.env.VUE_APP_API_URL,
   timeout:5000
 });
 

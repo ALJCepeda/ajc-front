@@ -2,7 +2,7 @@
   <main class='about-overview rowToCol'>
     <section class='entries'>
       <div class='entry' v-if='jobs[0] && jobs[1]'>
-        <img :src='jobs[0].logo'></img>
+        <img :src='jobs[0].logo' />
 
         <div class='description'>
           <header>
@@ -22,7 +22,7 @@
       </div>
 
       <div class='entry' v-if='education["college"] && education["highschool"]'>
-        <img :src='education["college"].logo'></img>
+        <img :src='education["college"].logo' />
 
         <div class='description'>
           <header>
@@ -42,7 +42,7 @@
       </div>
 
       <div class='entry' v-if='homes["first"] && homes["last"]'>
-        <img :src='homes["first"].logo'></img>
+        <img :src='homes["first"].logo' />
 
         <div class='description'>
           <header>
@@ -110,7 +110,7 @@
 </script>
 
 <style lang='less' scoped>
-  @import './../../less/index.less';
+  @import '../../less/variables.less';
 
   .about-overview {
     .entries {
