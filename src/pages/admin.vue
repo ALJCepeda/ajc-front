@@ -8,25 +8,29 @@
     </header>
 
     <section class='row-nw'>
-      <nav id='side-nav'>
+      <nav class='side-nav'>
         <router-link to='/admin/timeline'>Timeline</router-link>
       </nav>
 
       <div class='side-nav-content'>
-        Welcome
+        <timeline v-if='$route.params.section === "timeline"'></timeline>
       </div>
     </section>
   </main>
 </template>
 
 <script>
+  import $ from 'jquery';
+  import timeline from './../components/admin/timeline';
+
   export default {
-    name: 'about',
-    components: { },
+    name: 'admin',
+    components: { timeline },
     data: function() {
       return {
         isTablet: false,
-        navShowing: true
+        navShowing: true,
+        message: 'Hello'
       };
     },
     props: [ ],
@@ -40,19 +44,54 @@
       }
     },
     created() {
+      const $window = $(window);
+      let first = false;
+      const checkWidth = () => {
+        const width = $window.width();
+        if(width <= 767) {
+          this.$data.isTablet = true;
+          if(!first) {
+            first = true;
+            $('#about-nav').hide();
+            this.$data.navShowing = false;
+          }
+        } else {
+          first = false;
+          this.$data.isTablet = false;
 
+          if(this.$data.navShowing === false) {
+            $('#about-nav').show();
+            this.$data.navShowing = true;
+          }
+        }
+      };
+
+      $window.resize(checkWidth);
+      checkWidth();
+
+      setTimeout(() => {
+        if($window.width() <= 767) {
+          $('#about-nav').hide();
+          this.$data.navShowing = false;
+        }
+      });
+
+      this.$router.beforeEach((to, from, next) => {
+        if(this.$data.isTablet === true) {
+          $("#about-nav").animate({
+            width:'hide'
+          }, 350);
+          this.$data.navShowing = false;
+        }
+
+        next();
+      });
     }
   };
 </script>
 
-<style lang='less' scoped>
-  @import './../less/variables.less';
-  @import '~ajc-toolbelt/dist/less/flex.less';
-
-  #about-nav {
-
-  }
-  .about {
-    background:blue;
+<style lang='less' >
+  .sinput {
+    margin-bottom:15px;
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <main class='blogs-card'>
+  <main class='blogs-card border'>
     <img class='logo' :src='data.imageUrl'>
     <div class='info'>
       <div class='title'>{{data.title}}</div>
@@ -17,12 +17,10 @@
 </script>
 
 <style lang='less'>
-  @import './../../less/index.less';
   @import './../../less/variables.less';
   @import '~ajc-toolbelt/dist/less/flex.less';
 
   .blogs-card {
-    .border;
     .row-nw;.ai-center;
     padding-right:10px;
     width:425px;

@@ -28,6 +28,7 @@
     "@pearson-components/component-handler": "^0.1.4",
     "ajc-toolbelt": "^1.2.1",
     "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
     "core-js": "^3.1.2",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",

@@ -17,7 +17,6 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex';
   import blogCard from './../../components/blogs/card.vue';
 
   export default {
@@ -36,7 +35,7 @@
         this.fetchingEntries = true;
         this.$store.dispatch('blogs/entriesByPage', this.page).then(entries => {
           this.entries = Array.from(entries.values());
-          this.fetchingEntries = false
+          this.fetchingEntries = false;
         });
       }
     },
@@ -46,7 +45,7 @@
   };
 </script>
 
-<style lang='less' scoped>
+<style lang='less' >
   @import './../../less/variables.less';
   @import '~ajc-toolbelt/dist/less/flex.less';
 

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-
+import moment from 'moment';
 import api from './../api';
 
 const module = {
@@ -45,7 +45,7 @@ const module = {
         });
       });
     },
-    entriesByPage({ commit, dispatch }, page) {
+    entriesByPage({ dispatch }, page) {
       return api.get('/timeline/entriesByPage', { page, limit:20 }).then(ids => {
         return dispatch('entries', ids);
       });

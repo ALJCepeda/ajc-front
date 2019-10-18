@@ -8,17 +8,17 @@
     </header>
 
     <section class='row-nw'>
-      <nav id='about-nav'>
-          <router-link to='/about/overview'>Overview</router-link>
-          <router-link to='/about/work'>Work and Education</router-link>
-          <router-link to='/about/homes'>Places You've Lived</router-link>
-          <router-link to='/about/info'>Contact and Basic Info</router-link>
-          <!--<router-link to='/about/family'>Family and Relationships</router-link>
-          <router-link to='/about/details'>Details About You</router-link>
-          <router-link to='/about/events'>Life Events</router-link>-->
-      </nav>
+      <nav class='side-nav'>
+        <router-link to='/about/overview'>Overview</router-link>
+        <router-link to='/about/work'>Work and Education</router-link>
+        <router-link to='/about/homes'>Places You've Lived</router-link>
+        <router-link to='/about/info'>Contact and Basic Info</router-link>
+        <!--<router-link to='/about/family'>Family and Relationships</router-link>
+        <router-link to='/about/details'>Details About You</router-link>
+        <router-link to='/about/events'>Life Events</router-link>-->
+    </nav>
 
-      <div class='content'>
+      <div class='side-nav-content'>
         <overview v-if='$route.params.section === "overview"'></overview>
         <work v-if='$route.params.section === "work"'></work>
         <homes v-if='$route.params.section === "homes"'></homes>
@@ -53,98 +53,6 @@
 
         this.$data.navShowing = !this.$data.navShowing;
       }
-    },
-    created() {
-      const $window = $(window);
-      let first = false;
-      const checkWidth = () => {
-        const width = $window.width();
-        if(width <= 767) {
-          this.$data.isTablet = true;
-          if(!first) {
-            first = true;
-            $('#about-nav').hide();
-            this.$data.navShowing = false;
-          }
-        } else {
-          first = false;
-          this.$data.isTablet = false;
-
-          if(this.$data.navShowing === false) {
-            $('#about-nav').show();
-            this.$data.navShowing = true;
-          }
-        }
-      };
-
-      $window.resize(checkWidth);
-      checkWidth();
-
-      setTimeout(() => {
-        if($window.width() <= 767) {
-          $('#about-nav').hide();
-          this.$data.navShowing = false;
-        }
-      });
-
-      this.$router.beforeEach((to, from, next) => {
-        if(this.$data.isTablet === true) {
-          $("#about-nav").animate({
-            width:'hide'
-          }, 350);
-          this.$data.navShowing = false;
-        }
-
-        next();
-      });
     }
   };
 </script>
-
-<style lang='less' scoped>
-  @import './../less/variables.less';
-  @import '~ajc-toolbelt/dist/less/flex.less';
-
-  #about-nav {
-    .upToTablet({
-      position:absolute;
-      background:@color-white;
-      width:unset;
-      height:100%;
-    });
-  }
-  .about {
-    background:blue;
-
-    section {
-      nav {
-        width:30%;
-        border-right:1px solid @color-greyHr;
-
-        a {
-          display:inline-block;
-          width:100%;
-          height:45px;
-          line-height:45px;
-          margin-left:15px;
-          color:@color-grey4;
-          font-weight:normal;
-
-          &.router-link-active {
-            color:@color-black2;
-            font-weight:bold;
-          }
-        }
-      }
-
-      .content {
-        width: 70%;
-        padding: 20px;
-
-        .upToTablet({
-            width:90%;
-        });
-      }
-    }
-  }
-</style>

@@ -21,6 +21,7 @@ export default new VueRouter({
     { path: '/blogs/all', component: blogsList },
     { path: '/blogs/:id', component: blogsView },
     { path: '/admin', component: adminPage },
+    { path: '/admin/:section', component: adminPage },
     { path: '*', component: notFound }
   ]
 });

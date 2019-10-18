@@ -5,8 +5,6 @@
 </template>
 
 <script>
-  import { mapState, mapGetters } from 'vuex';
-
   export default {
     name: 'blogs-view',
     methods: {
@@ -27,12 +25,12 @@
     created() {
       this.$store.dispatch('blogs/content', this.$route.params.id).then(content => {
         this.updateFrame(content);
-      })
+      });
     }
   };
 </script>
 
-<style lang='less' scoped>
+<style lang='less' >
   @import './../../less/variables.less';
   @import '~ajc-toolbelt/dist/less/flex.less';
 
