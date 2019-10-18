@@ -104,7 +104,7 @@
   };
 </script>
 
-<style lang='less' >
+<style lang='less' scoped>
   @import '~ajc-toolbelt/dist/less/flex.less';
   @import './../../less/variables.less';
 

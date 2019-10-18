@@ -11,7 +11,7 @@
   };
 </script>
 
-<style lang='less' >
+<style lang='less' scoped>
   .notFound {
     background:white;
     height:300px;

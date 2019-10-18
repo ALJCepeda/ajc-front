@@ -109,7 +109,7 @@
   };
 </script>
 
-<style lang='less' >
+<style lang='less' scoped>
   @import '../../less/variables.less';
 
   .about-overview {
