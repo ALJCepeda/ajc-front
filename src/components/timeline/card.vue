@@ -61,7 +61,7 @@
           Submit
         </button>
         <button class="btn btn-danger" @click="clickedReset()" v-if="mode !== 'new'">Reset</button>
-        <button class="btn btn-danger" @click="clickedReset()" v-if="mode === 'new'">Clear</button>
+        <button class="btn btn-danger" @click="clickedClear()" v-if="mode === 'new'">Clear</button>
       </div>
     </div>
   </main>
@@ -79,16 +79,7 @@ export default {
       default: "readonly"
     },
     form: {
-      type: FormGroup,
-      default: function() {
-        return new FormGroup({
-          imageUrl: "https://vuejs.org/images/logo.png",
-          labelURL: "https://vuejs.org/",
-          label: "Label",
-          message: "Timeline Message",
-          when:moment().format()
-        });
-      }
+      type:FormGroup
     }
   },
   data() {
@@ -99,6 +90,9 @@ export default {
   methods: {
     clickedReset() {
       this.form.setCommittedValues();
+    },
+    clickedClear() {
+      this.form.setInitialValues();
     },
     clickedCancel() {
       this.clickedReset();
