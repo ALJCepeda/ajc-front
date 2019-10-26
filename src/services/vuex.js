@@ -1,8 +1,8 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from "vue";
+import Vuex from "vuex";
 
-import blogs from './modules/blogs';
-import timeline from './modules/timeline';
+import blogs from "./modules/blogs";
+import timeline from "./modules/timeline";
 
 Vue.use(Vuex);
 

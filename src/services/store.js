@@ -4,24 +4,38 @@ import _ from "lodash";
 const rawData = {};
 
 const BaseWork = {
-  link: '#',
-  logo: require('./../assets/images/work-icon.png'),
+  link: "#",
+  logo: require("./../assets/images/work-icon.png"),
   isHometown: false
 };
 
 export default {
   rawData: rawData,
-  setGeneral: function(data) { this.rawData.general = Object.assign({}, data); },
-  setSkills: function(data) { this.rawData.skills = Object.assign({}, data); },
-  setCities: function(data) { this.rawData.cities = data.slice(); },
-  setAddresses: function(data) { this.rawData.addresses = data.slice(); },
-  setHomes: function(data) { this.rawData.homes = data.slice(); },
-  setJobs: function(data) { this.rawData.jobs = data.map(entry => Object.assign({}, BaseWork, entry)); },
-  setEducation: function(data) { this.rawData.education = data; },
+  setGeneral: function(data) {
+    this.rawData.general = Object.assign({}, data);
+  },
+  setSkills: function(data) {
+    this.rawData.skills = Object.assign({}, data);
+  },
+  setCities: function(data) {
+    this.rawData.cities = data.slice();
+  },
+  setAddresses: function(data) {
+    this.rawData.addresses = data.slice();
+  },
+  setHomes: function(data) {
+    this.rawData.homes = data.slice();
+  },
+  setJobs: function(data) {
+    this.rawData.jobs = data.map(entry => Object.assign({}, BaseWork, entry));
+  },
+  setEducation: function(data) {
+    this.rawData.education = data;
+  },
   indexCities: function(cities) {
     const result = {};
 
-    cities.forEach((city) => {
+    cities.forEach(city => {
       let key = `${city.name}, ${city.shortState}`;
 
       if (!_.isUndefined(result[key])) {
@@ -34,10 +48,10 @@ export default {
     return result;
   },
   referenceCities: function(entries, cities) {
-    return entries.map((entry) => {
+    return entries.map(entry => {
       const city = cities[entry.city];
 
-      if(_.isUndefined(city)) {
+      if (_.isUndefined(city)) {
         throw new Error(`No city defined for: ${entry.city}`);
       }
 
@@ -47,7 +61,7 @@ export default {
   indexAddresses: function(addresses) {
     const result = {};
 
-    addresses.forEach((address) => {
+    addresses.forEach(address => {
       var key = `${address.number} ${address.street}`;
 
       if (_.isString(address.unit)) {
@@ -55,7 +69,7 @@ export default {
       }
 
       if (!_.isUndefined(result[key])) {
-        throw new Error('Primary key already defined:', key);
+        throw new Error("Primary key already defined:", key);
       }
 
       result[key] = address;
@@ -64,10 +78,10 @@ export default {
     return result;
   },
   referenceAddresses: function(entries, addresses) {
-    return entries.map((entry) => {
+    return entries.map(entry => {
       const address = addresses[entry.address];
 
-      if(_.isUndefined(address)) {
+      if (_.isUndefined(address)) {
         throw new Error(`No address defined for: ${entry.address}`);
       }
 
@@ -77,17 +91,22 @@ export default {
   indexEducation: function(entries) {
     const result = {};
 
-    entries.forEach((entry) => {
+    entries.forEach(entry => {
       result[entry.type] = entry;
     });
 
     return result;
   },
   qualifyDates: function(entries) {
-    return entries.map((entry) => Object.assign({
-      fullStart: moment(entry.start).format('MMMM Do, YYYY'),
-      fullEnd: moment(entry.end).format('MMMM Do, YYYY')
-    }, entry));
+    return entries.map(entry =>
+      Object.assign(
+        {
+          fullStart: moment(entry.start).format("MMMM Do, YYYY"),
+          fullEnd: moment(entry.end).format("MMMM Do, YYYY")
+        },
+        entry
+      )
+    );
   },
   build: function() {
     const general = this.rawData.general;
@@ -98,25 +117,37 @@ export default {
     const cities = this.rawData.cities;
     const indexedCities = this.indexCities(cities);
 
-    const addresses = this.referenceCities(this.rawData.addresses, indexedCities);
+    const addresses = this.referenceCities(
+      this.rawData.addresses,
+      indexedCities
+    );
     const indexedAddresses = this.indexAddresses(addresses);
 
-    const referencedHomes = this.referenceAddresses(this.rawData.homes, indexedAddresses);
+    const referencedHomes = this.referenceAddresses(
+      this.rawData.homes,
+      indexedAddresses
+    );
     const homes = this.qualifyDates(referencedHomes);
 
     const jobs = this.referenceAddresses(this.rawData.jobs, indexedAddresses);
 
-    const education = this.referenceAddresses(this.rawData.education, indexedAddresses);
+    const education = this.referenceAddresses(
+      this.rawData.education,
+      indexedAddresses
+    );
     const indexedEducation = this.indexEducation(education);
 
     return {
       general,
       skills,
-      cities, indexedCities,
-      addresses, indexedAddresses,
+      cities,
+      indexedCities,
+      addresses,
+      indexedAddresses,
       homes,
       jobs,
-      education, indexedEducation
+      education,
+      indexedEducation
     };
   }
 };

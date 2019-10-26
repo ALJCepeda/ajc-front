@@ -21,29 +21,29 @@ export default {
   },
   findMissingIndexes: function(array, start, end) {
     const missing = [];
-    for(let i=start; i<end; i++) {
-      if(_.isUndefined(array[i]) || _.isNull(array[i])) {
+    for (let i = start; i < end; i++) {
+      if (_.isUndefined(array[i]) || _.isNull(array[i])) {
         missing.push(i);
       }
     }
 
     return missing;
   },
-  rangeFromLimit = function(limit, offset, max) {
+  rangeFromLimit: function(limit, offset, max) {
     let start = offset;
     let end = offset + limit;
 
-    if(limit < 0) {
+    if (limit < 0) {
       end = offset;
       start = offset - limit;
 
-      if(start < 0) {
+      if (start < 0) {
         start = 0;
         end = end + Math.abs(start);
       }
     }
 
-    if(end > max) {
+    if (end > max) {
       end = max;
     }
 

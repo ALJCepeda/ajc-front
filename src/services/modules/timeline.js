@@ -1,9 +1,10 @@
-import Vue from 'vue';
-import moment from 'moment';
-import api from './../api';
+import Vue from "vue";
+import moment from "moment";
+import api from "./../api";
+import {http} from "@/services/api";
 
 const module = {
-  namespaced:true,
+  namespaced: true,
   state: {
     manifest: null,
     entries: {}
@@ -13,14 +14,14 @@ const module = {
       return state.manifest;
     },
     entry(state) {
-      return (id) => {
+      return id => {
         return state.entries.get(id);
       };
     }
   },
   mutations: {
     manifest(state, manifest) {
-      Vue.set(state, 'manifest', manifest);
+      Vue.set(state, "manifest", manifest);
     },
     entry(state, entry) {
       entry.created_at = moment(entry.created_at);
@@ -31,14 +32,14 @@ const module = {
   },
   actions: {
     manifest({ commit }) {
-      return api.get('/timeline/manifest').then(resp => {
-        commit('manifest', resp);
+      return api.get("/timeline/manifest").then(resp => {
+        commit("manifest", resp);
         return resp;
       });
     },
     entries({ commit }, ids = []) {
-      return api.post('/timeline/entries', ids).then(entries => {
-        entries.forEach(entry => commit('entry', entry));
+      return http.timeline.get({ page:1, limit:10 }).then(entries => {
+        entries.forEach(entry => commit("entry", entry));
 
         return Array.from(entries.values()).sort((a, b) => {
           return b.created_at.diff(a.created_at);
@@ -46,8 +47,9 @@ const module = {
       });
     },
     entriesByPage({ dispatch }, page) {
-      return api.get('/timeline/entriesByPage', { page, limit:20 }).then(ids => {
-        return dispatch('entries', ids);
+      debugger;
+      return api.get("/timeline", { page:1, limit: 10 }).then(ids => {
+        return dispatch("entries", ids);
       });
     }
   }

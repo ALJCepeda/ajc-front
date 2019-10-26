@@ -1,57 +1,105 @@
 <template>
   <main class="sinput row-w">
-    <label>{{label}}:</label>
-    <input :placeholder="placeholder" :type="type" :value="value" @input="emitValue" v-if="type !== 'textarea'" ref="input"/>
-    <textarea :placeholder="placeholder" :value="value" @input="emitValue" v-if="type === 'textarea'" ref="input" />
+    <label>{{ label }}:</label>
+    <input
+      :type="type"
+      :value="value"
+      :name="name"
+      @input="emitValue"
+      v-if="!nonInputTypes.includes(type)"
+      ref="input"
+    />
+
+    <textarea
+      :placeholder="placeholder"
+      :value="value"
+      :name="name"
+      @input="emitValue"
+      v-if="type === 'textarea'"
+      ref="input"
+    />
+
+    <datetime
+      :value="value"
+      :type="type"
+      @input="emitValue"
+      v-if="dateTypes.includes(type)"
+      ref="input"
+    />
   </main>
 </template>
 
 <script>
-  export default {
-    name: 'sinput',
-    props: {
-      label:String,
-      type:String,
-      value:[ String, Number, Boolean ],
-      placeholder:{
-        type:String,
-        default:'Enter a value'
-      }
-    },
+import 'vue-datetime/dist/vue-datetime.css'
+import { Datetime } from 'vue-datetime';
+import { isString } from 'lodash';
 
-    watch: {
-      value: function(newVal) {
-        if(this.$refs.input.value !== newVal) {
-          setTimeout(() => {
-            this.$refs.input.value = newVal;
-          });
-        }
-      }
+export default {
+  name: "sinput",
+  components: {
+    Datetime
+  },
+  props: {
+    label: String,
+    value: [String, Number, Boolean],
+    type: String,
+    placeholder: {
+      type: String,
+      default: "Enter a value"
     },
+    name: {
+      type: String,
+      default: ''
+    }
+  },
 
-    methods: {
-      emitValue(event) {
-        this.$emit('input', event.target.value);
+  data() {
+    return {
+      specialTypes: [ 'textarea' ],
+      dateTypes: ['date', 'datetime', 'time']
+    }
+  },
+
+  computed: {
+    nonInputTypes() {
+      return this.specialTypes.concat(this.dateTypes);
+    }
+  },
+
+  watch: {
+    value: function(newVal) {
+      if (this.$refs.input.value !== newVal) {
+        setTimeout(() => {
+          this.$refs.input.value = newVal;
+        });
       }
     }
-  };
+  },
+
+  methods: {
+    emitValue(event) {
+      const value = isString(event) ? event : event.target.value;
+      this.$emit("input", value);
+    }
+  }
+};
 </script>
 
 <style lang="less">
-  .sinput {
-    label {
-      width:20%;
-      text-align: right;
-      margin-right:35px;
-    }
-
-    textarea {
-      flex: .7;
-      min-width: 175px;
-    }
-
-    input[type=text] {
-      min-width:173px;
-    }
+.sinput {
+  label {
+    width: 20%;
+    text-align: right;
+    margin-right: 35px;
   }
+
+  textarea {
+    flex: 0.7;
+    min-width: 175px;
+  }
+
+  input[type="text"] {
+    min-width: 173px;
+  }
+}
 </style>
