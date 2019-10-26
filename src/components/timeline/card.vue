@@ -57,7 +57,7 @@
       </div>
 
       <div class="row-nw jc-center action-btns">
-        <button class="btn btn-primary submit" @click="clickedSubmit()">
+        <button class="btn btn-primary submit" @click="clickedSubmit()" :disabled="!form.isDirty()">
           Submit
         </button>
         <button class="btn btn-danger" @click="clickedReset()" v-if="mode !== 'new'">Reset</button>
