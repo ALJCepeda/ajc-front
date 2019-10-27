@@ -2,113 +2,84 @@
   <main class="timeline-card border">
     <div class="header row-nw border-bottom">
       <div class="img row-nw ai-center">
-        <a v-if="form.labelURL && form.labelURL !== ''"
-          :href="form.labelURL"
+        <a v-if="data.labelURL && data.labelURL !== ''"
+          :href="data.labelURL"
           target="_blank">
-          <simg :src="form.imageUrl" />
+          <simg :src="data.imageUrl"></simg>
         </a>
 
-        <simg v-if="!form.labelURL" :src="form.imageUrl" />
+        <simg v-if="!data.labelURL" :src="data.imageUrl"></simg>
       </div>
 
       <div class="content">
         <div class="top">
-          <a v-if="form.labelURL"
-            :href="form.labelURL"
+          <a v-if="data.labelURL"
+            :href="data.labelURL"
             target="_blank">
-            {{ form.label }}
+            {{ data.label }}
           </a>
 
-          <span v-if="!form.labelURL">{{ form.label }}</span>
-          <span v-if="form.type"> shared a {{ form.type }}</span>
+          <span v-if="!data.labelURL">{{ data.label }}</span>
+          <span v-if="data.type"> shared a {{ data.type }}</span>
 
           <span class="edit"
-            v-if="mode !== 'new' && !editing"
-            @click="clickedEdit()">
+            v-if="form.editable && !form.editing"
+            @click="form.editing = true">
             edit
           </span>
 
           <span class="edit"
-            v-if="mode !== 'new' && editing"
-            @click="clickedCancel()">
+            v-if="form.editable && form.editing"
+            @click="form.cancel()">
             cancel
           </span>
         </div>
 
         <div class="bottom">
-          {{ form.when | FromNow }}
+          {{ data.when | FromNow }}
         </div>
       </div>
     </div>
 
     <div class="message border-bottom">
       <p>
-        {{ form.message }}
+        {{ data.message }}
       </p>
     </div>
 
-    <div class="editor" v-if="editing">
+    <div class="editor" v-if="form.editable && form.editing">
       <div>
-        <sinput label="When" type="datetime" v-model="form.when" />
-        <sinput label="Image" type="text" v-model="form.imageUrl" />
-        <sinput label="Link" type="text" v-model="form.labelURL" />
-        <sinput label="Label" type="text" v-model="form.label" />
-        <sinput label="Message" type="textarea" v-model="form.message" />
+        <sinput label="When" type="datetime" v-model="data.when"></sinput>
+        <sinput label="Image" type="text" v-model="data.imageUrl"></sinput>
+        <sinput label="Link" type="text" v-model="data.labelURL"></sinput>
+        <sinput label="Label" type="text" v-model="data.label"></sinput>
+        <sinput label="Message" type="textarea" v-model="data.message"></sinput>
       </div>
 
       <div class="row-nw jc-center action-btns">
-        <button class="btn btn-primary submit" @click="clickedSubmit()" :disabled="!form.isDirty()">
+        <button class="btn btn-primary submit" @click="form.submit()" :disabled="!form.isDirty()">
           Submit
         </button>
-        <button class="btn btn-danger" @click="clickedReset()" v-if="mode !== 'new'">Reset</button>
-        <button class="btn btn-danger" @click="clickedClear()" v-if="mode === 'new'">Clear</button>
+        <button class="btn btn-danger" @click="form.reset()">Reset</button>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import FormGroup from "./../../models/FormGroup";
-import moment from "moment";
+import Form from "@/models/Form";
 
 export default {
   name: "card",
   props: {
-    mode: {
-      type: String,
-      default: "readonly"
-    },
     form: {
-      type:FormGroup
+      type:Form
     }
   },
   data() {
     return {
-      editing:(this.mode === 'editable' || this.mode === 'new') ? true : false
+      data: this.form.data
     };
-  },
-  methods: {
-    clickedReset() {
-      this.form.setCommittedValues();
-    },
-    clickedClear() {
-      this.form.setInitialValues();
-    },
-    clickedCancel() {
-      this.clickedReset();
-      this.editing = false;
-    },
-    clickedEdit() {
-      this.editing = true;
-    },
-    clickedSubmit() {
-      console.log("Should submit:", this.form);
-      this.form.commit();
-
-      if (this.mode === "new") {
-        this.form.setInitialValues();
-      }
-    }
   }
 };
 </script>
@@ -153,7 +124,7 @@ export default {
     padding: 10px;
 
     p {
-      margin-top: 0px;
+      margin-top: 0;
       margin-bottom: 10px;
     }
   }

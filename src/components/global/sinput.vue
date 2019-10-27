@@ -6,7 +6,7 @@
       :value="value"
       :name="name"
       @input="emitValue"
-      v-if="!nonInputTypes.includes(type)"
+      v-if="!nonSimpleTypes.includes(type)"
       ref="input"
     />
 
@@ -17,22 +17,23 @@
       @input="emitValue"
       v-if="type === 'textarea'"
       ref="input"
-    />
+    ></textarea>
 
     <datetime
-      :value="value"
+      v-model="valueStr"
       :type="type"
       @input="emitValue"
       v-if="dateTypes.includes(type)"
       ref="input"
-    />
+    ></datetime>
   </main>
 </template>
 
 <script>
 import 'vue-datetime/dist/vue-datetime.css'
 import { Datetime } from 'vue-datetime';
-import { isString } from 'lodash';
+import {isDate, isString} from 'lodash';
+import moment from "moment";
 
 export default {
   name: "sinput",
@@ -41,7 +42,7 @@ export default {
   },
   props: {
     label: String,
-    value: [String, Number, Boolean],
+    value: [String, Number, Boolean, moment],
     type: String,
     placeholder: {
       type: String,
@@ -56,19 +57,20 @@ export default {
   data() {
     return {
       specialTypes: [ 'textarea' ],
-      dateTypes: ['date', 'datetime', 'time']
+      dateTypes: ['date', 'datetime', 'time'],
+      valueStr: moment.isMoment(this.value) ? this.value.format() : this.value
     }
   },
 
   computed: {
-    nonInputTypes() {
+    nonSimpleTypes() {
       return this.specialTypes.concat(this.dateTypes);
     }
   },
 
   watch: {
     value: function(newVal) {
-      if (this.$refs.input.value !== newVal) {
+      if (this.$refs.input.value !== newVal && !moment.isMoment(newVal)) {
         setTimeout(() => {
           this.$refs.input.value = newVal;
         });
@@ -79,7 +81,12 @@ export default {
   methods: {
     emitValue(event) {
       const value = isString(event) ? event : event.target.value;
-      this.$emit("input", value);
+
+      if(moment.isMoment(this.value)) {
+        this.$emit("input", moment(value));
+      } else {
+        this.$emit("input", value);
+      }
     }
   }
 };
