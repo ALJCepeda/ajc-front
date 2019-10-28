@@ -3,23 +3,23 @@
     <intro class="intro"></intro>
 
     <div class="cards">
-      <card
+      <timeline-card
         :model="entry"
         v-for="entry in entries"
         :key="entry.id"
         style="margin-bottom:15px;"
-      ></card>
+      ></timeline-card>
     </div>
   </div>
 </template>
 
 <script>
-import intro from "./../components/timeline/intro.vue";
-import card from "./../components/timeline/card.vue";
+import intro from "@/components/timeline/intro.vue";
+import TimelineCard from "@/components/timeline/card.vue";
 
 export default {
   name: "timeline",
-  components: { intro, card },
+  components: { intro, TimelineCard },
   data: () => ({
     page: 1,
     entries: [],

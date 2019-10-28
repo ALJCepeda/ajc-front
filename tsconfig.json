@@ -3,8 +3,6 @@
     "allowJs": true,
     "target": "es5",
     "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -15,9 +13,11 @@
     "types": [
       "webpack-env",
       "mocha",
+      "node",
       "chai"
     ],
     "paths": {
+      "typeorm": ["./node_modules/typeorm/typeorm-model-shim.js"],
       "@/*": [
         "src/*"
       ]
@@ -31,6 +31,7 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",

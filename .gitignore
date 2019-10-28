@@ -12,7 +12,7 @@ access.log
 error.log
 *.lock
 logs
-node_modules
+**/node_modules/**
 public/libs
 public/fonts
 npm-debug.log

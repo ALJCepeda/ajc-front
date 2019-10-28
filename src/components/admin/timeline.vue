@@ -1,19 +1,19 @@
 <template>
   <main class="about-info">
     <div class="row-nw jc-center">
-      <card mode="readonly" :form="card"></card>
+      <timeline-card mode="readonly" :form="card"></timeline-card>
     </div>
   </main>
 </template>
 
 <script>
-import card from "@/components/timeline/card";
+import TimelineCard from "@/components/timeline/card";
 import Form from "@/models/Form";
 import moment from "moment";
 
 export default {
   name: "timeline",
-  components: { card },
+  components: { TimelineCard },
   data() {
     const when = moment();
     return {

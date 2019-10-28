@@ -66,16 +66,19 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
 import Form from "@/models/Form";
+import TimelineEntry from "ajc-shared/src/models/TimelineEntry";
+import {Component, Prop} from "vue-property-decorator";
+import Vue from 'vue';
 
-export default {
-  name: "card",
-  props: {
-    form: {
-      type:Form
-    }
-  },
+@Component
+export default class TimelineCard extends Vue {
+  name:string = "TimelineCard";
+
+  @Prop()
+  form:Form<TimelineEntry>;
+
   data() {
     return {
       data: this.form.data
