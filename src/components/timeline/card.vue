@@ -2,25 +2,25 @@
   <main class="timeline-card border">
     <div class="header row-nw border-bottom">
       <div class="img row-nw ai-center">
-        <a v-if="data.labelURL && data.labelURL !== ''"
-          :href="data.labelURL"
+        <a v-if="entry.labelURL && entry.labelURL !== ''"
+          :href="entry.labelURL"
           target="_blank">
-          <simg :src="data.imageUrl"></simg>
+          <simg :src="entry.imageURL"></simg>
         </a>
 
-        <simg v-if="!data.labelURL" :src="data.imageUrl"></simg>
+        <simg v-if="!entry.labelURL" :src="entry.imageURL"></simg>
       </div>
 
       <div class="content">
         <div class="top">
-          <a v-if="data.labelURL"
-            :href="data.labelURL"
+          <a v-if="entry.labelURL"
+            :href="entry.labelURL"
             target="_blank">
-            {{ data.label }}
+            {{ entry.label }}
           </a>
 
-          <span v-if="!data.labelURL">{{ data.label }}</span>
-          <span v-if="data.type"> shared a {{ data.type }}</span>
+          <span v-if="!entry.labelURL">{{ entry.label }}</span>
+          <span v-if="entry.type"> shared a {{ entry.type }}</span>
 
           <span class="edit"
             v-if="form.editable && !form.editing"
@@ -36,24 +36,24 @@
         </div>
 
         <div class="bottom">
-          {{ data.when | FromNow }}
+          {{ entry.when | FromNow }}
         </div>
       </div>
     </div>
 
     <div class="message border-bottom">
       <p>
-        {{ data.message }}
+        {{ entry.message }}
       </p>
     </div>
 
     <div class="editor" v-if="form.editable && form.editing">
       <div>
-        <sinput label="When" type="datetime" v-model="data.when"></sinput>
-        <sinput label="Image" type="text" v-model="data.imageUrl"></sinput>
-        <sinput label="Link" type="text" v-model="data.labelURL"></sinput>
-        <sinput label="Label" type="text" v-model="data.label"></sinput>
-        <sinput label="Message" type="textarea" v-model="data.message"></sinput>
+        <sinput label="When" type="datetime" v-model="entry.when"></sinput>
+        <sinput label="Image" type="text" v-model="entry.imageURL"></sinput>
+        <sinput label="Link" type="text" v-model="entry.labelURL"></sinput>
+        <sinput label="Label" type="text" v-model="entry.label"></sinput>
+        <sinput label="Message" type="textarea" v-model="entry.message"></sinput>
       </div>
 
       <div class="row-nw jc-center action-btns">
@@ -79,11 +79,7 @@ export default class TimelineCard extends Vue {
   @Prop()
   form:Form<TimelineEntry>;
 
-  data() {
-    return {
-      data: this.form.data
-    };
-  }
+  entry:TimelineEntry = this.form.data;
 };
 </script>
 
