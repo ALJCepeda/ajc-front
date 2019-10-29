@@ -3,9 +3,9 @@ import Vue from "vue";
 import "./less/index.less";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import store from "./services/vuex.js";
+import store from "./vuex";
 import data from "./services/data";
-import router from "./services/router.js";
+import router from "./router";
 import App from "./App.vue";
 
 import registerGlobals from "@/services/functions/registerGlobals";

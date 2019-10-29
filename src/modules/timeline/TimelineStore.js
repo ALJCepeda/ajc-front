@@ -1,0 +1,64 @@
+import Vue from "vue";
+import moment from "moment";
+import api from "../../services/api";
+import {http} from "@/services/api";
+import TimelineActions from "@/modules/timeline/TimelineActions";
+import generateActions from "@/services/functions/generateActions";
+
+const module = {
+  namespace:'timeline',
+  namespaced: true,
+  state: {
+    manifest: null,
+    entries: {}
+  },
+  getters: {
+    manifest(state) {
+      return state.manifest;
+    },
+    entry(state) {
+      return id => {
+        return state.entries.get(id);
+      };
+    }
+  },
+  mutations: {
+    manifest(state, manifest) {
+      Vue.set(state, "manifest", manifest);
+    },
+    entry(state, entry) {
+      entry.created_at = moment(entry.created_at);
+      entry.fromNow = entry.created_at.calendar();
+      entry.imageUrl = `${process.env.STATIC_URL}/images/${entry.image}`;
+      Vue.set(state.entries, entry.id, entry);
+    }
+  },
+  actions: {
+    manifest({ commit }) {
+      return api.get("/timeline/manifest").then(resp => {
+        commit("manifest", resp);
+        return resp;
+      });
+    },
+    entries({ commit }, ids = []) {
+      return http.timeline.get({ page:1, limit:10 }).then(entries => {
+        entries.forEach(entry => commit("entry", entry));
+
+        return Array.from(entries.values()).sort((a, b) => {
+          return b.created_at.diff(a.created_at);
+        });
+      });
+    },
+    entriesByPage({ dispatch }, page) {
+      debugger;
+      return api.get("/timeline", { page:1, limit: 10 }).then(ids => {
+        return dispatch("entries", ids);
+      });
+    }
+  }
+};
+
+
+generateActions(module, TimelineActions);
+
+export default module;

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "strictNullChecks": true,
     "target": "es5",
     "module": "esnext",
     "importHelpers": true,
@@ -10,6 +11,8 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "types": [
       "webpack-env",
       "mocha",
