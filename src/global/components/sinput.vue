@@ -6,16 +6,20 @@
       :value="value"
       :name="name"
       @input="emitValue"
-      v-if="!nonSimpleTypes.includes(type)"
+      v-if="!nonSimpleTypes.includes(type) && editable"
       ref="input"
     />
+
+    <span
+      v-if="!editable"
+    >{{ value }}</span>
 
     <textarea
       :placeholder="placeholder"
       :value="value"
       :name="name"
       @input="emitValue"
-      v-if="type === 'textarea'"
+      v-if="type === 'textarea' && editable"
       ref="input"
     ></textarea>
 
@@ -23,7 +27,7 @@
       v-model="valueStr"
       :type="type"
       @input="emitValue"
-      v-if="dateTypes.includes(type)"
+      v-if="dateTypes.includes(type) && editable"
       ref="input"
     ></datetime>
   </main>
@@ -50,6 +54,10 @@ export default {
     name: {
       type: String,
       default: ''
+    },
+    editable: {
+      type: Boolean,
+      default: true
     }
   },
 

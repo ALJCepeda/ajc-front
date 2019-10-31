@@ -5,6 +5,10 @@ import {Store} from "vuex";
 
 type FormOptions<IResourceType, ISubmitResolvedType, ISubmitRejectedType> = Partial<Form<IResourceType, ISubmitResolvedType, ISubmitRejectedType>>;
 
+export function isForm<T>(obj:any): obj is Form<T> {
+  return obj instanceof Form;
+}
+
 export default class Form<IResourceType, ISubmitResponseType = IResourceType, ISubmitRejectType = GenericActionHandlerError> {
   editing:boolean = false;
   editable:boolean = false;
@@ -47,8 +51,14 @@ export default class Form<IResourceType, ISubmitResponseType = IResourceType, IS
     Object.assign(this.data, this.committed);
   }
 
-  commit() {
-    Object.assign(this.committed, this.data);
+  commit(data?:IResourceType) {
+    if(data) {
+      Object.assign(this.committed, data);
+      this.reset();
+    } else {
+      Object.assign(this.committed, this.data);
+    }
+
   }
 
   cancel() {
@@ -62,12 +72,8 @@ export default class Form<IResourceType, ISubmitResponseType = IResourceType, IS
     }
 
     return this.onSubmit(this.data).then(async (result) => {
-      if(result.resolved) {
-        this.commit();
-
-        if(this.resolved) {
-          return this.resolved(result.resolved);
-        }
+      if(this.resolved && result.resolved) {
+        return this.resolved(result.resolved);
       }
 
       if(this.rejected && result.rejected) {

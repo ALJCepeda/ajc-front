@@ -18,26 +18,3 @@ class HTTPCache {
   }
 }
 
-const axios = Axios.create({
-  baseURL: process.env.VUE_APP_API_URL,
-  timeout: 5000
-});
-
-export function request(method:string, url:string, config?:AxiosRequestConfig) {
-  return axios.request({
-    method, url, ...config
-  }).then(resp => resp.data);
-}
-
-export function get(url:string, config?:AxiosRequestConfig) {
-  return request('get', url, config);
-}
-
-export const http = {
-  timeline: {
-    get:(params:{
-      page:number,
-      limit:number
-    }) => { return get('/timeline', { params }); }
-  }
-}

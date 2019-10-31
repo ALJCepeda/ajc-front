@@ -1,6 +1,13 @@
 import TimelineEntry from "ajc-shared/src/models/TimelineEntry"
 import createAction from "@/services/functions/createAction";
-import {Action, CreateModuleActionOptions, GenericActionHandlerError, TimelineModuleState} from "@/types";
+import {
+  Action,
+  CreateModuleActionOptions,
+  GenericActionHandlerError,
+  PaginationContext,
+  TimelineModuleState
+} from "@/types";
+import {timelineAPI} from "@/modules/timeline/store/api";
 
 function createTimelineAction <
   IPayloadType,
@@ -17,11 +24,17 @@ function createTimelineAction <
   });
 }
 
-export default {
+export const TimelineActions = {
+  LOAD: createTimelineAction<PaginationContext, TimelineEntry[]>({
+    task:'Fetch a page of TimelineEntries',
+    async handler(context, action) {
+      return timelineAPI.get(action.payload);
+    }
+  }),
   UPSERT: createTimelineAction<TimelineEntry>({
     task:'Insert or Update TimelineEntry',
-    async handler(context, payload) {
-      return payload
+    async handler(context, action) {
+      return timelineAPI.post(action.payload);
     }
   })
 };

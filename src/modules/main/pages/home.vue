@@ -4,7 +4,7 @@
 
     <div class="cards">
       <timeline-card
-        :model="entry"
+        :form="entry"
         v-for="entry in entries"
         :key="entry.id"
         style="margin-bottom:15px;"
@@ -14,8 +14,11 @@
 </template>
 
 <script>
-import TimelineIntro from "@/modules/timeline/components/TimelineInfo.vue";
-import TimelineCard from "@/modules/timeline/components/TimelineCard.vue";
+import TimelineIntro from "@/modules/timeline/components/info.vue";
+import TimelineCard from "@/modules/timeline/components/card.vue";
+import $dispatch from "@/services/functions/dispatch";
+import {TimelineActions} from "@/modules/timeline/store/actions";
+import Form from "@/models/Form";
 
 export default {
   name: "timeline",
@@ -28,12 +31,12 @@ export default {
   methods: {
     fetchEntries() {
       this.fetchingEntries = true;
-      this.$store
-        .dispatch("timeline/entries", this.page)
-        .then(entries => {
-          this.entries = entries;
-          this.fetchingEntries = false;
-        });
+      $dispatch(this.$store, TimelineActions.LOAD)({
+        page:this.page,
+        limit:10
+      }).then((resp) => {
+        this.entries = resp.map(entry => Form.fromAction(this.$store, TimelineActions.UPSERT, entry, { editable: true }));
+      });
     }
   },
   created() {

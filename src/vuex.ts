@@ -1,13 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import blogs from "@/modules/blog/BlogStore";
-import timeline from "@/modules/timeline/TimelineStore";
+import blog from "@/modules/blog/store/index.js";
+import timeline from "@/modules/timeline/store/index.ts";
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  modules: { blogs, [timeline.namespace]:timeline }
+  modules: { blog, timeline }
 });
 
 export default store;

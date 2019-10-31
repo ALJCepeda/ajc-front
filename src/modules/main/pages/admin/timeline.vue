@@ -1,17 +1,17 @@
 <template>
   <main class="about-info">
     <div class="row-nw jc-center">
-      <timeline-card :form="form"></timeline-card>
+      <timeline-card :form="timelineEntry"></timeline-card>
     </div>
   </main>
 </template>
 
 <script lang="ts">
-import TimelineCard from "@/modules/timeline/components/TimelineCard.vue";
-import Form from "@/models/Form";
 import {Component} from "vue-property-decorator";
 import Vue from 'vue';
-import TimelineActions from "@/modules/timeline/TimelineActions";
+import Form from "@/models/Form";
+import TimelineCard from "@/modules/timeline/components/card.vue";
+import { TimelineActions } from "@/modules/timeline/store/actions";
 
 @Component({
   components: { TimelineCard }
@@ -19,15 +19,15 @@ import TimelineActions from "@/modules/timeline/TimelineActions";
 export default class TimelineComponent extends Vue {
   name:string = "TimelineComponent";
 
-  form = Form.fromAction(this.$store, TimelineActions.UPSERT, {
+  timelineEntry = Form.fromAction(this.$store, TimelineActions.UPSERT, {
     imageURL: "https://vuejs.org/images/logo.png",
     labelURL: "https://vuejs.org/",
     label: "Label",
     message: "Timeline Message",
     when: new Date()
   }, {
-    async resolved(resp) {
-
+    resolved: async (resp) => {
+      this.timelineEntry.commit(resp);
       debugger;
     },
     async rejected(err) {

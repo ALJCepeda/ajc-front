@@ -1,16 +1,13 @@
 import Vue from "vue";
 import moment from "moment";
-import api from "../../services/api";
-import {http} from "@/services/api";
-import TimelineActions from "@/modules/timeline/TimelineActions";
-import generateActions from "@/services/functions/generateActions";
+import api from "../../../services/api";
 
 const module = {
-  namespace:'timeline',
   namespaced: true,
   state: {
     manifest: null,
-    entries: {}
+    entries: {},
+    content: {}
   },
   getters: {
     manifest(state) {
@@ -19,6 +16,11 @@ const module = {
     entry(state) {
       return id => {
         return state.entries.get(id);
+      };
+    },
+    content(state) {
+      return id => {
+        return state.content.get(id);
       };
     }
   },
@@ -31,17 +33,20 @@ const module = {
       entry.fromNow = entry.created_at.calendar();
       entry.imageUrl = `${process.env.STATIC_URL}/images/${entry.image}`;
       Vue.set(state.entries, entry.id, entry);
+    },
+    content(state, { uri, content }) {
+      Vue.set(state.content, uri, content);
     }
   },
   actions: {
     manifest({ commit }) {
-      return api.get("/timeline/manifest").then(resp => {
+      return api.get("/blogs/manifest").then(resp => {
         commit("manifest", resp);
         return resp;
       });
     },
     entries({ commit }, ids = []) {
-      return http.timeline.get({ page:1, limit:10 }).then(entries => {
+      return api.post("/blogs/entries", ids).then(entries => {
         entries.forEach(entry => commit("entry", entry));
 
         return Array.from(entries.values()).sort((a, b) => {
@@ -50,15 +55,17 @@ const module = {
       });
     },
     entriesByPage({ dispatch }, page) {
-      debugger;
-      return api.get("/timeline", { page:1, limit: 10 }).then(ids => {
+      return api.get("/blogs/entriesByPage", { page, limit: 20 }).then(ids => {
         return dispatch("entries", ids);
+      });
+    },
+    content({ commit }, uri) {
+      return api.get(`/blogs/${uri}`).then(resp => {
+        commit("content", { uri, content: resp });
+        return resp;
       });
     }
   }
 };
-
-
-generateActions(module, TimelineActions);
 
 export default module;

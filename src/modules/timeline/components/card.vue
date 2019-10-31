@@ -49,6 +49,7 @@
 
     <div class="editor" v-if="form.editable && form.editing">
       <div>
+        <sinput label="ID" type="text" v-if="entry.id" v-model="entry.id" :editable="false"></sinput>
         <sinput label="When" type="datetime" v-model="entry.when"></sinput>
         <sinput label="Image" type="text" v-model="entry.imageURL"></sinput>
         <sinput label="Link" type="text" v-model="entry.labelURL"></sinput>
@@ -67,7 +68,7 @@
 </template>
 
 <script lang="ts">
-import Form from "@/models/Form";
+  import Form, {isForm} from "@/models/Form";
 import TimelineEntry from "ajc-shared/src/models/TimelineEntry";
 import {Component, Prop} from "vue-property-decorator";
 import Vue from 'vue';
@@ -79,10 +80,12 @@ export default class TimelineCard extends Vue {
   @Prop()
   form:Form<TimelineEntry>;
 
-  entry:TimelineEntry = this.form.data;
-
   get isDirty() {
     return this.form.isDirty();
+  }
+
+  get entry():TimelineEntry {
+    return this.form.data;
   }
 };
 </script>
