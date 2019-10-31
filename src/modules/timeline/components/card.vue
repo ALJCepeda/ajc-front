@@ -47,34 +47,32 @@
       </p>
     </div>
 
-    <div class="editor" v-if="form.editable && form.editing">
-      <div>
-        <sinput label="ID" type="text" v-if="entry.id" v-model="entry.id" :editable="false"></sinput>
-        <sinput label="When" type="datetime" v-model="entry.when"></sinput>
-        <sinput label="Image" type="text" v-model="entry.imageURL"></sinput>
-        <sinput label="Link" type="text" v-model="entry.labelURL"></sinput>
-        <sinput label="Label" type="text" v-model="entry.label"></sinput>
-        <sinput label="Message" type="textarea" v-model="entry.message"></sinput>
-      </div>
-
-      <div class="row-nw jc-center action-btns">
-        <button class="btn btn-primary submit" @click="submit()" :disabled="!isDirty">Submit</button>
-        <button class="btn btn-warning" @click="form.reset()" :disabled="!isDirty">Reset</button>
-        <button class="btn btn-danger remove" v-if="entry.id" @click="remove()">Delete</button>
-      </div>
-    </div>
+    <sform class="form" v-if="form && form.editable && form.editing" :form="form"></sform>
   </main>
 </template>
 
 <script lang="ts">
 import TimelineEntry from "ajc-shared/src/models/TimelineEntry";
 import {Component} from "vue-property-decorator";
-import FormComponent from "@/abstract/FormComponent";
+import AbstractFormComponent from "@/abstract/AbstractFormComponent";
 
 @Component
-export default class TimelineCard extends FormComponent<TimelineEntry> {
+export default class TimelineCard extends AbstractFormComponent<TimelineEntry> {
   name:string = "TimelineCard";
-};
+
+  created() {
+    if(this.form.controls.length === 0) {
+      this.form.controls = [
+        { key:'id', label:'ID', type:'text', readonly:true, hideIfEmpty:true },
+        { key:'when', label:'When', type:'datetime' },
+        { key:'imageURL', label:'Image', type:'text' },
+        { key:'labelURL', label:'Link', type:'text' },
+        { key:'label', label:'Label', type:'text' },
+        { key:'message', label:'Message', type:'textarea' }
+      ]
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>
@@ -122,25 +120,8 @@ export default class TimelineCard extends FormComponent<TimelineEntry> {
     }
   }
 
-  .editor {
+  .form {
     padding-top: 15px;
-  }
-
-  .sinput {
-    margin-bottom: 15px;
-  }
-
-  .action-btns {
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
-
-  .submit.btn {
-    margin-right: 30px;
-  }
-
-  .remove.btn {
-    margin-left: 30px;
   }
 
   .edit {

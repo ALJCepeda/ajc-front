@@ -2,7 +2,7 @@ import Vue from 'vue';
 import {Prop} from "vue-property-decorator";
 import Form from "@/models/Form";
 
-export default class FormComponent<IResourceType> extends Vue {
+export default class AbstractFormComponent<IResourceType> extends Vue {
   @Prop()
   form:Form<IResourceType>;
 

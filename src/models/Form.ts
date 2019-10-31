@@ -19,12 +19,19 @@ export default class Form<IResourceType extends IEntity, ISubmitResponseType = I
   removed?:(resp:IResourceType, form:Form<IResourceType, ISubmitResponseType>) => Promise<void>;
   committed: { [key in keyof IResourceType] : IResourceType[key] };
   data: { [key in keyof IResourceType] : IResourceType[key] };
+  controls: {
+    key:keyof IResourceType,
+    label:string,
+    type:string,
+    readonly?:boolean,
+    hideIfEmpty?:boolean
+  }[] = [];
 
   get id():number | undefined {
     return this.data.id;
   }
 
-  constructor(initialValues:IResourceType, options:FormOptions<IResourceType, ISubmitResponseType> = {}) {
+  constructor(initialValues:IResourceType, options?:FormOptions<IResourceType, ISubmitResponseType>) {
     this.committed = { ...initialValues };
     this.data = initialValues;
 
