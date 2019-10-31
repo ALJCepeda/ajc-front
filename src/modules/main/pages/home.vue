@@ -31,23 +31,24 @@ export default {
   methods: {
     fetchEntries() {
       this.fetchingEntries = true;
-      $dispatch(this.$store, TimelineActions.LOAD)({
-        page:this.page,
-        limit:10
-      }).then((resp) => {
-        this.entries = resp.map(entry => {
-          return Form.withAction(this.$store, entry, {
-            submitAction:TimelineActions.UPSERT,
-            submitted: (entry, form) => {
-              form.editing = false;
-            },
-            removed: (removedEntry) => {
-              this.entries = this.entries.filter(entry => entry.id !== removedEntry.id);
-            },
-            removeAction:TimelineActions.REMOVE,
-            editable: true
-          });
-        });
+
+      //TODO Restore types
+      Form.manyFromAction(this.$store, TimelineActions.LOAD.with({
+        page: this.page,
+        limit: 10
+      }), {
+        submitAction:TimelineActions.UPSERT,
+        submitted: (entry, form) => {
+          form.editing = false;
+          this.fetchingEntries = false;
+        },
+        removed: (removedEntry) => {
+          this.entries = this.entries.filter(entry => entry.id !== removedEntry.id);
+        },
+        removeAction:TimelineActions.REMOVE,
+        editable: true
+      }).then(forms => {
+        this.entries = forms;
       });
     }
   },

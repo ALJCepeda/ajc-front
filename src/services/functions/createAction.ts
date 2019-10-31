@@ -16,6 +16,10 @@ export default function createAction <
         payload:payload
       };
     },
+    with(data:IPayloadType):Action<IStoreState, IPayloadType, IHandlerResponse> {
+      this.data = data;
+      return this;
+    },
     ...options
   };
 

@@ -10,6 +10,7 @@ interface ActionPayload<T> {
 interface Action<IStoreState, IPayloadType, IHandlerResponse> {
   task:string;
   type:string;
+  data?:IPayloadType;
   handler(context:ActionContext<IStoreState, IStoreState>, payload:ActionPayload<IPayloadType>):Promise<IHandlerResponse>;
   create(payload:IPayloadType):Promise<ActionPayload<IPayloadType>>;
 }

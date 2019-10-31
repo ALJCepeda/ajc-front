@@ -3,7 +3,6 @@ import createAction from "@/services/functions/createAction";
 import {
   Action,
   CreateModuleActionOptions,
-  GenericActionHandlerError,
   PaginationContext,
   TimelineModuleState
 } from "@/types";
