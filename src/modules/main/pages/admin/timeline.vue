@@ -19,22 +19,16 @@ import { TimelineActions } from "@/modules/timeline/store/actions";
 export default class TimelineComponent extends Vue {
   name:string = "TimelineComponent";
 
-  timelineEntry = Form.fromAction(this.$store, TimelineActions.UPSERT, {
+  timelineEntry = Form.withAction(this.$store, {
     imageURL: "https://vuejs.org/images/logo.png",
     labelURL: "https://vuejs.org/",
     label: "Label",
     message: "Timeline Message",
     when: new Date()
   }, {
-    resolved: async (resp) => {
-      this.timelineEntry.commit(resp);
-      debugger;
-    },
-    async rejected(err) {
-      debugger;
-    },
+    submitAction:TimelineActions.UPSERT,
     editable:true,
     editing:true
-  })
+  });
 }
 </script>

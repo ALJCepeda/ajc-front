@@ -1,4 +1,4 @@
-import {get, post} from "@/services/http";
+import {get, post, remove} from "@/services/http";
 import TimelineEntry from "../../../../../ajc-shared/src/models/TimelineEntry";
 import {PaginationContext} from "@/types";
 
@@ -12,5 +12,10 @@ export const timelineAPI = {
     timelineEntry: TimelineEntry
   ) => {
     return post<TimelineEntry>('/timeline', timelineEntry);
+  },
+  remove: (
+    id: number
+  ) => {
+    return remove('/timeline', id);
   }
 };

@@ -7,24 +7,23 @@ interface ActionPayload<T> {
   payload:T;
 }
 
-interface Action<IStoreState, IPayloadType, IHandlerResponse, IHandlerError> {
+interface Action<IStoreState, IPayloadType, IHandlerResponse> {
   task:string;
   type:string;
-  handler(context:ActionContext<IStoreState, IStoreState>, payload:ActionPayload<IPayloadType>):Promise<IHandlerResponse | IHandlerError>;
+  handler(context:ActionContext<IStoreState, IStoreState>, payload:ActionPayload<IPayloadType>):Promise<IHandlerResponse>;
   create(payload:IPayloadType):Promise<ActionPayload<IPayloadType>>;
 }
 
 type CreateActionOptions <
   IStoreState,
   IPayloadType,
-  IHandlerResponse,
-  IHandlerError
+  IHandlerResponse
 > =
-  PartialBy<Action<IStoreState, IPayloadType, IHandlerResponse, IHandlerError>, 'create'>;
+  PartialBy<Action<IStoreState, IPayloadType, IHandlerResponse>, 'create'>;
 
-type CreateModuleActionOptions<IStoreState, IPayloadType, IHandlerResponse, IHandlerError> = {
+type CreateModuleActionOptions<IStoreState, IPayloadType, IHandlerResponse> = {
   task:string;
-  handler(context:ActionContext<IStoreState, IStoreState>, payload:ActionPayload<IPayloadType>):Promise<IHandlerResponse | IHandlerError>;
+  handler(context:ActionContext<IStoreState, IStoreState>, payload:ActionPayload<IPayloadType>):Promise<IHandlerResponse>;
   create?:(payload:IPayloadType) => Promise<ActionPayload<IPayloadType>>
 }
 
@@ -42,11 +41,6 @@ interface GenericActionHandlerError {
   error:Error
 }
 
-interface APIError {
-  status:number;
-
-}
-
 interface StoreModule<S, R> extends Module<S, R> {
   namespace:string;
 }
@@ -54,4 +48,8 @@ interface StoreModule<S, R> extends Module<S, R> {
 interface PaginationContext {
   page:number;
   limit:number;
+}
+
+interface IEntity {
+  id?:number;
 }

@@ -35,7 +35,19 @@ export default {
         page:this.page,
         limit:10
       }).then((resp) => {
-        this.entries = resp.map(entry => Form.fromAction(this.$store, TimelineActions.UPSERT, entry, { editable: true }));
+        this.entries = resp.map(entry => {
+          return Form.withAction(this.$store, entry, {
+            submitAction:TimelineActions.UPSERT,
+            submitted: (entry, form) => {
+              form.editing = false;
+            },
+            removed: (removedEntry) => {
+              this.entries = this.entries.filter(entry => entry.id !== removedEntry.id);
+            },
+            removeAction:TimelineActions.REMOVE,
+            editable: true
+          });
+        });
       });
     }
   },

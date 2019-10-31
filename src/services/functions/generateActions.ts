@@ -1,6 +1,6 @@
 import {Action} from "@/types";
 
-export default function generateActions<IStoreState>(module:any, actions:{ [key:string]:Action<IStoreState, any, any, any> }) {
+export default function generateActions<IStoreState>(module:any, actions:{ [key:string]:Action<IStoreState, any, any> }) {
   const moduleActions = {};
 
   for(const key in actions) {

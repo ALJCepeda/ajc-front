@@ -11,14 +11,13 @@ import {timelineAPI} from "@/modules/timeline/store/api";
 
 function createTimelineAction <
   IPayloadType,
-  IHandlerResponse = IPayloadType,
-  IHandlerError = GenericActionHandlerError
+  IHandlerResponse = IPayloadType
   > (
-  options:CreateModuleActionOptions<TimelineModuleState, IPayloadType, IHandlerResponse, IHandlerError>
+  options:CreateModuleActionOptions<TimelineModuleState, IPayloadType, IHandlerResponse>
 ) :
-  Action<TimelineModuleState, IPayloadType, IHandlerResponse, IHandlerError>
+  Action<TimelineModuleState, IPayloadType, IHandlerResponse>
 {
-  return createAction<TimelineModuleState, IPayloadType, IHandlerResponse, IHandlerError>({
+  return createAction<TimelineModuleState, IPayloadType, IHandlerResponse>({
     type:'TBD',
     ...options
   });
@@ -35,6 +34,12 @@ export const TimelineActions = {
     task:'Insert or Update TimelineEntry',
     async handler(context, action) {
       return timelineAPI.post(action.payload);
+    }
+  }),
+  REMOVE: createTimelineAction<number, boolean>({
+    task:'Delete a TimelineEntry',
+    async handler(context, action) {
+      return timelineAPI.remove(action.payload);
     }
   })
 };

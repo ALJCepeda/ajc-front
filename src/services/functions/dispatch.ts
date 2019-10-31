@@ -1,14 +1,13 @@
 import {Store} from "vuex";
-import {Action, GenericActionHandlerError} from "@/types";
+import {Action} from "@/types";
 
 export default function $dispatch <
   IStoreState,
   IPayloadAction,
-  IHandlerResponse = IPayloadAction,
-  IHandlerError = GenericActionHandlerError
+  IHandlerResponse = IPayloadAction
 > (
   $store:Store<IStoreState>,
-  action:Action<IStoreState, IPayloadAction, IHandlerResponse, IHandlerError>
+  action:Action<IStoreState, IPayloadAction, IHandlerResponse>
 ) :
   (data:IPayloadAction) => Promise<IHandlerResponse>
 {

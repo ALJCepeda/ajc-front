@@ -58,35 +58,22 @@
       </div>
 
       <div class="row-nw jc-center action-btns">
-        <button class="btn btn-primary submit" @click="form.submit()" :disabled="!isDirty">
-          Submit
-        </button>
-        <button class="btn btn-danger" @click="form.reset()" :disabled="!isDirty">Reset</button>
+        <button class="btn btn-primary submit" @click="submit()" :disabled="!isDirty">Submit</button>
+        <button class="btn btn-warning" @click="form.reset()" :disabled="!isDirty">Reset</button>
+        <button class="btn btn-danger remove" v-if="entry.id" @click="remove()">Delete</button>
       </div>
     </div>
   </main>
 </template>
 
 <script lang="ts">
-  import Form, {isForm} from "@/models/Form";
 import TimelineEntry from "ajc-shared/src/models/TimelineEntry";
-import {Component, Prop} from "vue-property-decorator";
-import Vue from 'vue';
+import {Component} from "vue-property-decorator";
+import FormComponent from "@/abstract/FormComponent";
 
 @Component
-export default class TimelineCard extends Vue {
+export default class TimelineCard extends FormComponent<TimelineEntry> {
   name:string = "TimelineCard";
-
-  @Prop()
-  form:Form<TimelineEntry>;
-
-  get isDirty() {
-    return this.form.isDirty();
-  }
-
-  get entry():TimelineEntry {
-    return this.form.data;
-  }
 };
 </script>
 
@@ -150,6 +137,10 @@ export default class TimelineCard extends Vue {
 
   .submit.btn {
     margin-right: 30px;
+  }
+
+  .remove.btn {
+    margin-left: 30px;
   }
 
   .edit {

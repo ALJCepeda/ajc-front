@@ -3,12 +3,11 @@ import {Action, ActionPayload, CreateActionOptions} from "@/types";
 export default function createAction <
   IStoreState,
   IPayloadType,
-  IHandlerResponse,
-  IHandlerError
+  IHandlerResponse
 > (
-  options:CreateActionOptions<IStoreState, IPayloadType, IHandlerResponse, IHandlerError>
+  options:CreateActionOptions<IStoreState, IPayloadType, IHandlerResponse>
 ) :
-  Action<IStoreState, IPayloadType, IHandlerResponse, IHandlerError>
+  Action<IStoreState, IPayloadType, IHandlerResponse>
 {
   const ActionOptions = {
     async create(payload:IPayloadType):Promise<ActionPayload<IPayloadType>> {
