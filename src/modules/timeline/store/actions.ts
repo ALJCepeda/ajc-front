@@ -10,7 +10,7 @@ import {timelineAPI} from "@/modules/timeline/store/api";
 
 function createTimelineAction <
   IPayloadType,
-  IHandlerResponse = IPayloadType
+  IHandlerResponse
   > (
   options:CreateModuleActionOptions<TimelineModuleState, IPayloadType, IHandlerResponse>
 ) :
@@ -29,7 +29,7 @@ export const TimelineActions = {
       return timelineAPI.get(action.payload);
     }
   }),
-  UPSERT: createTimelineAction<TimelineEntry>({
+  UPSERT: createTimelineAction<TimelineEntry, TimelineEntry>({
     task:'Insert or Update TimelineEntry',
     async handler(context, action) {
       return timelineAPI.post(action.payload);

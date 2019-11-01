@@ -4,19 +4,18 @@
 
     <div class="cards">
       <timeline-card
-        :form="entry"
-        v-for="entry in entries"
-        :key="entry.id"
+        :form="form"
+        v-for="form in forms"
+        :key="form.id"
         style="margin-bottom:15px;"
       ></timeline-card>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import TimelineIntro from "@/modules/timeline/components/info.vue";
 import TimelineCard from "@/modules/timeline/components/card.vue";
-import $dispatch from "@/services/functions/dispatch";
 import {TimelineActions} from "@/modules/timeline/store/actions";
 import Form from "@/models/Form";
 
@@ -25,30 +24,27 @@ export default {
   components: { TimelineIntro, TimelineCard },
   data: () => ({
     page: 1,
-    entries: [],
+    forms: [],
     fetchingEntries: false
   }),
   methods: {
-    fetchEntries() {
+    async fetchEntries() {
       this.fetchingEntries = true;
 
-      //TODO Restore types
-      Form.manyFromAction(this.$store, TimelineActions.LOAD.with({
+      this.forms = await Form.manyFromAction(this.$store, TimelineActions.LOAD.with({
         page: this.page,
         limit: 10
       }), {
+        editable: true,
         submitAction:TimelineActions.UPSERT,
-        submitted: (entry, form) => {
+        submitted: async (entry, form) => {
           form.editing = false;
           this.fetchingEntries = false;
         },
-        removed: (removedEntry) => {
-          this.entries = this.entries.filter(entry => entry.id !== removedEntry.id);
-        },
         removeAction:TimelineActions.REMOVE,
-        editable: true
-      }).then(forms => {
-        this.entries = forms;
+        removed: async (removedEntry, entryForm) => {
+          this.forms = this.forms.filter(form => form !== entryForm);
+        }
       });
     }
   },

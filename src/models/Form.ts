@@ -135,22 +135,22 @@ export default class Form<IResourceType extends IEntity, ISubmitResponseType = I
 
   static async manyFromAction<
     IStoreState,
-    IPayloadType,
+    IRequestType,
+    ILoadType,
     ISubmitResponseType,
-    IActionLoadType
-    > (
+  > (
     $store:Store<IStoreState>,
-    action:Action<IStoreState, IPayloadType, IActionLoadType>,
-    options:FormWithActionOptions<IStoreState, IActionLoadType, ISubmitResponseType>
+    action:Action<IStoreState, IRequestType, ILoadType[]>,
+    options:FormWithActionOptions<IStoreState, ILoadType, ISubmitResponseType>
   ) :
-    Promise<Form<IActionLoadType, ISubmitResponseType>[]>
+    Promise<Form<ILoadType, ISubmitResponseType>[]>
   {
     if(!action.data) {
       throw new Error('Cannot load form without a payload assigned to action. Did you forget to call "with" on the action?');
     }
 
     if(!options.onSubmit && options.submitAction) {
-      options.onSubmit = $dispatch($store, options.submitAction);
+      options.onSubmit = $dispatch<IStoreState, ILoadType, ISubmitResponseType>($store, options.submitAction);
     }
 
     if(!options.onRemove && options.removeAction) {
@@ -158,12 +158,7 @@ export default class Form<IResourceType extends IEntity, ISubmitResponseType = I
     }
 
     const actionPayload = await action.create(action.data);
-    const resp = await $dispatch<IStoreState, IPayloadType, IActionLoadType>($store, action)(actionPayload.payload);
-
-    if(Array.isArray(resp)) {
-      return resp.map(entry => Form.withAction<IStoreState, IActionLoadType, ISubmitResponseType>($store, entry, options))
-    }
-
-    throw new Error('Expected response to be an array');
+    const resp = await $dispatch<IStoreState, IRequestType, ILoadType[]>($store, action)(actionPayload.payload);
+    return resp.map(entry => Form.withAction<IStoreState, ILoadType, ISubmitResponseType>($store, entry, options));
   }
 }

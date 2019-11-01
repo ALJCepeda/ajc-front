@@ -6,7 +6,7 @@ export const timelineAPI = {
   get: (
     params: PaginationContext
   ) => {
-    return get<TimelineEntry[]>('/timeline', params);
+    return get<Array<TimelineEntry>>('/timeline', params);
   },
   post: (
     timelineEntry: TimelineEntry

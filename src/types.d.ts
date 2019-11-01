@@ -13,6 +13,7 @@ interface Action<IStoreState, IPayloadType, IHandlerResponse> {
   data?:IPayloadType;
   handler(context:ActionContext<IStoreState, IStoreState>, payload:ActionPayload<IPayloadType>):Promise<IHandlerResponse>;
   create(payload:IPayloadType):Promise<ActionPayload<IPayloadType>>;
+  with(data:IPayloadType):Action<IStoreState, IPayloadType, IHandlerResponse>
 }
 
 type CreateActionOptions <
@@ -20,7 +21,7 @@ type CreateActionOptions <
   IPayloadType,
   IHandlerResponse
 > =
-  PartialBy<Action<IStoreState, IPayloadType, IHandlerResponse>, 'create'>;
+  PartialBy<Action<IStoreState, IPayloadType, IHandlerResponse>, 'create' | 'with'>;
 
 type CreateModuleActionOptions<IStoreState, IPayloadType, IHandlerResponse> = {
   task:string;
