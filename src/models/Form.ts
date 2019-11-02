@@ -10,12 +10,12 @@ type FormWithActionOptions<IStoreState, IResourceType extends IEntity, ISubmitRe
   removeAction?:Action<IStoreState, number, boolean>
 }
 
-export default class Form<IResourceType extends IEntity, ISubmitResponseType = IResourceType> {
+export default class Form<IResourceType extends IEntity, ISubmitResponseType> {
   editing:boolean = false;
   editable:boolean = false;
   onSubmit?:(data:IResourceType) => Promise<ISubmitResponseType>;
-  onRemove?:(data:number) => Promise<boolean>;
   submitted?:(entry:IResourceType, form:Form<IResourceType, ISubmitResponseType>) => Promise<void>;
+  onRemove?:(data:number) => Promise<boolean>;
   removed?:(resp:IResourceType, form:Form<IResourceType, ISubmitResponseType>) => Promise<void>;
   committed: { [key in keyof IResourceType] : IResourceType[key] };
   data: { [key in keyof IResourceType] : IResourceType[key] };
@@ -147,14 +147,6 @@ export default class Form<IResourceType extends IEntity, ISubmitResponseType = I
   {
     if(!action.data) {
       throw new Error('Cannot load form without a payload assigned to action. Did you forget to call "with" on the action?');
-    }
-
-    if(!options.onSubmit && options.submitAction) {
-      options.onSubmit = $dispatch<IStoreState, ILoadType, ISubmitResponseType>($store, options.submitAction);
-    }
-
-    if(!options.onRemove && options.removeAction) {
-      options.onRemove = $dispatch<IStoreState, number, boolean>($store, options.removeAction);
     }
 
     const actionPayload = await action.create(action.data);

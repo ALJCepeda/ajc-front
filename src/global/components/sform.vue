@@ -26,11 +26,8 @@ import Form from '@/models/Form';
 import AbstractFormComponent from "@/abstract/AbstractFormComponent";
 
 @Component
-export default class FormComponent<IResourceType> extends AbstractFormComponent<IResourceType> {
+export default class FormComponent<IResourceType, ISubmitResponseType> extends AbstractFormComponent<IResourceType, ISubmitResponseType> {
   name:string = "sform";
-
-  @Prop()
-  form:Form<IResourceType>;
 
   get controls() {
     return this.form.controls.filter(control => {

@@ -2,9 +2,9 @@ import Vue from 'vue';
 import {Prop} from "vue-property-decorator";
 import Form from "@/models/Form";
 
-export default class AbstractFormComponent<IResourceType> extends Vue {
+export default class AbstractFormComponent<IResourceType, ISubmitResponseType> extends Vue {
   @Prop()
-  form:Form<IResourceType>;
+  form:Form<IResourceType, ISubmitResponseType>;
 
   submitting:boolean = false;
   removing:boolean = false;
