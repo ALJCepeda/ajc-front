@@ -22,7 +22,7 @@ export default class Form<IResourceType extends IEntity, ISubmitResponseType> {
   controls: {
     key:keyof IResourceType,
     label:string,
-    type:string,
+    type:'text' | 'textarea' | 'date' | 'time' | 'datetime',
     readonly?:boolean,
     hideIfEmpty?:boolean
   }[] = [];
@@ -44,15 +44,17 @@ export default class Form<IResourceType extends IEntity, ISubmitResponseType> {
 
   isDirty():boolean {
     for(const key in this.committed) {
-      const committedValue = this.committed[key];
-      const dataValue = this.data[key];
+      if(this.committed.hasOwnProperty(key) && this.data.hasOwnProperty(key)) {
+        const committedValue = this.committed[key];
+        const dataValue = this.data[key];
 
-      if(isDate(dataValue) && isDate(committedValue)) {
-        if(dataValue.toString() !== committedValue.toString()) {
+        if(isDate(dataValue) && isDate(committedValue)) {
+          if(dataValue.toString() !== committedValue.toString()) {
+            return true;
+          }
+        } else if(dataValue !== committedValue) {
           return true;
         }
-      } else if(dataValue !== committedValue) {
-        return true;
       }
     }
 
@@ -133,7 +135,7 @@ export default class Form<IResourceType extends IEntity, ISubmitResponseType> {
     return new Form<IPayloadType, ISubmitResponseType>(payload, options);
   }
 
-  static async manyFromAction<
+  static async loadWithAction<
     IStoreState,
     IRequestType,
     ILoadType,

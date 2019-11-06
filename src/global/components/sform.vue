@@ -9,7 +9,7 @@
         v-model="form.data[control.key]"
         :editable="!control.readonly"
       ></sinput>
-      <div v-if="form.controls.length === 0">No inputs from form to render!</div>
+      <div v-if="form.controls.length === 0">No controls from form to render!</div>
     </div>
 
     <div class="row-nw jc-center action-btns">
@@ -21,8 +21,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop} from "vue-property-decorator";
-import Form from '@/models/Form';
+import {Component} from "vue-property-decorator";
 import AbstractFormComponent from "@/abstract/AbstractFormComponent";
 
 @Component

@@ -57,7 +57,7 @@ import {Component} from "vue-property-decorator";
 import AbstractFormComponent from "@/abstract/AbstractFormComponent";
 
 @Component
-export default class TimelineCard extends AbstractFormComponent<TimelineEntry> {
+export default class TimelineCard extends AbstractFormComponent<TimelineEntry, TimelineEntry> {
   name:string = "TimelineCard";
 
   created() {
@@ -65,11 +65,11 @@ export default class TimelineCard extends AbstractFormComponent<TimelineEntry> {
       this.form.controls = [
         { key:'id', label:'ID', type:'text', readonly:true, hideIfEmpty:true },
         { key:'when', label:'When', type:'datetime' },
-        { key:'imageURL', label:'Image', type:'text' },
-        { key:'labelURL', label:'Link', type:'text' },
+        { key:'imageURL', label:'Image URL', type:'text' },
         { key:'label', label:'Label', type:'text' },
+        { key:'labelURL', label:'Label Link', type:'text' },
         { key:'message', label:'Message', type:'textarea' }
-      ]
+      ];
     }
   }
 }
