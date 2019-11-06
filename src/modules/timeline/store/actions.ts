@@ -1,12 +1,10 @@
 import TimelineEntry from "ajc-shared/src/models/TimelineEntry"
-import createAction from "@/services/functions/createAction";
 import {
-  Action,
-  CreateModuleActionOptions,
   PaginationContext,
   TimelineModuleState
 } from "@/types";
 import {timelineAPI} from "@/modules/timeline/store/api";
+import {Action, CreateModuleActionOptions} from "@/models/Action";
 
 function createTimelineAction <
   IPayloadType,
@@ -16,7 +14,7 @@ function createTimelineAction <
 ) :
   Action<TimelineModuleState, IPayloadType, IHandlerResponse>
 {
-  return createAction<TimelineModuleState, IPayloadType, IHandlerResponse>({
+  return new Action<TimelineModuleState, IPayloadType, IHandlerResponse>({
     type:'TBD',
     ...options
   });

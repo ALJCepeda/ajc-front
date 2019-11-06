@@ -1,7 +1,7 @@
 import {Store} from "vuex";
-import {Action} from "@/types";
+import {Action} from "@/models/Action";
 
-export default function $dispatch <
+export function $dispatch <
   IStoreState,
   IPayloadAction,
   IHandlerResponse = IPayloadAction
@@ -16,4 +16,18 @@ export default function $dispatch <
       return $store.dispatch(payload);
     });
   };
+}
+
+export function $dispatchNow <
+  IStoreState,
+  IPayloadAction,
+  IHandlerResponse = IPayloadAction
+  > (
+  $store:Store<IStoreState>,
+  action:Action<IStoreState, IPayloadAction, IHandlerResponse>,
+  payload:IPayloadAction
+) :
+  Promise<IHandlerResponse>
+{
+  return $dispatch($store, action)(payload);
 }

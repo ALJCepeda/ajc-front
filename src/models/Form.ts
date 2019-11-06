@@ -1,7 +1,8 @@
 import {isDate} from 'moment';
-import {Action, IEntity} from "@/types";
-import $dispatch from "@/services/functions/dispatch";
+import {IEntity} from "@/types";
 import {Store} from "vuex";
+import {Action} from "@/models/Action";
+import {$dispatch, $dispatchNow} from "@/services/functions/dispatch";
 
 type FormOptions<IResourceType extends IEntity, ISubmitResponseType> = Partial<Form<IResourceType, ISubmitResponseType>>;
 type FormWithActionOptions<IStoreState, IResourceType extends IEntity, ISubmitResponseType> = FormOptions<IResourceType, ISubmitResponseType> & {
@@ -151,8 +152,8 @@ export default class Form<IResourceType extends IEntity, ISubmitResponseType> {
       throw new Error('Cannot load form without a payload assigned to action. Did you forget to call "with" on the action?');
     }
 
-    const actionPayload = await action.create(action.data);
-    const resp = await $dispatch<IStoreState, IRequestType, ILoadType[]>($store, action)(actionPayload.payload);
+    const { payload } = await action.create(action.data);
+    const resp = await $dispatchNow<IStoreState, IRequestType, ILoadType[]>($store, action, payload);
     return resp.map(entry => Form.withAction<IStoreState, ILoadType, ISubmitResponseType>($store, entry, options));
   }
 }
