@@ -1,5 +1,3 @@
-import {ActionContext, Module} from "vuex";
-
 type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
 interface ActionPayload<T> {
@@ -14,10 +12,6 @@ interface TimelineModuleState {
 
 interface RootState {
 
-}
-
-interface StoreModule<S, R> extends Module<S, R> {
-  namespace:string;
 }
 
 interface PaginationContext {

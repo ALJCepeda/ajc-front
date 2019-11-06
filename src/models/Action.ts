@@ -1,11 +1,10 @@
-import {ActionPayload, PartialBy} from "@/types";
 import {ActionContext} from "vuex";
 
 export type CreateActionOptions <
   IStoreState,
   IPayloadType,
   IHandlerResponse
-> = PartialBy<Action<IStoreState, IPayloadType, IHandlerResponse>, 'create' | 'with'>;
+> = Omit<PartialBy<Action<IStoreState, IPayloadType, IHandlerResponse>, 'create' | 'with'>, 'type'>;
 
 export type CreateModuleActionOptions<IStoreState, IPayloadType, IHandlerResponse> = {
   task:string;
@@ -19,10 +18,13 @@ export class Action<
   IHandlerResponse
 > {
   task: string;
-  type: string;
   data?: IPayloadType;
 
-  constructor(options: CreateActionOptions<IStoreState, IPayloadType, IHandlerResponse>) {
+  get type():string {
+    return `${this.module}/${this.task}`;
+  }
+
+  constructor(private module:string, options: CreateActionOptions<IStoreState, IPayloadType, IHandlerResponse>) {
     Object.assign(this, options);
   }
 

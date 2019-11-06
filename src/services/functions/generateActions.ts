@@ -1,4 +1,4 @@
-import {Action} from "@/types";
+import {Action} from "@/models/Action";
 
 export default function generateActions<IStoreState>(module:any, actions:{ [key:string]:Action<IStoreState, any, any> }) {
   const moduleActions = {};
@@ -6,7 +6,6 @@ export default function generateActions<IStoreState>(module:any, actions:{ [key:
   for(const key in actions) {
     const info = actions[key];
     moduleActions[info.task] = info.handler;
-    info.type = `${module.namespace}/${info.task}`;
   }
 
   module.actions = {

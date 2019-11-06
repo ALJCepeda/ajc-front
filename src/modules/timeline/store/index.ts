@@ -1,9 +1,9 @@
 import { TimelineActions } from "@/modules/timeline/store/actions";
 import generateActions from "@/services/functions/generateActions";
-import {RootState, StoreModule, TimelineModuleState} from "@/types";
+import {RootState, TimelineModuleState} from "@/types";
+import {Module} from "vuex";
 
-const module:StoreModule<TimelineModuleState, RootState> = {
-  namespace: 'timeline',
+const module:Module<TimelineModuleState, RootState> = {
   namespaced: true,
   state: {
     manifest: null,

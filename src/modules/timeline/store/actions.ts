@@ -14,10 +14,7 @@ function createTimelineAction <
 ) :
   Action<TimelineModuleState, IPayloadType, IHandlerResponse>
 {
-  return new Action<TimelineModuleState, IPayloadType, IHandlerResponse>({
-    type:'TBD',
-    ...options
-  });
+  return new Action<TimelineModuleState, IPayloadType, IHandlerResponse>('timeline', options);
 }
 
 export const TimelineActions = {
