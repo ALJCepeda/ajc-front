@@ -1,8 +1,4 @@
 import TimelineEntry from "ajc-shared/src/models/TimelineEntry"
-import {
-  PaginationContext,
-  TimelineModuleState
-} from "@/types";
 import {timelineAPI} from "@/modules/timeline/store/api";
 import {Action, CreateModuleActionOptions} from "@/models/Action";
 

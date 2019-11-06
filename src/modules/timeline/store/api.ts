@@ -1,6 +1,5 @@
 import {get, post, remove} from "@/services/http";
 import TimelineEntry from "../../../../../ajc-shared/src/models/TimelineEntry";
-import {PaginationContext} from "@/types";
 
 export const timelineAPI = {
   get: (

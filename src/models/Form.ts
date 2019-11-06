@@ -1,5 +1,4 @@
 import {isDate} from 'moment';
-import {IEntity} from "@/types";
 import {Store} from "vuex";
 import {Action} from "@/models/Action";
 import {$dispatch, $dispatchNow} from "@/services/functions/dispatch";

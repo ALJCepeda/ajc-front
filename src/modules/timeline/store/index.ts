@@ -1,6 +1,5 @@
 import { TimelineActions } from "@/modules/timeline/store/actions";
 import generateActions from "@/services/functions/generateActions";
-import {RootState, TimelineModuleState} from "@/types";
 import {Module} from "vuex";
 
 const module:Module<TimelineModuleState, RootState> = {
