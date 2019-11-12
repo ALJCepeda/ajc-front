@@ -2,7 +2,7 @@ import { TimelineActions } from "@/modules/timeline/store/actions";
 import generateActions from "@/services/functions/generateActions";
 import {Module} from "vuex";
 
-const module:Module<TimelineModuleState, RootState> = {
+const module:Module<TimelineModuleState, AppState> = {
   namespaced: true,
   state: {
     manifest: null,
@@ -19,9 +19,6 @@ const module:Module<TimelineModuleState, RootState> = {
     }
   },
   mutations: {
-
-  },
-  actions: {
 
   }
 };

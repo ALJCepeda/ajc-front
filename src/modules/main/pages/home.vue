@@ -44,7 +44,15 @@ export default {
         removeAction:TimelineActions.REMOVE,
         removed: async (removedEntry, entryForm) => {
           this.forms = this.forms.filter(form => form !== entryForm);
-        }
+        },
+        controls: [
+          { key:'id', label:'ID', type:'text', readonly:true, hideIfEmpty:true },
+          { key:'when', label:'When', type:'datetime' },
+          { key:'imageURL', label:'Image', type:'text' },
+          { key:'labelURL', label:'Link', type:'text' },
+          { key:'label', label:'Label', type:'text' },
+          { key:'message', label:'Message', type:'textarea' }
+        ]
       });
     }
   },

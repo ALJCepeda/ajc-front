@@ -7,8 +7,11 @@
     "type": "git",
     "url": "git+https://github.com/ALJCepeda/aljcepeda.git"
   },
+  "resolutions": {
+    "eslint-loader": "2.1.2"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve --fix",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
@@ -34,8 +37,7 @@
     "vue-datetime": "^1.0.0-beta.10",
     "vue-property-decorator": "^8.3.0",
     "vue-router": "^3.1.3",
-    "vuex": "^3.0.1",
-    "ajc-shared": "latest"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@types/chai": "^4.1.0",

@@ -1,4 +1,5 @@
 import Axios, {AxiosRequestConfig} from "axios";
+import { isDataQuery } from "ajc-shared/src/type-guards";
 
 const axiosConfig = {
   baseURL: process.env.VUE_APP_API_URL,
@@ -13,17 +14,59 @@ export function request<T>(method:string, url:string, config?:AxiosRequestConfig
   }).then(resp => resp.data).catch(() => {});
 }
 
-export function get<T>(url:string, query:any, config:AxiosRequestConfig = {}): Promise<T> {
-  config.params = query;
-  return request<T>('get', url, config);
+export function get<
+  IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>
+> (
+  url:string
+): (query:IAPI['IRequest']) => Promise<IAPI['IResponse']> {
+  return (query) => {
+    return request<IAPI['IResponse']>('get', url, {
+      params:query
+    });
+  };
 }
 
-export function post<T>(url:string, body:T, config:AxiosRequestConfig = {}): Promise<T> {
-  config.data = body;
-  return request<T>('post', url, config);
+export function post<
+  IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>,
+> (
+  url:string
+): (request:IAPI['IRequest']) => Promise<IAPI['IResponse']> {
+  return (data) => {
+    let query, body;
+
+    if(isDataQuery(data)) {
+      body = data.body;
+      query = data.query;
+    } else {
+      body = data;
+    }
+
+    return request<IAPI['IResponse']>('post', url, {
+      data:body,
+      params:query
+    });
+  };
 }
 
-export function remove(url:string, id:number, config:AxiosRequestConfig = {}): Promise<boolean> {
-  config.data = { id };
-  return request('delete', url, config);
+export function remove<
+  IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>
+> (
+  url:string
+): (data:IAPI['IRequest']) => Promise<IAPI['IResponse']> {
+  return (data) => {
+    let query, body;
+
+    if(isDataQuery(data)) {
+      body = data.body;
+      query = data.query;
+    } else {
+      body = data;
+    }
+
+
+    return request<IAPI['IResponse']>('delete', url, {
+      data: body,
+      params: query
+    });
+  };
 }

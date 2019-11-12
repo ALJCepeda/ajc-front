@@ -5,8 +5,7 @@ import {$dispatch, $dispatchNow} from "@/services/functions/dispatch";
 
 type FormOptions<IResourceType extends IEntity, ISubmitResponseType> = Partial<Form<IResourceType, ISubmitResponseType>>;
 type FormWithActionOptions<IStoreState, IResourceType extends IEntity, ISubmitResponseType> = FormOptions<IResourceType, ISubmitResponseType> & {
-  submitAction?:Action<IStoreState, IResourceType, ISubmitResponseType>,
-  loadAction?:Action<IStoreState, IResourceType, IResourceType>,
+  submitAction:Action<IStoreState, IResourceType, ISubmitResponseType>,
   removeAction?:Action<IStoreState, number, boolean>
 }
 

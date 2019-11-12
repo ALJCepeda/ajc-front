@@ -42,3 +42,13 @@ export class Action<
     return this;
   }
 }
+
+export class APIAction<
+  IStoreState,
+  IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>,
+  IHandlerResponse = IAPI['IResponse']
+>
+  extends Action<IStoreState, IAPI['IRequest'], IHandlerResponse>
+{
+
+}

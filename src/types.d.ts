@@ -5,11 +5,13 @@ interface ActionPayload<T> {
   payload:T;
 }
 
+
+
 interface TimelineModuleState {
   manifest:any,
   entries:{ [key:string]:any }
 }
 
-interface RootState {
-
+interface AppState {
+  authenticated:boolean;
 }

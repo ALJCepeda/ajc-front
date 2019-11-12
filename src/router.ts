@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import login from "./modules/main/pages/login.vue";
 import home from "./modules/main/pages/home.vue";
 import about from "./modules/main/pages/about/about.vue";
 import blogsList from "./modules/blog/pages/list.vue";
@@ -16,6 +17,7 @@ export default new VueRouter({
   mode: "history",
   routes: [
     { path: "/", redirect: "/home" },
+    { path: "/login", component: login },
     { path: "/home", component: home },
     { path: "/about", redirect: "/about/overview" },
     { path: "/about/:section", component: about },

@@ -36,10 +36,12 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx",
-    "../ajc-shared/src/types.d.ts"
+    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"
+  ],
+  "files": [
+    "node_modules/ajc-shared/src/types.d.ts"
   ]
 }

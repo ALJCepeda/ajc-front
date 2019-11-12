@@ -1,3 +1,6 @@
 module.exports = {
-  runtimeCompiler:true
+  runtimeCompiler:true,
+  chainWebpack: (config) => {
+    config.resolve.symlinks(false)
+  }
 }
