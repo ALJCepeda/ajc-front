@@ -16,3 +16,4 @@ logs
 public/libs
 public/fonts
 npm-debug.log
+ajc-shared-*

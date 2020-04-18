@@ -1,5 +1,5 @@
 import Axios, {AxiosRequestConfig} from "axios";
-import { isDataQuery } from "ajc-shared/src/type-guards";
+import {isDataQuery} from "ajc-shared/dist";
 
 const axiosConfig = {
   baseURL: process.env.VUE_APP_API_URL,

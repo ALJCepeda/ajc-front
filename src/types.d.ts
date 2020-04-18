@@ -5,8 +5,6 @@ interface ActionPayload<T> {
   payload:T;
 }
 
-
-
 interface TimelineModuleState {
   manifest:any,
   entries:{ [key:string]:any }

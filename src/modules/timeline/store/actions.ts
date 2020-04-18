@@ -1,6 +1,5 @@
 import {timelineAPI} from "@/modules/timeline/store/api";
 import {Action, APIAction, CreateModuleActionOptions} from "@/models/Action";
-import {TimelinePage, TimelineSave, TimelineRemove} from "ajc-shared/src/timeline.api";
 
 function timelineAction <
   IPayloadType,
