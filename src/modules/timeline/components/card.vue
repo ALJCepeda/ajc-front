@@ -41,11 +41,7 @@
       </div>
     </div>
 
-    <div class="message border-bottom">
-      <p>
-        {{ entry.message }}
-      </p>
-    </div>
+    <div class="message border-bottom" v-html="entry.message">b</div>
 
     <sform class="form" v-if="form && form.editable && form.editing" :form="form"></sform>
   </main>
@@ -68,7 +64,7 @@ export default class TimelineCard extends AbstractFormComponent<TimelineEntry, T
         { key:'imageURL', label:'Image URL', type:'text' },
         { key:'label', label:'Label', type:'text' },
         { key:'labelURL', label:'Label Link', type:'text' },
-        { key:'message', label:'Message', type:'textarea' }
+        { key:'message', label:'Message', type:'editor' }
       ];
     }
   }

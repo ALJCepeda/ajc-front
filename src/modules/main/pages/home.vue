@@ -51,7 +51,7 @@ export default {
           { key:'imageURL', label:'Image', type:'text' },
           { key:'labelURL', label:'Link', type:'text' },
           { key:'label', label:'Label', type:'text' },
-          { key:'message', label:'Message', type:'textarea' }
+          { key:'message', label:'Message', type:'editor' }
         ]
       });
     }
@@ -77,6 +77,7 @@ export default {
 .intro {
   width: 320px;
   box-sizing: content-box;
+  margin-bottom: 20px;
 }
 
 .cards {

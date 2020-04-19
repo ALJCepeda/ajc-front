@@ -23,6 +23,14 @@
       ref="input"
     ></textarea>
 
+    <ckeditor
+      v-if="type === 'editor' && editable"
+      :editor="editor"
+      v-model="value"
+      @input="emitValue"
+      :config="editorConfig"
+    ></ckeditor>
+
     <datetime
       v-model="valueStr"
       :type="type"
@@ -35,6 +43,7 @@
 
 <script>
 import 'vue-datetime/dist/vue-datetime.css'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Datetime } from 'vue-datetime';
 import {isDate, isString} from 'lodash';
 
@@ -63,7 +72,9 @@ export default {
 
   data() {
     return {
-      specialTypes: [ 'textarea' ],
+      editor: ClassicEditor,
+      editorConfig: {},
+      specialTypes: ['textarea', 'editor'],
       dateTypes: ['date', 'datetime', 'time'],
       valueStr: isDate(this.value) ? this.value.toISOString() : this.value
     }
@@ -101,6 +112,10 @@ export default {
 
 <style lang="less">
 .sinput {
+  .ck-editor {
+    width: 100%
+  }
+
   label {
     width: 20%;
     text-align: right;

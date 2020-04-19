@@ -21,7 +21,7 @@ export default class Form<IResourceType extends IEntity, ISubmitResponseType> {
   controls: {
     key:keyof IResourceType,
     label:string,
-    type:'text' | 'textarea' | 'date' | 'time' | 'datetime',
+    type:'text' | 'textarea' | 'date' | 'time' | 'datetime' | 'editor',
     readonly?:boolean,
     hideIfEmpty?:boolean
   }[] = [];
