@@ -4,6 +4,7 @@
       <sinput
         v-for="control in controls"
         :key="control.key"
+        :name="control.key"
         :label="control.label"
         :type="control.type"
         v-model="form.data[control.key]"

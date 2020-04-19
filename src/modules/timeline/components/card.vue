@@ -71,11 +71,20 @@ export default class TimelineCard extends AbstractFormComponent<TimelineEntry, T
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "../../../../node_modules/ajc-toolbelt/dist/less/flex.less";
 @import "../../../less/variables.less";
 
+.sinput[name="message"] .value {
+  margin-top:15px;
+  width:100%
+}
+
 .timeline-card {
+  .ck-editor {
+    width: 100%
+  }
+
   width: 100%;
   background: @color-white;
   color: black;

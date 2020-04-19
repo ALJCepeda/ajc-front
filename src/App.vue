@@ -17,10 +17,10 @@
         </div>
 
         <nav>
+          <router-link to='/admin'>Admin</router-link>
           <router-link to='/home'>Timeline</router-link>
           <router-link to='/about'>About</router-link>
           <router-link to='/blogs'>Blog<!--<span class='subtitle-font'>71</span>--></router-link>
-          <router-link to='/admin'>Admin</router-link>
           <!--<router-link to='/tools'>Tools</router-link>-->
           <!--<router-link to='/projects'>Projects</router-link>
           <router-link to='/more'>More <i class='material-icons'>&#xE5C5;</i></router-link>-->

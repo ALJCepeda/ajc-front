@@ -1,43 +1,44 @@
 <template>
   <main class="sinput row-w">
     <label>{{ label }}:</label>
-    <input
-      :type="type"
-      :value="value"
-      :name="name"
-      @input="emitValue"
-      v-if="!nonSimpleTypes.includes(type) && editable"
-      ref="input"
-    />
 
-    <span
-      v-if="!editable"
-    >{{ value }}</span>
+    <div class="value">
+      <input
+        :type="type"
+        :value="value"
+        @input="emitValue"
+        v-if="!nonSimpleTypes.includes(type) && editable"
+        ref="input"
+      />
 
-    <textarea
-      :placeholder="placeholder"
-      :value="value"
-      :name="name"
-      @input="emitValue"
-      v-if="type === 'textarea' && editable"
-      ref="input"
-    ></textarea>
+      <span
+        v-if="!editable"
+      >{{ value }}</span>
 
-    <ckeditor
-      v-if="type === 'editor' && editable"
-      :editor="editor"
-      v-model="value"
-      @input="emitValue"
-      :config="editorConfig"
-    ></ckeditor>
+      <textarea
+        :placeholder="placeholder"
+        :value="value"
+        @input="emitValue"
+        v-if="type === 'textarea' && editable"
+        ref="input"
+      ></textarea>
 
-    <datetime
-      v-model="valueStr"
-      :type="type"
-      @input="emitValue"
-      v-if="dateTypes.includes(type) && editable"
-      ref="input"
-    ></datetime>
+      <ckeditor
+        v-if="type === 'editor' && editable"
+        :editor="editor"
+        v-model="value"
+        @input="emitValue"
+        :config="editorConfig"
+      ></ckeditor>
+
+      <datetime
+        v-model="valueStr"
+        :type="type"
+        @input="emitValue"
+        v-if="dateTypes.includes(type) && editable"
+        ref="input"
+      ></datetime>
+    </div>
   </main>
 </template>
 
@@ -59,10 +60,6 @@ export default {
     placeholder: {
       type: String,
       default: "Enter a value"
-    },
-    name: {
-      type: String,
-      default: ''
     },
     editable: {
       type: Boolean,
@@ -112,10 +109,6 @@ export default {
 
 <style lang="less">
 .sinput {
-  .ck-editor {
-    width: 100%
-  }
-
   label {
     width: 20%;
     text-align: right;
