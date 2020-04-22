@@ -1,6 +1,7 @@
 import { TimelineActions } from "@/modules/timeline/store/actions";
 import generateActions from "@/services/functions/generateActions";
 import {Module} from "vuex";
+import {MainActions} from "@/modules/main/store/actions";
 
 const module:Module<TimelineModuleState, AppState> = {
   namespaced: true,
@@ -22,7 +23,6 @@ const module:Module<TimelineModuleState, AppState> = {
 
   }
 };
-
 
 generateActions(module, TimelineActions);
 

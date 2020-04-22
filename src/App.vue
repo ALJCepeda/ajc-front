@@ -17,7 +17,7 @@
         </div>
 
         <nav>
-          <router-link to='/admin'>Admin</router-link>
+          <router-link to='/admin' :hidden="!isAuthenticated">Admin</router-link>
           <router-link to='/home'>Timeline</router-link>
           <router-link to='/about'>About</router-link>
           <router-link to='/blogs'>Blog<!--<span class='subtitle-font'>71</span>--></router-link>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import data from './services/data.js';
 
   export default {
@@ -42,6 +43,9 @@
         image: '',
         name: ''
       };
+    },
+    computed: {
+      ...mapGetters(['isAuthenticated'])
     },
     created: function() {
       this.name = `${data.general.firstname} ${data.general.lastname}`;

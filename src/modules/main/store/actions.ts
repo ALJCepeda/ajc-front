@@ -1,7 +1,7 @@
 import {Action, APIAction, CreateModuleActionOptions} from "@/models/Action";
 import {appAPI} from "@/modules/main/store/api";
 
-function appAction <
+function mainAction <
   IPayloadType,
   IHandlerResponse
   > (
@@ -9,25 +9,32 @@ function appAction <
 ) :
   Action<AppState, IPayloadType, IHandlerResponse>
 {
-  return new Action<AppState, IPayloadType, IHandlerResponse>('timeline', options);
+  return new Action<AppState, IPayloadType, IHandlerResponse>('', options);
 }
 
-function appAPIAction <
+function createMainAPIAction <
   IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>,
   IHandlerResponse = IAPI['IResponse']
   > (
-  options:CreateModuleActionOptions<TimelineModuleState, IAPI['IRequest'], IHandlerResponse>
+  options:CreateModuleActionOptions<AppState, IAPI['IRequest'], IHandlerResponse>
 ) :
-  APIAction<TimelineModuleState, IAPI, IHandlerResponse>
+  APIAction<AppState, IAPI, IHandlerResponse>
 {
-  return new APIAction<TimelineModuleState, IAPI, IHandlerResponse>('timeline', options);
+  return new APIAction<AppState, IAPI, IHandlerResponse>('', options);
 }
 
-export const AppActions = {
-  LOGIN: appAPIAction<Login>({
+export const MainActions = {
+  LOGIN: createMainAPIAction<Login>({
     task:'Login User',
     async handler(context, action) {
-      return appAPI.login(action.payload);
+      return appAPI.login(action.payload).then((result) => {
+        context.commit('setAuthenticated', true);
+        return true;
+      }).catch((err) => {
+        console.error(err);
+        context.commit('setAuthenticated', false);
+        return false;
+      });
     }
   })
 };

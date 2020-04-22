@@ -23,24 +23,24 @@
 .border-bottom { border-bottom: 1px solid @color-greyHr; }
 .body-font {
   color:@color-body;
-	font-size:15px;
-	font-family:Helvetica, Arial, sans-serif;
-	line-height:18px;
+  font-size:15px;
+  font-family:Helvetica, Arial, sans-serif;
+  line-height:18px;
 }
 .header-font {
   color: @color-blue;
-	font-weight: 600;
-	font-size: 1.2em;
+  font-weight: 600;
+  font-size: 1.2em;
 }
 .subtitle-font {
   font-size:0.85em;
-	color:@color-grey4;
+  color:@color-grey4;
 }
 
 .upToTablet(@rules) {
-	@media only screen and (max-width:767px) {
-		@rules();
-	}
+  @media only screen and (max-width:767px) {
+    @rules();
+  }
 }
 
 .upToMedium(@rules) {
@@ -50,9 +50,9 @@
 }
 
 .downToTablet(@rules) {
-	@media only screen and (min-width:768px) {
-		@rules();
-	}
+  @media only screen and (min-width:768px) {
+    @rules();
+  }
 }
 
 .downToMedium(@rules) {
@@ -62,13 +62,13 @@
 }
 
 .hide-upto-tablet {
-	.upToTablet({
-        display: none !important;
-    });
+  .upToTablet({
+    display: none !important;
+  });
 }
 
 .hide-downto-tablet {
-	.downToTablet({
-        display: none !important;
-    });
+  .downToTablet({
+    display: none !important;
+  });
 }

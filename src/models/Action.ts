@@ -21,6 +21,10 @@ export class Action<
   data?: IPayloadType;
 
   get type():string {
+    if(!this.module) {
+      return this.task;
+    }
+
     return `${this.module}/${this.task}`;
   }
 

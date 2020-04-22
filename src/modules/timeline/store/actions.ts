@@ -25,19 +25,19 @@ function timelineAPIAction <
 
 export const TimelineActions = {
   LOAD: timelineAPIAction<TimelinePage>({
-    task:'Fetch a page of TimelineEntries',
+    task: 'Fetch a page of TimelineEntries',
     async handler(context, action) {
       return timelineAPI.getPage(action.payload);
     }
   }),
   UPSERT: timelineAPIAction<TimelineSave>({
-    task:'Insert or Update TimelineEntry',
+    task: 'Insert or Update TimelineEntry',
     async handler(context, action) {
       return timelineAPI.save(action.payload);
     }
   }),
   REMOVE: timelineAPIAction<TimelineRemove>({
-    task:'Delete a TimelineEntry',
+    task: 'Delete a TimelineEntry',
     async handler(context, action) {
       return timelineAPI.remove(action.payload);
     }

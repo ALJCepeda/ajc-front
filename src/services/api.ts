@@ -1,5 +1,3 @@
-import Axios, {AxiosRequestConfig} from "axios";
-
 class HTTPCache {
   routes: Map<string, Map<string, any>> = new Map();
 

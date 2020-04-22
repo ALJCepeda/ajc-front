@@ -1,5 +1,5 @@
 import Axios, {AxiosRequestConfig} from "axios";
-import {isDataQuery} from "ajc-shared/dist";
+import {isDataQuery} from "ajc-shared";
 
 const axiosConfig = {
   baseURL: 'http://localhost:3000',

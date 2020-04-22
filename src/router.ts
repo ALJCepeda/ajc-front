@@ -8,6 +8,7 @@ import blogsList from "./modules/blog/pages/list.vue";
 import blogsView from "./modules/blog/pages/view.vue";
 import notFound from "./modules/main/pages/notFound.vue";
 import adminPage from "./modules/main/pages/admin/admin.vue";
+import store from "@/vuex";
 
 Vue.use(VueRouter);
 
@@ -25,21 +26,15 @@ export default new VueRouter({
     { path: "/blogs/all", component: blogsList },
     { path: "/blogs/:id", component: blogsView },
     {
+      name: "AdminPage",
       path: "/admin",
-      redirect: "/admin/timeline",
-      beforeEnter: (to, from, next) => {
-        if (!isAuthenticated) {
-          next("/login");
-        } else {
-          next();
-        }
-      }
+      redirect: "/admin/timeline"
     },
     {
       path: "/admin/:section",
       component: adminPage,
       beforeEnter: (to, from, next) => {
-        if (!isAuthenticated) {
+        if (!store.getters.isAuthenticated) {
           next("/login");
         } else {
           next();
