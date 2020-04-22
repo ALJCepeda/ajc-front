@@ -28,6 +28,7 @@ export const MainActions = {
     task:'Login User',
     async handler(context, action) {
       return appAPI.login(action.payload).then((result) => {
+        debugger;
         context.commit('setAuthenticated', true);
         return true;
       }).catch((err) => {
