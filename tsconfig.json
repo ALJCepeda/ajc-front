@@ -45,6 +45,7 @@
     "node_modules/ajc-shared/src/types.d.ts",
     "node_modules/ajc-shared/src/api/app.d.ts",
     "node_modules/ajc-shared/src/api/timeline.d.ts",
-    "../ajc-shared/src/app.api.d.ts"
+    "../ajc-shared/src/app.api.d.ts",
+    "../ajc-shared/src/api/app.d.ts"
   ]
 }

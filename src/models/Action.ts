@@ -1,24 +1,20 @@
-import {ActionContext} from "vuex";
-
-export type CreateActionOptions <
-  IStoreState,
-  IPayloadType,
-  IHandlerResponse
-> = Omit<PartialBy<Action<IStoreState, IPayloadType, IHandlerResponse>, 'create' | 'with'>, 'type'>;
-
-export type CreateModuleActionOptions<IStoreState, IPayloadType, IHandlerResponse> = {
-  task:string;
-  handler(context:ActionContext<IStoreState, IStoreState>, payload:ActionPayload<IPayloadType>):Promise<IHandlerResponse>;
-  create?:(payload:IPayloadType) => Promise<ActionPayload<IPayloadType>>
-}
+import {ActionContext, Store} from "vuex";
+import {FormActionResponse} from "@/models/Form";
+import {copyInstance} from "@/services/util";
 
 export class Action<
   IStoreState,
   IPayloadType,
-  IHandlerResponse
+  IResponseType,
+  IRootState = AppState
 > {
-  task: string;
-  data?: IPayloadType;
+  payload?: IPayloadType;
+  public module:string = '';
+
+  constructor(
+    public task:string,
+    public handler:(context: ActionContext<IStoreState, IRootState>, payload: ActionPayload<IPayloadType>) => Promise<IResponseType>
+  ) { }
 
   get type():string {
     if(!this.module) {
@@ -28,31 +24,48 @@ export class Action<
     return `${this.module}/${this.task}`;
   }
 
-  constructor(private module:string, options: CreateActionOptions<IStoreState, IPayloadType, IHandlerResponse>) {
-    Object.assign(this, options);
-  }
-
-  handler?(context: ActionContext<IStoreState, IStoreState>, payload: ActionPayload<IPayloadType>): Promise<IHandlerResponse>;
-
-  async create(payload:IPayloadType):Promise<ActionPayload<IPayloadType>> {
+  async transform(payload:IPayloadType):Promise<ActionPayload<IPayloadType>> {
     return {
       type:this.type,
       payload:payload
     };
   }
 
-  with(data:IPayloadType):this {
-    this.data = data;
-    return this;
+  with(payload:IPayloadType): Action<IStoreState, IPayloadType, IResponseType, IRootState> {
+    return copyInstance<Action<IStoreState, IPayloadType, IResponseType, IRootState>>(this, { payload })
+  }
+
+  _doneCB:Callback<FormActionResponse<IPayloadType, IResponseType>>
+  done(cb:Callback<FormActionResponse<IPayloadType, IResponseType>>):Action<IStoreState, IPayloadType, IResponseType, IRootState> {
+    return copyInstance<Action<IStoreState, IPayloadType, IResponseType, IRootState>>(this, { _doneCB:cb })
+  }
+
+  createDispatcher($store:Store<IStoreState>) {
+    return (payload:IPayloadType) => {
+      return this.transform(payload).then((storeAction) =>  {
+        return $store.dispatch(storeAction)
+      }).then((result) => {
+        if(this._doneCB) {
+          this._doneCB(null, result);
+        }
+
+        return result;
+      }).catch((err) => {
+        if(this._doneCB) {
+          this._doneCB(err);
+        } else {
+          throw err;
+        }
+      });
+    };
+  }
+
+  $dispatch($store:Store<IStoreState>, payload:IPayloadType) {
+    return this.createDispatcher($store)(payload);
   }
 }
 
 export class APIAction<
   IStoreState,
-  IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>,
-  IHandlerResponse = IAPI['IResponse']
->
-  extends Action<IStoreState, IAPI['IRequest'], IHandlerResponse>
-{
-
-}
+  IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>
+> extends Action<IStoreState, IAPI['IRequest'], IAPI['IResponse']> { }

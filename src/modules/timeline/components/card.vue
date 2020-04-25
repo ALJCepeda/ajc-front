@@ -53,7 +53,7 @@ import {Component} from "vue-property-decorator";
 import AbstractFormComponent from "@/abstract/AbstractFormComponent";
 
 @Component
-export default class TimelineCard extends AbstractFormComponent<TimelineEntry, TimelineEntry> {
+export default class TimelineCard extends AbstractFormComponent<TimelineEntry> {
   name:string = "TimelineCard";
 
   created() {

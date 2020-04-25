@@ -11,7 +11,7 @@ const axios = Axios.create(axiosConfig);
 export function request<T>(method:string, url:string, config?:AxiosRequestConfig): Promise<T> {
   return axios.request({
     method, url, ...config
-  }).then(resp => resp.data).catch(() => {});
+  }).then(resp => resp.data);
 }
 
 export function get<

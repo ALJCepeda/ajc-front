@@ -16,8 +16,8 @@
 <script lang="ts">
 import TimelineIntro from "@/modules/timeline/components/info.vue";
 import TimelineCard from "@/modules/timeline/components/card.vue";
-import {TimelineActions} from "@/modules/timeline/store/actions";
 import Form from "@/models/Form";
+import {TimelineDelete, TimelineUpsert, TimelineLoad} from '@/modules/timeline/store/actions';
 
 export default {
   name: "timeline",
@@ -31,19 +31,33 @@ export default {
     async fetchEntries() {
       this.fetchingEntries = true;
 
-      this.forms = await Form.loadWithAction(this.$store, TimelineActions.LOAD.with({
-        page: this.page,
-        limit: 10
+      this.forms = await Form.loadWithAction(this.$store, new TimelineLoad({
+        payload: {
+          page: this.page,
+          limit: 10
+        }
       }), {
         editable: true,
-        submitAction:TimelineActions.UPSERT,
-        submitted: async (entry, form) => {
-          form.editing = false;
-          this.fetchingEntries = false;
-        },
-        removeAction:TimelineActions.REMOVE,
-        removed: async (removedEntry, entryForm) => {
-          this.forms = this.forms.filter(form => form !== entryForm);
+        storeActions: {
+          submit: new TimelineUpsert({
+            done(err, result) {
+              if (err) {
+                console.error(err);
+              } else if (result) {
+                result.form.editing = false;
+                this.fetchingEntries = false;
+              }
+            }
+          }),
+          remove: new TimelineDelete({
+            done(err, result) {
+              if (err) {
+                console.error(err);
+              } else if (result) {
+                this.forms = this.forms.filter(form => form !== result.form);
+              }
+            }
+          })
         },
         controls: [
           { key:'id', label:'ID', type:'text', readonly:true, hideIfEmpty:true },

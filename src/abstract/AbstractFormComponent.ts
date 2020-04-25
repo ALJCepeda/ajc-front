@@ -2,9 +2,9 @@ import Vue from 'vue';
 import {Prop} from "vue-property-decorator";
 import Form from "@/models/Form";
 
-export default class AbstractFormComponent<IResourceType, ISubmitResponseType> extends Vue {
+export default class AbstractFormComponent<IResourceType extends IEntity> extends Vue {
   @Prop()
-  form:Form<IResourceType, ISubmitResponseType>;
+  form:Form<IResourceType>;
 
   submitting:boolean = false;
   removing:boolean = false;
@@ -18,18 +18,21 @@ export default class AbstractFormComponent<IResourceType, ISubmitResponseType> e
   }
 
   submit() {
-    this.submitting = true;
-    this.form.submit().then(resp => {
-      this.submitting = false;
-      return resp;
-    });
+    if(this.form.actions.submit) {
+      this.submitting = true;
+      this.form.actions.submit(this.form.data).then(() => {
+        this.submitting = false;
+        this.form.commit();
+      });
+    }
   }
 
   remove() {
-    this.removing = true;
-    this.form.remove().then(resp => {
-      this.removing = false;
-      return resp;
-    });
+    if(this.form.actions.remove) {
+      this.removing = true;
+      this.form.actions.remove(this.form!.data).then(() => {
+        this.removing = false;
+      });
+    }
   }
 }

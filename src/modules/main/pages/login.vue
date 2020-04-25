@@ -2,7 +2,7 @@
   <main class="login col-center">
     <h3 style="margin-bottom:25px;">Login page</h3>
 
-    <sform class="form" :form="form"></sform>
+    <sform class="form" :form="form" />
   </main>
 </template>
 
@@ -10,7 +10,7 @@
   import Vue from 'vue';
   import {Component} from "vue-property-decorator";
   import Form from "@/models/Form";
-  import {MainActions} from "@/modules/main/store/actions";
+  import {AppActions} from "@/modules/main/store/actions";
 
   @Component
   export default class LoginComponent extends Vue {
@@ -21,16 +21,23 @@
       isDirty(): boolean {
         return true;
       },
-      submitAction: MainActions.LOGIN,
-      submitted: this.onSubmit,
+      storeActions: {
+        submit: AppActions.LOGIN.done((err, resp) => {
+          if (err) {
+            console.error('Need to broadcast error', err);
+          } else if (resp) {
+            this.onSuccess();
+          }
+        })
+      },
       controls:[
         { key:'username', label:'Username', type:'text' },
         { key:'password', label:'Password', type:'text'}
       ]
     });
 
-    async onSubmit() {
-      this.$router.push({ name:'AdminPage' });
+    async onSuccess() {
+      return this.$router.push({ name:'AdminPage' });
     }
   }
 </script>

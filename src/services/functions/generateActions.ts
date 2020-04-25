@@ -1,11 +1,11 @@
 import {Action} from "@/models/Action";
 
-export default function generateActions<IStoreState>(module:any, actions:{ [key:string]:Action<IStoreState, any, any> }) {
+export default function generateActions(module:any, actions:{ [key:string]:Action<any, any, any> }) {
   const moduleActions = {};
 
   for(const key in actions) {
-    const info = actions[key];
-    moduleActions[info.task] = info.handler;
+    const action = actions[key];
+    moduleActions[action.task] = action.handler
   }
 
   module.actions = {

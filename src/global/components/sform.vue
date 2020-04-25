@@ -26,7 +26,7 @@ import {Component} from "vue-property-decorator";
 import AbstractFormComponent from "@/abstract/AbstractFormComponent";
 
 @Component
-export default class FormComponent<IResourceType, ISubmitResponseType> extends AbstractFormComponent<IResourceType, ISubmitResponseType> {
+export default class FormComponent<IResourceType> extends AbstractFormComponent<IResourceType> {
   name:string = "sform";
 
   get controls() {

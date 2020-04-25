@@ -1,6 +1,6 @@
 import {StoreOptions} from "vuex";
 import generateActions from "@/services/functions/generateActions";
-import {MainActions} from "@/modules/main/store/actions";
+import {AppActions} from "@/modules/main/store/actions";
 
 const module:StoreOptions<AppState> = {
   state: {
@@ -21,6 +21,6 @@ const module:StoreOptions<AppState> = {
   }
 };
 
-generateActions(module, MainActions);
+generateActions(module, AppActions);
 
 export default module;

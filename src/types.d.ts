@@ -13,3 +13,5 @@ interface TimelineModuleState {
 interface AppState {
   authenticated:boolean;
 }
+
+type Callback<T> = (err:Error | null, resp?:T) => void;
