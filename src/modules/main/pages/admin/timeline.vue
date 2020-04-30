@@ -11,7 +11,7 @@ import {Component} from "vue-property-decorator";
 import Vue from 'vue';
 import Form from "@/models/Form";
 import TimelineCard from "@/modules/timeline/components/card.vue";
-import {TimelineUpsert} from "@/modules/timeline/store/actions";
+import {TimelineActions} from "@/modules/timeline/store/actions";
 
 @Component({
   components: { TimelineCard }
@@ -27,7 +27,7 @@ export default class TimelineComponent extends Vue {
     when: new Date()
   }, {
     storeActions: {
-      submit: new TimelineUpsert()
+      submit: TimelineActions.UPSERT
     },
     editable:true,
     editing:true

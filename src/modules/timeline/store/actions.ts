@@ -1,29 +1,20 @@
 import {timelineAPI} from "@/modules/timeline/store/api";
 import {APIAction} from "@/models/Action";
 
-abstract class TimelineAction <
+class TimelineAction <
   IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>
 > extends APIAction<TimelineModuleState, IAPI> {
   module = 'timeline';
 }
 
-export class TimelineLoad extends TimelineAction<TimelinePage> {
-  task = 'Fetch a page of TimelineEntries';
-  handler(context, action) {
+export const TimelineActions = {
+  LOAD: new TimelineAction<TimelinePage>('Fetch a page of TimelineEntries', (context, action) => {
     return timelineAPI.getPage(action.payload);
-  }
-}
-
-export class TimelineUpsert extends TimelineAction<TimelineSave> {
-  task = 'Insert or Update TimelineEntry';
-  handler(context, action) {
+  }),
+  UPSERT: new TimelineAction<TimelineSave>('Save or update a TimelineEntry', (context, action) => {
     return timelineAPI.save(action.payload);
-  }
-}
-
-export class TimelineDelete extends TimelineAction<TimelineRemove> {
-  task = 'Delete a TimelineEntry';
-  handler(context, action) {
+  }),
+  DELETE: new TimelineAction<TimelineRemove>('Delete a TimelineEntry', (context, action) => {
     return timelineAPI.remove(action.payload);
-  }
-}
+  }),
+};
