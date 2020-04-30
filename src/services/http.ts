@@ -1,12 +1,11 @@
 import Axios, {AxiosRequestConfig} from "axios";
 import {isDataQuery} from "ajc-shared";
 
-const axiosConfig = {
+const axios = Axios.create({
   baseURL: 'http://localhost:3000',
-  timeout: 5000
-};
-
-const axios = Axios.create(axiosConfig);
+  timeout: 5000,
+  withCredentials: true
+});
 
 export function request<T>(method:string, url:string, config?:AxiosRequestConfig): Promise<T> {
   return axios.request({
