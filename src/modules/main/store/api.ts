@@ -1,5 +1,6 @@
-import {post} from "@/services/http";
+import {get, post} from "@/services/http";
 
-export const appAPI = {
-  login: post<Login>('/login')
+export const AppAPI = {
+  login: post<ILogin>('/login'),
+  isAuthenticated: get<IIsAuthenticated>('/isAuthenticated')
 };

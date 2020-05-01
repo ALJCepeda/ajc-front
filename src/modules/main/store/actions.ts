@@ -1,5 +1,5 @@
 import {APIAction} from "@/models/Action";
-import {appAPI} from "@/modules/main/store/api";
+import {AppAPI} from "@/modules/main/store/api";
 
 class AppAction <
   IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>
@@ -9,13 +9,12 @@ class AppAction <
 
 export const AppActions = {
   LOGIN: new AppAction<ILogin>('Login User', async (context, action) => {
-    return appAPI.login(action.payload).then(() => {
+    return AppAPI.login(action.payload).then(() => {
       context.commit('setAuthenticated', true);
       return true;
     }).catch((err) => {
       context.commit('setAuthenticated', false);
       throw err;
     });
-  }),
-
+  })
 };

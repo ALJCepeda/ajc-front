@@ -8,13 +8,13 @@ class TimelineAction <
 }
 
 export const TimelineActions = {
-  LOAD: new TimelineAction<TimelinePage>('Fetch a page of TimelineEntries', (context, action) => {
+  LOAD: new TimelineAction<ITimelinePage>('Fetch a page of TimelineEntries', (context, action) => {
     return timelineAPI.getPage(action.payload);
   }),
-  UPSERT: new TimelineAction<TimelineSave>('Save or update a TimelineEntry', (context, action) => {
+  UPSERT: new TimelineAction<ITimelineSave>('Save or update a TimelineEntry', (context, action) => {
     return timelineAPI.save(action.payload);
   }),
-  DELETE: new TimelineAction<TimelineRemove>('Delete a TimelineEntry', (context, action) => {
+  DELETE: new TimelineAction<ITimelineRemove>('Delete a TimelineEntry', (context, action) => {
     return timelineAPI.remove(action.payload);
   }),
 };
