@@ -19,6 +19,7 @@ Vue.config.productionTip = false;
 registerGlobals(Vue);
 
 Promise.all([
+
   //store.dispatch('blogs/manifest'),
   //store.dispatch('timeline/manifest')
 ]).then(() => {

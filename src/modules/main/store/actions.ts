@@ -16,5 +16,6 @@ export const AppActions = {
       context.commit('setAuthenticated', false);
       throw err;
     });
-  })
-}
+  }),
+
+};
