@@ -16,5 +16,12 @@ export const AppActions = {
       context.commit('setAuthenticated', false);
       throw err;
     });
+  }),
+  UPDATEAPPSTATE: new AppAction<IFetchAppState>('Update App State', async (context, action) => {
+    return AppAPI.fetchAppState(null).then((resp) => {
+      console.log(resp);
+      context.commit('setAppState', resp);
+      return resp;
+    })
   })
 };

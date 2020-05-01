@@ -10,6 +10,7 @@ import router from "./router";
 import App from "./App.vue";
 
 import registerGlobals from "@/services/functions/registerGlobals";
+import {AppActions} from "@/modules/main/store/actions";
 
 Vue.use( CKEditor );
 
@@ -19,7 +20,7 @@ Vue.config.productionTip = false;
 registerGlobals(Vue);
 
 Promise.all([
-
+  AppActions.UPDATEAPPSTATE.$dispatch(store, null)
   //store.dispatch('blogs/manifest'),
   //store.dispatch('timeline/manifest')
 ]).then(() => {
