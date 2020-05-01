@@ -14,4 +14,4 @@ interface AppState {
   authenticated:boolean;
 }
 
-type Callback<T> = (err:Error | null, resp?:T) => void;
+type Callback<T, R = void> = (err:Error | null, resp?:T) => R;

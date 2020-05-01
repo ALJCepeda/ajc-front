@@ -1,5 +1,4 @@
 import {ActionContext, Store} from "vuex";
-import {FormActionResponse} from "@/models/Form";
 import {copyInstance} from "@/services/util";
 
 export class Action<
@@ -35,12 +34,12 @@ export class Action<
     return copyInstance<Action<IStoreState, IPayloadType, IResponseType, IRootState>>(this, { payload })
   }
 
-  _doneCB:Callback<FormActionResponse<IPayloadType, IResponseType>>
-  done(cb:Callback<FormActionResponse<IPayloadType, IResponseType>>):Action<IStoreState, IPayloadType, IResponseType, IRootState> {
+  _doneCB:Callback<IResponseType>;
+  done(cb:Callback<IResponseType>):Action<IStoreState, IPayloadType, IResponseType, IRootState> {
     return copyInstance<Action<IStoreState, IPayloadType, IResponseType, IRootState>>(this, { _doneCB:cb })
   }
 
-  createDispatcher($store:Store<IStoreState>) {
+  createDispatcher($store:Store<IStoreState>): (payload:IPayloadType) => Promise<IResponseType> {
     return (payload:IPayloadType) => {
       return this.transform(payload).then((storeAction) =>  {
         return $store.dispatch(storeAction)
@@ -60,7 +59,7 @@ export class Action<
     };
   }
 
-  $dispatch($store:Store<IStoreState>, payload:IPayloadType) {
+  $dispatch($store:Store<IStoreState>, payload:IPayloadType): Promise<IResponseType> {
     return this.createDispatcher($store)(payload);
   }
 }

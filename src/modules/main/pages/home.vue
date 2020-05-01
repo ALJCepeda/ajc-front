@@ -16,8 +16,8 @@
 <script lang="ts">
 import TimelineIntro from "@/modules/timeline/components/info.vue";
 import TimelineCard from "@/modules/timeline/components/card.vue";
-import Form from "@/models/Form";
 import {TimelineActions} from "@/modules/timeline/store/actions";
+import {fromAction} from "@/factories/FormFactory";
 
 export default {
   name: "timeline",
@@ -31,17 +31,25 @@ export default {
     async fetchEntries() {
       this.fetchingEntries = true;
 
-      this.forms = await Form.loadWithAction(this.$store, TimelineActions.LOAD.with({
-        page: this.page,
-        limit: 10
+      this.forms = await fromAction(this.$store, TimelineActions.LOAD.with({
+        limit:10,
+        page:this.page
       }), {
         editable: true,
-        storeActions: {
+        controls: [
+          {key: 'id', label: 'ID', type: 'text', readonly: true, hideIfEmpty: true},
+          {key: 'when', label: 'When', type: 'datetime'},
+          {key: 'imageURL', label: 'Image', type: 'text'},
+          {key: 'labelURL', label: 'Link', type: 'text'},
+          {key: 'label', label: 'Label', type: 'text'},
+          {key: 'message', label: 'Message', type: 'editor'}
+        ],
+        storeActions: (form) => ({
           submit: TimelineActions.UPSERT.done((err, result) => {
             if (err) {
               console.error(err);
             } else if (result) {
-              result.form.editing = false;
+              form.editing = false;
               this.fetchingEntries = false;
             }
           }),
@@ -49,18 +57,10 @@ export default {
             if (err) {
               console.error(err);
             } else if (result) {
-              this.forms = this.forms.filter(form => form !== result.form);
+              this.forms = this.forms.filter(aForm => aForm !== form);
             }
           })
-        },
-        controls: [
-          { key:'id', label:'ID', type:'text', readonly:true, hideIfEmpty:true },
-          { key:'when', label:'When', type:'datetime' },
-          { key:'imageURL', label:'Image', type:'text' },
-          { key:'labelURL', label:'Link', type:'text' },
-          { key:'label', label:'Label', type:'text' },
-          { key:'message', label:'Message', type:'editor' }
-        ]
+        })
       });
     }
   },

@@ -9,19 +9,19 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component} from "vue-property-decorator";
-  import Form from "@/models/Form";
   import {AppActions} from "@/modules/main/store/actions";
+  import {withAction} from "@/factories/FormFactory";
 
   @Component
   export default class LoginComponent extends Vue {
-    form = Form.withAction(this.$store, {
+    form = withAction(this.$store, {
       username:'vlegm',
       password:'Password123'
     }, {
       isDirty(): boolean {
         return true;
       },
-      storeActions: {
+      storeActions: (form) => ({
         submit: AppActions.LOGIN.done((err, resp) => {
           if (err) {
             console.error('Need to broadcast error', err);
@@ -29,7 +29,7 @@
             this.onSuccess();
           }
         })
-      },
+      }),
       controls:[
         { key:'username', label:'Username', type:'text' },
         { key:'password', label:'Password', type:'text'}

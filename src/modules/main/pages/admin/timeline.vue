@@ -9,9 +9,9 @@
 <script lang="ts">
 import {Component} from "vue-property-decorator";
 import Vue from 'vue';
-import Form from "@/models/Form";
 import TimelineCard from "@/modules/timeline/components/card.vue";
 import {TimelineActions} from "@/modules/timeline/store/actions";
+import { withAction } from '@/factories/FormFactory';
 
 @Component({
   components: { TimelineCard }
@@ -19,16 +19,16 @@ import {TimelineActions} from "@/modules/timeline/store/actions";
 export default class TimelineComponent extends Vue {
   name:string = "TimelineComponent";
 
-  timelineEntry = Form.withAction(this.$store, {
+  timelineEntry = withAction(this.$store, {
     imageURL: "https://vuejs.org/images/logo.png",
     labelURL: "https://vuejs.org/",
     label: "Label",
     message: "Timeline Message",
     when: new Date()
   }, {
-    storeActions: {
+    storeActions: () => ({
       submit: TimelineActions.UPSERT
-    },
+    }),
     editable:true,
     editing:true
   });
