@@ -24,7 +24,7 @@
   "dependencies": {
     "ajc-toolbelt": "^1.2.1",
     "axios": "^0.18.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "md5": "^2.2.1",
     "moment": "^2.22.2",
     "parse-url": "^3.0.2",
