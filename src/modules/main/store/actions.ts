@@ -1,27 +1,47 @@
-import {APIAction} from "../../../models/Action";
-import {AppAPI} from "./api";
+import { APIAction } from "../../../models/Action";
+import { AppAPI } from "./api";
+import { ActionContext } from "vuex";
+import { lazyActionDictionaryFrom } from "@/models/LazyDictionary";
 
-class AppAction <
-  IAPI extends IEndpoint<IAPI['IRequest'], IAPI['IResponse']>
-> extends APIAction<AppState, IAPI> {
-  module: ''
+abstract class AppAction<
+  IAPI extends IEndpoint<IAPI["IRequest"], IAPI["IResponse"]>
+> extends APIAction<AppState, IAPI, AppState> {
+  module: "";
 }
 
-export const AppActions = {
-  LOGIN: new AppAction<ILogin>('Login User', async (context, action) => {
-    return AppAPI.login(action.payload).then(() => {
-      context.commit('setAuthenticated', true);
-      return true;
-    }).catch((err) => {
-      context.commit('setAuthenticated', false);
-      throw err;
+class Login extends AppAction<ILogin> {
+  task = "Login User";
+  handler(
+    context: ActionContext<AppState, AppState>,
+    action: ActionPayload<ILogin["IRequest"]>
+  ): Promise<ILogin["IResponse"]> {
+    return AppAPI.login(action.payload)
+      .then(() => {
+        context.commit("setAuthenticated", true);
+        return true;
+      })
+      .catch(err => {
+        context.commit("setAuthenticated", false);
+        throw err;
+      });
+  }
+}
+
+class FetchAppState extends AppAction<IFetchAppState> {
+  task = "Update App State";
+  handler(
+    context: ActionContext<AppState, AppState>
+  ): Promise<IFetchAppState["IResponse"]> {
+    return AppAPI.fetchAppState(null).then(() => {
+      return AppAPI.fetchAppState(null).then(resp => {
+        context.commit("setAppState", resp);
+        return resp;
+      });
     });
-  }),
-  UPDATEAPPSTATE: new AppAction<IFetchAppState>('Update App State', async (context, action) => {
-    return AppAPI.fetchAppState(null).then((resp) => {
-      console.log(resp);
-      context.commit('setAppState', resp);
-      return resp;
-    })
-  })
-};
+  }
+}
+
+export const AppActions = lazyActionDictionaryFrom({
+  LOGIN: Login,
+  FETCHAPPSTATE: FetchAppState
+});

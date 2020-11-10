@@ -36,7 +36,7 @@ export default {
     const result = {};
 
     cities.forEach(city => {
-      let key = `${city.name}, ${city.shortState}`;
+      const key = `${city.name}, ${city.shortState}`;
 
       if (!_.isUndefined(result[key])) {
         throw new Error(`Primary key already defined: ${key}`);
@@ -62,7 +62,7 @@ export default {
     const result = {};
 
     addresses.forEach(address => {
-      var key = `${address.number} ${address.street}`;
+      let key = `${address.number} ${address.street}`;
 
       if (_.isString(address.unit)) {
         key = `${key} ${address.unit}`;

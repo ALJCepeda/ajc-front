@@ -32,7 +32,7 @@
     <h5>OTHER PLACES LIVED</h5>
 
     <section class="entries">
-      <div class="entry" v-for="city in otherCities">
+      <div class="entry" v-for="city in otherCities" :key="city.name">
         <img :src="moocow" />
 
         <div class="description">

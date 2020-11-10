@@ -1,14 +1,14 @@
-import {StoreOptions} from "vuex";
+import { StoreOptions } from "vuex";
 import generateActions from "../../../services/functions/generateActions";
-import {AppActions} from "./actions";
+import { AppActions } from "./actions";
 
-const module:StoreOptions<AppState> = {
+const module: StoreOptions<AppState> = {
   state: {
-    authenticated:false
+    authenticated: false
   },
   getters: {
     isAuthenticated(state) {
-      return state.authenticated
+      return state.authenticated;
     }
   },
   mutations: {
@@ -16,9 +16,7 @@ const module:StoreOptions<AppState> = {
       state.authenticated = authenticated;
     }
   },
-  actions: {
-
-  }
+  actions: {}
 };
 
 generateActions(module, AppActions);

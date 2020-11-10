@@ -9,8 +9,8 @@ export default {
   name: "blogs-view",
   methods: {
     updateFrame: function(blog) {
-      var iframe = document.getElementById("view");
-      var doc = iframe.document;
+      const iframe = document.getElementById("view");
+      let doc = iframe.document;
       if (iframe.contentDocument) {
         doc = iframe.contentDocument;
       } else if (iframe.contentWindow) {

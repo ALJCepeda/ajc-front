@@ -33,7 +33,7 @@ export default {
 
       this.forms = await fromAction(
         this.$store,
-        TimelineActions.LOAD.with({
+        TimelineActions.PAGE.with({
           limit: 10,
           page: this.page
         }),
@@ -54,20 +54,19 @@ export default {
             { key: "message", label: "Message", type: "editor" }
           ],
           storeActions: form => ({
-            submit: TimelineActions.UPSERT.done((err, result) => {
-              if (err) {
-                console.error(err);
-              } else if (result) {
-                form.editing = false;
-                this.fetchingEntries = false;
-              }
+            submit: TimelineActions.UPSERT.done(deferred => {
+              deferred
+                .then(() => {
+                  form.editing = false;
+                  this.fetchingEntries = false;
+                })
+                .catch(err => console.error(err));
             }),
-            remove: TimelineActions.DELETE.done((err, result) => {
-              if (err) {
-                console.error(err);
-              } else if (result) {
-                this.forms = this.forms.filter(aForm => aForm !== form);
-              }
+            remove: TimelineActions.DELETE.done(deferred => {
+              deferred.then(
+                () => (this.forms = this.forms.filter(aForm => aForm !== form)),
+                err => console.error("TODO: broadcast error", err)
+              );
             })
           })
         }

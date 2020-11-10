@@ -12,8 +12,6 @@ import store from "./vuex";
 
 Vue.use(VueRouter);
 
-const isAuthenticated = true;
-
 export default new VueRouter({
   mode: "history",
   routes: [

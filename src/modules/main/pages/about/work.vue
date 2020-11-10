@@ -5,7 +5,7 @@
     </h5>
 
     <section class="entries">
-      <div class="entry" v-for="job in jobs">
+      <div class="entry" v-for="job in jobs" :key="job.company">
         <img :src="job.logo" />
 
         <div class="description">
@@ -30,7 +30,7 @@
     </h5>
 
     <section class="entries skills">
-      <div v-for="(skill, index) in skills">
+      <div v-for="(skill, index) in skills" :key="skill.name">
         {{ skill.name }}
 
         <div
@@ -46,7 +46,7 @@
     </h5>
 
     <section class="entries">
-      <div class="entry" v-for="education in education">
+      <div class="entry" v-for="education in education" :key="education.name">
         <img :src="education.logo" />
 
         <div class="description">
@@ -69,9 +69,9 @@
 import data from "../../../../services/data";
 
 function shuffle(array) {
-  var currentIndex = array.length;
-  var temporaryValue;
-  var randomIndex;
+  let currentIndex = array.length;
+  let temporaryValue;
+  let randomIndex;
 
   // While there remain elements to shuffle...
   while (currentIndex !== 0) {

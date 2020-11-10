@@ -3,9 +3,11 @@
     <header class="title">
       <div class="content">
         <i class="material-icons">&#xE7FD;</i> Admin
-        <i class="material-icons hide-downto-tablet"
+        <i
+          class="material-icons hide-downto-tablet"
           style="margin-left:10px;cursor:pointer;"
-          @click="showNav()">
+          @click="showNav()"
+        >
           &#xE896;
         </i>
       </div>

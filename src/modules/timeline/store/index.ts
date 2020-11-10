@@ -1,8 +1,8 @@
 import generateActions from "../../../services/functions/generateActions";
-import {Module} from "vuex";
-import {TimelineActions} from "./actions";
+import { Module } from "vuex";
+import { TimelineActions } from "./actions";
 
-const module:Module<TimelineModuleState, AppState> = {
+const module: Module<TimelineModuleState, AppState> = {
   namespaced: true,
   state: {
     manifest: null,
@@ -18,9 +18,7 @@ const module:Module<TimelineModuleState, AppState> = {
       };
     }
   },
-  mutations: {
-
-  }
+  mutations: {}
 };
 
 generateActions(module, TimelineActions);

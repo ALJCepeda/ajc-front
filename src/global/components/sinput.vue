@@ -11,9 +11,7 @@
         ref="input"
       />
 
-      <span
-        v-if="!editable"
-      >{{ value }}</span>
+      <span v-if="!editable">{{ value }}</span>
 
       <textarea
         :placeholder="placeholder"
@@ -43,10 +41,10 @@
 </template>
 
 <script>
-import 'vue-datetime/dist/vue-datetime.css'
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { Datetime } from 'vue-datetime';
-import {isDate, isString} from 'lodash';
+import "vue-datetime/dist/vue-datetime.css";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { Datetime } from "vue-datetime";
+import { isDate, isString } from "lodash";
 
 export default {
   name: "sinput",
@@ -71,10 +69,10 @@ export default {
     return {
       editor: ClassicEditor,
       editorConfig: {},
-      specialTypes: ['textarea', 'editor'],
-      dateTypes: ['date', 'datetime', 'time'],
+      specialTypes: ["textarea", "editor"],
+      dateTypes: ["date", "datetime", "time"],
       valueStr: isDate(this.value) ? this.value.toISOString() : this.value
-    }
+    };
   },
 
   computed: {
@@ -97,8 +95,8 @@ export default {
     emitValue(event) {
       const value = isString(event) ? event : event.target.value;
 
-      if(isDate(this.value)) {
-        this.$emit("input", new Date(value) );
+      if (isDate(this.value)) {
+        this.$emit("input", new Date(value));
       } else {
         this.$emit("input", value);
       }

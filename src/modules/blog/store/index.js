@@ -1,6 +1,5 @@
 import Vue from "vue";
 import moment from "moment";
-import api from "../../../services/api";
 
 const module = {
   namespaced: true,
@@ -29,6 +28,7 @@ const module = {
       Vue.set(state, "manifest", manifest);
     },
     entry(state, entry) {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       entry.created_at = moment(entry.created_at);
       entry.fromNow = entry.created_at.calendar();
       entry.imageUrl = `${process.env.STATIC_URL}/images/${entry.image}`;

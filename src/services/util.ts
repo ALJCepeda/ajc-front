@@ -1,4 +1,4 @@
-export function copyInstance<T>(original:T, options:Partial<T> = {}) {
+export function copyInstance<T>(original: T, options: Partial<T> = {}) {
   return Object.assign(
     Object.create(Object.getPrototypeOf(original)),
     original,
@@ -7,9 +7,9 @@ export function copyInstance<T>(original:T, options:Partial<T> = {}) {
 }
 
 export function shuffle(array) {
-  var currentIndex = array.length;
-  var temporaryValue;
-  var randomIndex;
+  let currentIndex = array.length;
+  let temporaryValue;
+  let randomIndex;
 
   // While there remain elements to shuffle...
   while (currentIndex !== 0) {

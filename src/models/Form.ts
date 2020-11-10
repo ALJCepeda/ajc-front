@@ -1,47 +1,52 @@
-import {isDate} from 'moment';
+import { isDate } from "moment";
 
-export type FormOptions<IResourceType extends IEntity> = Partial<Form<IResourceType>>;
+export type FormOptions<IResourceType extends IEntity> = Partial<
+  Form<IResourceType>
+>;
 
 export default class Form<IResourceType extends IEntity> {
-  editing:boolean = false;
-  editable:boolean = false;
-  actions:{ [type:string]:(payload:IResourceType) => Promise<any> } = {};
-  committed: { [key in keyof IResourceType] : IResourceType[key] };
-  data: { [key in keyof IResourceType] : IResourceType[key] };
+  editing = false;
+  editable = false;
+  actions: { [type: string]: (payload: IResourceType) => Promise<any> } = {};
+  committed: { [key in keyof IResourceType]: IResourceType[key] };
+  data: { [key in keyof IResourceType]: IResourceType[key] };
   controls: {
-    key:keyof IResourceType,
-    label:string,
-    type:'text' | 'textarea' | 'date' | 'time' | 'datetime' | 'editor',
-    readonly?:boolean,
-    hideIfEmpty?:boolean
+    key: keyof IResourceType;
+    label: string;
+    type: "text" | "textarea" | "date" | "time" | "datetime" | "editor";
+    readonly?: boolean;
+    hideIfEmpty?: boolean;
   }[] = [];
 
-  get id():number | undefined {
+  get id(): number | undefined {
     return this.data.id;
   }
 
-  constructor(initialValues:IResourceType, options?:FormOptions<IResourceType>) {
+  constructor(
+    initialValues: IResourceType,
+    options?: FormOptions<IResourceType>
+  ) {
     this.committed = { ...initialValues };
     this.data = initialValues;
 
     Object.assign(this, options);
 
-    if(!this.editable) {
+    if (!this.editable) {
       this.editing = false;
     }
   }
 
-  isDirty():boolean {
-    for(const key in this.committed) {
-      if(this.committed.hasOwnProperty(key) && this.data.hasOwnProperty(key)) {
+  isDirty(): boolean {
+    for (const key in this.committed) {
+      if (this.committed.hasOwnProperty(key) && this.data.hasOwnProperty(key)) {
         const committedValue = this.committed[key];
         const dataValue = this.data[key];
 
-        if(isDate(dataValue) && isDate(committedValue)) {
-          if(dataValue.toString() !== committedValue.toString()) {
+        if (isDate(dataValue) && isDate(committedValue)) {
+          if (dataValue.toString() !== committedValue.toString()) {
             return true;
           }
-        } else if(dataValue !== committedValue) {
+        } else if (dataValue !== committedValue) {
           return true;
         }
       }
@@ -54,8 +59,8 @@ export default class Form<IResourceType extends IEntity> {
     Object.assign(this.data, this.committed);
   }
 
-  commit(data?:IResourceType) {
-    if(data) {
+  commit(data?: IResourceType) {
+    if (data) {
       Object.assign(this.committed, data);
       this.reset();
     } else {
@@ -68,7 +73,7 @@ export default class Form<IResourceType extends IEntity> {
     this.editing = false;
   }
 
-  addAction(type:string, handler:(payload:IResourceType) => Promise<any>) {
+  addAction(type: string, handler: (payload: IResourceType) => Promise<any>) {
     this.actions[type] = handler;
   }
 }
