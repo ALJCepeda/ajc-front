@@ -44,6 +44,7 @@ export async function fromAction<
     );
   }
 
+  debugger;
   const { payload } = await action.transform(action.payload);
   const resp = await action.$dispatch($store, payload);
   return resp.map(entry => withAction($store, entry, options));

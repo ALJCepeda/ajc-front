@@ -1,15 +1,16 @@
-import { Action } from "../../models/Action";
+import { Action } from "@/models/Action";
+import {ILazyDictionary} from "@/models/LazyDictionary";
 
-export default function generateActions(
+export default function generateActions<T>(
   module: any,
-  actions: { [key: string]: Action<any, any, any> }
+  actions: ILazyDictionary<T>
 ) {
   const moduleActions = {};
 
-  for (const key in actions) {
-    const action = actions[key];
+  actions.keys.forEach((key) => {
+    const action = actions[key] as Action<any, any, any>;
     moduleActions[action.task] = action.handler;
-  }
+  });
 
   module.actions = {
     ...module.actions,

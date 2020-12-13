@@ -1,8 +1,9 @@
 import Axios, { AxiosRequestConfig } from "axios";
 import { isDataQuery } from "ajc-shared";
+import {AppConfig} from "@/config/app";
 
 const axios = Axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: `http://${AppConfig.server.host}:${AppConfig.server.port}`,
   timeout: 5000,
   withCredentials: true
 });

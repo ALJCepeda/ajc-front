@@ -12,6 +12,7 @@ import Vue from "vue";
 import TimelineCard from "@/modules/timeline/components/card.vue";
 import { TimelineActions } from "@/modules/timeline/store/actions";
 import { withAction } from "@/factories/FormFactory";
+import {AppActions} from "@/modules/main/store/actions";
 
 @Component({
   components: { TimelineCard }
@@ -36,5 +37,13 @@ export default class TimelineComponent extends Vue {
       editing: true
     }
   );
+
+  created() {
+    TimelineActions.PAGE.$dispatch(this.$store, {
+      page: 1,
+      skip: 3,
+      limit: 5
+    });
+  }
 }
 </script>

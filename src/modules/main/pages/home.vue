@@ -35,7 +35,8 @@ export default {
         this.$store,
         TimelineActions.PAGE.with({
           limit: 10,
-          page: this.page
+          page: this.page,
+          skip: 0
         }),
         {
           editable: true,

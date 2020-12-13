@@ -32,11 +32,12 @@ class FetchAppState extends AppAction<IFetchAppState> {
   handler(
     context: ActionContext<AppState, AppState>
   ): Promise<IFetchAppState["IResponse"]> {
-    return AppAPI.fetchAppState(null).then(() => {
-      return AppAPI.fetchAppState(null).then(resp => {
-        context.commit("setAppState", resp);
-        return resp;
-      });
+    return AppAPI.fetchAppState(null).then((resp) => {
+      context.commit("setAppState", resp);
+      return resp;
+    }, (err) => {
+      context.commit("setAppState", { isAuthenticated: false });
+      return { isAuthenticated: false };
     });
   }
 }

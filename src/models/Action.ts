@@ -53,6 +53,7 @@ export abstract class Action<
     return (payload: IPayloadType) => {
       return this.transform(payload)
         .then(storeAction => {
+          debugger
           return $store.dispatch(storeAction);
         })
         .then(result => {
