@@ -10,9 +10,7 @@ export function lazyActionDictionaryFrom<T>(actionMap: T): ILazyDictionary<T> {
     });
 
     return res;
-  }, {
-
-  }) as ILazyDictionary<T>;
+  }, { }) as ILazyDictionary<T>;
 
   result.keys = Object.keys(actionMap) as unknown as Array<keyof T>;
 
