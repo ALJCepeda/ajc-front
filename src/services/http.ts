@@ -1,6 +1,7 @@
 import Axios, { AxiosRequestConfig } from "axios";
 import { isDataQuery } from "ajc-shared";
 import {AppConfig} from "@/config/app";
+import {IEndpoint, IFetchEntries} from "ajc-shared";
 
 const axios = Axios.create({
   baseURL: `http://${AppConfig.server.host}:${AppConfig.server.port}`,
@@ -23,51 +24,31 @@ export function request<T>(
 }
 
 export function get<
-  IAPI extends IEndpoint<IAPI["IRequest"], IAPI["IResponse"]>
->(url: string): (query: IAPI["IRequest"]) => Promise<IAPI["IResponse"]> {
-  return query => {
-    return request<IAPI["IResponse"]>("get", url, {
-      params: query
-    });
+  IAPI,
+  IRequest = IAPI extends IEndpoint<infer U, any> ? U : unknown,
+  IResponse = IAPI extends IEndpoint<any, infer U> ? U : unknown
+>(url: string): (params: IRequest) => Promise<IResponse> {
+  return params => {
+    return request<IResponse>("get", url, { params });
   };
 }
 
 export function post<
-  IAPI extends IEndpoint<IAPI["IRequest"], IAPI["IResponse"]>
->(url: string): (request: IAPI["IRequest"]) => Promise<IAPI["IResponse"]> {
+  IAPI,
+  IRequest = IAPI extends IEndpoint<infer U, any> ? U : unknown,
+  IResponse = IAPI extends IEndpoint<any, infer U> ? U : unknown
+>(url: string): (request: IRequest) => Promise<IResponse> {
   return data => {
-    let query, body;
-
-    if (isDataQuery(data)) {
-      body = data.body;
-      query = data.query;
-    } else {
-      body = data;
-    }
-
-    return request<IAPI["IResponse"]>("post", url, {
-      data: body,
-      params: query
-    });
+    return request<IResponse>("post", url, { data });
   };
 }
 
 export function remove<
-  IAPI extends IEndpoint<IAPI["IRequest"], IAPI["IResponse"]>
->(url: string): (data: IAPI["IRequest"]) => Promise<IAPI["IResponse"]> {
+  IAPI,
+  IRequest = IAPI extends IEndpoint<infer U, any> ? U : unknown,
+  IResponse = IAPI extends IEndpoint<any, infer U> ? U : unknown
+>(url: string): (data: IRequest) => Promise<IResponse> {
   return data => {
-    let query, body;
-
-    if (isDataQuery(data)) {
-      body = data.body;
-      query = data.query;
-    } else {
-      body = data;
-    }
-
-    return request<IAPI["IResponse"]>("delete", url, {
-      data: body,
-      params: query
-    });
+    return request<IResponse>("delete", url, { data });
   };
 }

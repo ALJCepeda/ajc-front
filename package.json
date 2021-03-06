@@ -7,13 +7,13 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "serve": "vue-cli-service serve"
+    "start": "vue-cli-service serve"
   },
   "main": "src/main.ts",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^18.0.0",
     "@ckeditor/ckeditor5-vue": "^1.0.1",
-    "ajc-shared": "../ajc-shared",
+    "ajc-shared": "^1.0.1",
     "ajc-toolbelt": "^1.2.1",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
@@ -49,6 +49,7 @@
     "chai": "^4.1.2",
     "dotenv": "^6.0.0",
     "eslint": "^6.7.2",
+    "eslint-loader": "^4.0.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.8.1",

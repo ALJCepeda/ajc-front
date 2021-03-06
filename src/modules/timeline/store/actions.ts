@@ -15,7 +15,7 @@ class TimelinePage extends TimelineAction<ITimelinePage> {
     context: ActionContext<TimelineModuleState, AppState>,
     action: ActionPayload<ITimelinePage["IRequest"]>
   ): Promise<ITimelinePage["IResponse"]> {
-    return timelineAPI.getPage(action.payload);
+    return timelineAPI.fetchEntries(action.payload);
   }
 }
 
@@ -35,7 +35,7 @@ class TimelineRemove extends TimelineAction<ITimelineRemove> {
     context: ActionContext<TimelineModuleState, AppState>,
     action: ActionPayload<ITimelineRemove["IRequest"]>
   ): Promise<ITimelineRemove["IResponse"]> {
-    return timelineAPI.remove(action.payload);
+    return timelineAPI.(action.payload);
   }
 }
 
@@ -44,5 +44,3 @@ export const TimelineActions = lazyActionDictionaryFrom({
   UPSERT: TimelineSave,
   DELETE: TimelineRemove
 });
-
-TimelineActions.PAGE.
