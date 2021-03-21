@@ -22,10 +22,12 @@ export function post<
 }
 
 export function patch<
-  IAPI extends IEndpoint<IAPI["IRequest"], IAPI["IResponse"]>
-  >(url: string, cstr: any): (query: IAPI["IRequest"]) => Promise<IAPI["IResponse"]> {
+  IAPI,
+  IRequest = IAPI extends IEndpoint<infer U, any> ? U : unknown,
+  IResponse = IAPI extends IEndpoint<any, infer U> ? U : unknown
+>(url: string): (query: IRequest) => Promise<IResponse> {
   return query => {
-    return request<IAPI["IResponse"]>("get", url, {
+    return request<IResponse>("get", url, {
       params: query
     });
   };
@@ -43,7 +45,7 @@ class UpdateEntryInput {
 
 export const timelineAPI = {
   fetchEntries: get<IFetchEntries>("/timeline"),
-  createEntry: post("/timeline", CreateEntryInput),
-  updateEntry: patch("/timeline/:id", UpdateEntryInput)
+  createEntry: post<CreateEntryInput>("/timeline"),
+  updateEntry: patch<UpdateEntryInput>("/timeline/:id")
 };
 
